@@ -23,11 +23,16 @@ wheels/
 .installed.cfg
 *.egg
 
-# Generated data files
-*.json
+# Experiment results (exclude for now, will add back for comparability)
+results/
+
+# Temporary experiment files
 *.p
 *.pkl
 *.pickle
+
+# Keep all datasets in repo for reproducibility
+# (GSM8K, MMLU, biography data)
 
 # IDE
 .vscode/

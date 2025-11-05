@@ -277,6 +277,13 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 
 ## Notes for Future Sessions
 
+### Repository Management
+- **TODO: Revisit results tracking** - Currently results/ is gitignored. Once we have baseline results from multiple models, we should commit them to the repo for comparability and reproducibility.
+  - Format: results/{task}/{model}_a{agents}_r{rounds}.json
+  - Include metadata: model, params, timestamp, performance metrics
+  - Consider adding results/ to repo after initial experiments complete
+- All datasets (GSM8K, MMLU, biography) are kept in repo for reproducibility
+
 ### Code Adaptation
 - All `gen_*.py` files have hardcoded dataset paths that need updating
 - Original code includes `pdb.set_trace()` debugging statements (remove these: gsm line 67-68, math line 149-150)
