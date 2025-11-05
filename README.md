@@ -74,67 +74,75 @@ python eval_mmlu.py    # Evaluate accuracy
 
 ### Prerequisites
 - Python 3.8+
-- [Ollama](https://ollama.com) for local LLM inference
+- **Mac M4 Pro:** MLX-LM (already installed)
+- **HPC/Windows:** [Ollama](https://ollama.com) or vLLM for local inference
 
 ### Installation
 
-1. **Install Ollama:**
+**Mac M4 Pro (Local Development):**
 ```bash
-# macOS
-brew install ollama
-
-# Linux
-curl -fsSL https://ollama.com/install.sh | sh
-
-# Windows: Download from https://ollama.com/download/windows
-```
-
-2. **Clone and install dependencies:**
-```bash
+# Clone repository
 git clone https://github.com/lferreiraMD/slm_multiagent_debate.git
 cd slm_multiagent_debate
+
+# Install dependencies (mlx-lm already installed)
 pip install -r requirements.txt
+
+# Verify MLX installation
+python3 -m pip show mlx-lm
 ```
 
-3. **Pull a model (optional - if not using HuggingFace models):**
+**HPC/Windows (Future Deployment):**
 ```bash
+# Option 1: Ollama (simpler, cross-platform)
+# macOS: brew install ollama
+# Linux: curl -fsSL https://ollama.com/install.sh | sh
+# Windows: Download from https://ollama.com/download/windows
+
 ollama pull llama3.2:3b
-# or
 ollama pull qwen2.5:7b
+
+# Option 2: vLLM (higher throughput, HPC only)
+pip install vllm transformers
 ```
 
 ### Available Models
 
-We're testing with MLX-optimized models (optimized for Apple Silicon):
+**Mac M4 Pro (MLX-optimized, ready to use):**
 
-| Model | Size | Best For | Speed |
-|-------|------|----------|-------|
-| **DeepSeek-R1-Distill-Qwen** | 1.5B | Reasoning tasks, fast iterations | ⚡⚡⚡ |
-| **Llama 3.2 Instruct** | 3B | Balanced performance | ⚡⚡ |
-| **SmallThinker** | 3B | Reasoning, debate experiments | ⚡⚡ |
-| **Qwen2.5 Instruct** | 7B | Strong math performance | ⚡ |
-| **Llama 3.1 Instruct** | 8B | General purpose | ⚡ |
-| **Qwen2.5 Instruct** | 14B | Best overall performance | ⚡ |
+| Model | Size | Best For | Simultaneous Instances |
+|-------|------|----------|------------------------|
+| **DeepSeek-R1-Distill-Qwen** | 1.5B | Reasoning tasks, fast iterations | 8-10 |
+| **Llama 3.2 Instruct** | 3B | Balanced performance | 5-8 |
+| **SmallThinker** | 3B | Reasoning, debate experiments | 5-8 |
+| **Qwen2.5 Instruct** | 7B | Strong math (1M context) | 3-5 |
+| **Llama 3.1 Instruct** | 8B | General purpose | 3-5 |
+| **Qwen2.5 Instruct** | 14B | Best overall performance | 2-3 |
 
-All models support 3-8 simultaneous instances on 48GB M4 Pro.
+These models are already downloaded and optimized for M4 Pro via MLX. No additional downloads needed!
+
+**HPC/Windows (requires GGUF or PyTorch models):**
+- Models need to be downloaded separately (MLX format only works on Apple Silicon)
+- Use Ollama (GGUF) or vLLM/transformers (PyTorch) formats
 
 ## Configuration
 
-### Environment Setup
-Copy `.env.example` to `.env` and configure:
-```bash
-cp .env .env.example
-```
-
 ### Model Selection
-Edit the `model` parameter in each `gen_*.py` script:
+Scripts will be updated to use MLX models via a wrapper. For now, the original code uses:
 ```python
-# Change from:
-model="gpt-3.5-turbo-0301"
+# Current (OpenAI):
+completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo-0301",
+    messages=agent_context
+)
 
-# To:
-model="llama3.2:3b"  # or your preferred model
+# Future (MLX-LM via wrapper):
+from mlx_lm import load, generate
+model, tokenizer = load("mlx-community/Llama-3.2-3B-Instruct")
+# Wrapper will handle OpenAI-compatible interface
 ```
+
+Model selection will be configurable via environment variable or command-line argument.
 
 ## Running Experiments
 
@@ -190,13 +198,26 @@ python eval_gsm.py
 
 ## Development Roadmap
 
+**Phase 1: Local Development (Mac M4 Pro)**
 - [x] Repository setup and documentation
-- [ ] Adapt scripts to use Ollama/local inference
-- [ ] Run baseline experiments (no debate)
-- [ ] Run multiagent debate experiments
+- [x] Verify MLX-LM installation and available models
+- [ ] Create OpenAI-compatible wrapper for mlx-lm
+- [ ] Adapt math task to use local MLX models
+- [ ] Test single-agent and multiagent debate locally
+- [ ] Adapt GSM, biography, and MMLU tasks
+
+**Phase 2: Experimentation**
+- [ ] Run baseline experiments (no debate) across all tasks
+- [ ] Run multiagent debate experiments with different models
 - [ ] Compare SLM performance to GPT-3.5 baseline
+- [ ] Test model sizes (1.5B → 14B) and families
 - [ ] Document optimal configurations per task
-- [ ] Scale to HPC for larger models
+
+**Phase 3: HPC Scaling**
+- [ ] Create platform abstraction layer (MLX vs Ollama/vLLM)
+- [ ] Set up Ollama/vLLM on HPC with GGUF models
+- [ ] Create SLURM job submission scripts
+- [ ] Run large-scale experiments with bigger models
 
 ## Hardware Requirements
 

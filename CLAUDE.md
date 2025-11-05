@@ -91,133 +91,150 @@ All scripts use OpenAI's chat format:
 ]
 ```
 
-## Local LLM Framework: Ollama
+## Local LLM Framework Strategy
 
-### Why Ollama?
-- Cross-platform (macOS M4 Pro, Windows PCs, Linux HPC)
-- Simple model management (`ollama pull <model>`)
-- Automatic hardware optimization (MLX on Apple Silicon, CUDA on NVIDIA)
-- OpenAI-compatible API out of the box
-- Supports running multiple instances simultaneously
-- Easy to deploy on HPC with Docker/Singularity
-- Simple and minimal dependencies
+### Platform-Specific Approach
 
-### Installation
+#### Mac M4 Pro (Local Development): MLX-LM
+**Why MLX-LM?**
+- Models already downloaded in MLX format (`/Users/leonardo/.cache/huggingface/hub`)
+- Native Apple Silicon optimization (best performance on M4 Pro)
+- Direct Python API, no server needed
+- Already installed: `mlx-lm==0.28.1`, `mlx==0.29.2`
+- Supports multiple simultaneous model instances
+- Zero additional downloads required
+
+**Installation:**
+Already installed! Verify with:
 ```bash
-# macOS (M4 Pro - uses MLX optimization automatically)
-brew install ollama
+python3 -m pip show mlx-lm
+```
 
+**Usage Example:**
+```python
+from mlx_lm import load, generate
+
+# Load already-downloaded model
+model, tokenizer = load("mlx-community/Llama-3.2-3B-Instruct")
+
+# Format chat messages
+messages = [
+    {"role": "user", "content": "What is 2+2?"}
+]
+prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+
+# Generate response
+response = generate(model, tokenizer, prompt=prompt, max_tokens=512)
+```
+
+#### HPC / Windows / Linux: Ollama or vLLM
+**For HPC with NVIDIA GPUs:**
+- Use **Ollama** with GGUF models (simple, cross-platform)
+- Or use **vLLM** with HuggingFace models (higher throughput)
+- Models need to be downloaded again (MLX format won't work on NVIDIA)
+
+**Ollama Installation (HPC/Windows):**
+```bash
 # Windows
 # Download from https://ollama.com/download/windows
 
 # Linux/HPC
 curl -fsSL https://ollama.com/install.sh | sh
 
-# Python client
-pip install ollama
+# Pull models (GGUF format)
+ollama pull llama3.2:3b
+ollama pull qwen2.5:7b
 ```
 
-### Usage Example
-```python
-import openai
-
-# Point to local Ollama server
-openai.api_base = "http://localhost:11434/v1"
-openai.api_key = "ollama"  # dummy key
-
-completion = openai.ChatCompletion.create(
-    model="llama3.2:3b",
-    messages=agent_context,
-    n=1
-)
+**vLLM Alternative (HPC only):**
+```bash
+pip install vllm
+# Use standard HuggingFace models (not MLX versions)
 ```
 
 ## Available Models
 
-### Already Downloaded (MLX-Optimized)
-These models are already in the local HuggingFace cache and optimized for M4 Pro:
+### Local Mac M4 Pro (MLX-Optimized, Already Downloaded)
+These models are ready to use via `mlx-lm` with zero additional downloads:
 
-1. **Llama 3.2 3B Instruct** (`mlx-community/Llama-3.2-3B-Instruct`)
-   - Size: 3B parameters
-   - Fast inference, good for initial testing
-   - Balanced reasoning capabilities
+| Model | Path | Size | Best For | Instances (48GB) |
+|-------|------|------|----------|------------------|
+| **DeepSeek-R1-Distill-Qwen** | `valuat/DeepSeek-R1-Distill-Qwen-1.5B-mlx-fp16` | 1.5B | Reasoning, fast iterations | 8-10 |
+| **Llama 3.2 Instruct** | `mlx-community/Llama-3.2-3B-Instruct` | 3B | Balanced performance | 5-8 |
+| **SmallThinker** | `valuat/SmallThinker-3B-Preview-mlx-fp16` | 3B | Reasoning tasks | 5-8 |
+| **Qwen2.5 7B Instruct** | `valuat/Qwen2.5-7B-Instruct-1M-mlx-fp16` | 7B | Strong math (1M context) | 3-5 |
+| **Llama 3.1 8B Instruct** | `mlx-community/Meta-Llama-3.1-8B-Instruct-8bit` | 8B | General purpose (quantized) | 3-5 |
+| **Llama 3.1 8B Instruct** | `valuat/Meta-Llama-3.1-8B-Instruct-mlx-fp16` | 8B | General purpose (fp16) | 3-4 |
+| **Qwen2.5 14B Instruct** | `valuat/Qwen2.5-14B-Instruct-1M-mlx-fp16` | 14B | Best performance (1M context) | 2-3 |
 
-2. **Llama 3.1 8B Instruct** (two versions available)
-   - `mlx-community/Meta-Llama-3.1-8B-Instruct-8bit` (quantized)
-   - `valuat/Meta-Llama-3.1-8B-Instruct-mlx-fp16` (full precision)
-   - Strong general-purpose performance
+**Location:** `/Users/leonardo/.cache/huggingface/hub`
 
-3. **Qwen2.5 7B Instruct** (`valuat/Qwen2.5-7B-Instruct-1M-mlx-fp16`)
-   - Size: 7B parameters
-   - 1M token context window
-   - Excellent math and reasoning performance
+### HPC Models (To Download)
+For HPC/Windows deployment, you'll need to download models in GGUF format (for Ollama) or standard HuggingFace format (for vLLM/transformers):
 
-4. **Qwen2.5 14B Instruct** (`valuat/Qwen2.5-14B-Instruct-1M-mlx-fp16`)
-   - Size: 14B parameters
-   - 1M token context window
-   - Best performance, may fit 2-3 simultaneous instances on 48GB
+**Via Ollama:**
+```bash
+ollama pull llama3.2:3b
+ollama pull qwen2.5:7b
+ollama pull qwen2.5:14b
+ollama pull deepseek-r1:1.5b
+```
 
-5. **DeepSeek-R1-Distill-Qwen 1.5B** (`valuat/DeepSeek-R1-Distill-Qwen-1.5B-mlx-fp16`)
-   - Size: 1.5B parameters
-   - Distilled from reasoning model
-   - Very fast, good for high-throughput experiments
+**Via HuggingFace (for vLLM/transformers):**
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-6. **SmallThinker 3B** (`valuat/SmallThinker-3B-Preview-mlx-fp16`)
-   - Size: 3B parameters
-   - Designed for reasoning tasks
-   - Good candidate for debate experiments
+# Download standard (non-MLX) versions
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
+```
 
-### Recommended via Ollama (if needed)
-If the HuggingFace models require additional setup, these are readily available through Ollama:
-- `ollama pull llama3.2:3b`
-- `ollama pull qwen2.5:3b`
-- `ollama pull qwen2.5:7b`
-- `ollama pull phi3:3.8b`
-
-### Capacity on 48GB Mac M4 Pro
-- **3B models:** 5-8 simultaneous instances
-- **7-8B models:** 3-5 simultaneous instances
-- **14B models:** 2-3 simultaneous instances
-- Mix and match based on experiment needs
+**Note:** MLX models only work on Apple Silicon. HPC with NVIDIA GPUs requires GGUF (Ollama) or standard PyTorch models (vLLM/transformers).
 
 ## Development Workflow
 
-### Phase 1: Single-Model Testing
-1. Install Ollama and test with one local model
-2. Create utility wrapper for OpenAI → Ollama API translation
-3. Test single-agent inference on each task type
-4. Validate response format parsing
+### Phase 1: Local Development (Mac M4 Pro with MLX)
+1. Create utility wrapper for OpenAI API → mlx-lm translation
+2. Test single-agent inference with `mlx-community/Llama-3.2-3B-Instruct`
+3. Validate response format parsing and chat templates
+4. Update one `gen_*.py` script as proof-of-concept (math task)
 
 ### Phase 2: Multiagent Adaptation
-1. Update `gen_*.py` scripts to use local inference
-2. Add configurable model selection
+1. Update all `gen_*.py` scripts to use mlx-lm wrapper
+2. Add configurable model selection (env var or command-line arg)
 3. Implement proper error handling and retries
 4. Add progress bars and timing metrics
+5. Test with multiple simultaneous model instances
 
-### Phase 3: Experimentation
-1. Run baseline experiments (single agent, no debate)
+### Phase 3: Local Experimentation
+1. Run baseline experiments (single agent, no debate) on all tasks
 2. Run multiagent debate with various configurations
 3. Compare SLM performance to original GPT-3.5 results
-4. Test different model sizes and families
+4. Test different model sizes (1.5B → 14B) and families
 
-### Phase 4: Scaling to HPC
-1. Containerize with Ollama + dependencies
-2. Create job submission scripts for batch processing
-3. Run larger-scale experiments with bigger models
-4. Deploy across team members' machines (Windows/Mac/Linux)
+### Phase 4: HPC Deployment
+1. Create abstraction layer supporting both mlx-lm (Mac) and Ollama/vLLM (HPC)
+2. Set up Ollama on HPC and download GGUF models
+3. Create SLURM/PBS job submission scripts
+4. Run large-scale experiments with bigger models and more debate rounds
+5. Deploy across team members' machines (Windows/Mac/Linux)
 
 ## Project Status
 - [x] Cloned original codebase
-- [x] Identified available MLX-optimized models
-- [ ] Set up Ollama infrastructure
-- [ ] Create API wrapper/abstraction layer
-- [ ] Test single-agent inference
-- [ ] Adapt math task to local SLMs
-- [ ] Adapt GSM task to local SLMs
-- [ ] Adapt biography task to local SLMs
-- [ ] Adapt MMLU task to local SLMs
-- [ ] Run baseline comparisons
-- [ ] Document results and model comparisons
+- [x] Identified available MLX-optimized models (7 models ready)
+- [x] Verified mlx-lm installation (v0.28.1)
+- [x] Created project documentation (CLAUDE.md, updated README.md)
+- [x] Set up GitHub repository
+- [ ] Create mlx-lm wrapper for OpenAI API compatibility
+- [ ] Test single-agent inference with Llama 3.2 3B
+- [ ] Adapt math task to use mlx-lm
+- [ ] Adapt GSM task to use mlx-lm
+- [ ] Adapt biography task to use mlx-lm
+- [ ] Adapt MMLU task to use mlx-lm
+- [ ] Run baseline experiments (no debate)
+- [ ] Run multiagent debate experiments
+- [ ] Compare results across model sizes
+- [ ] Set up HPC deployment (Ollama/vLLM)
 
 ## File Structure
 ```
@@ -239,20 +256,45 @@ If the HuggingFace models require additional setup, these are readily available 
 ```
 
 ## Dependencies
-**Current:**
-- `openai==0.27.6` (to be replaced/adapted)
+
+### Mac M4 Pro (Current Setup)
+**Already Installed:**
+- `mlx==0.29.2` (Apple Silicon optimization)
+- `mlx-lm==0.28.1` (LLM inference)
+- `mlx-metal==0.29.2` (Metal acceleration)
 - `numpy==1.22.4`
 - `pandas==1.5.3`
 - `tqdm==4.64.1`
 
-**To Add:**
-- `ollama` (for local LLM inference)
+**To Update:**
+- `openai==0.27.6` → Will create compatibility wrapper instead of removing
+
+### HPC/Windows Deployment (Future)
+**To Install:**
+- `ollama` (GGUF model serving) OR `vllm` (high-throughput inference)
+- `transformers` (for non-MLX HuggingFace models)
+- `torch` (PyTorch with CUDA support)
 
 ## Notes for Future Sessions
+
+### Code Adaptation
 - All `gen_*.py` files have hardcoded dataset paths that need updating
-- Original code includes `pdb.set_trace()` debugging statements (line 67-68 in gsm, 149-150 in math)
-- GSM requires downloading the dataset separately
-- Biography task requires `article.json` with ground truth data
-- Current evaluation is mostly automated for math tasks, semi-manual for biography/factuality
-- HuggingFace models are already downloaded in MLX format at `/Users/leonardo/.cache/huggingface/hub`
-- Need to verify compatibility between HuggingFace MLX models and Ollama (may need mlx-lm for direct usage)
+- Original code includes `pdb.set_trace()` debugging statements (remove these: gsm line 67-68, math line 149-150)
+- Need to create `openai`-compatible wrapper for `mlx-lm` to minimize code changes
+- Chat template handling varies by model - test with each model family
+
+### Data Requirements
+- GSM: Download from https://github.com/openai/grade-school-math
+- Biography: Requires `article.json` with ground truth biographies
+- MMLU: Download from https://github.com/hendrycks/test
+- Math: Generated on-the-fly (no external data needed)
+
+### Platform-Specific Notes
+- **Mac M4 Pro:** Use mlx-lm with models at `/Users/leonardo/.cache/huggingface/hub` (ready to use)
+- **HPC/Windows:** MLX models won't work - need GGUF (Ollama) or standard PyTorch models
+- **Cross-platform wrapper:** Create abstraction that detects platform and uses appropriate backend
+
+### Performance Expectations
+- MLX on M4 Pro: ~40-80 tokens/sec for 3B models, ~20-40 tokens/sec for 7-8B models
+- Multiagent debate will be slower than original (GPT-3.5 API) but more cost-effective
+- Consider caching model loads between agents to save memory
