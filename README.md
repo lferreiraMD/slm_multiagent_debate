@@ -28,44 +28,44 @@ Multiple LLM agents independently solve the same problem, then see each other's 
 
 ## Available Experiments
 
-### 📊 Math (`./math/`)
+### 📊 Math (`./tasks/math/`)
 Simple arithmetic expressions testing order of operations
 - **Task:** Evaluate `a+b*c+d-e*f`
 - **Config:** 2 agents, 3 rounds, 100 problems
 - **Evaluation:** Automated exact match
 ```bash
-cd math && python gen_math.py
+cd tasks/math && python gen_math.py
 ```
 
-### 🧮 Grade School Math (`./gsm/`)
+### 🧮 Grade School Math (`./tasks/gsm/`)
 Multi-step word problems from GSM8K dataset
 - **Task:** Word problems requiring multi-step reasoning
 - **Config:** 3 agents, 2 rounds, 100 problems
 - **Dataset:** [OpenAI GSM8K](https://github.com/openai/grade-school-math)
 ```bash
-cd gsm
+cd tasks/gsm
 python gen_gsm.py      # Generate answers
 python eval_gsm.py     # Evaluate results
 ```
 
-### 👤 Biography (`./biography/`)
+### 👤 Biography (`./tasks/biography/`)
 Factual biography generation for computer scientists
 - **Task:** Generate bullet-point biographies
 - **Config:** 3 agents, 2 rounds, 40 people
 - **Evaluation:** Fact-checking against ground truth
 ```bash
-cd biography
+cd tasks/biography
 python gen_conversation.py    # Generate biographies
 python eval_conversation.py   # Evaluate factuality
 ```
 
-### 📚 MMLU (`./mmlu/`)
+### 📚 MMLU (`./tasks/mmlu/`)
 Multiple-choice questions across academic subjects
 - **Task:** MMLU benchmark questions
 - **Config:** 3 agents, 2 rounds
 - **Dataset:** [MMLU](https://github.com/hendrycks/test)
 ```bash
-cd mmlu
+cd tasks/mmlu
 python gen_mmlu.py     # Generate answers
 python eval_mmlu.py    # Evaluate accuracy
 ```
@@ -148,20 +148,20 @@ Model selection will be configurable via environment variable or command-line ar
 
 ### Quick Start - Math Task
 ```bash
-cd math
+cd tasks/math
 python gen_math.py
 ```
 
 ### Full Workflow Example (GSM)
 ```bash
-# 1. Download dataset
-git clone https://github.com/openai/grade-school-math
+# 1. Datasets are already included in data/gsm8k/
+# No need to download separately!
 
-# 2. Update dataset path in gen_gsm.py
-# Edit line 38: questions = read_jsonl("/path/to/test.jsonl")
+# 2. Update dataset path in gen_gsm.py if needed
+# Should point to: data/gsm8k/test.jsonl
 
 # 3. Run generation
-cd gsm
+cd tasks/gsm
 python gen_gsm.py
 
 # 4. Evaluate results
@@ -172,17 +172,16 @@ python eval_gsm.py
 
 ```
 .
-├── math/              # Arithmetic problems
-│   └── gen_math.py
-├── gsm/               # Grade School Math
-│   ├── gen_gsm.py
-│   └── eval_gsm.py
-├── biography/         # Biography generation
-│   ├── gen_conversation.py
-│   └── eval_conversation.py
-├── mmlu/              # MMLU benchmark
-│   ├── gen_mmlu.py
-│   └── eval_mmlu.py
+├── data/              # Datasets
+│   ├── biography/     # Ground truth biographies
+│   ├── gsm8k/         # GSM8K dataset files
+│   └── mmlu/          # MMLU test files
+├── tasks/             # Task implementations
+│   ├── math/          # Arithmetic problems
+│   ├── gsm/           # Grade School Math
+│   ├── biography/     # Biography generation
+│   └── mmlu/          # MMLU benchmark
+├── scripts/           # Utility scripts
 ├── requirements.txt
 ├── CLAUDE.md          # Detailed technical notes
 └── README.md          # This file
@@ -201,6 +200,8 @@ python eval_gsm.py
 **Phase 1: Local Development (Mac M4 Pro)**
 - [x] Repository setup and documentation
 - [x] Verify MLX-LM installation and available models
+- [x] Download and organize datasets (GSM8K, MMLU, biography)
+- [x] Reorganize codebase structure (data/ and tasks/ directories)
 - [ ] Create OpenAI-compatible wrapper for mlx-lm
 - [ ] Adapt math task to use local MLX models
 - [ ] Test single-agent and multiagent debate locally

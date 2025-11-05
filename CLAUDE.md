@@ -26,29 +26,29 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 
 ### Implemented Tasks
 
-#### 1. **Math** (`./math/`)
+#### 1. **Math** (`./tasks/math/`)
 - **Task:** Simple arithmetic expressions (e.g., `a+b*c+d-e*f`)
 - **Configuration:** 2 agents, 3 rounds
 - **Evaluation:** Automated comparison with ground truth
 - **Files:** `gen_math.py` (generates and evaluates)
 
-#### 2. **Grade School Math (GSM)** (`./gsm/`)
+#### 2. **Grade School Math (GSM)** (`./tasks/gsm/`)
 - **Task:** Multi-step word problems requiring arithmetic reasoning
-- **Dataset:** [OpenAI GSM8K](https://github.com/openai/grade-school-math)
+- **Dataset:** [OpenAI GSM8K](https://github.com/openai/grade-school-math) (included in `data/gsm8k/`)
 - **Configuration:** 3 agents, 2 rounds
 - **Evaluation:** Extracts numerical answer from `\boxed{answer}` format
 - **Files:** `gen_gsm.py` (generation), `eval_gsm.py` (evaluation)
 
-#### 3. **Biography** (`./biography/`)
+#### 3. **Biography** (`./tasks/biography/`)
 - **Task:** Generate bullet-point biographies of computer scientists
 - **Configuration:** 3 agents, 2 rounds, 40 people
 - **Evaluation:** Manual or automated fact-checking against Wikipedia/sources
 - **Files:** `gen_conversation.py` (generation), `eval_conversation.py` (evaluation)
-- **Data:** Requires `article.json` with ground truth biographies
+- **Data:** `data/biography/article.json` with ground truth biographies
 
-#### 4. **MMLU** (`./mmlu/`)
+#### 4. **MMLU** (`./tasks/mmlu/`)
 - **Task:** Multiple-choice questions across academic subjects
-- **Dataset:** [MMLU benchmark](https://github.com/hendrycks/test)
+- **Dataset:** [MMLU benchmark](https://github.com/hendrycks/test) (included in `data/mmlu/`)
 - **Configuration:** Likely 3 agents, 2 rounds (inferred from pattern)
 - **Files:** `gen_mmlu.py` (generation), `eval_mmlu.py` (evaluation)
 
@@ -225,6 +225,9 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - [x] Verified mlx-lm installation (v0.28.1)
 - [x] Created project documentation (CLAUDE.md, updated README.md)
 - [x] Set up GitHub repository
+- [x] Downloaded and organized datasets (GSM8K, MMLU, biography)
+- [x] Reorganized datasets into data/ directory
+- [x] Reorganized task implementations into tasks/ directory
 - [ ] Create mlx-lm wrapper for OpenAI API compatibility
 - [ ] Test single-agent inference with Llama 3.2 3B
 - [ ] Adapt math task to use mlx-lm
@@ -239,20 +242,32 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 ## File Structure
 ```
 .
-├── math/          # Arithmetic problems
-│   └── gen_math.py
-├── gsm/           # Grade school math
-│   ├── gen_gsm.py
-│   └── eval_gsm.py
-├── biography/     # Computer scientist biographies
-│   ├── gen_conversation.py
-│   └── eval_conversation.py
-├── mmlu/          # MMLU benchmark
-│   ├── gen_mmlu.py
-│   └── eval_mmlu.py
+├── data/              # Datasets
+│   ├── biography/     # Ground truth biographies
+│   │   └── article.json
+│   ├── gsm8k/         # GSM8K dataset
+│   │   ├── train.jsonl
+│   │   ├── test.jsonl
+│   │   └── ...
+│   └── mmlu/          # MMLU benchmark
+│       └── *_test.csv
+├── tasks/             # Task implementations
+│   ├── math/          # Arithmetic problems
+│   │   └── gen_math.py
+│   ├── gsm/           # Grade school math
+│   │   ├── gen_gsm.py
+│   │   └── eval_gsm.py
+│   ├── biography/     # Computer scientist biographies
+│   │   ├── gen_conversation.py
+│   │   └── eval_conversation.py
+│   └── mmlu/          # MMLU benchmark
+│       ├── gen_mmlu.py
+│       └── eval_mmlu.py
+├── scripts/           # Utility scripts
+│   └── download_datasets.sh
 ├── requirements.txt
 ├── README.md
-└── CLAUDE.md      # This file
+└── CLAUDE.md          # This file
 ```
 
 ## Dependencies
@@ -291,9 +306,9 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - Chat template handling varies by model - test with each model family
 
 ### Data Requirements
-- GSM: Download from https://github.com/openai/grade-school-math
-- Biography: Requires `article.json` with ground truth biographies
-- MMLU: Download from https://github.com/hendrycks/test
+- GSM: Already included in `data/gsm8k/` (originally from https://github.com/openai/grade-school-math)
+- Biography: Already included in `data/biography/article.json`
+- MMLU: Already included in `data/mmlu/` (originally from https://github.com/hendrycks/test)
 - Math: Generated on-the-fly (no external data needed)
 
 ### Platform-Specific Notes
