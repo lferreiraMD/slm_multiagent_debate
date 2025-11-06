@@ -228,9 +228,11 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - [x] Downloaded and organized datasets (GSM8K, MMLU, biography)
 - [x] Reorganized datasets into data/ directory
 - [x] Reorganized task implementations into tasks/ directory
-- [ ] Create mlx-lm wrapper for OpenAI API compatibility
-- [ ] Test single-agent inference with Llama 3.2 3B
-- [ ] Adapt math task to use mlx-lm
+- [x] Created mlx-lm wrapper for OpenAI API compatibility (utils module)
+- [x] Created config.yaml for centralized configuration
+- [x] Adapted math task to use mlx-lm (tasks/math/gen_math.py)
+- [x] Fixed MLX generate() API compatibility issues
+- [ ] Test math task completes successfully (currently running first test)
 - [ ] Adapt GSM task to use mlx-lm
 - [ ] Adapt biography task to use mlx-lm
 - [ ] Adapt MMLU task to use mlx-lm
@@ -238,6 +240,33 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - [ ] Run multiagent debate experiments
 - [ ] Compare results across model sizes
 - [ ] Set up HPC deployment (Ollama/vLLM)
+
+## Configuration
+
+### config.yaml
+The project uses `config.yaml` at the repository root for centralized configuration:
+
+**Key Sections:**
+- **model**: Default model (alias or full path). Defaults to `"deepseek"` (1.5B, fastest)
+- **generation**: Generation parameters matching original GPT-3.5 defaults (temp=1.0, max_tokens=null, top_p=1.0)
+- **experiments**: Task-specific configs (agents, rounds, num_problems) from original study
+- **models**: Aliases mapping short names → full HuggingFace paths
+- **datasets**: Dataset paths relative to repo root
+
+**Usage in Scripts:**
+```python
+from utils import load_config, resolve_model_name, get_experiment_config
+
+config = load_config()                    # Load config.yaml
+model = resolve_model_name(config["model"])  # "deepseek" → full path
+gen_params = config["generation"]
+exp_config = get_experiment_config("math")  # Get math task config
+```
+
+**Model Selection Priority:**
+1. Command-line: `--model qwen25-7b`
+2. config.yaml: `model: "deepseek"`
+3. Fallback: `"deepseek"` (hardcoded default)
 
 ## File Structure
 ```

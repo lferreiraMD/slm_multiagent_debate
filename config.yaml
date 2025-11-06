@@ -1,5 +1,9 @@
 # Configuration for multiagent debate experiments
 
+# Default model to use (can be alias or full path)
+# Override with --model argument at runtime
+model: "deepseek"  # 1.5B - smallest, fastest for testing
+
 # Generation parameters (matching GPT-3.5-turbo-0301 defaults)
 generation:
   temperature: 1.0      # High for diverse agent responses
@@ -50,7 +54,7 @@ models:
 
 # Dataset paths (relative to repo root)
 datasets:
-  gsm: "data/gsm8k/grade_school_math/data/test.jsonl"
-  biography: "biography/article.json"
-  mmlu: "data/mmlu/data/test"
+  gsm: "data/gsm8k/test.jsonl"
+  biography: "data/biography/article.json"
+  mmlu: "data/mmlu"  # Directory containing *_test.csv files
   math: null  # Generated on-the-fly

@@ -150,9 +150,9 @@ def get_dataset_path(task: str, base_dir: Optional[str] = None) -> str:
     base_dir = Path(base_dir)
 
     dataset_paths = {
-        "gsm": base_dir / "data" / "gsm8k" / "grade_school_math" / "data" / "test.jsonl",
-        "biography": base_dir / "biography" / "article.json",
-        "mmlu": base_dir / "data" / "mmlu" / "data" / "test",
+        "gsm": base_dir / "data" / "gsm8k" / "test.jsonl",
+        "biography": base_dir / "data" / "biography" / "article.json",
+        "mmlu": base_dir / "data" / "mmlu",  # Directory containing *_test.csv files
         "math": None,  # Generated on-the-fly
     }
 

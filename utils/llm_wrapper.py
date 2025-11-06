@@ -143,14 +143,13 @@ class ChatCompletion:
             max_tokens = 2048
 
         start_time = time.time()
+        # MLX generate in this version doesn't support temp/temperature in generate_step()
+        # Only use max_tokens and verbose
         response_text = generate(
             model_obj,
             tokenizer,
             prompt=prompt,
-            temp=temperature,
             max_tokens=max_tokens,
-            top_p=top_p,
-            repetition_penalty=1.0,  # No penalty (match OpenAI default)
             verbose=False
         )
         latency = time.time() - start_time

@@ -1,9 +1,16 @@
-import openai
+import sys
+from pathlib import Path
+
+# Add project root to path for utils import
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from utils import ChatCompletion, load_config, resolve_model_name, get_experiment_config
 import json
 import numpy as np
 import time
 import pickle
 from tqdm import tqdm
+import argparse
 
 def parse_bullets(sentence):
     bullets_preprocess = sentence.split("\n")
@@ -23,16 +30,17 @@ def parse_bullets(sentence):
     return bullets
 
 
-def generate_answer(answer_context):
+def generate_answer(answer_context, model_name, generation_params):
     try:
-        completion = openai.ChatCompletion.create(
-                  model="gpt-3.5-turbo-0301",
+        completion = ChatCompletion.create(
+                  model=model_name,
                   messages=answer_context,
-                  n=1)
-    except:
-        print("retrying due to an error......")
+                  **generation_params)
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        print("Retrying due to an error......")
         time.sleep(20)
-        return generate_answer(answer_context)
+        return generate_answer(answer_context, model_name, generation_params)
 
     return completion
 
@@ -84,15 +92,43 @@ def most_frequent(List):
 
 
 if __name__ == "__main__":
-    answer = parse_answer("My answer is the same as the other agents and AI language model: the result of 12+28*19+6 is 550.")
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Math task with multiagent debate")
+    parser.add_argument("--model", type=str, default=None, help="Model to use (alias or full path)")
+    parser.add_argument("--agents", type=int, default=None, help="Number of agents")
+    parser.add_argument("--rounds", type=int, default=None, help="Number of rounds")
+    parser.add_argument("--num-problems", type=int, default=None, help="Number of problems to evaluate")
+    args = parser.parse_args()
 
-    agents = 2
-    rounds = 3
-    np.random.seed(0)
+    # Load configuration
+    config = load_config()
 
-    evaluation_round = 100
+    # Model configuration
+    model_name = args.model or config.get("model", "deepseek")
+    model_name = resolve_model_name(model_name)
+    generation_params = config["generation"]
+
+    # Experiment configuration
+    exp_config = get_experiment_config("math")
+    agents = args.agents or exp_config["agents"]
+    rounds = args.rounds or exp_config["rounds"]
+    evaluation_round = args.num_problems or exp_config["num_problems"]
+    random_seed = exp_config["random_seed"]
+
+    # Print configuration
+    print("=" * 60)
+    print("Math Task - Multiagent Debate")
+    print("=" * 60)
+    print(f"Model: {model_name}")
+    print(f"Agents: {agents}")
+    print(f"Rounds: {rounds}")
+    print(f"Problems: {evaluation_round}")
+    print(f"Generation params: {generation_params}")
+    print("=" * 60)
+
+    np.random.seed(random_seed)
+
     scores = []
-
     generated_description = {}
 
     for round in tqdm(range(evaluation_round)):
@@ -114,7 +150,7 @@ if __name__ == "__main__":
 
                     print("message: ", message)
 
-                completion = generate_answer(agent_context)
+                completion = generate_answer(agent_context, model_name, generation_params)
 
                 assistant_message = construct_assistant_message(completion)
                 agent_context.append(assistant_message)
@@ -145,8 +181,11 @@ if __name__ == "__main__":
 
         print("performance:", np.mean(scores), np.std(scores) / (len(scores) ** 0.5))
 
-    pickle.dump(generated_description, open("math_agents{}_rounds{}.p".format(agents, rounds), "wb"))
-    import pdb
-    pdb.set_trace()
-    print(answer)
-    print(agent_context)
+    # Save results
+    output_filename = f"math_{model_name.split('/')[-1]}_agents{agents}_rounds{rounds}.p"
+    pickle.dump(generated_description, open(output_filename, "wb"))
+
+    print("=" * 60)
+    print(f"Results saved to: {output_filename}")
+    print(f"Final performance: {np.mean(scores):.3f} ± {np.std(scores) / (len(scores) ** 0.5):.3f}")
+    print("=" * 60)
