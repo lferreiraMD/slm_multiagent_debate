@@ -143,18 +143,20 @@ if __name__ == "__main__":
         for round in range(rounds):
             for i, agent_context in enumerate(agent_contexts):
 
+                print(f"\n--- Round {round + 1}, Agent {i + 1}/{agents} ---")
+
                 if round != 0:
                     agent_contexts_other = agent_contexts[:i] + agent_contexts[i+1:]
                     message = construct_message(agent_contexts_other, question_prompt, 2*round - 1)
                     agent_context.append(message)
 
-                    print("message: ", message)
+                    print(f"Agent {i + 1} receiving other agents' responses...")
 
                 completion = generate_answer(agent_context, model_name, generation_params)
 
                 assistant_message = construct_assistant_message(completion)
                 agent_context.append(assistant_message)
-                print(completion)
+                print(f"Agent {i + 1} response: {assistant_message['content'][:100]}...")
 
         text_answers = []
 

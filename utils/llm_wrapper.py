@@ -92,6 +92,7 @@ class ChatCompletion:
             max_tokens: Maximum tokens to generate (None = model decides)
             top_p: Nucleus sampling parameter
             n: Number of completions (only n=1 supported currently)
+            **kwargs: Additional arguments, including an optional 'backend' to override auto-detection.
 
         Returns:
             OpenAI-compatible response dict with choices
@@ -99,7 +100,8 @@ class ChatCompletion:
         if n != 1:
             raise NotImplementedError("Only n=1 is currently supported")
 
-        backend = cls._detect_backend()
+        # Allow backend override via kwargs, otherwise auto-detect
+        backend = kwargs.pop("backend", None) or cls._detect_backend()
 
         if backend == "mlx":
             return cls._create_mlx(model, messages, temperature, max_tokens, top_p, **kwargs)
