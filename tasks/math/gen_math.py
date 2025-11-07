@@ -45,15 +45,15 @@ def generate_answer(answer_context, model_name, generation_params):
     return completion
 
 
-def construct_message(agents, question, idx):
+def construct_message(other_agents, question, idx):
 
     # Use introspection in the case in which there are no other agents.
-    if len(agents) == 0:
+    if len(other_agents) == 0:
         return {"role": "user", "content": "Can you verify that your answer is correct. Please reiterate your answer, making sure to state your answer at the end of the response."}
 
     prefix_string = "These are the recent/updated opinions from other agents: "
 
-    for agent in agents:
+    for agent in other_agents:
         agent_response = agent[idx]["content"]
         response = "\n\n One agent response: ```{}```".format(agent_response)
 
