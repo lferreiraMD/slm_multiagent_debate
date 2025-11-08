@@ -237,10 +237,12 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - [x] Adapted MMLU task to use mlx-lm (tasks/mmlu/gen_mmlu.py)
 - [x] Fixed MLX generate() API compatibility issues
 - [x] All tasks follow consistent modular pattern
-- [ ] Test math task completes successfully (currently running)
+- [x] Created results aggregation script (scripts/aggregate_results.py)
+- [x] Created plotting scripts (plot_by_model.py, plot_by_task.py)
+- [x] Math task experiments completed (1-4 agents, 3-5 rounds)
 - [ ] Test GSM, biography, MMLU tasks
 - [ ] Run baseline experiments (no debate)
-- [ ] Run multiagent debate experiments
+- [ ] Run multiagent debate experiments with multiple models
 - [ ] Compare results across model sizes
 - [ ] Set up HPC deployment (Ollama/vLLM)
 
@@ -271,6 +273,38 @@ exp_config = get_experiment_config("math")  # Get math task config
 2. config.yaml: `model: "deepseek"`
 3. Fallback: `"deepseek"` (hardcoded default)
 
+## Results Analysis Workflow
+
+### 1. Run Experiments
+```bash
+# Math task
+cd tasks/math
+python3 gen_math.py [--model MODEL] [--agents N] [--rounds N]
+
+# Other tasks similarly
+cd ../gsm && python3 gen_gsm.py
+cd ../biography && python3 gen_conversation.py
+cd ../mmlu && python3 gen_mmlu.py
+```
+
+### 2. Aggregate Results
+```bash
+# Scans all task directories and creates summary
+python scripts/aggregate_results.py
+```
+Output: `results/summary.p` (DataFrame) and `results/summary.csv` (human-readable)
+
+### 3. Generate Plots
+```bash
+# Per (model, task) plots
+python scripts/plot_by_model.py
+# Output: plots/{model}_{task}.png
+
+# Task comparison plots (all models)
+python scripts/plot_by_task.py
+# Output: plots/{task}_comparison.png
+```
+
 ## File Structure
 ```
 .
@@ -295,8 +329,21 @@ exp_config = get_experiment_config("math")  # Get math task config
 │   └── mmlu/          # MMLU benchmark
 │       ├── gen_mmlu.py
 │       └── eval_mmlu.py
-├── scripts/           # Utility scripts
-│   └── download_datasets.sh
+├── utils/             # Shared utilities
+│   ├── llm_wrapper.py      # OpenAI-compatible ChatCompletion
+│   ├── config.py           # Configuration management
+│   ├── model_cache.py      # Model caching
+│   └── helpers.py          # Shared functions
+├── scripts/           # Analysis scripts
+│   ├── aggregate_results.py  # Aggregate experiment results
+│   ├── plot_by_model.py      # Generate per-model plots
+│   └── plot_by_task.py       # Generate comparison plots
+├── results/           # Experiment results
+│   ├── summary.p      # Aggregated results DataFrame
+│   └── summary.csv    # Human-readable summary
+├── plots/             # Generated visualizations
+│   └── *.png          # Result plots (gitignored)
+├── config.yaml        # Centralized configuration
 ├── requirements.txt
 ├── README.md
 └── CLAUDE.md          # This file
