@@ -1,17 +1,31 @@
+import sys
+from pathlib import Path
+
+# Add project root to path for utils import
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from utils import (
+    ChatCompletion,
+    load_config,
+    resolve_model_name,
+    get_experiment_config,
+    get_dataset_path,
+    construct_assistant_message
+)
 from glob import glob
 import pandas as pd
 import json
 import time
 import random
-import openai
+import argparse
 
-def construct_message(agents, question, idx):
-    if len(agents) == 0:
+def construct_message(other_agents, question, idx):
+    if len(other_agents) == 0:
         return {"role": "user", "content": "Can you double check that your answer is correct. Put your final answer in the form (X) at the end of your response."}
 
     prefix_string = "These are the solutions to the problem from other agents: "
 
-    for agent in agents:
+    for agent in other_agents:
         agent_response = agent[idx]["content"]
         response = "\n\n One agent solution: ```{}```".format(agent_response)
 
@@ -21,21 +35,17 @@ def construct_message(agents, question, idx):
     return {"role": "user", "content": prefix_string}
 
 
-def construct_assistant_message(completion):
-    content = completion["choices"][0]["message"]["content"]
-    return {"role": "assistant", "content": content}
-
-
-def generate_answer(answer_context):
+def generate_answer(answer_context, model_name, generation_params):
     try:
-        completion = openai.ChatCompletion.create(
-                  model="gpt-3.5-turbo-0301",
+        completion = ChatCompletion.create(
+                  model=model_name,
                   messages=answer_context,
-                  n=1)
-    except:
-        print("retrying due to an error......")
+                  **generation_params)
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        print("Retrying due to an error......")
         time.sleep(20)
-        return generate_answer(answer_context)
+        return generate_answer(answer_context, model_name, generation_params)
 
     return completion
 
@@ -54,17 +64,53 @@ def parse_question_answer(df, ix):
     return question, answer
 
 if __name__ == "__main__":
-    agents = 3
-    rounds = 2
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="MMLU task with multiagent debate")
+    parser.add_argument("--model", type=str, default=None, help="Model to use (alias or full path)")
+    parser.add_argument("--agents", type=int, default=None, help="Number of agents")
+    parser.add_argument("--rounds", type=int, default=None, help="Number of rounds")
+    parser.add_argument("--num-questions", type=int, default=None, help="Number of questions to evaluate")
+    args = parser.parse_args()
 
-    tasks = glob("/data/vision/billf/scratch/yilundu/llm_iterative_debate/mmlu/data/test/*.csv")
+    # Load configuration
+    config = load_config()
 
-    dfs = [pd.read_csv(task) for task in tasks]
+    # Model configuration
+    model_name = args.model or config.get("model", "deepseek")
+    model_name = resolve_model_name(model_name)
+    generation_params = config["generation"]
 
-    random.seed(0)
+    # Experiment configuration
+    exp_config = get_experiment_config("mmlu")
+    agents = args.agents or exp_config["agents"]
+    rounds = args.rounds or exp_config["rounds"]
+    num_questions = args.num_questions or exp_config["num_questions"]
+    random_seed = exp_config["random_seed"]
+
+    # Dataset path
+    dataset_path = get_dataset_path("mmlu")
+
+    # Print configuration
+    print("=" * 60)
+    print("MMLU Task - Multiagent Debate")
+    print("=" * 60)
+    print(f"Model: {model_name}")
+    print(f"Agents: {agents}")
+    print(f"Rounds: {rounds}")
+    print(f"Questions: {num_questions}")
+    print(f"Dataset: {dataset_path}")
+    print(f"Generation params: {generation_params}")
+    print("=" * 60)
+
+    tasks = glob(f"{dataset_path}/*.csv")
+    print(f"Found {len(tasks)} MMLU test files")
+
+    dfs = [pd.read_csv(task, header=None) for task in tasks]
+
+    random.seed(random_seed)
     response_dict = {}
 
-    for i in range(100):
+    for i in range(num_questions):
         df = random.choice(dfs)
         ix = len(df)
         idx = random.randint(0, ix-1)
@@ -76,17 +122,28 @@ if __name__ == "__main__":
         for round in range(rounds):
             for i, agent_context in enumerate(agent_contexts):
 
+                print(f"\n--- Round {round + 1}, Agent {i + 1}/{agents}, Question {i+1}/{num_questions} ---")
+
                 if round != 0:
                     agent_contexts_other = agent_contexts[:i] + agent_contexts[i+1:]
                     message = construct_message(agent_contexts_other, question, 2 * round - 1)
                     agent_context.append(message)
 
-                completion = generate_answer(agent_context)
+                    print(f"Agent {i + 1} receiving other agents' responses...")
+
+                completion = generate_answer(agent_context, model_name, generation_params)
 
                 assistant_message = construct_assistant_message(completion)
                 agent_context.append(assistant_message)
-                print(completion)
+                print(f"Agent {i + 1} response: {assistant_message['content'][:100]}...")
 
         response_dict[question] = (agent_contexts, answer)
 
-    json.dump(response_dict, open("mmlu_{}_{}.json".format(agents, rounds), "w"))
+    # Save results
+    output_filename = f"mmlu_{model_name.split('/')[-1]}_agents{agents}_rounds{rounds}.json"
+    json.dump(response_dict, open(output_filename, "w"))
+
+    print("=" * 60)
+    print(f"Results saved to: {output_filename}")
+    print(f"Total questions processed: {len(response_dict)}")
+    print("=" * 60)
