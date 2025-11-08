@@ -341,10 +341,15 @@ def aggregate_results(tasks_dir='tasks'):
     for task_subdir in ['math', 'gsm', 'biography', 'mmlu']:
         task_path = tasks_dir / task_subdir
         if task_path.exists():
-            result_files.extend(glob(str(task_path / "*.p")))
-            result_files.extend(glob(str(task_path / "*.json")))
+            p_files = glob(str(task_path / "*.p"))
+            json_files = glob(str(task_path / "*.json"))
+            print(f"  {task_subdir}: {len(p_files)} .p files, {len(json_files)} .json files")
+            result_files.extend(p_files)
+            result_files.extend(json_files)
+        else:
+            print(f"  {task_subdir}: directory not found")
 
-    print(f"Found {len(result_files)} result files across task directories")
+    print(f"\nTotal: {len(result_files)} result files across task directories")
 
     # Process each file
     rows = []
@@ -390,8 +395,16 @@ def main():
     print("Multiagent Debate Results Aggregation")
     print("=" * 60)
 
+    # Get project root (parent of scripts directory)
+    script_dir = Path(__file__).parent
+    project_root = script_dir.parent
+
+    print(f"Project root: {project_root}")
+    print(f"Scanning for results...\n")
+
     # Aggregate results from task directories
-    df = aggregate_results('tasks')
+    tasks_dir = project_root / 'tasks'
+    df = aggregate_results(tasks_dir)
 
     if len(df) == 0:
         print("\nNo results found to aggregate.")
@@ -406,8 +419,12 @@ def main():
     print("=" * 60)
     print(df.to_string(index=False))
 
-    # Save results
-    output_path = Path('results') / 'summary.p'
+    # Save results to project root
+    project_root = Path(__file__).parent.parent
+    results_dir = project_root / 'results'
+    results_dir.mkdir(exist_ok=True)
+
+    output_path = results_dir / 'summary.p'
 
     # Load existing if it exists and append
     if output_path.exists():
@@ -440,7 +457,7 @@ def main():
     print(f"Total entries: {len(df)}")
 
     # Also save as CSV for easy viewing
-    csv_path = Path('results') / 'summary.csv'
+    csv_path = results_dir / 'summary.csv'
     df.to_csv(csv_path, index=False)
     print(f"CSV saved to: {csv_path}")
 
