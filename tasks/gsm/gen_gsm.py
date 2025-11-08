@@ -1,15 +1,30 @@
-import openai
+import sys
+from pathlib import Path
+
+# Add project root to path for utils import
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from utils import (
+    ChatCompletion,
+    load_config,
+    resolve_model_name,
+    get_experiment_config,
+    get_dataset_path,
+    construct_assistant_message,
+    read_jsonl
+)
 import json
 import numpy as np
 import random
+import argparse
 
-def construct_message(agents, question, idx):
-    if len(agents) == 0:
+def construct_message(other_agents, question, idx):
+    if len(other_agents) == 0:
         return {"role": "user", "content": "Can you double check that your answer is correct. Please reiterate your answer, with your final answer a single numerical number, in the form \\boxed{{answer}}."}
 
     prefix_string = "These are the solutions to the problem from other agents: "
 
-    for agent in agents:
+    for agent in other_agents:
         agent_response = agent[idx]["content"]
         response = "\n\n One agent solution: ```{}```".format(agent_response)
 
@@ -19,26 +34,69 @@ def construct_message(agents, question, idx):
     return {"role": "user", "content": prefix_string}
 
 
-def construct_assistant_message(completion):
-    content = completion["choices"][0]["message"]["content"]
-    return {"role": "assistant", "content": content}
+def generate_answer(answer_context, model_name, generation_params):
+    try:
+        completion = ChatCompletion.create(
+                  model=model_name,
+                  messages=answer_context,
+                  **generation_params)
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        print("Retrying due to an error......")
+        import time
+        time.sleep(20)
+        return generate_answer(answer_context, model_name, generation_params)
 
+    return completion
 
-def read_jsonl(path: str):
-    with open(path) as fh:
-        return [json.loads(line) for line in fh.readlines() if line]
 
 if __name__ == "__main__":
-    agents = 3
-    rounds = 2
-    random.seed(0)
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="GSM task with multiagent debate")
+    parser.add_argument("--model", type=str, default=None, help="Model to use (alias or full path)")
+    parser.add_argument("--agents", type=int, default=None, help="Number of agents")
+    parser.add_argument("--rounds", type=int, default=None, help="Number of rounds")
+    parser.add_argument("--num-problems", type=int, default=None, help="Number of problems to evaluate")
+    args = parser.parse_args()
+
+    # Load configuration
+    config = load_config()
+
+    # Model configuration
+    model_name = args.model or config.get("model", "deepseek")
+    model_name = resolve_model_name(model_name)
+    generation_params = config["generation"]
+
+    # Experiment configuration
+    exp_config = get_experiment_config("gsm")
+    agents = args.agents or exp_config["agents"]
+    rounds = args.rounds or exp_config["rounds"]
+    num_problems = args.num_problems or exp_config["num_problems"]
+    random_seed = exp_config["random_seed"]
+
+    # Dataset path
+    dataset_path = get_dataset_path("gsm")
+
+    # Print configuration
+    print("=" * 60)
+    print("GSM Task - Multiagent Debate")
+    print("=" * 60)
+    print(f"Model: {model_name}")
+    print(f"Agents: {agents}")
+    print(f"Rounds: {rounds}")
+    print(f"Problems: {num_problems}")
+    print(f"Dataset: {dataset_path}")
+    print(f"Generation params: {generation_params}")
+    print("=" * 60)
+
+    random.seed(random_seed)
 
     generated_description = {}
 
-    questions = read_jsonl("/data/vision/billf/scratch/yilundu/llm_iterative_debate/grade-school-math/grade_school_math/data/test.jsonl")
+    questions = read_jsonl(dataset_path)
     random.shuffle(questions)
 
-    for data in questions[:100]:
+    for data in questions[:num_problems]:
         question = data['question']
         answer = data['answer']
 
@@ -47,24 +105,28 @@ if __name__ == "__main__":
         for round in range(rounds):
             for i, agent_context in enumerate(agent_contexts):
 
+                print(f"\n--- Round {round + 1}, Agent {i + 1}/{agents} ---")
+
                 if round != 0:
                     agent_contexts_other = agent_contexts[:i] + agent_contexts[i+1:]
                     message = construct_message(agent_contexts_other, question, 2*round - 1)
                     agent_context.append(message)
 
-                completion = openai.ChatCompletion.create(
-                          model="gpt-3.5-turbo-0301",
-                          messages=agent_context,
-                          n=1)
+                    print(f"Agent {i + 1} receiving other agents' responses...")
+
+                completion = generate_answer(agent_context, model_name, generation_params)
 
                 assistant_message = construct_assistant_message(completion)
                 agent_context.append(assistant_message)
+                print(f"Agent {i + 1} response: {assistant_message['content'][:100]}...")
 
         generated_description[question] = (agent_contexts, answer)
 
-    json.dump(generated_description, open("gsm_{}_{}.json".format(agents, rounds), "w"))
+    # Save results
+    output_filename = f"gsm_{model_name.split('/')[-1]}_agents{agents}_rounds{rounds}.json"
+    json.dump(generated_description, open(output_filename, "w"))
 
-    import pdb
-    pdb.set_trace()
-    print(answer)
-    print(agent_context)
+    print("=" * 60)
+    print(f"Results saved to: {output_filename}")
+    print(f"Total problems processed: {len(generated_description)}")
+    print("=" * 60)

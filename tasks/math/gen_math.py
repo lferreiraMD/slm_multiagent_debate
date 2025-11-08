@@ -4,30 +4,20 @@ from pathlib import Path
 # Add project root to path for utils import
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from utils import ChatCompletion, load_config, resolve_model_name, get_experiment_config
+from utils import (
+    ChatCompletion,
+    load_config,
+    resolve_model_name,
+    get_experiment_config,
+    construct_assistant_message,
+    most_frequent
+)
 import json
 import numpy as np
 import time
 import pickle
 from tqdm import tqdm
 import argparse
-
-def parse_bullets(sentence):
-    bullets_preprocess = sentence.split("\n")
-    bullets = []
-
-    for bullet in bullets_preprocess:
-        try:
-            idx = bullet.find(next(filter(str.isalpha, bullet)))
-        except:
-            continue
-
-        bullet = bullet[idx:]
-
-        if len(bullet) != 0:
-            bullets.append(bullet)
-
-    return bullets
 
 
 def generate_answer(answer_context, model_name, generation_params):
@@ -63,10 +53,6 @@ def construct_message(other_agents, question, idx):
     return {"role": "user", "content": prefix_string}
 
 
-def construct_assistant_message(completion):
-    content = completion["choices"][0]["message"]["content"]
-    return {"role": "assistant", "content": content}
-
 def parse_answer(sentence):
     parts = sentence.split(" ")
 
@@ -76,19 +62,6 @@ def parse_answer(sentence):
             return answer
         except:
             continue
-
-
-def most_frequent(List):
-    counter = 0
-    num = List[0]
-
-    for i in List:
-        current_frequency = List.count(i)
-        if current_frequency > counter:
-            counter = current_frequency
-            num = i
-
-    return num
 
 
 if __name__ == "__main__":
