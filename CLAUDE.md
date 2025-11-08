@@ -230,12 +230,15 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - [x] Reorganized task implementations into tasks/ directory
 - [x] Created mlx-lm wrapper for OpenAI API compatibility (utils module)
 - [x] Created config.yaml for centralized configuration
+- [x] Created utils/helpers.py with shared functions
 - [x] Adapted math task to use mlx-lm (tasks/math/gen_math.py)
+- [x] Adapted GSM task to use mlx-lm (tasks/gsm/gen_gsm.py)
+- [x] Adapted biography task to use mlx-lm (tasks/biography/gen_conversation.py)
+- [x] Adapted MMLU task to use mlx-lm (tasks/mmlu/gen_mmlu.py)
 - [x] Fixed MLX generate() API compatibility issues
-- [ ] Test math task completes successfully (currently running first test)
-- [ ] Adapt GSM task to use mlx-lm
-- [ ] Adapt biography task to use mlx-lm
-- [ ] Adapt MMLU task to use mlx-lm
+- [x] All tasks follow consistent modular pattern
+- [ ] Test math task completes successfully (currently running)
+- [ ] Test GSM, biography, MMLU tasks
 - [ ] Run baseline experiments (no debate)
 - [ ] Run multiagent debate experiments
 - [ ] Compare results across model sizes
