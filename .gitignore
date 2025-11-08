@@ -23,13 +23,18 @@ wheels/
 .installed.cfg
 *.egg
 
-# Experiment results (exclude for now, will add back for comparability)
-results/
+# Experiment results (exclude individual run files, track summaries)
+results/*
+!results/.gitkeep
+!results/summary.p
+!results/summary.csv
 
-# Temporary experiment files
+# Temporary experiment files (exclude from task directories)
 *.p
 *.pkl
 *.pickle
+# But allow summary files in results/
+!results/summary.p
 
 # Keep all datasets in repo for reproducibility
 # (GSM8K, MMLU, biography data)
