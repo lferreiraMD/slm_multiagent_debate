@@ -316,32 +316,35 @@ def evaluate_result_file(filepath, task):
         return None
 
 
-def aggregate_results(results_dir='results'):
+def aggregate_results(tasks_dir='tasks'):
     """
-    Scan results directory and aggregate all results into DataFrame.
+    Scan task directories and aggregate all results into DataFrame.
 
     Args:
-        results_dir: Directory containing result files
+        tasks_dir: Directory containing task subdirectories (math, gsm, biography, mmlu)
 
     Returns:
         pandas DataFrame with columns: task, model_name, number_agents,
         number_rounds, average_accuracy, stdev_accuracy
     """
-    results_dir = Path(results_dir)
+    tasks_dir = Path(tasks_dir)
 
-    if not results_dir.exists():
-        print(f"Results directory not found: {results_dir}")
-        print("Creating directory...")
-        results_dir.mkdir(parents=True, exist_ok=True)
+    if not tasks_dir.exists():
+        print(f"Tasks directory not found: {tasks_dir}")
         return pd.DataFrame(columns=['task', 'model_name', 'num_agents', 'num_rounds',
                                      'avg_accuracy', 'std_accuracy'])
 
-    # Find all result files
+    # Find all result files in task subdirectories
     result_files = []
-    result_files.extend(glob(str(results_dir / "**/*.p"), recursive=True))
-    result_files.extend(glob(str(results_dir / "**/*.json"), recursive=True))
 
-    print(f"Found {len(result_files)} result files")
+    # Scan each task directory
+    for task_subdir in ['math', 'gsm', 'biography', 'mmlu']:
+        task_path = tasks_dir / task_subdir
+        if task_path.exists():
+            result_files.extend(glob(str(task_path / "*.p")))
+            result_files.extend(glob(str(task_path / "*.json")))
+
+    print(f"Found {len(result_files)} result files across task directories")
 
     # Process each file
     rows = []
@@ -387,8 +390,8 @@ def main():
     print("Multiagent Debate Results Aggregation")
     print("=" * 60)
 
-    # Aggregate results
-    df = aggregate_results('results')
+    # Aggregate results from task directories
+    df = aggregate_results('tasks')
 
     if len(df) == 0:
         print("\nNo results found to aggregate.")
