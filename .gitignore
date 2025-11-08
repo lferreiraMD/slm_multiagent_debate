@@ -39,6 +39,10 @@ results/*
 # Keep all datasets in repo for reproducibility
 # (GSM8K, MMLU, biography data)
 
+# Generated plots
+plots/*.png
+!plots/.gitkeep
+
 # IDE
 .vscode/
 .idea/
