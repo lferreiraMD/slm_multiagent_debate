@@ -128,97 +128,176 @@ These models are already downloaded and optimized for M4 Pro via MLX. No additio
 ## Configuration
 
 ### Model Selection
-Scripts will be updated to use MLX models via a wrapper. For now, the original code uses:
-```python
-# Current (OpenAI):
-completion = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo-0301",
-    messages=agent_context
-)
+All generation scripts have been migrated to use local MLX models via a custom wrapper:
 
-# Future (MLX-LM via wrapper):
-from mlx_lm import load, generate
-model, tokenizer = load("mlx-community/Llama-3.2-3B-Instruct")
-# Wrapper will handle OpenAI-compatible interface
+```python
+# Current implementation (OpenAI-compatible):
+from utils import ChatCompletion
+
+completion = ChatCompletion.create(
+    model=model_name,  # Can be alias like "deepseek" or full path
+    messages=agent_context,
+    temperature=1.0,
+    max_tokens=2048
+)
 ```
 
-Model selection will be configurable via environment variable or command-line argument.
+The `utils.ChatCompletion` wrapper provides:
+- Automatic model loading and caching
+- OpenAI-compatible API interface
+- Chat template formatting
+- MLX-LM inference backend
+
+**Model Selection (Priority Order):**
+1. Command-line argument: `--model llama32-3b`
+2. config.yaml default: `model: "deepseek"`
+3. Available aliases: `deepseek`, `llama32-3b`, `smallthinker`, `qwen25-7b`, `llama31-8b`, `qwen25-14b`
 
 ## Running Experiments
 
 ### Quick Start - Math Task
 ```bash
 cd tasks/math
+
+# Use default model (DeepSeek 1.5B)
 python gen_math.py
+
+# Or specify a model
+python gen_math.py --model llama32-3b --agents 3 --rounds 2
+
+# Or use a different configuration
+python gen_math.py --model qwen25-7b --agents 4 --rounds 5
 ```
 
 ### Full Workflow Example (GSM)
 ```bash
 # 1. Datasets are already included in data/gsm8k/
-# No need to download separately!
-
-# 2. Update dataset path in gen_gsm.py if needed
-# Should point to: data/gsm8k/test.jsonl
-
-# 3. Run generation
 cd tasks/gsm
+
+# 2. Run generation with default config (3 agents, 2 rounds)
 python gen_gsm.py
 
-# 4. Evaluate results
+# Or customize the experiment
+python gen_gsm.py --model smallthinker --agents 4 --rounds 3
+
+# 3. Evaluate results (uses GPT-4 for verification)
 python eval_gsm.py
+```
+
+### Analysis Workflow
+```bash
+# 1. Run experiments across tasks
+cd tasks/math && python gen_math.py --model deepseek
+cd ../gsm && python gen_gsm.py --model deepseek
+cd ../biography && python gen_conversation.py --model deepseek
+
+# 2. Aggregate all results
+python scripts/aggregate_results.py
+# Creates: results/summary.p and results/summary.csv
+
+# 3. Generate visualizations
+python scripts/plot_by_model.py   # Per-model plots
+python scripts/plot_by_task.py    # Task comparison plots
+# Outputs to: plots/*.png
 ```
 
 ## Project Structure
 
 ```
 .
-├── data/              # Datasets
-│   ├── biography/     # Ground truth biographies
-│   ├── gsm8k/         # GSM8K dataset files
-│   └── mmlu/          # MMLU test files
+├── data/              # Datasets (included in repo)
+│   ├── biography/     # Ground truth biographies (article.json)
+│   ├── gsm8k/         # GSM8K dataset files (train.jsonl, test.jsonl)
+│   └── mmlu/          # MMLU test files (*_test.csv)
 ├── tasks/             # Task implementations
-│   ├── math/          # Arithmetic problems
-│   ├── gsm/           # Grade School Math
-│   ├── biography/     # Biography generation
-│   └── mmlu/          # MMLU benchmark
-├── scripts/           # Utility scripts
+│   ├── math/          # Arithmetic problems (gen_math.py)
+│   ├── gsm/           # Grade School Math (gen_gsm.py, eval_gsm.py)
+│   ├── biography/     # Biography generation (gen_conversation.py, eval_conversation.py)
+│   └── mmlu/          # MMLU benchmark (gen_mmlu.py, eval_mmlu.py)
+├── utils/             # Shared utilities
+│   ├── llm_wrapper.py      # OpenAI-compatible ChatCompletion wrapper
+│   ├── config.py           # Configuration management
+│   ├── model_cache.py      # Model loading/caching
+│   └── helpers.py          # Shared functions
+├── scripts/           # Analysis scripts
+│   ├── aggregate_results.py  # Combine results from all experiments
+│   ├── plot_by_model.py      # Generate per-model performance plots
+│   └── plot_by_task.py       # Generate task comparison plots
+├── results/           # Experiment outputs
+│   ├── summary.p      # Aggregated results (pickle)
+│   └── summary.csv    # Human-readable summary
+├── plots/             # Generated visualizations (*.png)
+├── config.yaml        # Centralized configuration
 ├── requirements.txt
-├── CLAUDE.md          # Detailed technical notes
+├── CLAUDE.md          # Detailed technical documentation
 └── README.md          # This file
 ```
 
 ## Results & Analysis
 
-*Coming soon - we'll document performance comparisons between:*
-- Different model sizes (1.5B → 14B)
-- Single-agent vs multiagent debate
-- Number of debate rounds
-- Model families (Llama, Qwen, DeepSeek)
+### Current Experimental Results
+
+**Math Task (Arithmetic Reasoning)**
+- **Models tested:** DeepSeek-R1-Distill-Qwen-1.5B, Meta-Llama-3.1-8B-Instruct-8bit
+- **Configurations:** 13 experiments (1-5 agents, 3-7 rounds)
+- **Dataset:** 100 arithmetic problems per configuration
+
+**Initial Findings (Math Task):**
+```
+DeepSeek 1.5B Performance:
+- Single agent (1 agent, 3 rounds): 33% accuracy
+- Best configuration (3 agents, 3 rounds): 37% accuracy
+- Performance ranges: 28-37% across configurations
+```
+
+**Analysis Tools:**
+- `scripts/aggregate_results.py`: Combines results from all experiments
+- `scripts/plot_by_model.py`: Generates performance plots per (model, task)
+- `scripts/plot_by_task.py`: Generates comparison plots across models
+- Output: `results/summary.csv` and visualizations in `plots/`
+
+**Ongoing Experiments:**
+- GSM (grade school math word problems)
+- Biography (factual biography generation)
+- MMLU (multi-subject multiple choice)
+
+### Performance Metrics
+
+Results are automatically aggregated and tracked across:
+- **Model sizes:** 1.5B → 14B parameters
+- **Agent counts:** Single-agent vs multiagent debate (2-5 agents)
+- **Debate rounds:** 2-7 rounds of refinement
+- **Model families:** Llama, Qwen, DeepSeek, SmallThinker
+
+See `results/summary.csv` for detailed performance data.
 
 ## Development Roadmap
 
-**Phase 1: Local Development (Mac M4 Pro)**
+**Phase 1: Local Development (Mac M4 Pro)** ✅ **COMPLETED**
 - [x] Repository setup and documentation
 - [x] Verify MLX-LM installation and available models
 - [x] Download and organize datasets (GSM8K, MMLU, biography)
 - [x] Reorganize codebase structure (data/ and tasks/ directories)
-- [ ] Create OpenAI-compatible wrapper for mlx-lm
-- [ ] Adapt math task to use local MLX models
-- [ ] Test single-agent and multiagent debate locally
-- [ ] Adapt GSM, biography, and MMLU tasks
+- [x] Create OpenAI-compatible wrapper for mlx-lm
+- [x] Adapt all tasks to use local MLX models (math, GSM, biography, MMLU)
+- [x] Test single-agent and multiagent debate locally
+- [x] Create results aggregation and visualization scripts
 
-**Phase 2: Experimentation**
+**Phase 2: Experimentation** 🔄 **IN PROGRESS**
+- [x] Initial math task experiments (13 configurations, 2 models)
+- [x] Results aggregation and visualization pipeline
 - [ ] Run baseline experiments (no debate) across all tasks
-- [ ] Run multiagent debate experiments with different models
-- [ ] Compare SLM performance to GPT-3.5 baseline
-- [ ] Test model sizes (1.5B → 14B) and families
+- [ ] Complete GSM, biography, and MMLU task experiments
+- [ ] Compare SLM performance to GPT-3.5 baseline (from original paper)
+- [ ] Test multiple model sizes (1.5B → 14B) and families
 - [ ] Document optimal configurations per task
 
-**Phase 3: HPC Scaling**
+**Phase 3: HPC Scaling** 📋 **PLANNED**
 - [ ] Create platform abstraction layer (MLX vs Ollama/vLLM)
 - [ ] Set up Ollama/vLLM on HPC with GGUF models
 - [ ] Create SLURM job submission scripts
 - [ ] Run large-scale experiments with bigger models
+- [ ] Cross-platform testing and deployment
 
 ## Hardware Requirements
 

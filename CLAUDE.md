@@ -59,29 +59,37 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 
 ## Technical Implementation
 
-### Current Architecture
-```python
-# All scripts use this pattern:
-import openai
+### Completed Architecture
+All generation scripts (`gen_*.py`) have been migrated to use MLX-LM via a custom wrapper:
 
-completion = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo-0301",
+```python
+# Current implementation:
+from utils import ChatCompletion
+
+completion = ChatCompletion.create(
+    model=model_name,  # MLX model path
     messages=agent_context,
-    n=1
+    **generation_params
 )
 ```
 
-### Migration to Local SLMs
+The `utils.ChatCompletion` wrapper (in `utils/llm_wrapper.py`) provides OpenAI-compatible interface to MLX-LM, handling:
+- Model loading and caching
+- Chat template formatting
+- Token generation
+- Response formatting matching OpenAI structure
 
-#### Required Changes
-1. Replace `openai.ChatCompletion.create()` calls with local inference
-2. Update `requirements.txt` to include local LLM framework
-3. Handle potential differences in response formatting
-4. Adjust for slower inference times (add progress tracking, consider batching)
-5. Update model name/path configuration
+### Migration Status
+
+#### ✅ Completed Changes
+1. ✅ Created OpenAI-compatible wrapper for MLX-LM (`utils/llm_wrapper.py`)
+2. ✅ Updated all `gen_*.py` scripts to use mlx-lm wrapper
+3. ✅ Implemented model caching system (`utils/model_cache.py`)
+4. ✅ Added progress tracking with tqdm
+5. ✅ Implemented configurable model selection via CLI and config.yaml
 
 #### Message Format
-All scripts use OpenAI's chat format:
+All scripts continue to use OpenAI's chat format (now handled by wrapper):
 ```python
 [
     {"role": "user", "content": "question"},
@@ -90,6 +98,8 @@ All scripts use OpenAI's chat format:
     ...
 ]
 ```
+
+**Note:** Evaluation scripts (`eval_*.py`) still use OpenAI API for GPT-4 based fact-checking and evaluation (common pattern for assessing factuality in biography/MMLU tasks).
 
 ## Local LLM Framework Strategy
 
