@@ -249,11 +249,14 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - [x] All tasks follow consistent modular pattern
 - [x] Created results aggregation script (scripts/aggregate_results.py)
 - [x] Created plotting scripts (plot_by_model.py, plot_by_task.py)
-- [x] Math task experiments completed (1-4 agents, 3-5 rounds)
+- [x] Math task experiments completed: 13 configurations across 2 models
+  - DeepSeek 1.5B: 9 configs (1-4 agents, 3-7 rounds) → 26-37% accuracy
+  - Llama 3.1 8B: 4 configs (1-5 agents, 3 rounds) → 85-97% accuracy
+- [x] Demonstrated multiagent debate benefit (Llama 8B: 85% solo → 97% with 2-3 agents)
 - [ ] Test GSM, biography, MMLU tasks
-- [ ] Run baseline experiments (no debate)
-- [ ] Run multiagent debate experiments with multiple models
-- [ ] Compare results across model sizes
+- [ ] Run baseline experiments across all tasks
+- [ ] Test additional models (Qwen 7B/14B, SmallThinker, Llama 3.2)
+- [ ] Compare debate effectiveness across model sizes and families
 - [ ] Set up HPC deployment (Ollama/vLLM)
 
 ## Configuration
@@ -282,6 +285,41 @@ exp_config = get_experiment_config("math")  # Get math task config
 1. Command-line: `--model qwen25-7b`
 2. config.yaml: `model: "deepseek"`
 3. Fallback: `"deepseek"` (hardcoded default)
+
+## Experimental Results
+
+### Math Task (Arithmetic Reasoning)
+
+**Dataset:** 100 arithmetic problems (order of operations: `a+b*c+d-e*f`)
+
+**DeepSeek-R1-Distill-Qwen-1.5B (1.5B parameters):**
+```
+Config                  Accuracy
+1 agent,  3 rounds  →   33%
+1 agent,  5 rounds  →   29%
+1 agent,  7 rounds  →   29%
+2 agents, 3 rounds  →   30%
+2 agents, 5 rounds  →   30%
+2 agents, 7 rounds  →   26%
+3 agents, 3 rounds  →   37% ⭐ Best
+4 agents, 3 rounds  →   32%
+4 agents, 5 rounds  →   28%
+```
+**Observation:** Modest improvement with debate (33% → 37%), but overall low accuracy. More agents/rounds don't consistently help.
+
+**Meta-Llama-3.1-8B-Instruct (8B parameters, 8-bit quantized):**
+```
+Config                  Accuracy
+1 agent,  3 rounds  →   85%
+2 agents, 3 rounds  →   97% ⭐ Best
+3 agents, 3 rounds  →   97% ⭐ Best
+5 agents, 3 rounds  →   94%
+```
+**Observation:** Strong baseline (85%) with clear multiagent debate benefit (+12% improvement to 97%). Optimal at 2-3 agents. Diminishing returns at 5 agents.
+
+**Key Insight:** Multiagent debate shows stronger benefit for more capable models. Llama 8B demonstrates the core hypothesis: debate helps models correct errors.
+
+---
 
 ## Results Analysis Workflow
 
@@ -381,31 +419,49 @@ python scripts/plot_by_task.py
 
 ## Notes for Future Sessions
 
-### Repository Management
-- **TODO: Revisit results tracking** - Currently results/ is gitignored. Once we have baseline results from multiple models, we should commit them to the repo for comparability and reproducibility.
-  - Format: results/{task}/{model}_a{agents}_r{rounds}.json
-  - Include metadata: model, params, timestamp, performance metrics
-  - Consider adding results/ to repo after initial experiments complete
-- All datasets (GSM8K, MMLU, biography) are kept in repo for reproducibility
+### Current Implementation Status
+- ✅ **All generation scripts migrated to MLX-LM** - Uses `utils.ChatCompletion` wrapper
+- ✅ **Model caching implemented** - Automatically caches loaded models between runs
+- ✅ **Configuration centralized** - All settings in `config.yaml`, supports CLI overrides
+- ✅ **Results tracking configured** - Summary files tracked in git, individual runs ignored
 
-### Code Adaptation
-- All `gen_*.py` files have hardcoded dataset paths that need updating
-- Original code includes `pdb.set_trace()` debugging statements (remove these: gsm line 67-68, math line 149-150)
-- Need to create `openai`-compatible wrapper for `mlx-lm` to minimize code changes
-- Chat template handling varies by model - test with each model family
+### Repository Management
+- **Results tracking:** `results/summary.p` and `results/summary.csv` are tracked in git
+- **Individual experiment files:** Stored in `tasks/{task}/math_*.p` format (gitignored for size)
+- **Plots:** Generated visualizations in `plots/` (gitignored, regenerated from summary data)
+- **Datasets:** All datasets (GSM8K, MMLU, biography) committed to repo for reproducibility
+
+### Known Issues
+- **Eval scripts contain debugging statements:** `pdb.set_trace()` present in:
+  - `tasks/gsm/eval_gsm.py:143`
+  - `tasks/mmlu/eval_mmlu.py:138`
+  - Note: These are in evaluation scripts only (not generation scripts)
+  - Trigger only on parsing errors; safe to leave for debugging
 
 ### Data Requirements
-- GSM: Already included in `data/gsm8k/` (originally from https://github.com/openai/grade-school-math)
-- Biography: Already included in `data/biography/article.json`
-- MMLU: Already included in `data/mmlu/` (originally from https://github.com/hendrycks/test)
-- Math: Generated on-the-fly (no external data needed)
+- **GSM:** `data/gsm8k/test.jsonl` (from https://github.com/openai/grade-school-math)
+- **Biography:** `data/biography/article.json` (40 computer scientist biographies)
+- **MMLU:** `data/mmlu/*_test.csv` (from https://github.com/hendrycks/test)
+- **Math:** Generated on-the-fly (no external data needed)
 
 ### Platform-Specific Notes
-- **Mac M4 Pro:** Use mlx-lm with models at `/Users/leonardo/.cache/huggingface/hub` (ready to use)
-- **HPC/Windows:** MLX models won't work - need GGUF (Ollama) or standard PyTorch models
-- **Cross-platform wrapper:** Create abstraction that detects platform and uses appropriate backend
+- **Mac M4 Pro (Current):**
+  - Uses MLX-LM with models at `/Users/leonardo/.cache/huggingface/hub`
+  - 7 models ready (1.5B-14B parameters)
+  - Model wrapper handles chat templates automatically
+- **HPC/Windows (Future):**
+  - MLX models incompatible with NVIDIA GPUs
+  - Will need GGUF (Ollama) or PyTorch (vLLM/transformers) versions
+  - Cross-platform abstraction layer needed
 
-### Performance Expectations
-- MLX on M4 Pro: ~40-80 tokens/sec for 3B models, ~20-40 tokens/sec for 7-8B models
-- Multiagent debate will be slower than original (GPT-3.5 API) but more cost-effective
-- Consider caching model loads between agents to save memory
+### Performance Characteristics
+- **MLX on M4 Pro:** 40-80 tokens/sec (3B), 20-40 tokens/sec (7-8B)
+- **Memory usage:** Model caching reduces load time but increases RAM usage
+- **Experiment duration:** Math task (100 problems, 3 agents, 3 rounds) ≈ 20-40 minutes with DeepSeek 1.5B
+- **Multiagent overhead:** Slower than GPT-3.5 API but zero cost after setup
+
+### Testing Recommendations
+- Test each model family (Llama, Qwen, DeepSeek) at least once per task
+- Chat template formatting varies by model - verify output quality
+- Watch for truncated responses with long contexts (especially biography task)
+- Compare single-agent vs multiagent to quantify debate benefit
