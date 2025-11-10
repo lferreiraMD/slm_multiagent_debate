@@ -338,18 +338,18 @@ cd ../mmlu && python3 gen_mmlu.py
 ### 2. Aggregate Results
 ```bash
 # Scans all task directories and creates summary
-python scripts/aggregate_results.py
+python3 scripts/aggregate_results.py
 ```
 Output: `results/summary.p` (DataFrame) and `results/summary.csv` (human-readable)
 
 ### 3. Generate Plots
 ```bash
 # Per (model, task) plots
-python scripts/plot_by_model.py
+python3 scripts/plot_by_model.py
 # Output: plots/{model}_{task}.png
 
 # Task comparison plots (all models)
-python scripts/plot_by_task.py
+python3 scripts/plot_by_task.py
 # Output: plots/{task}_comparison.png
 ```
 
@@ -449,6 +449,9 @@ python scripts/plot_by_task.py
   - Uses MLX-LM with models at `/Users/leonardo/.cache/huggingface/hub`
   - 7 models ready (1.5B-14B parameters)
   - Model wrapper handles chat templates automatically
+  - **IMPORTANT:** Use `python3` and `pip3` commands (NOT `python` or `pip`)
+    - Example: `python3 gen_math.py` or `pip3 install -r requirements.txt`
+    - The system does not have `python` symlinked to `python3`
 - **HPC/Windows (Future):**
   - MLX models incompatible with NVIDIA GPUs
   - Will need GGUF (Ollama) or PyTorch (vLLM/transformers) versions
