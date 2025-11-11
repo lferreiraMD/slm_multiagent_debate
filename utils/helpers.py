@@ -5,7 +5,77 @@ These utilities are task-agnostic and can be reused by math, GSM, biography, and
 """
 
 import json
-from typing import List, Any, Dict
+import time
+from typing import List, Any, Dict, Optional
+
+
+def generate_answer(
+    answer_context: List[Dict[str, str]],
+    model_name: str,
+    generation_params: Dict[str, Any],
+    agent_id: int = 0,
+    agent_models: Optional[List[str]] = None,
+    agent_gen_params: Optional[List[Dict[str, Any]]] = None
+) -> Dict[str, Any]:
+    """
+    Generate LLM response with optional per-agent model and parameter selection.
+
+    Supports cognitive diversity experiments by allowing different models and
+    generation parameters for each agent in multiagent debate.
+
+    Args:
+        answer_context: Chat message history for this agent
+        model_name: Default model name (fallback if agent_models not provided)
+        generation_params: Default generation parameters (fallback if agent_gen_params not provided)
+        agent_id: Agent index (0-based) for per-agent selection
+        agent_models: Optional list of model names (one per agent). If provided,
+                     uses agent_models[agent_id] instead of model_name
+        agent_gen_params: Optional list of generation param dicts (one per agent).
+                         If provided, uses agent_gen_params[agent_id] instead of generation_params
+
+    Returns:
+        OpenAI-compatible completion response dict
+
+    Examples:
+        # Homogeneous agents (existing behavior)
+        >>> generate_answer(context, "deepseek", {"temperature": 1.0})
+
+        # Model diversity (Condition 3)
+        >>> models = ["deepseek", "llama32-3b", "qwen25-7b"]
+        >>> generate_answer(context, "deepseek", params, agent_id=1, agent_models=models)
+        # Uses llama32-3b for agent 1
+
+        # Decoding diversity (Condition 4)
+        >>> params_list = [{"temperature": 0.7}, {"temperature": 1.0}, {"temperature": 1.3}]
+        >>> generate_answer(context, "deepseek", params, agent_id=2, agent_gen_params=params_list)
+        # Uses temperature=1.3 for agent 2
+    """
+    from utils import ChatCompletion
+
+    # Select model: per-agent if available, else default
+    selected_model = (agent_models[agent_id]
+                     if agent_models and len(agent_models) > agent_id
+                     else model_name)
+
+    # Select generation params: per-agent if available, else default
+    selected_params = (agent_gen_params[agent_id]
+                      if agent_gen_params and len(agent_gen_params) > agent_id
+                      else generation_params)
+
+    try:
+        completion = ChatCompletion.create(
+            model=selected_model,
+            messages=answer_context,
+            **selected_params
+        )
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        print("Retrying due to an error......")
+        time.sleep(20)
+        return generate_answer(answer_context, model_name, generation_params,
+                              agent_id, agent_models, agent_gen_params)
+
+    return completion
 
 
 def construct_assistant_message(completion: Dict[str, Any]) -> Dict[str, str]:

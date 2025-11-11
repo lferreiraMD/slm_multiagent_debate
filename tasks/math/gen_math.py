@@ -10,7 +10,8 @@ from utils import (
     resolve_model_name,
     get_experiment_config,
     construct_assistant_message,
-    most_frequent
+    most_frequent,
+    generate_answer
 )
 import json
 import numpy as np
@@ -18,21 +19,6 @@ import time
 import pickle
 from tqdm import tqdm
 import argparse
-
-
-def generate_answer(answer_context, model_name, generation_params):
-    try:
-        completion = ChatCompletion.create(
-                  model=model_name,
-                  messages=answer_context,
-                  **generation_params)
-    except Exception as e:
-        print(f"Error occurred: {e}")
-        print("Retrying due to an error......")
-        time.sleep(20)
-        return generate_answer(answer_context, model_name, generation_params)
-
-    return completion
 
 
 def construct_message(other_agents, question, idx):
@@ -71,6 +57,8 @@ if __name__ == "__main__":
     parser.add_argument("--agents", type=int, default=None, help="Number of agents")
     parser.add_argument("--rounds", type=int, default=None, help="Number of rounds")
     parser.add_argument("--num-problems", type=int, default=None, help="Number of problems to evaluate")
+    parser.add_argument("--agent-models", type=str, nargs="+", default=None,
+                       help="Per-agent models for model diversity (space-separated aliases or paths)")
     args = parser.parse_args()
 
     # Load configuration
@@ -88,11 +76,24 @@ if __name__ == "__main__":
     evaluation_round = args.num_problems or exp_config["num_problems"]
     random_seed = exp_config["random_seed"]
 
+    # Per-agent model configuration (for model diversity experiments)
+    agent_models = None
+    if args.agent_models:
+        agent_models = [resolve_model_name(m) for m in args.agent_models]
+        if len(agent_models) != agents:
+            raise ValueError(f"Number of agent models ({len(agent_models)}) must match number of agents ({agents})")
+        print(f"Using model diversity with {len(agent_models)} different models")
+
     # Print configuration
     print("=" * 60)
     print("Math Task - Multiagent Debate")
     print("=" * 60)
-    print(f"Model: {model_name}")
+    if agent_models:
+        print(f"Model diversity mode:")
+        for i, model in enumerate(agent_models):
+            print(f"  Agent {i+1}: {model}")
+    else:
+        print(f"Model: {model_name}")
     print(f"Agents: {agents}")
     print(f"Rounds: {rounds}")
     print(f"Problems: {evaluation_round}")
@@ -125,7 +126,8 @@ if __name__ == "__main__":
 
                     print(f"Agent {i + 1} receiving other agents' responses...")
 
-                completion = generate_answer(agent_context, model_name, generation_params)
+                completion = generate_answer(agent_context, model_name, generation_params,
+                                            agent_id=i, agent_models=agent_models)
 
                 assistant_message = construct_assistant_message(completion)
                 agent_context.append(assistant_message)

@@ -1,4 +1,13 @@
-# LLM Multiagent Debate - Local SLM Adaptation
+# Beyond Symmetric Agents: Cognitive Diversity and Multiagent Debate in Small Language Models
+
+**Course Project:** Topics in Machine Learning: Compositional AI Systems
+COMPSCI 2821R, Fall 2025, Harvard School of Engineering and Applied Sciences
+
+**Contributors:**
+- Leonardo Ferreira <leonardo.ferreira@childrens.harvard.edu>
+- Vennela Jonnala <vjonnala@college.harvard.edu>
+- Gardenia Liu <gardenialiu@college.harvard.edu>
+- Kaden Zheng <kadenzheng@college.harvard.edu>
 
 ## Project Overview
 

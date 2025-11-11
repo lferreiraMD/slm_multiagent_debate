@@ -10,7 +10,7 @@ This module provides platform-agnostic LLM inference with support for:
 from .llm_wrapper import ChatCompletion
 from .config import load_config, get_generation_params, resolve_model_name, get_experiment_config, get_dataset_path
 from .model_cache import ModelCache
-from .helpers import construct_assistant_message, most_frequent, read_jsonl, parse_bullets, write_jsonl
+from .helpers import construct_assistant_message, most_frequent, read_jsonl, parse_bullets, write_jsonl, generate_answer
 
 __all__ = [
     'ChatCompletion',
@@ -25,4 +25,5 @@ __all__ = [
     'read_jsonl',
     'parse_bullets',
     'write_jsonl',
+    'generate_answer',
 ]

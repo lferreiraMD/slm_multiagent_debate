@@ -1,10 +1,20 @@
-# Multiagent Debate with Small Language Models (SLMs)
+# Beyond Symmetric Agents: Cognitive Diversity and Multiagent Debate in Small Language Models
 
 **Adapting the multiagent debate methodology to locally-hosted small language models**
+
+**Course Project:** Topics in Machine Learning: Compositional AI Systems
+COMPSCI 2821R, Fall 2025, Harvard School of Engineering and Applied Sciences
 
 ## About This Project
 
 This repository adapts the research from ["Improving Factuality and Reasoning in Language Models through Multiagent Debate"](https://arxiv.org/abs/2305.14325) (Du et al., 2023) to work with local Small Language Models (SLMs) instead of OpenAI's GPT models.
+
+## Contributors
+
+- **Leonardo Ferreira** - <leonardo.ferreira@childrens.harvard.edu>
+- **Vennela Jonnala** - <vjonnala@college.harvard.edu>
+- **Gardenia Liu** - <gardenialiu@college.harvard.edu>
+- **Kaden Zheng** - <kadenzheng@college.harvard.edu>
 
 ### Original Work
 - **Paper:** [ArXiv:2305.14325](https://arxiv.org/abs/2305.14325)
@@ -16,6 +26,21 @@ This repository adapts the research from ["Improving Factuality and Reasoning in
 2. **Model Diversity:** Test whether debate benefits smaller open-source models
 3. **Reproducibility:** Enable offline experiments without API dependencies
 4. **Accessibility:** Make multiagent debate experiments accessible to researchers with consumer hardware
+
+## Research Hypothesis: Cognitive Diversity
+
+Multi-Agent Debate (MAD) has been a promising mechanism to improve reasoning and factual consistency in language models. In multi-agent debate, multiple agents propose answers, critique each other, and converge to an ideally superior solution. Prior work (Du et al., 2023) treats agents as symmetric peers, but doesn't fully answer why multi-agent debate helps. In this research project, we propose that **cognitive diversity among agents**, such as variation in reasoning style, prompting priors, or heuristics, is a key driver of multi-agent debate gains.
+
+We adopt a small-language-model (SLM) setting (e.g., 1.5B-4B parameter range) to examine this hypothesis in a cost-effective, reproducible environment. We construct multiple debate conditions:
+
+1. **Homogeneous groups** of agents all using the same model and prompt style
+2. **Heterogeneous groups** where the same model is prompted to adopt distinct reasoning styles (such as "intuitive", "slow", "skeptic")
+3. **Heterogeneous groups** composed of different models
+4. **Heterogeneous groups** varying on the decoding parameters
+
+We hold the number of agents and rounds constant, and evaluate on benchmark reasoning and factuality tasks (such as GSM8K word problems, biography generation, and MMLU multiple-choice questions).
+
+In this paper, we introduce a **diversity-gain metric** that quantifies improvements in outcome quality (accuracy) as a function of response embedding and argument diversity (measured via cosine distances, disagreement rates), as referenced in a critique of MAD presented by Wynn et. al., 2025. We then test whether higher intra-group stylistic/response variance correlates with higher accuracy gains.
 
 ## What is Multiagent Debate?
 
@@ -334,9 +359,10 @@ If you use this work, please cite both the original paper and this adaptation:
 ```bibtex
 @software{slm_multiagent_debate,
   title={Multiagent Debate with Small Language Models},
-  author={[Your Team]},
+  author={Ferreira, Leonardo and Jonnala, Vennela and Liu, Gardenia and Zheng, Kaden},
   year={2025},
-  url={https://github.com/lferreiraMD/slm_multiagent_debate}
+  url={https://github.com/lferreiraMD/slm_multiagent_debate},
+  note={Course project for COMPSCI 2821R, Harvard SEAS}
 }
 ```
 
