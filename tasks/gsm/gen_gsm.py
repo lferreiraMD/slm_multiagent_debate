@@ -12,12 +12,14 @@ from utils import (
     get_dataset_path,
     construct_assistant_message,
     read_jsonl,
-    generate_answer
+    generate_answer,
+    most_frequent
 )
 import json
 import numpy as np
 import random
 import argparse
+import re
 
 def construct_message(other_agents, question, idx):
     if len(other_agents) == 0:
@@ -33,6 +35,69 @@ def construct_message(other_agents, question, idx):
 
     prefix_string = prefix_string + """\n\n Using the solutions from other agents as additional information, can you provide your answer to the math problem? \n The original math problem is {}. Your final answer should be a single numerical number, in the form \\boxed{{answer}}, at the end of your response.""".format(question)
     return {"role": "user", "content": prefix_string}
+
+
+def solve_math_problems(input_str):
+    """Extract numerical answer from string using regex (fallback method)."""
+    pattern = r"\d+\.?\d*"
+    matches = re.findall(pattern, input_str)
+    if matches:
+        return matches[-1]
+    return None
+
+
+def parse_answer(input_str):
+    """Extract answer from \\boxed{...} format."""
+    pattern = r"\{([0-9.,$]*)\}"
+    matches = re.findall(pattern, input_str)
+
+    solution = None
+    for match_str in matches[::-1]:
+        solution = re.sub(r"[^0-9.]", "", match_str)
+        if solution:
+            break
+
+    return solution
+
+
+def compute_accuracy(gt, pred_solutions):
+    """
+    Compute accuracy for single problem with multiple agent predictions.
+
+    Args:
+        gt: Ground truth answer string (may contain step-by-step solution with #### answer)
+        pred_solutions: List of predicted solution strings from multiple agents
+
+    Returns:
+        1 if correct, 0 if incorrect, None if cannot parse
+    """
+    # Extract ground truth answer
+    answers = solve_math_problems(gt)
+
+    if answers is None:
+        return None
+
+    # Extract answer from each agent's response
+    pred_answers = []
+    for pred_solution in pred_solutions:
+        pred_answer = parse_answer(pred_solution)
+        if pred_answer is None:
+            pred_answer = solve_math_problems(pred_solution)
+        pred_answers.append(pred_answer)
+
+    # Use majority vote for final answer
+    pred_answer = most_frequent(pred_answers)
+
+    if pred_answer is None:
+        return 0
+
+    try:
+        if float(answers) == float(pred_answer):
+            return 1
+        else:
+            return 0
+    except:
+        return 0
 
 
 if __name__ == "__main__":
@@ -92,6 +157,7 @@ if __name__ == "__main__":
     random.seed(random_seed)
 
     generated_description = {}
+    accuracies = []  # Track per-problem accuracy
 
     questions = read_jsonl(dataset_path)
     random.shuffle(questions)
@@ -121,13 +187,25 @@ if __name__ == "__main__":
                 agent_context.append(assistant_message)
                 print(f"Agent {i + 1} response: {assistant_message['content'][:100]}...")
 
+        # Inline evaluation
+        pred_solutions = [ctx[-1]['content'] for ctx in agent_contexts]
+        accurate = compute_accuracy(answer, pred_solutions)
+
+        if accurate is not None:
+            accuracies.append(float(accurate))
+            print(f"\nRunning accuracy: {np.mean(accuracies):.3f} ± {np.std(accuracies) / (len(accuracies) ** 0.5):.3f}")
+
         generated_description[question] = (agent_contexts, answer)
 
     # Save results
     output_filename = f"gsm_{model_name.split('/')[-1]}_agents{agents}_rounds{rounds}.json"
     json.dump(generated_description, open(output_filename, "w"))
 
+    print("\n" + "=" * 60)
+    print("GENERATION & EVALUATION COMPLETE")
     print("=" * 60)
     print(f"Results saved to: {output_filename}")
-    print(f"Total problems processed: {len(generated_description)}")
+    print(f"Problems processed: {len(generated_description)}")
+    if len(accuracies) > 0:
+        print(f"Final accuracy: {np.mean(accuracies):.3f} ± {np.std(accuracies) / (len(accuracies) ** 0.5):.3f}")
     print("=" * 60)

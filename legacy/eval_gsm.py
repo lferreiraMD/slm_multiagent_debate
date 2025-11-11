@@ -1,8 +1,10 @@
 import json
-import openai
 import numpy as np
 import time
 import re
+import argparse
+import sys
+from pathlib import Path
 
 def parse_bullets(sentence):
     bullets_preprocess = sentence.split("\n")
@@ -119,9 +121,24 @@ def most_frequent(List):
     return num
 
 if __name__ == "__main__":
-    response_dict = json.load(open("gsm_debate_3_3.json", "r"))
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Evaluate GSM task results")
+    parser.add_argument("--input-file", type=str, required=True,
+                       help="Path to JSON file with debate results (e.g., gsm_model_agents2_rounds2.json)")
+    args = parser.parse_args()
+
+    # Validate input file exists
+    input_path = Path(args.input_file)
+    if not input_path.exists():
+        print(f"Error: Input file not found: {args.input_file}")
+        sys.exit(1)
+
+    # Load results
+    print(f"Evaluating: {args.input_file}")
+    response_dict = json.load(open(args.input_file, "r"))
 
     questions = list(response_dict.keys())
+    print(f"Total questions: {len(questions)}")
 
     accuracies = []
 
@@ -144,4 +161,13 @@ if __name__ == "__main__":
             print(gt)
 
         print("accuracies:", np.mean(accuracies), np.std(accuracies) / (len(accuracies) ** 0.5))
+
+    # Print final summary
+    print("\n" + "=" * 60)
+    print("EVALUATION COMPLETE")
+    print("=" * 60)
+    print(f"Input file: {args.input_file}")
+    print(f"Questions evaluated: {len(accuracies)}")
+    print(f"Final accuracy: {np.mean(accuracies):.3f} ± {np.std(accuracies) / (len(accuracies) ** 0.5):.3f}")
+    print("=" * 60)
 

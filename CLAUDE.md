@@ -376,10 +376,9 @@ python3 scripts/plot_by_task.py
 │       └── *_test.csv
 ├── tasks/             # Task implementations
 │   ├── math/          # Arithmetic problems
-│   │   └── gen_math.py
+│   │   └── gen_math.py (includes inline evaluation)
 │   ├── gsm/           # Grade school math
-│   │   ├── gen_gsm.py
-│   │   └── eval_gsm.py
+│   │   └── gen_gsm.py (includes inline evaluation)
 │   ├── biography/     # Computer scientist biographies
 │   │   ├── gen_conversation.py
 │   │   └── eval_conversation.py
@@ -400,11 +399,24 @@ python3 scripts/plot_by_task.py
 │   └── summary.csv    # Human-readable summary
 ├── plots/             # Generated visualizations
 │   └── *.png          # Result plots (gitignored)
+├── legacy/            # Deprecated/unused code (not actively maintained)
+│   └── eval_gsm.py    # Standalone GSM eval (superseded by inline eval in gen_gsm.py)
 ├── config.yaml        # Centralized configuration
 ├── requirements.txt
 ├── README.md
 └── CLAUDE.md          # This file
 ```
+
+### Legacy Directory
+
+The `legacy/` directory contains deprecated or superseded code that is no longer actively used but preserved for reference or potential future use. Files moved to legacy include:
+
+- **eval_gsm.py** - Standalone evaluation script for GSM task. Superseded by inline evaluation in `gen_gsm.py` (which now evaluates during generation, similar to the math task). The standalone version remains available for:
+  - Re-evaluating old JSON files without re-running generation
+  - Testing alternative evaluation strategies
+  - Debugging specific failure cases
+
+**Note:** Code in the legacy directory is not actively maintained and may not be compatible with current configurations.
 
 ## Dependencies
 
