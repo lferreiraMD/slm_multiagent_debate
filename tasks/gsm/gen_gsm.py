@@ -13,7 +13,9 @@ from utils import (
     construct_assistant_message,
     read_jsonl,
     generate_answer,
-    most_frequent
+    most_frequent,
+    ModelCache,
+    get_model_descriptor
 )
 import json
 import numpy as np
@@ -198,7 +200,8 @@ if __name__ == "__main__":
         generated_description[question] = (agent_contexts, answer)
 
     # Save results
-    output_filename = f"gsm_{model_name.split('/')[-1]}_agents{agents}_rounds{rounds}.json"
+    model_descriptor = get_model_descriptor(model_name, agent_models)
+    output_filename = f"gsm_{model_descriptor}_agents{agents}_rounds{rounds}.json"
     json.dump(generated_description, open(output_filename, "w"))
 
     print("\n" + "=" * 60)
@@ -209,3 +212,7 @@ if __name__ == "__main__":
     if len(accuracies) > 0:
         print(f"Final accuracy: {np.mean(accuracies):.3f} ± {np.std(accuracies) / (len(accuracies) ** 0.5):.3f}")
     print("=" * 60)
+
+    # Cleanup: Shutdown vLLM engines to prevent hanging
+    model_cache = ModelCache()
+    model_cache.shutdown()

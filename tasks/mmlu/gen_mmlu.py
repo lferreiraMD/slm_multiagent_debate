@@ -11,7 +11,9 @@ from utils import (
     get_experiment_config,
     get_dataset_path,
     construct_assistant_message,
-    generate_answer
+    generate_answer,
+    ModelCache,
+    get_model_descriptor
 )
 from glob import glob
 import pandas as pd
@@ -142,10 +144,15 @@ if __name__ == "__main__":
         response_dict[question] = (agent_contexts, answer)
 
     # Save results
-    output_filename = f"mmlu_{model_name.split('/')[-1]}_agents{agents}_rounds{rounds}.json"
+    model_descriptor = get_model_descriptor(model_name, agent_models)
+    output_filename = f"mmlu_{model_descriptor}_agents{agents}_rounds{rounds}.json"
     json.dump(response_dict, open(output_filename, "w"))
 
     print("=" * 60)
     print(f"Results saved to: {output_filename}")
     print(f"Total questions processed: {len(response_dict)}")
     print("=" * 60)
+
+    # Cleanup: Shutdown vLLM engines to prevent hanging
+    model_cache = ModelCache()
+    model_cache.shutdown()

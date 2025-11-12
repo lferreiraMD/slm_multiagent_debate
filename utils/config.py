@@ -28,31 +28,31 @@ DEFAULT_EXPERIMENT_CONFIGS = {
         "agents": 2,
         "rounds": 3,
         "num_problems": 100,
-        "random_seed": 0,
+        "random_seed": 42,
     },
     "gsm": {
         "agents": 3,
         "rounds": 2,
         "num_problems": 100,
-        "random_seed": 0,
+        "random_seed": 42,
     },
     "biography": {
         "agents": 3,
         "rounds": 2,
         "num_people": 40,
-        "random_seed": 1,
+        "random_seed": 42,
     },
     "mmlu": {
         "agents": 3,
         "rounds": 2,
         "num_questions": 100,
-        "random_seed": 0,
+        "random_seed": 42,
     },
 }
 
 # Model aliases for convenience
 MODEL_ALIASES = {
-    # MLX models (already downloaded)
+    # MLX models (Mac M4 Pro with Apple Silicon)
     "deepseek": "valuat/DeepSeek-R1-Distill-Qwen-1.5B-mlx-fp16",
     "llama32-3b": "mlx-community/Llama-3.2-3B-Instruct",
     "smallthinker": "valuat/SmallThinker-3B-Preview-mlx-fp16",
@@ -62,9 +62,21 @@ MODEL_ALIASES = {
     "qwen25-14b": "valuat/Qwen2.5-14B-Instruct-1M-mlx-fp16",
     "vibethinker": "valuat/VibeThinker-1.5B-mlx-8Bit",
 
-    # Ollama models (for HPC/Windows)
+    # vLLM models (Linux with NVIDIA GPUs - HuggingFace originals)
+    "vllm-deepseek": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "vllm-vibethinker-1.5b": "WeiboAI/VibeThinker-1.5B",
+    "vllm-smallthinker-3b": "PowerInfer/SmallThinker-3B-Preview",
+    "vllm-llama32-3b": "meta-llama/Llama-3.2-3B-Instruct",
+    "vllm-qwen25-7b": "Qwen/Qwen2.5-7B-Instruct",
+    "vllm-llama31-8b": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "vllm-qwen25-14b": "Qwen/Qwen2.5-14B-Instruct",
+
+    # Ollama models (Cross-platform - GGUF format)
+    "ollama-deepseek": "deepseek-r1:1.5b",
     "ollama-llama32": "llama3.2:3b",
-    "ollama-qwen25": "qwen2.5:7b",
+    "ollama-qwen25-7b": "qwen2.5:7b",
+    "ollama-llama31-8b": "llama3.1:8b",
+    "ollama-qwen25-14b": "qwen2.5:14b",
 }
 
 

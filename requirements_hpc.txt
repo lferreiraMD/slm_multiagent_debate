@@ -1,0 +1,61 @@
+# HPC/Linux Requirements (NVIDIA GPUs)
+# For use with vLLM backend on Linux with CUDA GPUs
+
+# ===== Core Dependencies =====
+numpy>=1.22.4
+pandas>=1.5.3
+pyyaml>=6.0
+tqdm>=4.64.1
+matplotlib>=3.5.0
+requests>=2.28.0
+openai==0.27.6
+
+# ===== vLLM and Deep Learning Stack =====
+# vLLM for high-throughput LLM inference
+vllm>=0.11.0
+
+# PyTorch with CUDA support
+torch>=2.6.0
+torchaudio>=2.6.0
+torchvision>=0.21.0
+
+# HuggingFace transformers for model loading
+transformers>=4.55.0
+
+# Tokenizers (required by transformers)
+tokenizers>=0.21.0
+
+# ===== Optional: Ollama (Cross-platform alternative) =====
+# If you prefer Ollama over vLLM:
+# 1. Don't install vLLM dependencies above
+# 2. Install Ollama: curl -fsSL https://ollama.com/install.sh | sh
+# 3. Pull models: ollama pull llama3.2:3b
+
+# ===== Installation Instructions =====
+#
+# Standard installation:
+#   pip3 install -r requirements_hpc.txt
+#
+# CUDA/cuDNN will be installed automatically via PyTorch
+#
+# Verify CUDA is available:
+#   python3 -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
+#   python3 -c "import torch; print(f'CUDA devices: {torch.cuda.device_count()}')"
+#
+# Test vLLM:
+#   python3 -c "from vllm import LLM; print('vLLM imported successfully')"
+#
+# ===== Tested Configuration =====
+# Ubuntu 22.04 LTS
+# NVIDIA Driver: 550.120
+# CUDA: 12.4
+# GPUs: 2x RTX 3090 (24GB each)
+# RAM: 128GB
+#
+# Verified versions:
+# - vllm==0.11.0
+# - torch==2.8.0
+# - transformers==4.57.1
+# - numpy==2.0.0
+# - pandas==2.2.2
+# - tqdm==4.67.1

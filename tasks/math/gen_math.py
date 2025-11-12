@@ -11,7 +11,9 @@ from utils import (
     get_experiment_config,
     construct_assistant_message,
     most_frequent,
-    generate_answer
+    generate_answer,
+    ModelCache,
+    get_model_descriptor
 )
 import json
 import numpy as np
@@ -159,10 +161,15 @@ if __name__ == "__main__":
         print("performance:", np.mean(scores), np.std(scores) / (len(scores) ** 0.5))
 
     # Save results
-    output_filename = f"math_{model_name.split('/')[-1]}_agents{agents}_rounds{rounds}.p"
+    model_descriptor = get_model_descriptor(model_name, agent_models)
+    output_filename = f"math_{model_descriptor}_agents{agents}_rounds{rounds}.p"
     pickle.dump(generated_description, open(output_filename, "wb"))
 
     print("=" * 60)
     print(f"Results saved to: {output_filename}")
     print(f"Final performance: {np.mean(scores):.3f} ± {np.std(scores) / (len(scores) ** 0.5):.3f}")
     print("=" * 60)
+
+    # Cleanup: Shutdown vLLM engines to prevent hanging
+    model_cache = ModelCache()
+    model_cache.shutdown()

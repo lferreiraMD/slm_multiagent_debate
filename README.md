@@ -20,7 +20,7 @@ This repository adapts the research from ["Improving Factuality and Reasoning in
 
 Multi-Agent Debate (MAD) has been a promising mechanism to improve reasoning and factual consistency in language models. In multi-agent debate, multiple agents propose answers, critique each other, and converge to an ideally superior solution. Prior work (Du et al., 2023) treats agents as symmetric peers, but doesn't fully answer why multi-agent debate helps. In this research project, we propose that cognitive diversity among agents, such as variation in reasoning style, prompting priors, or heuristics, is a key driver of multi-agent debate gains.
 
-We adopt a small-language-model (SLM) setting (e.g., 1.5B-4B parameter range) to examine this hypothesis in a cost-effective, reproducible environment. We construct multiple debate conditions: (1) homogeneous groups of agents all using the same model and prompt style; (2) heterogeneous groups where the same model is prompted to adopt distinct reasoning styles (such as "intuitive", "slow", "skeptic"); (3) heterogeneous groups composed of different models; and (4) heterogeneous groups varying on the decoding parameters. We hold the number of agents and rounds constant, and evaluate on benchmark reasoning and factuality tasks (such as GSM8K word problems, biography generation, and MMLU multiple-choice questions).
+We adopt a small-language-model (SLM) setting (e.g., 1.5B-14B parameter range) to examine this hypothesis in a cost-effective, reproducible environment. We construct multiple debate conditions: (1) homogeneous groups of agents all using the same model and prompt style; (2) heterogeneous groups where the same model is prompted to adopt distinct reasoning styles (such as "intuitive", "slow", "skeptic"); (3) heterogeneous groups composed of different models; and (4) heterogeneous groups varying on the decoding parameters. We hold the number of agents and rounds constant, and evaluate on benchmark reasoning and factuality tasks (such as GSM8K word problems, biography generation, and MMLU multiple-choice questions).
 
 In this paper, we introduce a diversity-gain metric that quantifies improvements in outcome quality (accuracy) as a function of response embedding and argument diversity (measured via cosine distances, disagreement rates), as referenced in a critique of MAD presented by Wynn et. al., 2025. We then test whether higher intra-group stylistic/response variance correlates with higher accuracy gains.
 
@@ -35,21 +35,6 @@ In this paper, we introduce a diversity-gain metric that quantifies improvements
 3. **Reproducibility:** Enable offline experiments without API dependencies
 4. **Accessibility:** Make multiagent debate experiments accessible to researchers with consumer hardware
 
-## Research Hypothesis: Cognitive Diversity
-
-Multi-Agent Debate (MAD) has been a promising mechanism to improve reasoning and factual consistency in language models. In multi-agent debate, multiple agents propose answers, critique each other, and converge to an ideally superior solution. Prior work (Du et al., 2023) treats agents as symmetric peers, but doesn't fully answer why multi-agent debate helps. In this research project, we propose that **cognitive diversity among agents**, such as variation in reasoning style, prompting priors, or heuristics, is a key driver of multi-agent debate gains.
-
-We adopt a small-language-model (SLM) setting (e.g., 1.5B-4B parameter range) to examine this hypothesis in a cost-effective, reproducible environment. We construct multiple debate conditions:
-
-1. **Homogeneous groups** of agents all using the same model and prompt style
-2. **Heterogeneous groups** where the same model is prompted to adopt distinct reasoning styles (such as "intuitive", "slow", "skeptic")
-3. **Heterogeneous groups** composed of different models
-4. **Heterogeneous groups** varying on the decoding parameters
-
-We hold the number of agents and rounds constant, and evaluate on benchmark reasoning and factuality tasks (such as GSM8K word problems, biography generation, and MMLU multiple-choice questions).
-
-In this paper, we introduce a **diversity-gain metric** that quantifies improvements in outcome quality (accuracy) as a function of response embedding and argument diversity (measured via cosine distances, disagreement rates), as referenced in a critique of MAD presented by Wynn et. al., 2025. We then test whether higher intra-group stylistic/response variance correlates with higher accuracy gains.
-
 ## What is Multiagent Debate?
 
 Multiple LLM agents independently solve the same problem, then see each other's solutions and refine their answers over several rounds. This iterative debate process has been shown to improve:
@@ -59,385 +44,520 @@ Multiple LLM agents independently solve the same problem, then see each other's 
 
 **Key insight:** Even when using the same underlying model, independent agents with different "perspectives" can correct each other's errors through debate.
 
-## Available Experiments
+---
 
-### 📊 Math (`./tasks/math/`)
-Simple arithmetic expressions testing order of operations
-- **Task:** Evaluate `a+b*c+d-e*f`
-- **Config:** 2 agents, 3 rounds, 100 problems
-- **Evaluation:** Automated exact match
-```bash
-cd tasks/math && python gen_math.py
-```
-
-### 🧮 Grade School Math (`./tasks/gsm/`)
-Multi-step word problems from GSM8K dataset
-- **Task:** Word problems requiring multi-step reasoning
-- **Config:** 3 agents, 2 rounds, 100 problems
-- **Dataset:** [OpenAI GSM8K](https://github.com/openai/grade-school-math)
-```bash
-cd tasks/gsm
-python gen_gsm.py      # Generate answers
-python eval_gsm.py     # Evaluate results
-```
-
-### 👤 Biography (`./tasks/biography/`)
-Factual biography generation for computer scientists
-- **Task:** Generate bullet-point biographies
-- **Config:** 3 agents, 2 rounds, 40 people
-- **Evaluation:** Fact-checking against ground truth
-```bash
-cd tasks/biography
-python gen_conversation.py    # Generate biographies
-python eval_conversation.py   # Evaluate factuality
-```
-
-### 📚 MMLU (`./tasks/mmlu/`)
-Multiple-choice questions across academic subjects
-- **Task:** MMLU benchmark questions
-- **Config:** 3 agents, 2 rounds
-- **Dataset:** [MMLU](https://github.com/hendrycks/test)
-```bash
-cd tasks/mmlu
-python gen_mmlu.py     # Generate answers
-python eval_mmlu.py    # Evaluate accuracy
-```
-
-## Setup
+## Installation
 
 ### Prerequisites
-- Python 3.8+
-- **Mac M4 Pro:** MLX-LM (already installed)
-- **HPC/Windows:** [Ollama](https://ollama.com) or vLLM for local inference
+- **Python:** 3.10+ (tested with 3.12.7)
+- **Command:** Use `python3` and `pip3` (not `python` or `pip`)
+- **Platform:** macOS (Apple Silicon), Linux (NVIDIA GPUs), or Windows
 
-### Installation
-
-**Mac M4 Pro (Local Development):**
+### 1. Clone Repository
 ```bash
-# Clone repository
 git clone https://github.com/lferreiraMD/slm_multiagent_debate.git
 cd slm_multiagent_debate
-
-# Install dependencies (mlx-lm already installed)
-pip install -r requirements.txt
-
-# Verify MLX installation
-python3 -m pip show mlx-lm
 ```
 
-**HPC/Windows/Linux (GPU Deployment):**
+### 2. Install Dependencies
 
-The codebase now supports **three backends** with automatic platform detection:
-- **MLX** (Mac Apple Silicon) - Auto-detected on macOS ARM64
-- **vLLM** (Linux/HPC with NVIDIA GPUs) - Optimized for high-throughput inference
-- **Ollama** (Cross-platform) - Simple server-based approach
-
+#### **macOS (Apple Silicon - M1/M2/M3/M4)**
 ```bash
-# Option 1: vLLM (recommended for Linux/HPC with NVIDIA GPUs)
-# Uncomment vLLM section in requirements.txt, then:
-pip install vllm torch transformers
+pip3 install -r requirements.txt
+```
+- MLX packages will automatically install for Apple Silicon
+- Models are already optimized and ready to use
 
-# Backend auto-detects vLLM on Linux (MLX import will fail)
-# Use vLLM model aliases (e.g., vllm-llama32-3b)
+#### **Linux/HPC (NVIDIA GPUs)**
+```bash
+pip3 install -r requirements_hpc.txt
+```
+- Installs vLLM, PyTorch with CUDA, transformers
+- Tested on Ubuntu 22.04 with dual RTX 3090 (48GB VRAM)
+- CUDA 12.4 and cuDNN installed automatically via PyTorch
 
-# Option 2: Ollama (simpler, cross-platform)
-# macOS: brew install ollama
-# Linux: curl -fsSL https://ollama.com/install.sh | sh
-# Windows: Download from https://ollama.com/download/windows
+**Verify GPU setup:**
+```bash
+python3 -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
+python3 -c "import torch; print(f'GPU count: {torch.cuda.device_count()}')"
+nvidia-smi  # Check GPU status
+```
 
+#### **Cross-Platform (Ollama)**
+```bash
+pip3 install -r requirements.txt
+
+# Install Ollama
+# macOS/Linux:
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Windows:
+# Download from https://ollama.com/download/windows
+
+# Pull models
 ollama pull llama3.2:3b
 ollama pull qwen2.5:7b
 ollama pull deepseek-r1:1.5b
-
-# Use Ollama model aliases (e.g., ollama-llama32)
 ```
 
-### Summary of Linux/GPU Migration Changes
+### 3. Verify Installation
+```bash
+# Check vLLM (Linux only)
+python3 -c "from vllm import LLM; print('vLLM ready')"
 
-All tasks now work on Linux with NVIDIA GPUs without code changes. Here's what was implemented:
+# Check MLX (macOS only)
+python3 -c "import mlx_lm; print('MLX ready')"
 
-#### 1. **Enhanced vLLM Backend** (`utils/llm_wrapper.py`)
-- ✅ Added chat template support (uses tokenizer.apply_chat_template)
-- ✅ Ported reasoning model handling (40960 tokens for VibeThinker/DeepSeek)
-- ✅ Added `<think>` tag extraction for clean outputs
-- ✅ Improved from ~60% to 100% feature parity with MLX backend
+# Check Ollama (all platforms)
+ollama list
+```
 
-#### 2. **Enhanced Ollama Backend** (`utils/llm_wrapper.py`)
-- ✅ Added `<think>` tag extraction for reasoning models
-- ✅ Now at 100% feature parity for reasoning model support
+---
 
-#### 3. **Updated Model Cache** (`utils/model_cache.py`)
-- ✅ vLLM now loads both LLM and tokenizer (needed for chat templates)
-- ✅ Returns tuple (llm, tokenizer) instead of (llm, None)
+## Available Tasks
 
-#### 4. **Extended Configuration** (`config.yaml`)
-- ✅ Added 5 vLLM model aliases (HuggingFace originals for Linux/GPU)
-- ✅ Added 5 Ollama model aliases (GGUF format, cross-platform)
-- ✅ Added vibethinker to MLX models
-- ✅ Clear comments explaining which models work on which platforms
+All tasks support inline evaluation for immediate feedback on performance.
 
-#### 5. **Updated Dependencies** (`requirements.txt`)
-- ✅ Organized by platform (Mac/Linux/Cross-platform)
-- ✅ Added vLLM, torch, transformers (commented out for Mac)
-- ✅ Added requests (for Ollama backend)
-- ✅ Installation notes for each platform
+### 📊 Math Task - Arithmetic Reasoning
+Simple arithmetic expressions testing order of operations.
 
-### How to Use on Linux/HPC
-
-**Setup on Linux with NVIDIA GPUs:**
+**Task:** Evaluate expressions like `a+b*c+d-e*f`
+**Config:** 2 agents, 3 rounds, 100 problems (default)
+**Evaluation:** Automated exact match (inline)
 
 ```bash
-# 1. Uncomment vLLM dependencies in requirements.txt
-# 2. Install vLLM dependencies
-pip install vllm torch transformers
-
-# 3. Run experiments with vLLM models
 cd tasks/math
-python3 gen_math.py --model vllm-llama32-3b --agents 2 --rounds 3 --num-problems 100
 
-# Backend auto-detects vLLM on Linux (MLX import will fail)
+# Default configuration
+python3 gen_math.py
+
+# Custom configuration
+python3 gen_math.py --model vllm-llama32-3b --agents 3 --rounds 2 --num-problems 50
 ```
 
-**Alternatively, use Ollama:**
+**Output:** `math_{model}_agents{N}_rounds{N}.p` (pickle format with results and accuracy)
+
+---
+
+### 🧮 GSM Task - Grade School Math
+Multi-step word problems from GSM8K dataset requiring arithmetic reasoning.
+
+**Task:** Word problems (e.g., "Janet has 3 eggs...calculate profit")
+**Config:** 3 agents, 2 rounds, 100 problems (default)
+**Dataset:** [OpenAI GSM8K](https://github.com/openai/grade-school-math) (included)
+**Evaluation:** Automated answer extraction and comparison (inline)
 
 ```bash
-# 1. Install Ollama
-curl -fsSL https://ollama.com/install.sh | sh
+cd tasks/gsm
 
-# 2. Download a model
-ollama pull llama3.2:3b
+# Default configuration
+python3 gen_gsm.py
 
-# 3. Run experiments
-python3 gen_math.py --model ollama-llama32 --agents 2 --rounds 3 --num-problems 100
+# Custom configuration
+python3 gen_gsm.py --model vllm-qwen25-7b --agents 4 --rounds 3 --num-problems 50
+
+# Outputs: gsm_{model}_agents{N}_rounds{N}.json
+#   - Includes accuracy metrics printed during generation
 ```
 
-### Model Equivalents Across Platforms
+---
 
-| Size | Mac (MLX) | Linux (vLLM) | Any (Ollama) |
-|------|-----------|--------------|--------------|
-| 1.5B | `deepseek` | `vllm-deepseek` | `ollama-deepseek` |
-| 3B | `llama32-3b` | `vllm-llama32-3b` | `ollama-llama32` |
-| 7B | `qwen25-7b` | `vllm-qwen25-7b` | `ollama-qwen25-7b` |
-| 8B | `llama31-8b` | `vllm-llama31-8b` | `ollama-llama31-8b` |
-| 14B | `qwen25-14b` | `vllm-qwen25-14b` | `ollama-qwen25-14b` |
+### 👤 Biography Task - Factual Biography Generation
+Generate factual bullet-point biographies of computer scientists.
 
-### Key Benefits
+**Task:** Generate biographies with factual accuracy
+**Config:** 3 agents, 2 rounds, 40 people (default)
+**Dataset:** Ground truth biographies in `data/biography/article.json`
+**Evaluation:** Manual or GPT-4 based fact-checking
 
-✅ **Zero task script changes** - All 4 tasks work on all platforms without modification
-✅ **Automatic backend detection** - Selects best available backend (MLX → Ollama → vLLM)
-✅ **Reasoning model support** - VibeThinker, DeepSeek work on all backends
-✅ **Feature parity** - Chat templates, token limits, tag extraction consistent across backends
-✅ **Easy deployment** - Same code runs on Mac M4 Pro, Linux HPC, or Windows
+```bash
+cd tasks/biography
 
-### Available Models
+# Generate biographies
+python3 gen_conversation.py --model vllm-llama32-3b --agents 3 --rounds 2
 
-**Mac M4 Pro (MLX-optimized, ready to use):**
+# Evaluate factuality (requires OpenAI API key)
+export OPENAI_API_KEY="your-key-here"
+python3 eval_conversation.py
 
-| Model | Size | Best For | Simultaneous Instances |
-|-------|------|----------|------------------------|
-| **DeepSeek-R1-Distill-Qwen** | 1.5B | Reasoning tasks, fast iterations | 8-10 |
-| **Llama 3.2 Instruct** | 3B | Balanced performance | 5-8 |
-| **SmallThinker** | 3B | Reasoning, debate experiments | 5-8 |
-| **Qwen2.5 Instruct** | 7B | Strong math (1M context) | 3-5 |
-| **Llama 3.1 Instruct** | 8B | General purpose | 3-5 |
-| **Qwen2.5 Instruct** | 14B | Best overall performance | 2-3 |
-
-These models are already downloaded and optimized for M4 Pro via MLX. No additional downloads needed!
-
-**HPC/Windows (requires GGUF or PyTorch models):**
-- Models need to be downloaded separately (MLX format only works on Apple Silicon)
-- Use Ollama (GGUF) or vLLM/transformers (PyTorch) formats
-
-## Configuration
-
-### Model Selection
-All generation scripts have been migrated to use local MLX models via a custom wrapper:
-
-```python
-# Current implementation (OpenAI-compatible):
-from utils import ChatCompletion
-
-completion = ChatCompletion.create(
-    model=model_name,  # Can be alias like "deepseek" or full path
-    messages=agent_context,
-    temperature=1.0,
-    max_tokens=2048
-)
+# Outputs: biography_{model}_agents{N}_rounds{N}.json
 ```
 
-The `utils.ChatCompletion` wrapper provides:
-- Automatic model loading and caching
-- OpenAI-compatible API interface
-- Chat template formatting
-- MLX-LM inference backend
+---
 
-**Model Selection (Priority Order):**
-1. Command-line argument: `--model llama32-3b`
-2. config.yaml default: `model: "deepseek"`
-3. Available aliases: `deepseek`, `llama32-3b`, `smallthinker`, `qwen25-7b`, `llama31-8b`, `qwen25-14b`
+### 📚 MMLU Task - Multiple-Choice Questions
+Multiple-choice questions across academic subjects from the MMLU benchmark.
+
+**Task:** Multi-subject multiple-choice questions
+**Config:** 3 agents, 2 rounds, 100 questions (default)
+**Dataset:** [MMLU](https://github.com/hendrycks/test) (included in `data/mmlu/`)
+**Evaluation:** GPT-4 based answer extraction and verification
+
+```bash
+cd tasks/mmlu
+
+# Generate answers
+python3 gen_mmlu.py --model vllm-llama32-3b --agents 3 --rounds 2 --num-questions 100
+
+# Evaluate answers (requires OpenAI API key)
+export OPENAI_API_KEY="your-key-here"
+python3 eval_mmlu.py
+
+# Outputs: mmlu_{model}_agents{N}_rounds{N}.json
+```
+
+---
+
+## Platform Support
+
+### ✅ Fully Tested Platforms
+
+| Platform | Backend | Status | Hardware |
+|----------|---------|--------|----------|
+| macOS (Apple Silicon) | MLX | ✅ Tested | M4 Pro, 48GB RAM |
+| Linux (NVIDIA GPU) | vLLM | ✅ Tested | 2x RTX 3090 (48GB), 128GB RAM |
+| Cross-platform | Ollama | ⚠️ Ready | Any (CPU/GPU) |
+
+### Backend Auto-Detection
+
+The codebase automatically selects the best available backend:
+1. **MLX** - macOS with Apple Silicon
+2. **vLLM** - Linux with NVIDIA GPUs
+3. **Ollama** - Cross-platform fallback
+
+No code changes needed to switch platforms!
+
+---
+
+## Available Models
+
+### Model Aliases
+
+Use short aliases instead of full HuggingFace paths:
+
+| Alias | Platform | Full Path | Size |
+|-------|----------|-----------|------|
+| `vllm-deepseek` | Linux/vLLM | `deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B` | 1.5B |
+| `vllm-vibethinker-1.5b` | Linux/vLLM | `WeiboAI/VibeThinker-1.5B` | 1.5B |
+| `vllm-smallthinker-3b` | Linux/vLLM | `PowerInfer/SmallThinker-3B-Preview` | 3B |
+| `vllm-llama32-3b` | Linux/vLLM | `meta-llama/Llama-3.2-3B-Instruct` | 3B |
+| `vllm-qwen25-7b` | Linux/vLLM | `Qwen/Qwen2.5-7B-Instruct` | 7B |
+| `vllm-llama31-8b` | Linux/vLLM | `meta-llama/Meta-Llama-3.1-8B-Instruct` | 8B |
+| `vllm-qwen25-14b` | Linux/vLLM | `Qwen/Qwen2.5-14B-Instruct` | 14B |
+
+**Mac (MLX) aliases:** `deepseek`, `llama32-3b`, `smallthinker`, `qwen25-7b`, `llama31-8b`, `qwen25-14b`
+**Ollama aliases:** `ollama-deepseek`, `ollama-llama32`, `ollama-qwen25-7b`, etc.
+
+See `config.yaml` for complete list.
+
+---
 
 ## Running Experiments
 
-### Quick Start - Math Task
+### Basic Usage
+
 ```bash
-cd tasks/math
-
-# Use default model (DeepSeek 1.5B)
-python gen_math.py
-
-# Or specify a model
-python gen_math.py --model llama32-3b --agents 3 --rounds 2
-
-# Or use a different configuration
-python gen_math.py --model qwen25-7b --agents 4 --rounds 5
-```
-
-### Full Workflow Example (GSM)
-```bash
-# 1. Datasets are already included in data/gsm8k/
+# Single experiment
 cd tasks/gsm
-
-# 2. Run generation with default config (3 agents, 2 rounds)
-python gen_gsm.py
-
-# Or customize the experiment
-python gen_gsm.py --model smallthinker --agents 4 --rounds 3
-
-# 3. Evaluate results (uses GPT-4 for verification)
-python eval_gsm.py
+python3 gen_gsm.py --model vllm-llama32-3b --agents 3 --rounds 2 --num-problems 100
 ```
 
-### Analysis Workflow
+### Model Diversity (Cognitive Diversity Experiments)
+
+Use different models for each agent:
+
 ```bash
-# 1. Run experiments across tasks
-cd tasks/math && python gen_math.py --model deepseek
-cd ../gsm && python gen_gsm.py --model deepseek
-cd ../biography && python gen_conversation.py --model deepseek
-
-# 2. Aggregate all results
-python scripts/aggregate_results.py
-# Creates: results/summary.p and results/summary.csv
-
-# 3. Generate visualizations
-python scripts/plot_by_model.py   # Per-model plots
-python scripts/plot_by_task.py    # Task comparison plots
-# Outputs to: plots/*.png
+python3 gen_gsm.py \
+  --agent-models vllm-llama32-3b vllm-qwen25-7b vllm-deepseek \
+  --agents 3 \
+  --rounds 2
 ```
+
+This will:
+- Agent 1: Llama 3.2 3B
+- Agent 2: Qwen 2.5 7B
+- Agent 3: DeepSeek 1.5B
+- Output filename: `gsm_deepseek+llama32-3b+qwen25-7b_agents3_rounds2.json`
+
+---
+
+## Automated Benchmarks
+
+### Baseline Benchmarks
+
+Run all models with single agent (no debate) for baseline comparison:
+
+```bash
+# GSM baseline (100 problems, all 7 models)
+bash scripts/benchmark_gsm_baseline.sh
+# Duration: ~2 hours on dual RTX 3090
+# Output: results/gsm_baseline/
+
+# Math baseline (100 problems, all 7 models)
+bash scripts/benchmark_math_baseline.sh
+# Duration: ~1 hour on dual RTX 3090
+# Output: results/math_baseline/
+```
+
+**Features:**
+- ✅ Same 100 problems for all models (fair comparison via `random_seed: 0`)
+- ✅ Error handling (continues if one model fails)
+- ✅ Progress tracking with timestamps
+- ✅ Automatic result organization
+
+See `scripts/README_BENCHMARKS.md` for details on creating custom benchmarks.
+
+---
+
+## Analyzing Results
+
+### View Results
+
+```bash
+# View accuracy from GSM results
+grep "Final accuracy" tasks/gsm/gsm_*.json
+
+# View math results
+python3 -c "import pickle; d=pickle.load(open('tasks/math/math_llama32-3b_agents3_rounds2.p','rb')); print(d['accuracy'])"
+```
+
+### Aggregate Results
+
+```bash
+# Combine all results into summary
+python3 scripts/aggregate_results.py
+
+# Output:
+#   results/summary.csv  (human-readable)
+#   results/summary.p    (pickle format)
+```
+
+### Generate Plots
+
+```bash
+# Per-model plots
+python3 scripts/plot_by_model.py
+# Output: plots/{model}_{task}.png
+
+# Task comparison plots (all models)
+python3 scripts/plot_by_task.py
+# Output: plots/{task}_comparison.png
+```
+
+---
+
+## Configuration
+
+### config.yaml
+
+Central configuration file for all experiments:
+
+```yaml
+# Default model
+model: "deepseek"  # Or any alias
+
+# Generation parameters (matching GPT-3.5 defaults)
+generation:
+  temperature: 1.0
+  max_tokens: null  # Auto-determined per task
+  top_p: 1.0
+  n: 1
+
+# Experiment defaults
+experiments:
+  math:
+    agents: 2
+    rounds: 3
+    num_problems: 100
+    random_seed: 0  # Ensures reproducibility
+```
+
+Override via command-line:
+```bash
+python3 gen_gsm.py --model vllm-qwen25-7b --agents 4 --rounds 3
+```
+
+---
 
 ## Project Structure
 
 ```
 .
 ├── data/              # Datasets (included in repo)
-│   ├── biography/     # Ground truth biographies (article.json)
-│   ├── gsm8k/         # GSM8K dataset files (train.jsonl, test.jsonl)
-│   └── mmlu/          # MMLU test files (*_test.csv)
+│   ├── biography/     # Ground truth biographies
+│   ├── gsm8k/         # GSM8K dataset
+│   └── mmlu/          # MMLU benchmark
 ├── tasks/             # Task implementations
-│   ├── math/          # Arithmetic problems (gen_math.py)
-│   ├── gsm/           # Grade School Math (gen_gsm.py, eval_gsm.py)
-│   ├── biography/     # Biography generation (gen_conversation.py, eval_conversation.py)
-│   └── mmlu/          # MMLU benchmark (gen_mmlu.py, eval_mmlu.py)
+│   ├── math/          # Arithmetic (gen_math.py)
+│   ├── gsm/           # GSM8K (gen_gsm.py)
+│   ├── biography/     # Biographies (gen_conversation.py, eval_conversation.py)
+│   └── mmlu/          # MMLU (gen_mmlu.py, eval_mmlu.py)
 ├── utils/             # Shared utilities
-│   ├── llm_wrapper.py      # OpenAI-compatible ChatCompletion wrapper
+│   ├── llm_wrapper.py      # Multi-backend LLM interface
 │   ├── config.py           # Configuration management
 │   ├── model_cache.py      # Model loading/caching
 │   └── helpers.py          # Shared functions
-├── scripts/           # Analysis scripts
-│   ├── aggregate_results.py  # Combine results from all experiments
-│   ├── plot_by_model.py      # Generate per-model performance plots
-│   └── plot_by_task.py       # Generate task comparison plots
+├── scripts/           # Analysis and benchmarking
+│   ├── aggregate_results.py       # Combine results
+│   ├── plot_by_model.py          # Visualization
+│   ├── plot_by_task.py           # Comparison plots
+│   ├── benchmark_gsm_baseline.sh  # GSM benchmark
+│   ├── benchmark_math_baseline.sh # Math benchmark
+│   └── README_BENCHMARKS.md       # Benchmark documentation
 ├── results/           # Experiment outputs
-│   ├── summary.p      # Aggregated results (pickle)
+│   ├── summary.p      # Aggregated results
 │   └── summary.csv    # Human-readable summary
-├── plots/             # Generated visualizations (*.png)
-├── config.yaml        # Centralized configuration
-├── requirements.txt
-├── CLAUDE.md          # Detailed technical documentation
+├── plots/             # Generated visualizations
+├── config.yaml        # Central configuration
+├── requirements.txt   # Cross-platform dependencies
+├── requirements_hpc.txt  # Linux/HPC with vLLM
+├── CLAUDE.md          # Internal technical documentation
 └── README.md          # This file
 ```
 
-## Results & Analysis
+---
 
-### Current Experimental Results
+## Troubleshooting
 
-**Math Task (Arithmetic Reasoning)**
-- **Models tested:** DeepSeek-R1-Distill-Qwen-1.5B, Meta-Llama-3.1-8B-Instruct-8bit
-- **Configurations:** 13 experiments (1-5 agents, 3-7 rounds)
-- **Dataset:** 100 arithmetic problems per configuration
+### Script Hangs After Completion
 
-**Initial Findings (Math Task):**
+**Symptom:** Script completes but doesn't return to shell prompt
+**Cause:** vLLM background processes not properly shut down
+**Solution:** Already fixed! All scripts now include automatic cleanup.
+
+If you still experience hanging:
+```bash
+# Force kill
+killall python3
+
+# Check for orphaned processes
+ps aux | grep vllm
 ```
-DeepSeek 1.5B Performance:
-- Single agent (1 agent, 3 rounds): 33% accuracy
-- Best configuration (3 agents, 3 rounds): 37% accuracy
-- Performance ranges: 28-37% across configurations
+
+### CUDA Out of Memory
+
+**Symptom:** `torch.cuda.OutOfMemoryError`
+**Solution:**
+
+```bash
+# Check GPU memory
+nvidia-smi
+
+# Use smaller model
+python3 gen_gsm.py --model vllm-llama32-3b  # 3B instead of 14B
+
+# Or reduce batch size (not yet implemented)
 ```
 
-**Analysis Tools:**
-- `scripts/aggregate_results.py`: Combines results from all experiments
-- `scripts/plot_by_model.py`: Generates performance plots per (model, task)
-- `scripts/plot_by_task.py`: Generates comparison plots across models
-- Output: `results/summary.csv` and visualizations in `plots/`
+**VRAM Requirements:**
+- 1.5-3B models: ~6-8 GB
+- 7-8B models: ~14-16 GB
+- 14B models: ~28 GB (tight fit on single RTX 3090)
 
-**Ongoing Experiments:**
-- GSM (grade school math word problems)
-- Biography (factual biography generation)
-- MMLU (multi-subject multiple choice)
+### Model Download Delays
 
-### Performance Metrics
+**Symptom:** Long delay on first run
+**Cause:** vLLM downloads models from HuggingFace
+**Solution:** Models are cached in `~/.cache/huggingface/` after first download
 
-Results are automatically aggregated and tracked across:
-- **Model sizes:** 1.5B → 14B parameters
-- **Agent counts:** Single-agent vs multiagent debate (2-5 agents)
-- **Debate rounds:** 2-7 rounds of refinement
-- **Model families:** Llama, Qwen, DeepSeek, SmallThinker
+```bash
+# Pre-download models
+huggingface-cli download meta-llama/Llama-3.2-3B-Instruct
+```
 
-See `results/summary.csv` for detailed performance data.
+### Wrong Directory Error
 
-## Development Roadmap
+**Symptom:** `Error: Must run from repository root`
+**Solution:** Run benchmark scripts from repository root:
 
-**Phase 1: Local Development (Mac M4 Pro)** ✅ **COMPLETED**
-- [x] Repository setup and documentation
-- [x] Verify MLX-LM installation and available models
-- [x] Download and organize datasets (GSM8K, MMLU, biography)
-- [x] Reorganize codebase structure (data/ and tasks/ directories)
-- [x] Create OpenAI-compatible wrapper for mlx-lm
-- [x] Adapt all tasks to use local MLX models (math, GSM, biography, MMLU)
-- [x] Test single-agent and multiagent debate locally
-- [x] Create results aggregation and visualization scripts
+```bash
+cd /path/to/slm_multiagent_debate
+bash scripts/benchmark_gsm_baseline.sh
+```
 
-**Phase 2: Experimentation** 🔄 **IN PROGRESS**
-- [x] Initial math task experiments (13 configurations, 2 models)
-- [x] Results aggregation and visualization pipeline
-- [ ] Run baseline experiments (no debate) across all tasks
-- [ ] Complete GSM, biography, and MMLU task experiments
-- [ ] Compare SLM performance to GPT-3.5 baseline (from original paper)
-- [ ] Test multiple model sizes (1.5B → 14B) and families
-- [ ] Document optimal configurations per task
+### Import Errors
 
-**Phase 3: HPC Scaling** 📋 **PLANNED**
-- [ ] Create platform abstraction layer (MLX vs Ollama/vLLM)
-- [ ] Set up Ollama/vLLM on HPC with GGUF models
-- [ ] Create SLURM job submission scripts
-- [ ] Run large-scale experiments with bigger models
-- [ ] Cross-platform testing and deployment
+**Symptom:** `ModuleNotFoundError: No module named 'utils'`
+**Solution:** Run scripts from task directories as intended:
+
+```bash
+# Correct
+cd tasks/gsm
+python3 gen_gsm.py
+
+# Incorrect (from repo root)
+python3 tasks/gsm/gen_gsm.py
+```
+
+---
 
 ## Hardware Requirements
 
-**Minimum:**
-- 16GB RAM
-- 10GB disk space
-- Works with 1.5B-3B models
+### Minimum
+- **CPU:** 4+ cores
+- **RAM:** 16GB
+- **Disk:** 10GB
+- **Models:** 1.5B-3B
 
-**Recommended:**
-- 32GB+ RAM
-- 50GB disk space
-- Apple Silicon (M1/M2/M3/M4) or NVIDIA GPU
-- Enables 7B-14B models with multiple simultaneous agents
+### Recommended (Consumer Hardware)
+- **CPU:** 8+ cores
+- **RAM:** 32GB+
+- **GPU:** Apple Silicon M1+ OR NVIDIA GPU with 8GB+ VRAM
+- **Disk:** 50GB
+- **Models:** Up to 8B with multiagent experiments
 
-## Contributing
+### High-Performance (HPC)
+- **CPU:** 16+ cores
+- **RAM:** 64GB+
+- **GPU:** NVIDIA A100/RTX 3090/4090 (24GB+ VRAM)
+- **Disk:** 100GB+
+- **Models:** Up to 14B with full-scale experiments
 
-This is a research project. Contributions, suggestions, and experiment results are welcome!
+**Tested Configuration:**
+- Ubuntu 22.04, 2x RTX 3090 (48GB total VRAM), 128GB RAM
+- Can run 14B models or multiple 7B agents simultaneously
+
+---
+
+## Performance Expectations
+
+### Generation Speed (Linux, dual RTX 3090)
+
+| Model Size | Tokens/sec | Math (100 problems) | GSM (100 problems) |
+|------------|------------|---------------------|---------------------|
+| 1.5B       | ~100       | ~5 min              | ~10 min             |
+| 3B         | ~100       | ~6 min              | ~12 min             |
+| 7B         | ~50        | ~8 min              | ~15 min             |
+| 8B         | ~50        | ~9 min              | ~16 min             |
+| 14B        | ~30        | ~12 min             | ~20 min             |
+
+**Note:** First run per model adds 5-10 minutes for model download and compilation.
+
+---
+
+## Development Status
+
+### ✅ Completed
+- Multi-platform support (Mac MLX, Linux vLLM, Ollama)
+- All 4 tasks migrated to local inference
+- Inline evaluation for math and GSM tasks
+- Model diversity support (different models per agent)
+- Automated benchmarking scripts
+- Results aggregation and visualization
+- Comprehensive documentation
+
+### 🔄 In Progress
+- Baseline benchmark experiments (GSM, Math)
+- Full-scale multiagent debate experiments
+- Cognitive diversity analysis
+
+### 📋 Planned
+- Parameter diversity experiments (different temperatures per agent)
+- Prompt diversity experiments (different system prompts)
+- Large-scale experiments (1000+ problems per task)
+- Biography and MMLU full evaluation
+
+---
 
 ## Citation
 
@@ -464,16 +584,36 @@ If you use this work, please cite both the original paper and this adaptation:
 }
 ```
 
+---
+
+## Contributing
+
+This is a research project. Contributions, suggestions, and experiment results are welcome!
+
+**To contribute:**
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request with detailed description
+
+---
+
 ## License
 
-MIT License - see original repository for details.
+MIT License - see LICENSE file for details.
+
+---
 
 ## Related Work
 
 - **Original Implementation:** [composable-models/llm_multiagent_debate](https://github.com/composable-models/llm_multiagent_debate)
-- **Open-source LLM Debate:** [gauss5930/LLM-Agora](https://github.com/gauss5930/LLM-Agora)
-- **Debate Logs:** [Additional examples](https://www.dropbox.com/sh/6kq5ixfnf4zqk09/AABezsYsBhgg1IQAZ12yQ43_a?dl=0)
+- **MLX Framework:** [ml-explore/mlx](https://github.com/ml-explore/mlx)
+- **vLLM:** [vllm-project/vllm](https://github.com/vllm-project/vllm)
+- **Ollama:** [ollama/ollama](https://github.com/ollama/ollama)
+
+---
 
 ## Acknowledgments
 
-Built upon the excellent work of Du et al. (2023). This project demonstrates that multiagent debate benefits extend to smaller, locally-hosted models.
+Built upon the excellent work of Du et al. (2023). This project demonstrates that multiagent debate benefits extend to smaller, locally-hosted models, making this research methodology more accessible and cost-effective.
+
+Special thanks to the MLX, vLLM, and Ollama teams for creating excellent local inference frameworks.

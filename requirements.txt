@@ -1,24 +1,14 @@
-# ===== Mac M4 Pro (Apple Silicon) =====
-# MLX packages for local inference
-mlx==0.29.2
-mlx-lm==0.28.1
+# Multiagent Debate with Small Language Models
+# Requirements for all platforms
 
-# ===== Linux/HPC (NVIDIA GPUs) =====
-# vLLM for optimized GPU inference
-# Install with: pip install vllm torch transformers
-# Uncomment when deploying to Linux/HPC:
-# vllm>=0.3.0
-# torch>=2.1.0
-# transformers>=4.36.0
-
-# ===== Cross-Platform (All Systems) =====
+# ===== Core Dependencies (All Platforms) =====
 # Data processing and configuration
-numpy==1.22.4
-pandas==1.5.3
+numpy>=1.22.4
+pandas>=1.5.3
 pyyaml>=6.0
 
-# Progress bars and UI
-tqdm==4.64.1
+# Progress bars and CLI
+tqdm>=4.64.1
 
 # Visualization (for plotting scripts)
 matplotlib>=3.5.0
@@ -29,14 +19,35 @@ requests>=2.28.0
 # Legacy/Evaluation (GPT-based evaluation scripts)
 openai==0.27.6
 
-# ===== Installation Notes =====
+# ===== Mac M4 Pro (Apple Silicon) =====
+# MLX packages for local inference on Apple Silicon
+# Only install on macOS with ARM64:
+mlx==0.29.2; sys_platform == "darwin" and platform_machine == "arm64"
+mlx-lm==0.28.1; sys_platform == "darwin" and platform_machine == "arm64"
+
+# ===== Linux/HPC (NVIDIA GPUs) =====
+# vLLM for optimized GPU inference
+# Only install on Linux (will fail on macOS):
+# Uncomment for HPC/Linux deployment or use requirements_hpc.txt
+# vllm>=0.11.0
+# torch>=2.6.0
+# transformers>=4.55.0
+
+# ===== Installation Instructions =====
+#
 # Mac (Apple Silicon):
-#   pip install -r requirements.txt
+#   pip3 install -r requirements.txt
 #
 # Linux/HPC (NVIDIA GPUs):
-#   Uncomment vLLM section above, then:
-#   pip install -r requirements.txt
+#   pip3 install -r requirements_hpc.txt
 #
-# Ollama (Any platform):
-#   curl -fsSL https://ollama.com/install.sh | sh
+# Windows/Cross-platform (Ollama):
+#   pip3 install -r requirements.txt
+#   Install Ollama: https://ollama.com/download
 #   ollama pull llama3.2:3b
+#   ollama pull qwen2.5:7b
+#
+# ===== Verified Versions =====
+# Tested on:
+# - macOS 14 (M4 Pro, 48GB RAM): mlx-lm 0.28.1, mlx 0.29.2
+# - Ubuntu 22.04 (2x RTX 3090, 128GB RAM): vllm 0.11.0, torch 2.8.0, transformers 4.57.1

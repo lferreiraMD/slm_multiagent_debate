@@ -174,3 +174,61 @@ def write_jsonl(data: List[Dict[str, Any]], path: str) -> None:
     with open(path, 'w') as fh:
         for item in data:
             fh.write(json.dumps(item) + '\n')
+
+
+def get_model_descriptor(
+    model_name: str,
+    agent_models: Optional[List[str]] = None
+) -> str:
+    """
+    Generate descriptive model name for output filenames.
+
+    Two cases:
+    1. Single model (all agents use same) → extract short name
+    2. Multiple distinct models → create amalgamated name like "model1+model2+model3"
+
+    Args:
+        model_name: Single model name (from --model or config default)
+        agent_models: Optional list of per-agent models (from --agent-models)
+
+    Returns:
+        Short descriptive model name for filename
+    """
+    def _extract_short_name(full_path: str) -> str:
+        """Extract short descriptive name from model path (general approach)."""
+        # Get last part: "meta-llama/Llama-3.2-3B-Instruct" → "Llama-3.2-3B-Instruct"
+        name = full_path.split('/')[-1]
+
+        # Remove backend prefixes: "vllm-llama32-3b" → "llama32-3b"
+        for prefix in ["vllm-", "ollama-"]:
+            if name.startswith(prefix):
+                name = name[len(prefix):]
+                break
+
+        # Remove common suffixes to shorten
+        for suffix in ["-Instruct", "-instruct", "-Preview", "-preview",
+                      "-mlx-fp16", "-mlx-8bit", "-mlx-4bit", "-8bit", "-4bit"]:
+            if name.endswith(suffix):
+                name = name[:-len(suffix)]
+
+        # If still too long (> 25 chars), truncate intelligently
+        if len(name) > 25:
+            # Try to keep meaningful parts
+            name = name[:25]
+
+        return name
+
+    # Determine which models are actually being used
+    if agent_models is not None:
+        unique_models = list(set(agent_models))
+
+        if len(unique_models) == 1:
+            # Case 1: All agents use the same model
+            return _extract_short_name(unique_models[0])
+        else:
+            # Case 2: Multiple distinct models - create amalgamated name
+            short_names = sorted([_extract_short_name(m) for m in unique_models])
+            return "+".join(short_names)
+    else:
+        # Case 1: Single model via --model or config
+        return _extract_short_name(model_name)

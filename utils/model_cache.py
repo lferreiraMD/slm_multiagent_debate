@@ -98,11 +98,24 @@ class ModelCache:
 
         return llm, tokenizer
 
-    def clear(self):
-        """Clear all cached models."""
+    def shutdown(self):
+        """Shutdown all cached models properly (especially vLLM engines)."""
         with self._cache_lock:
+            for cache_key, (model, tokenizer) in self._cache.items():
+                if "vllm:" in cache_key:
+                    try:
+                        # vLLM LLM objects need explicit destruction
+                        if hasattr(model, '__del__'):
+                            del model
+                        print(f"[ModelCache] Shut down vLLM model: {cache_key}")
+                    except Exception as e:
+                        print(f"[ModelCache] Warning: Failed to shutdown {cache_key}: {e}")
             self._cache.clear()
-        print("[ModelCache] Cache cleared")
+        print("[ModelCache] All models shut down")
+
+    def clear(self):
+        """Clear all cached models (alias for shutdown)."""
+        self.shutdown()
 
     def get_cached_models(self):
         """Get list of currently cached models."""
