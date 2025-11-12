@@ -141,8 +141,13 @@ class ChatCompletion:
 
         # Generate response
         # Note: MLX max_tokens default is model-dependent, use 2048 as reasonable limit
+        # Reasoning models (VibeThinker, DeepSeek-R1) need more tokens for chain-of-thought
         if max_tokens is None:
-            max_tokens = 2048
+            # Check if this is a reasoning model that uses <think> tokens
+            model_lower = model.lower()
+            is_reasoning_model = any(keyword in model_lower for keyword in ['thinker', 'deepseek'])
+            # VibeThinker creators recommend 40960 max_token_length
+            max_tokens = 40960 if is_reasoning_model else 4096
 
         start_time = time.time()
         # MLX generate in this version doesn't support temp/temperature in generate_step()
@@ -155,6 +160,19 @@ class ChatCompletion:
             verbose=False
         )
         latency = time.time() - start_time
+
+        # Post-process reasoning models: extract answer after chain-of-thought
+        # Models like VibeThinker and DeepSeek-R1 use <think>...</think> for reasoning
+        # We want to preserve the reasoning but prioritize the final answer
+        if '<think>' in response_text and '</think>' in response_text:
+            # Split by </think> to get the final answer part
+            parts = response_text.split('</think>')
+            if len(parts) > 1:
+                # Keep everything after the last </think> tag
+                final_answer = parts[-1].strip()
+                # Only use the extracted answer if it's non-empty
+                if final_answer:
+                    response_text = final_answer
 
         # Format as OpenAI-compatible response
         return {
@@ -218,6 +236,19 @@ class ChatCompletion:
         latency = time.time() - start_time
 
         result = response.json()
+        content = result["message"]["content"]
+
+        # Post-process reasoning models: extract answer after chain-of-thought
+        # Models like VibeThinker and DeepSeek-R1 use <think>...</think> for reasoning
+        if '<think>' in content and '</think>' in content:
+            # Split by </think> to get the final answer part
+            parts = content.split('</think>')
+            if len(parts) > 1:
+                # Keep everything after the last </think> tag
+                final_answer = parts[-1].strip()
+                # Only use the extracted answer if it's non-empty
+                if final_answer:
+                    content = final_answer
 
         # Format as OpenAI-compatible response
         return {
@@ -230,7 +261,7 @@ class ChatCompletion:
                     "index": 0,
                     "message": {
                         "role": "assistant",
-                        "content": result["message"]["content"]
+                        "content": content
                     },
                     "finish_reason": "stop"
                 }
@@ -256,20 +287,39 @@ class ChatCompletion:
         top_p: float,
         **kwargs
     ) -> Dict[str, Any]:
-        """vLLM backend implementation (for HPC)."""
+        """vLLM backend implementation (for HPC with NVIDIA GPUs)."""
         from vllm import LLM, SamplingParams
 
-        # Load model (cached)
-        llm = cls._model_cache.get_or_load(model, backend="vllm")
+        # Load model and tokenizer (cached)
+        llm, tokenizer = cls._model_cache.get_or_load(model, backend="vllm")
 
-        # Format messages
-        prompt = cls._format_messages_fallback(messages)
+        # Format messages using chat template if available
+        try:
+            if hasattr(tokenizer, 'chat_template') and tokenizer.chat_template:
+                prompt = tokenizer.apply_chat_template(
+                    messages,
+                    tokenize=False,
+                    add_generation_prompt=True
+                )
+            else:
+                prompt = cls._format_messages_fallback(messages)
+        except Exception:
+            # Fallback if chat template fails
+            prompt = cls._format_messages_fallback(messages)
+
+        # Reasoning models (VibeThinker, DeepSeek-R1) need more tokens for chain-of-thought
+        if max_tokens is None:
+            # Check if this is a reasoning model that uses <think> tokens
+            model_lower = model.lower()
+            is_reasoning_model = any(keyword in model_lower for keyword in ['thinker', 'deepseek'])
+            # VibeThinker creators recommend 40960 max_token_length
+            max_tokens = 40960 if is_reasoning_model else 4096
 
         # Set sampling parameters
         sampling_params = SamplingParams(
             temperature=temperature,
             top_p=top_p,
-            max_tokens=max_tokens if max_tokens else 2048
+            max_tokens=max_tokens
         )
 
         # Generate
@@ -279,6 +329,19 @@ class ChatCompletion:
 
         output = outputs[0]
         response_text = output.outputs[0].text
+
+        # Post-process reasoning models: extract answer after chain-of-thought
+        # Models like VibeThinker and DeepSeek-R1 use <think>...</think> for reasoning
+        # We want to preserve the reasoning but prioritize the final answer
+        if '<think>' in response_text and '</think>' in response_text:
+            # Split by </think> to get the final answer part
+            parts = response_text.split('</think>')
+            if len(parts) > 1:
+                # Keep everything after the last </think> tag
+                final_answer = parts[-1].strip()
+                # Only use the extracted answer if it's non-empty
+                if final_answer:
+                    response_text = final_answer
 
         # Format as OpenAI-compatible response
         return {

@@ -58,8 +58,8 @@ class ModelCache:
             model, tokenizer = self._load_mlx(model_path)
             result = (model, tokenizer)
         elif backend == "vllm":
-            model = self._load_vllm(model_path)
-            result = (model, None)  # vLLM doesn't separate tokenizer
+            model, tokenizer = self._load_vllm(model_path)
+            result = (model, tokenizer)
         elif backend == "ollama":
             # Ollama doesn't need to load models in Python
             result = (None, None)
@@ -79,16 +79,24 @@ class ModelCache:
         model, tokenizer = load(model_path)
         return model, tokenizer
 
-    def _load_vllm(self, model_path: str) -> Any:
-        """Load vLLM model."""
+    def _load_vllm(self, model_path: str) -> Tuple[Any, Any]:
+        """Load vLLM model and tokenizer."""
         from vllm import LLM
+        from transformers import AutoTokenizer
 
         llm = LLM(
             model=model_path,
             tensor_parallel_size=1,  # Adjust for multi-GPU
             trust_remote_code=True
         )
-        return llm
+
+        # Load tokenizer separately for chat template support
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_path,
+            trust_remote_code=True
+        )
+
+        return llm, tokenizer
 
     def clear(self):
         """Clear all cached models."""

@@ -60,6 +60,7 @@ MODEL_ALIASES = {
     "llama31-8b": "mlx-community/Meta-Llama-3.1-8B-Instruct-8bit",
     "llama31-8b-fp16": "valuat/Meta-Llama-3.1-8B-Instruct-mlx-fp16",
     "qwen25-14b": "valuat/Qwen2.5-14B-Instruct-1M-mlx-fp16",
+    "vibethinker": "valuat/VibeThinker-1.5B-mlx-8Bit",
 
     # Ollama models (for HPC/Windows)
     "ollama-llama32": "llama3.2:3b",

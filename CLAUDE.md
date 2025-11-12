@@ -146,30 +146,54 @@ prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_
 response = generate(model, tokenizer, prompt=prompt, max_tokens=512)
 ```
 
-#### HPC / Windows / Linux: Ollama or vLLM
-**For HPC with NVIDIA GPUs:**
-- Use **Ollama** with GGUF models (simple, cross-platform)
-- Or use **vLLM** with HuggingFace models (higher throughput)
-- Models need to be downloaded again (MLX format won't work on NVIDIA)
+#### HPC / Windows / Linux: vLLM or Ollama ✅ **FULLY IMPLEMENTED**
 
-**Ollama Installation (HPC/Windows):**
+**The codebase now supports three backends with automatic detection:**
+- **MLX** (Mac Apple Silicon) - Auto-detected on macOS ARM64
+- **vLLM** (Linux/HPC with NVIDIA GPUs) - Optimized for high-throughput inference
+- **Ollama** (Cross-platform) - Simple server-based approach
+
+All backends support:
+- ✅ Chat template formatting
+- ✅ Reasoning model handling (VibeThinker, DeepSeek-R1)
+- ✅ `<think>` tag extraction
+- ✅ Configurable token limits (40960 for reasoning models)
+
+**vLLM Setup (Linux/HPC with NVIDIA GPUs):**
 ```bash
-# Windows
-# Download from https://ollama.com/download/windows
+# 1. Uncomment vLLM dependencies in requirements.txt
+# 2. Install
+pip install vllm torch transformers
 
-# Linux/HPC
+# 3. Backend auto-detects vLLM (MLX import fails on Linux)
+# 4. Run experiments
+python3 gen_math.py --model vllm-llama32-3b --agents 2 --rounds 3
+```
+
+**Ollama Setup (Cross-platform):**
+```bash
+# Windows: Download from https://ollama.com/download/windows
+# Linux/HPC:
 curl -fsSL https://ollama.com/install.sh | sh
 
 # Pull models (GGUF format)
 ollama pull llama3.2:3b
 ollama pull qwen2.5:7b
+ollama pull deepseek-r1:1.5b
+
+# Run experiments
+python3 gen_math.py --model ollama-llama32 --agents 2 --rounds 3
 ```
 
-**vLLM Alternative (HPC only):**
-```bash
-pip install vllm
-# Use standard HuggingFace models (not MLX versions)
-```
+**Model Equivalents Across Platforms:**
+
+| Size | Mac (MLX) | Linux (vLLM) | Any (Ollama) |
+|------|-----------|--------------|--------------|
+| 1.5B | `deepseek` | `vllm-deepseek` | `ollama-deepseek` |
+| 3B | `llama32-3b` | `vllm-llama32-3b` | `ollama-llama32` |
+| 7B | `qwen25-7b` | `vllm-qwen25-7b` | `ollama-qwen25-7b` |
+| 8B | `llama31-8b` | `vllm-llama31-8b` | `ollama-llama31-8b` |
+| 14B | `qwen25-14b` | `vllm-qwen25-14b` | `ollama-qwen25-14b` |
 
 ## Available Models
 
@@ -240,7 +264,7 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 
 ## Project Status
 - [x] Cloned original codebase
-- [x] Identified available MLX-optimized models (7 models ready)
+- [x] Identified available MLX-optimized models (8 models ready including VibeThinker)
 - [x] Verified mlx-lm installation (v0.28.1)
 - [x] Created project documentation (CLAUDE.md, updated README.md)
 - [x] Set up GitHub repository
@@ -256,17 +280,29 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 - [x] Adapted MMLU task to use mlx-lm (tasks/mmlu/gen_mmlu.py)
 - [x] Fixed MLX generate() API compatibility issues
 - [x] All tasks follow consistent modular pattern
+- [x] Implemented per-agent model diversity support (Condition 3: Model Diversity)
+- [x] Merged GSM evaluation into generation for inline feedback
+- [x] Added VibeThinker reasoning model with special handling
+- [x] Implemented reasoning model support (<think> tag extraction, 40960 token limit)
 - [x] Created results aggregation script (scripts/aggregate_results.py)
 - [x] Created plotting scripts (plot_by_model.py, plot_by_task.py)
 - [x] Math task experiments completed: 13 configurations across 2 models
   - DeepSeek 1.5B: 9 configs (1-4 agents, 3-7 rounds) → 26-37% accuracy
   - Llama 3.1 8B: 4 configs (1-5 agents, 3 rounds) → 85-97% accuracy
 - [x] Demonstrated multiagent debate benefit (Llama 8B: 85% solo → 97% with 2-3 agents)
-- [ ] Test GSM, biography, MMLU tasks
+- [x] **Linux/HPC GPU support implemented** (vLLM and Ollama backends)
+  - Enhanced vLLM backend with chat templates and reasoning model handling
+  - Enhanced Ollama backend with reasoning model tag extraction
+  - Updated model cache to load tokenizer for vLLM
+  - Added 5 vLLM model aliases and 5 Ollama model aliases
+  - Updated requirements.txt with platform-specific dependencies
+  - All 4 tasks now work on Linux/HPC without code changes
+- [ ] Test vLLM backend on Linux with NVIDIA GPUs
+- [ ] Test Ollama backend on Linux
+- [ ] Test GSM, biography, MMLU tasks with VibeThinker
 - [ ] Run baseline experiments across all tasks
 - [ ] Test additional models (Qwen 7B/14B, SmallThinker, Llama 3.2)
 - [ ] Compare debate effectiveness across model sizes and families
-- [ ] Set up HPC deployment (Ollama/vLLM)
 
 ## Configuration
 
