@@ -45,8 +45,8 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 - **Task:** Multi-step word problems requiring arithmetic reasoning
 - **Dataset:** [OpenAI GSM8K](https://github.com/openai/grade-school-math) (included in `data/gsm8k/`)
 - **Configuration:** 3 agents, 2 rounds
-- **Evaluation:** Extracts numerical answer from `\boxed{answer}` format
-- **Files:** `gen_gsm.py` (generation), `eval_gsm.py` (evaluation)
+- **Evaluation:** Inline evaluation during generation, extracts from `\boxed{answer}` format
+- **Files:** `gen_gsm.py` (generation with inline eval), `eval_gsm.py` (legacy, for re-evaluating old files)
 
 #### 3. **Biography** (`./tasks/biography/`)
 - **Task:** Generate bullet-point biographies of computer scientists
@@ -56,15 +56,18 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 - **Data:** `data/biography/article.json` with ground truth biographies
 
 #### 4. **MMLU** (`./tasks/mmlu/`)
-- **Task:** Multiple-choice questions across academic subjects
+- **Task:** Multiple-choice questions across academic subjects (A/B/C/D)
 - **Dataset:** [MMLU benchmark](https://github.com/hendrycks/test) (included in `data/mmlu/`)
-- **Configuration:** Likely 3 agents, 2 rounds (inferred from pattern)
-- **Files:** `gen_mmlu.py` (generation), `eval_mmlu.py` (evaluation)
+- **Configuration:** 3 agents, 2 rounds
+- **Evaluation:** Inline evaluation during generation, extracts letter answers
+- **Files:** `gen_mmlu.py` (generation with inline eval), `eval_mmlu.py` (standalone eval with detailed parsing)
 
 ### Key Parameters
 - **agents:** Number of independent LLM agents participating in debate
 - **rounds:** Number of debate iterations (each agent sees others' responses `rounds-1` times)
 - **n:** Number of completions per API call (currently 1)
+- **agent-models:** Optional list of models (one per agent) for model diversity
+- **agent-temperatures:** Optional list of temperatures (one per agent) for parameter diversity
 
 ## Technical Implementation
 
@@ -109,6 +112,72 @@ All scripts continue to use OpenAI's chat format (now handled by wrapper):
 ```
 
 **Note:** Evaluation scripts (`eval_*.py`) still use OpenAI API for GPT-4 based fact-checking and evaluation (common pattern for assessing factuality in biography/MMLU tasks).
+
+## Cognitive Diversity Experiments
+
+A key research focus of this project is exploring how cognitive diversity among agents affects multiagent debate performance. We implement three types of diversity:
+
+### 1. Model Diversity
+Different agents use different language models, providing diversity through varied architectures, training data, and capabilities.
+
+**Implementation:** Use `--agent-models` to specify different models per agent.
+
+```bash
+python3 gen_gsm.py \
+  --agent-models vllm-llama32-3b vllm-qwen25-7b vllm-deepseek \
+  --agents 3 \
+  --rounds 2
+```
+
+**Technical Details:**
+- The `generate_answer()` function in `utils/helpers.py` handles per-agent model selection
+- Each agent gets assigned `agent_models[agent_id]` instead of the default model
+- Output filename includes all models: `gsm_deepseek+llama32-3b+qwen25-7b_agents3_rounds2.json`
+
+### 2. Parameter Diversity (Temperature)
+Agents use the same model but with different sampling temperatures, creating diversity through varied generation randomness.
+
+**Implementation:** Use `--agent-temperatures` to specify different temperatures per agent.
+
+```bash
+python3 gen_gsm.py \
+  --model vllm-llama32-3b \
+  --agents 3 \
+  --rounds 2 \
+  --agent-temperatures 0.7 1.0 1.3
+```
+
+**Technical Details:**
+- Temperature controls randomness in token sampling (0.0 = deterministic, >1.0 = more random)
+- Agent 1 (temp=0.7): Conservative, focused on high-probability responses
+- Agent 2 (temp=1.0): Balanced, default behavior
+- Agent 3 (temp=1.3): Creative, explores lower-probability options
+- The `generate_answer()` function uses `agent_gen_params[agent_id]` for per-agent parameters
+- Output filename includes temperatures: `gsm_Llama-3.2-3B_temp0.7+1.0+1.3_agents3_rounds2.json`
+- Helper function `get_temperature_descriptor()` in `utils/helpers.py` creates filename component
+
+**Temperature Guidelines:**
+- **0.0-0.5:** Highly deterministic, minimal diversity
+- **0.7:** Good for precision tasks, slight exploration
+- **1.0:** Default, balanced exploration/exploitation
+- **1.3-1.5:** Increased diversity, good for creative tasks
+- **>1.5:** High randomness, may reduce coherence
+
+### 3. Combined Diversity (Model + Temperature)
+Maximum cognitive diversity by combining both model and parameter variation.
+
+```bash
+python3 gen_gsm.py \
+  --agents 3 \
+  --rounds 2 \
+  --agent-models vllm-llama32-3b vllm-qwen25-7b vllm-deepseek \
+  --agent-temperatures 0.7 1.0 1.3
+```
+
+**Output filename:** `gsm_deepseek+llama32-3b+qwen25-7b_temp0.7+1.0+1.3_agents3_rounds2.json`
+
+### 4. Prompt Diversity (Planned)
+Future work: Different system prompts or reasoning styles per agent (e.g., "intuitive", "analytical", "skeptic").
 
 ## Local LLM Framework Strategy
 
@@ -292,6 +361,17 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
   - DeepSeek 1.5B: 9 configs (1-4 agents, 3-7 rounds) → 26-37% accuracy
   - Llama 3.1 8B: 4 configs (1-5 agents, 3 rounds) → 85-97% accuracy
 - [x] Demonstrated multiagent debate benefit (Llama 8B: 85% solo → 97% with 2-3 agents)
+- [x] Implemented parameter diversity (temperature variation per agent)
+  - Added `--agent-temperatures` CLI argument to all generation scripts
+  - Created `get_temperature_descriptor()` helper function
+  - Updated filename generation to include temperature descriptor
+  - Supports combined model + temperature diversity
+- [x] Refactored evaluation architecture for consistency and reusability
+  - Created generic `compute_accuracy()` in utils/helpers.py (takes parse_fn as parameter)
+  - All tasks now use shared accuracy computation with task-specific parsing
+  - Added inline evaluation to gen_mmlu.py (consistent with math/GSM)
+  - Completely rewrote eval_mmlu.py with proper MMLU answer parsing (A/B/C/D)
+  - Fixed critical bugs in original eval_mmlu.py (was using wrong parsers for letters)
 
 ### ✅ Phase 2: Linux/HPC GPU Support - COMPLETED (Nov 12, 2025)
 - [x] **vLLM backend tested and validated on Ubuntu 22.04 with dual RTX 3090**
@@ -341,7 +421,7 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
 
 ### 📋 Phase 4: Analysis & Paper - PLANNED
 - [ ] Analyze cognitive diversity metrics
-- [ ] Test parameter diversity (different temperatures per agent)
+- [ ] Run parameter diversity experiments (temperature variation across agents)
 - [ ] Test prompt diversity (different system prompts)
 - [ ] Large-scale experiments (1000+ problems per task)
 - [ ] Statistical analysis of debate benefits
@@ -457,18 +537,19 @@ python3 scripts/plot_by_task.py
 │   ├── math/          # Arithmetic problems
 │   │   └── gen_math.py (includes inline evaluation)
 │   ├── gsm/           # Grade school math
-│   │   └── gen_gsm.py (includes inline evaluation)
+│   │   ├── gen_gsm.py (includes inline evaluation)
+│   │   └── eval_gsm.py (legacy - standalone eval)
 │   ├── biography/     # Computer scientist biographies
 │   │   ├── gen_conversation.py
 │   │   └── eval_conversation.py
 │   └── mmlu/          # MMLU benchmark
-│       ├── gen_mmlu.py
-│       └── eval_mmlu.py
+│       ├── gen_mmlu.py (includes inline evaluation)
+│       └── eval_mmlu.py (standalone eval with debug mode)
 ├── utils/             # Shared utilities
-│   ├── llm_wrapper.py      # OpenAI-compatible ChatCompletion
+│   ├── llm_wrapper.py      # Multi-backend LLM interface
 │   ├── config.py           # Configuration management
-│   ├── model_cache.py      # Model caching
-│   └── helpers.py          # Shared functions
+│   ├── model_cache.py      # Model loading/caching
+│   └── helpers.py          # Shared functions (compute_accuracy, etc.)
 ├── scripts/           # Analysis scripts
 │   ├── aggregate_results.py  # Aggregate experiment results
 │   ├── plot_by_model.py      # Generate per-model plots
@@ -524,6 +605,11 @@ The `legacy/` directory contains deprecated or superseded code that is no longer
 - ✅ **Model caching implemented** - Automatically caches loaded models between runs
 - ✅ **Configuration centralized** - All settings in `config.yaml`, supports CLI overrides
 - ✅ **Results tracking configured** - Summary files tracked in git, individual runs ignored
+- ✅ **Cognitive diversity support** - Model diversity and parameter diversity (temperature) fully implemented
+  - Model diversity: `--agent-models` allows different models per agent
+  - Temperature diversity: `--agent-temperatures` allows different sampling temperatures per agent
+  - Both features work together for maximum cognitive diversity
+  - Filenames automatically include diversity descriptors (e.g., `gsm_model1+model2_temp0.7+1.0_agents2_rounds2.json`)
 
 ### Repository Management
 - **Results tracking:** `results/summary.p` and `results/summary.csv` are tracked in git
@@ -701,3 +787,33 @@ def get_model_descriptor(model_name: str, agent_models: Optional[List[str]] = No
 - Chat template formatting varies by model - verify output quality
 - Watch for truncated responses with long contexts (especially biography task)
 - Compare single-agent vs multiagent to quantify debate benefit
+
+### Key Implementation Files for Cognitive Diversity
+
+**Parameter Diversity (Temperature) Implementation:**
+1. **`utils/helpers.py`** - Core functions
+   - `generate_answer()` (lines 12-50): Handles per-agent model and parameter selection
+   - `get_temperature_descriptor()` (lines 237-265): Creates filename component from temperature list
+
+2. **All generation scripts** - CLI and usage
+   - Argument parsing: `parser.add_argument("--agent-temperatures", type=float, nargs="+")`
+   - Parameter validation: Ensures number of temperatures matches number of agents
+   - Per-agent param creation: Builds list of generation param dicts with different temperatures
+   - Filename generation: Uses `get_temperature_descriptor()` to create descriptive filename
+
+3. **Files modified:**
+   - `tasks/math/gen_math.py`
+   - `tasks/gsm/gen_gsm.py`
+   - `tasks/biography/gen_conversation.py`
+   - `tasks/mmlu/gen_mmlu.py`
+   - `utils/helpers.py`
+   - `utils/__init__.py` (exports `get_temperature_descriptor`)
+
+**Model Diversity Implementation:**
+1. **`utils/helpers.py`**
+   - `generate_answer()`: Handles per-agent model selection via `agent_models[agent_id]`
+   - `get_model_descriptor()` (lines 179-234): Creates filename component from model list
+
+2. **`utils/config.py`**
+   - `resolve_model_name()`: Maps aliases to full HuggingFace paths
+   - `MODEL_ALIASES` dict: Platform-specific model aliases (MLX, vLLM, Ollama)

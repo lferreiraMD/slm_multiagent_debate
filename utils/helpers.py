@@ -6,7 +6,7 @@ These utilities are task-agnostic and can be reused by math, GSM, biography, and
 
 import json
 import time
-from typing import List, Any, Dict, Optional
+from typing import List, Any, Dict, Optional, Callable
 
 
 def generate_answer(
@@ -118,6 +118,59 @@ def most_frequent(items: List[Any]) -> Any:
             most_common = item
 
     return most_common
+
+
+def compute_accuracy(
+    gt: str,
+    pred_solutions: List[str],
+    parse_fn: Callable[[str], Optional[str]],
+    normalize_gt: bool = True
+) -> int:
+    """
+    Generic accuracy computation with majority voting across agents.
+
+    Args:
+        gt: Ground truth answer string
+        pred_solutions: List of predicted solution strings from multiple agents
+        parse_fn: Function to extract answer from solution text
+                  Should return parsed answer or None if parsing fails
+        normalize_gt: If True, normalize ground truth (strip + uppercase) instead of parsing
+
+    Returns:
+        1 if correct, 0 if incorrect
+
+    Examples:
+        >>> def parse_letter(s): return s.strip().upper()
+        >>> compute_accuracy("B", ["b", "B", "b"], parse_fn=parse_letter)
+        1
+    """
+    # Parse ground truth (or just normalize if it's already in final form)
+    if normalize_gt:
+        gt_parsed = gt.strip().upper()
+    else:
+        gt_parsed = parse_fn(gt)
+        if gt_parsed is None:
+            return 0
+
+    # Extract answers from each agent's response
+    pred_answers = []
+    for pred_solution in pred_solutions:
+        pred_answer = parse_fn(pred_solution)
+        if pred_answer is not None:
+            pred_answers.append(pred_answer)
+
+    # Need at least one valid prediction
+    if not pred_answers:
+        return 0
+
+    # Use majority voting
+    try:
+        majority_answer = most_frequent(pred_answers)
+    except ValueError:
+        return 0
+
+    # Compare with ground truth
+    return 1 if majority_answer == gt_parsed else 0
 
 
 def read_jsonl(path: str) -> List[Dict[str, Any]]:
@@ -232,3 +285,39 @@ def get_model_descriptor(
     else:
         # Case 1: Single model via --model or config
         return _extract_short_name(model_name)
+
+
+def get_temperature_descriptor(
+    agent_gen_params: Optional[List[Dict[str, Any]]] = None
+) -> Optional[str]:
+    """
+    Generate temperature descriptor for output filenames.
+
+    Args:
+        agent_gen_params: Optional list of per-agent generation parameter dicts
+
+    Returns:
+        Temperature descriptor like "temp0.7+1.0+1.3" or None if homogeneous
+
+    Examples:
+        >>> get_temperature_descriptor([{'temperature': 0.7}, {'temperature': 1.0}])
+        'temp0.7+1.0'
+        >>> get_temperature_descriptor([{'temperature': 1.0}, {'temperature': 1.0}])
+        None  # All same, no descriptor needed
+        >>> get_temperature_descriptor(None)
+        None  # No diversity
+    """
+    if agent_gen_params is None:
+        return None
+
+    # Extract temperatures from param dicts
+    temps = [params.get('temperature', 1.0) for params in agent_gen_params]
+    unique_temps = list(set(temps))
+
+    # If all agents have the same temperature, no need for descriptor
+    if len(unique_temps) == 1:
+        return None
+
+    # Create descriptor with sorted temperatures
+    temp_strs = [f"{t:.1f}" for t in temps]  # Keep original order, not sorted
+    return "temp" + "+".join(temp_strs)

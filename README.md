@@ -188,22 +188,22 @@ python3 eval_conversation.py
 ### 📚 MMLU Task - Multiple-Choice Questions
 Multiple-choice questions across academic subjects from the MMLU benchmark.
 
-**Task:** Multi-subject multiple-choice questions
+**Task:** Multi-subject multiple-choice questions (A/B/C/D)
 **Config:** 3 agents, 2 rounds, 100 questions (default)
 **Dataset:** [MMLU](https://github.com/hendrycks/test) (included in `data/mmlu/`)
-**Evaluation:** GPT-4 based answer extraction and verification
+**Evaluation:** Automated answer extraction and comparison (inline)
 
 ```bash
 cd tasks/mmlu
 
-# Generate answers
+# Generate and evaluate (inline evaluation during generation)
 python3 gen_mmlu.py --model vllm-llama32-3b --agents 3 --rounds 2 --num-questions 100
 
-# Evaluate answers (requires OpenAI API key)
-export OPENAI_API_KEY="your-key-here"
-python3 eval_mmlu.py
+# Optional: Re-evaluate saved results with detailed debug output
+python3 eval_mmlu.py --input-file mmlu_{model}_agents{N}_rounds{N}.json --debug
 
 # Outputs: mmlu_{model}_agents{N}_rounds{N}.json
+#   - Includes accuracy metrics printed during generation
 ```
 
 ---
@@ -278,6 +278,51 @@ This will:
 - Agent 2: Qwen 2.5 7B
 - Agent 3: DeepSeek 1.5B
 - Output filename: `gsm_deepseek+llama32-3b+qwen25-7b_agents3_rounds2.json`
+
+### Temperature Diversity (Parameter Diversity Experiments)
+
+Use different sampling temperatures for each agent to create cognitive diversity through varying creativity/randomness:
+
+```bash
+python3 gen_gsm.py \
+  --model vllm-llama32-3b \
+  --agents 3 \
+  --rounds 2 \
+  --agent-temperatures 0.7 1.0 1.3
+```
+
+This will:
+- Agent 1: Temperature 0.7 (more conservative, focused)
+- Agent 2: Temperature 1.0 (balanced, default)
+- Agent 3: Temperature 1.3 (more creative, exploratory)
+- Output filename: `gsm_Llama-3.2-3B_temp0.7+1.0+1.3_agents3_rounds2.json`
+
+**Temperature Guide:**
+- **0.0-0.5:** Deterministic, focused on most likely responses
+- **0.7:** Good balance of consistency and variety
+- **1.0:** Default, balanced exploration
+- **1.3-1.5:** More creative, diverse responses
+- **>1.5:** Highly random (may reduce coherence)
+
+### Combined Diversity (Model + Temperature)
+
+Combine both model and temperature diversity for maximum cognitive variation:
+
+```bash
+python3 gen_gsm.py \
+  --agents 3 \
+  --rounds 2 \
+  --agent-models vllm-llama32-3b vllm-qwen25-7b vllm-deepseek \
+  --agent-temperatures 0.7 1.0 1.3
+```
+
+This creates the richest diversity:
+- Agent 1: Llama 3.2 3B @ temp=0.7
+- Agent 2: Qwen 2.5 7B @ temp=1.0
+- Agent 3: DeepSeek 1.5B @ temp=1.3
+- Output filename: `gsm_deepseek+llama32-3b+qwen25-7b_temp0.7+1.0+1.3_agents3_rounds2.json`
+
+**Note:** All generation scripts (`gen_math.py`, `gen_gsm.py`, `gen_conversation.py`, `gen_mmlu.py`) support both `--agent-models` and `--agent-temperatures` arguments. The number of models/temperatures must match the number of agents.
 
 ---
 
@@ -542,6 +587,7 @@ python3 tasks/gsm/gen_gsm.py
 - All 4 tasks migrated to local inference
 - Inline evaluation for math and GSM tasks
 - Model diversity support (different models per agent)
+- Parameter diversity support (different temperatures per agent)
 - Automated benchmarking scripts
 - Results aggregation and visualization
 - Comprehensive documentation
@@ -549,13 +595,13 @@ python3 tasks/gsm/gen_gsm.py
 ### 🔄 In Progress
 - Baseline benchmark experiments (GSM, Math)
 - Full-scale multiagent debate experiments
-- Cognitive diversity analysis
+- Cognitive diversity analysis (model + temperature variation)
 
 ### 📋 Planned
-- Parameter diversity experiments (different temperatures per agent)
-- Prompt diversity experiments (different system prompts)
+- Prompt diversity experiments (different system prompts per agent)
 - Large-scale experiments (1000+ problems per task)
 - Biography and MMLU full evaluation
+- Statistical analysis of diversity impact on debate performance
 
 ---
 
