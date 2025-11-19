@@ -8,6 +8,7 @@ import json
 import numpy as np
 import time
 import argparse
+import platform
 from tqdm import tqdm
 from utils import (
     ChatCompletion,
@@ -62,12 +63,21 @@ def filter_people(person):
     return people
 
 if __name__ == "__main__":
+    # Detect platform and set default judge model
+    # Mac (MLX): oss-gpt-20b, Linux (vLLM): vllm-oss-20b
+    if platform.system() == "Darwin" and platform.machine() == "arm64":
+        default_judge = "oss-gpt-20b"
+        platform_desc = "Mac MLX"
+    else:
+        default_judge = "vllm-oss-20b"
+        platform_desc = "Linux vLLM"
+
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Evaluate biography generation using a local judge model")
     parser.add_argument("--input-file", type=str, required=True,
                         help="Path to generated biography JSON file")
-    parser.add_argument("--judge-model", type=str, default="qwen25-7b",
-                        help="Model to use for fact-checking (default: qwen25-7b)")
+    parser.add_argument("--judge-model", type=str, default=default_judge,
+                        help=f"Model to use for fact-checking (default: {default_judge} for {platform_desc})")
     parser.add_argument("--output-file", type=str, default=None,
                         help="Path to save evaluation results (optional)")
     parser.add_argument("--ground-truth", type=str, default="../../data/biography/article.json",
