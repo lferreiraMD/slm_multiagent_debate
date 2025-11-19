@@ -114,6 +114,69 @@ ollama list
 
 ---
 
+## Quick Start: HPC/Linux Setup
+
+**For HPC users running experiments with vLLM**, follow this workflow:
+
+### Step 1: Download Models (Required First Step)
+Pre-download all model tokenizers and configs to avoid runtime delays:
+
+```bash
+python3 experiments/download_models.py
+```
+
+This caches tokenizers/configs for all 11 vLLM models. Model weights (10-40GB each) will download automatically on first use.
+
+**Duration:** ~5-10 minutes
+**Disk space:** ~500MB for tokenizers/configs
+
+### Step 2: Run HPC Test (Verify Setup)
+Test that everything works before running full experiments:
+
+```bash
+./experiments/hpc_test.sh
+```
+
+This runs a quick sanity check:
+- ✓ Tests all 4 tasks (math, gsm, biography, mmlu)
+- ✓ Minimal configuration (2 agents, 2 rounds, 10 problems)
+- ✓ Uses vllm-vibethinker (1.5B, fast model)
+- ✓ Verifies vLLM backend and model loading
+- ✓ Auto-cleans up test files
+
+**Duration:** ~5-10 minutes on dual RTX 3090
+**If test passes:** You're ready for full experiments!
+
+### Step 3: Run Full Experiments
+After successful testing, run the baseline experiments:
+
+```bash
+# Run individual tasks (220 experiments each)
+./experiments/run_math_experiments.sh      # ~40-60 hours
+./experiments/run_gsm_experiments.sh       # ~40-60 hours
+./experiments/run_biography_experiments.sh # ~40-60 hours
+./experiments/run_mmlu_experiments.sh      # ~40-60 hours
+
+# Or run all tasks in parallel (recommended for multi-GPU systems)
+./experiments/run_math_experiments.sh &
+./experiments/run_gsm_experiments.sh &
+./experiments/run_biography_experiments.sh &
+./experiments/run_mmlu_experiments.sh &
+wait
+```
+
+Each script tests:
+- **11 models** (vllm-qwen3-0.6b through vllm-oss-20b)
+- **4 agent counts** (1, 3, 5, 7)
+- **5 round counts** (2, 3, 4, 5, 6)
+- **Total:** 220 experiments per task, 880 total
+
+**Results:** Saved to `results/baseline/{task}/`
+
+See `experiments/README.md` for detailed documentation.
+
+---
+
 ## Available Tasks
 
 All tasks support inline evaluation for immediate feedback on performance.

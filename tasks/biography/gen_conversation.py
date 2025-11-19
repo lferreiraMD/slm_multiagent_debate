@@ -14,7 +14,8 @@ from utils import (
     parse_bullets,
     generate_answer,
     ModelCache,
-    get_model_descriptor
+    get_model_descriptor,
+    get_temperature_descriptor
 )
 import json
 import random
@@ -58,6 +59,8 @@ if __name__ == "__main__":
     parser.add_argument("--num-people", type=int, default=None, help="Number of people to process")
     parser.add_argument("--agent-models", type=str, nargs="+", default=None,
                        help="Per-agent models for model diversity (space-separated aliases or paths)")
+    parser.add_argument("--agent-temperatures", type=float, nargs="+", default=None,
+                       help="Per-agent temperatures for parameter diversity (space-separated floats)")
     args = parser.parse_args()
 
     # Load configuration
@@ -83,6 +86,21 @@ if __name__ == "__main__":
             raise ValueError(f"Number of agent models ({len(agent_models)}) must match number of agents ({agents})")
         print(f"Using model diversity with {len(agent_models)} different models")
 
+    # Per-agent temperature configuration (for parameter diversity experiments)
+    agent_gen_params = None
+    if args.agent_temperatures:
+        if len(args.agent_temperatures) != agents:
+            raise ValueError(f"Number of temperatures ({len(args.agent_temperatures)}) must match number of agents ({agents})")
+
+        # Create per-agent generation param dicts with different temperatures
+        agent_gen_params = []
+        for temp in args.agent_temperatures:
+            params = generation_params.copy()
+            params['temperature'] = temp
+            agent_gen_params.append(params)
+
+        print(f"Using temperature diversity with {len(agent_gen_params)} different temperatures")
+
     # Dataset path
     dataset_path = get_dataset_path("biography")
 
@@ -96,6 +114,10 @@ if __name__ == "__main__":
             print(f"  Agent {i+1}: {model}")
     else:
         print(f"Model: {model_name}")
+    if agent_gen_params:
+        print(f"Temperature diversity mode:")
+        for i, params in enumerate(agent_gen_params):
+            print(f"  Agent {i+1}: temp={params['temperature']}")
     print(f"Agents: {agents}")
     print(f"Rounds: {rounds}")
     print(f"People: {num_people}")
@@ -133,7 +155,8 @@ if __name__ == "__main__":
                     print(f"Agent {i + 1} receiving other agents' biographies...")
 
                 completion = generate_answer(agent_context, model_name, generation_params,
-                                            agent_id=i, agent_models=agent_models)
+                                            agent_id=i, agent_models=agent_models,
+                                            agent_gen_params=agent_gen_params)
 
                 assistant_message = construct_assistant_message(completion)
                 agent_context.append(assistant_message)
@@ -149,7 +172,14 @@ if __name__ == "__main__":
 
     # Save results
     model_descriptor = get_model_descriptor(model_name, agent_models)
-    output_filename = f"biography_{model_descriptor}_agents{agents}_rounds{rounds}.json"
+    temp_descriptor = get_temperature_descriptor(agent_gen_params)
+
+    # Build filename with optional temperature descriptor
+    if temp_descriptor:
+        output_filename = f"biography_{model_descriptor}_{temp_descriptor}_agents{agents}_rounds{rounds}.json"
+    else:
+        output_filename = f"biography_{model_descriptor}_agents{agents}_rounds{rounds}.json"
+
     json.dump(generated_description, open(output_filename, "w"))
 
     print("=" * 60)

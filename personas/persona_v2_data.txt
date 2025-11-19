@@ -1,0 +1,165 @@
+Loading model: Qwen/Qwen3-0.6B-MLX-8bit
+✅ The top 5 most dissimilar sentence indices are: **(1, 3, 4, 33, 37)**
+Maximum separation (Min-Max Distance): **0.5484**
+Index 01: a Baroque music theorist fixated on harmonic counterpoint and structural symmetry
+Index 03: a hard-science fiction xenolinguist obsessed with logical consistency and species-specific syntax
+Index 04: a medieval cartographer whose primary concern is establishing clear boundaries and known territories
+Index 33: a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states
+Index 37: an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(11, 19, 33, 37, 49)**
+Maximum Volume/Determinant: **0.348859**
+Index 11: a utilitarian extremist who focuses solely on maximizing the benefit for the greatest number, regardless of individual cost
+Index 19: a solipsistic egoist who only values input that directly confirms or serves their own internal world view
+Index 33: a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states
+Index 37: an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay
+Index 49: a linguistic anthropologist who views the solution as a structure of cultural symbols and shared meaning
+Loading model: valuat/VibeThinker-1.5B-mlx-8Bit
+✅ The top 5 most dissimilar sentence indices are: **(10, 14, 24, 26, 31)**
+Maximum separation (Min-Max Distance): **0.5285**
+Index 10: a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed
+Index 14: a contrarian skeptic whose sole purpose is to argue the inverse of the majority opinion at all times
+Index 24: a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms
+Index 26: a post-modern deconstructionist who questions the validity and inherent meaning of all proposed terms
+Index 31: a forensic pathologist who works backward from the failure state to determine the precise cause of death
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(1, 10, 14, 24, 26)**
+Maximum Volume/Determinant: **0.304129**
+Index 01: a Baroque music theorist fixated on harmonic counterpoint and structural symmetry
+Index 10: a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed
+Index 14: a contrarian skeptic whose sole purpose is to argue the inverse of the majority opinion at all times
+Index 24: a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms
+Index 26: a post-modern deconstructionist who questions the validity and inherent meaning of all proposed terms
+Loading model: valuat/DeepSeek-R1-Distill-Qwen-1.5B-mlx-8Bit
+✅ The top 5 most dissimilar sentence indices are: **(4, 12, 15, 22, 30)**
+Maximum separation (Min-Max Distance): **0.5145**
+Index 04: a medieval cartographer whose primary concern is establishing clear boundaries and known territories
+Index 12: a Schopenhauerian pessimist who assumes the most detrimental outcome is inevitable and prepares for it
+Index 15: an unfettered Romantic idealist who prioritizes artistic vision and emotional resonance over cold logic
+Index 22: a childish prankster whose motivation is to introduce creative chaos and subvert expectations
+Index 30: a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(12, 15, 22, 29, 30)**
+Maximum Volume/Determinant: **0.282949**
+Index 12: a Schopenhauerian pessimist who assumes the most detrimental outcome is inevitable and prepares for it
+Index 15: an unfettered Romantic idealist who prioritizes artistic vision and emotional resonance over cold logic
+Index 22: a childish prankster whose motivation is to introduce creative chaos and subvert expectations
+Index 29: a 1950s Madison Avenue ad man who views the solution as a campaign to be emotionally sold and packaged
+Index 30: a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change
+Loading model: Qwen/Qwen3-1.7B-MLX-8bit
+✅ The top 5 most dissimilar sentence indices are: **(4, 15, 28, 29, 30)**
+Maximum separation (Min-Max Distance): **0.3712**
+Index 04: a medieval cartographer whose primary concern is establishing clear boundaries and known territories
+Index 15: an unfettered Romantic idealist who prioritizes artistic vision and emotional resonance over cold logic
+Index 28: a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements
+Index 29: a 1950s Madison Avenue ad man who views the solution as a campaign to be emotionally sold and packaged
+Index 30: a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(3, 4, 28, 29, 31)**
+Maximum Volume/Determinant: **0.111905**
+Index 03: a hard-science fiction xenolinguist obsessed with logical consistency and species-specific syntax
+Index 04: a medieval cartographer whose primary concern is establishing clear boundaries and known territories
+Index 28: a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements
+Index 29: a 1950s Madison Avenue ad man who views the solution as a campaign to be emotionally sold and packaged
+Index 31: a forensic pathologist who works backward from the failure state to determine the precise cause of death
+Loading model: mlx-community/Llama-3.2-3B-Instruct-8bit
+✅ The top 5 most dissimilar sentence indices are: **(0, 8, 25, 28, 36)**
+Maximum separation (Min-Max Distance): **0.2973**
+Index 00: a nihilistic cryptographer who only trusts solutions verifiable by zero-knowledge proofs
+Index 08: a Roman imperial jurist who strictly adheres to precedent and codified legal language
+Index 25: a pre-lingual infant whose understanding is limited to basic sensations, needs, and spatial presence
+Index 28: a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements
+Index 36: a mythological hero's sidekick who is overly cautious, risk-averse, and constantly points out dangers
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(8, 16, 28, 30, 36)**
+Maximum Volume/Determinant: **0.040282**
+Index 08: a Roman imperial jurist who strictly adheres to precedent and codified legal language
+Index 16: a hyper-capitalist financier who evaluates every move solely on ROI (Return on Investment) and marginal profit
+Index 28: a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements
+Index 30: a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change
+Index 36: a mythological hero's sidekick who is overly cautious, risk-averse, and constantly points out dangers
+Loading model: valuat/SmallThinker-3B-Preview-mlx-8Bit
+✅ The top 5 most dissimilar sentence indices are: **(13, 25, 36, 37, 43)**
+Maximum separation (Min-Max Distance): **0.4380**
+Index 13: a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application
+Index 25: a pre-lingual infant whose understanding is limited to basic sensations, needs, and spatial presence
+Index 36: a mythological hero's sidekick who is overly cautious, risk-averse, and constantly points out dangers
+Index 37: an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay
+Index 43: a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(13, 25, 36, 37, 43)**
+Maximum Volume/Determinant: **0.146520**
+Index 13: a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application
+Index 25: a pre-lingual infant whose understanding is limited to basic sensations, needs, and spatial presence
+Index 36: a mythological hero's sidekick who is overly cautious, risk-averse, and constantly points out dangers
+Index 37: an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay
+Index 43: a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard
+Loading model: Qwen/Qwen3-4B-MLX-8bit
+✅ The top 5 most dissimilar sentence indices are: **(0, 9, 21, 27, 43)**
+Maximum separation (Min-Max Distance): **0.4150**
+Index 00: a nihilistic cryptographer who only trusts solutions verifiable by zero-knowledge proofs
+Index 09: an early 20th-century urban planner focused on maximizing geometric efficiency and transit flow
+Index 21: a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror
+Index 27: a dread pirate captain whose strategy is based on risk assessment, immediate plunder, and intimidation
+Index 43: a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(9, 21, 39, 43, 45)**
+Maximum Volume/Determinant: **0.171223**
+Index 09: an early 20th-century urban planner focused on maximizing geometric efficiency and transit flow
+Index 21: a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror
+Index 39: an industrial safety inspector whose primary filter is identifying catastrophic single points of failure
+Index 43: a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard
+Index 45: a street-smart gambler whose strategy is based on calculating odds, weighted risk, and bluffing potential
+Loading model: mlx-community/Meta-Llama-3.1-8B-Instruct-8bit
+✅ The top 5 most dissimilar sentence indices are: **(0, 12, 29, 38, 39)**
+Maximum separation (Min-Max Distance): **0.2632**
+Index 00: a nihilistic cryptographer who only trusts solutions verifiable by zero-knowledge proofs
+Index 12: a Schopenhauerian pessimist who assumes the most detrimental outcome is inevitable and prepares for it
+Index 29: a 1950s Madison Avenue ad man who views the solution as a campaign to be emotionally sold and packaged
+Index 38: a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation
+Index 39: an industrial safety inspector whose primary filter is identifying catastrophic single points of failure
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(3, 12, 14, 29, 38)**
+Maximum Volume/Determinant: **0.025940**
+Index 03: a hard-science fiction xenolinguist obsessed with logical consistency and species-specific syntax
+Index 12: a Schopenhauerian pessimist who assumes the most detrimental outcome is inevitable and prepares for it
+Index 14: a contrarian skeptic whose sole purpose is to argue the inverse of the majority opinion at all times
+Index 29: a 1950s Madison Avenue ad man who views the solution as a campaign to be emotionally sold and packaged
+Index 38: a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation
+Loading model: Qwen/Qwen3-8B-MLX-8bit
+✅ The top 5 most dissimilar sentence indices are: **(5, 6, 9, 43, 47)**
+Maximum separation (Min-Max Distance): **0.3806**
+Index 05: a neuropharmacologist who analyzes all input as complex patterns of reward and aversion chemicals
+Index 06: an extreme minimalist architect whose goal is to strip the solution down to its bare, essential structure
+Index 09: an early 20th-century urban planner focused on maximizing geometric efficiency and transit flow
+Index 43: a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard
+Index 47: a city gossip columnist who filters information based on intrigue, conflict, and personal scandal potential
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(5, 8, 18, 20, 43)**
+Maximum Volume/Determinant: **0.133812**
+Index 05: a neuropharmacologist who analyzes all input as complex patterns of reward and aversion chemicals
+Index 08: a Roman imperial jurist who strictly adheres to precedent and codified legal language
+Index 18: a Taoist sage who seeks the path of least effort and accepts paradoxical outcomes
+Index 20: an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages
+Index 43: a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard
+Loading model: Qwen/Qwen3-14B-MLX-8bit
+✅ The top 5 most dissimilar sentence indices are: **(9, 17, 20, 30, 40)**
+Maximum separation (Min-Max Distance): **0.5201**
+Index 09: an early 20th-century urban planner focused on maximizing geometric efficiency and transit flow
+Index 17: a pre-Socratic materialist who reduces all problems to their basic physical components and forces
+Index 20: an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages
+Index 30: a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change
+Index 40: a historical revisionist who assumes all primary sources are propaganda and seeks hidden motives
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(5, 9, 17, 20, 28)**
+Maximum Volume/Determinant: **0.300187**
+Index 05: a neuropharmacologist who analyzes all input as complex patterns of reward and aversion chemicals
+Index 09: an early 20th-century urban planner focused on maximizing geometric efficiency and transit flow
+Index 17: a pre-Socratic materialist who reduces all problems to their basic physical components and forces
+Index 20: an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages
+Index 28: a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements
+Loading model: mlx-community/Qwen3-Embedding-0.6B-4bit-DWQ
+✅ The top 5 most dissimilar sentence indices are: **(0, 9, 13, 31, 45)**
+Maximum separation (Min-Max Distance): **0.6525**
+Index 00: a nihilistic cryptographer who only trusts solutions verifiable by zero-knowledge proofs
+Index 09: an early 20th-century urban planner focused on maximizing geometric efficiency and transit flow
+Index 13: a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application
+Index 31: a forensic pathologist who works backward from the failure state to determine the precise cause of death
+Index 45: a street-smart gambler whose strategy is based on calculating odds, weighted risk, and bluffing potential
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(1, 13, 20, 21, 41)**
+Maximum Volume/Determinant: **0.521307**
+Index 01: a Baroque music theorist fixated on harmonic counterpoint and structural symmetry
+Index 13: a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application
+Index 20: an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages
+Index 21: a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror
+Index 41: a drone swarm commander who views the task as parallel processing over numerous, interchangeable units

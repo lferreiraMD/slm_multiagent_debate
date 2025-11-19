@@ -1,0 +1,133 @@
+
+Resolved model: vibethinker -> valuat/VibeThinker-1.5B-mlx-8Bit
+
+================================================================================
+MODEL OUTPUT DIAGNOSTIC
+================================================================================
+Model: valuat/VibeThinker-1.5B-mlx-8Bit
+
+Loading model...
+✓ Model loaded successfully
+  Model type: Model
+  Tokenizer type: TokenizerWrapper
+
+--------------------------------------------------------------------------------
+CHAT TEMPLATE CHECK
+--------------------------------------------------------------------------------
+Has chat template: True
+Chat template preview: {%- if tools %}
+    {{- '<|im_start|>system\n' }}
+    {%- if messages[0]['role'] == 'system' %}
+        {{- messages[0]['content'] }}
+    {%- else %}
+        {{- '' }}
+    {%- endif %}
+    {{- "\n\n# ...
+
+================================================================================
+TEST 1: What is 2+2?
+================================================================================
+
+--------------------------------------------------------------------------------
+A) WITH CHAT TEMPLATE
+--------------------------------------------------------------------------------
+Formatted prompt:
+```
+<|im_start|>system
+Please reason step by step, and put your final answer within \boxed{}.<|im_end|>
+<|im_start|>user
+What is 2+2?<|im_end|>
+<|im_start|>assistant
+
+```
+
+Generating response (max_tokens=512)...
+
+RAW OUTPUT:
+========================================
+<think>
+Okay, so the user is asking what 2+2 is. Hmm, that seems straightforward, but let me think through it step by step to make sure I don't miss anything. 
+
+First, I remember that in arithmetic, the plus sign (+) means addition. So when we have 2+2, it's adding the number 2 and another 2 together. Now, addition is one of the basic operations, right? The goal here is to find the sum of these two numbers.
+
+Let me recall how addition works. If I have two numbers, say 3 and 4, adding them would mean putting them side by side on the fingers of your hand and counting how many fingers you can make. So 3 plus 4 would be 7 because you count up to seven. Applying that logic here, 2 plus 2 would be like counting two ones, then two more ones. Wait, no, maybe better to think in terms of the numbers themselves. 
+
+Another way to think about it is the concept of counting. If I have two apples and I get two more, how many apples do I have in total? That should be four. So that's another way to see that 2+2=4. 
+
+I also remember that in mathematics, numbers can be represented in different forms, like in binary. Let me check that. The number 2 in binary is 10, and adding another 2 (also 10 in binary). So adding 10 + 10 in binary would be 100, which is 4 in decimal. That also gives the same result. 
+
+Wait, maybe the user is testing if I know basic math? But maybe there's a trick here. Sometimes people ask simple questions to see if I get confused by irrelevant information. The problem is just 2+2, no tricks or hidden steps. 
+
+Alternatively, could this be a question about operator precedence or something else? But in this case, there's no other operations or parentheses, so it's straightforward. 
+
+I also recall that in some contexts, like in programming, the expression 2+2 would indeed return 4. So across different fields, the answer remains the same. 
+
+Is there any possible way this could be something other than 4? Let me think. If someone made a mistake in counting, like adding the digits wrong, maybe 2+2=3? But that's not correct. Or if they thought in base 3
+========================================
+
+OUTPUT ANALYSIS:
+
+Special tokens detected:
+  ✓ Found '<think>' - Reasoning token (chain-of-thought)
+
+  Length: 2080 characters, 386 words
+  Starts with prompt echo: False
+
+
+--------------------------------------------------------------------------------
+B) WITHOUT CHAT TEMPLATE (Simple Format)
+--------------------------------------------------------------------------------
+Formatted prompt:
+```
+User: What is 2+2?
+
+Assistant:
+```
+
+Generating response (max_tokens=512)...
+
+RAW OUTPUT:
+========================================
+You are a helpful assistant, and I'm a bit too old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. But I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a bit old for a direct interaction with a computer. Instead, I'll explain the problem step by step, and you can respond accordingly. Let's see: 2+2 is 4. So, the answer is 4. I'm a
+========================================
+
+OUTPUT ANALYSIS:
+
+  No special tokens detected
+
+  Length: 1836 characters, 350 words
+  Starts with prompt echo: False
+
+
+================================================================================
+TOKENIZER SPECIAL TOKENS
+================================================================================
+  eos_token: '<|endoftext|>'
+  pad_token: '<|endoftext|>'
+
+Added tokens:
+  151643: '<|endoftext|>'
+  151644: '<|im_start|>'
+  151645: '<|im_end|>'
+  151646: '<|object_ref_start|>'
+  151647: '<|object_ref_end|>'
+  151648: '<|box_start|>'
+  151649: '<|box_end|>'
+  151650: '<|quad_start|>'
+  151651: '<|quad_end|>'
+  151652: '<|vision_start|>'
+  151653: '<|vision_end|>'
+  151654: '<|vision_pad|>'
+  151655: '<|image_pad|>'
+  151656: '<|video_pad|>'
+  151657: '<tool_call>'
+  151658: '</tool_call>'
+  151659: '<|fim_prefix|>'
+  151660: '<|fim_middle|>'
+  151661: '<|fim_suffix|>'
+  151662: '<|fim_pad|>'
+  ... and 4 more
+
+================================================================================
+DIAGNOSTIC COMPLETE
+================================================================================

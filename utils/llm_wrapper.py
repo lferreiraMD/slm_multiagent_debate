@@ -149,14 +149,21 @@ class ChatCompletion:
             # VibeThinker creators recommend 40960 max_token_length
             max_tokens = 40960 if is_reasoning_model else 4096
 
+        # Create sampler with temperature and top_p for diversity
+        from mlx_lm.sample_utils import make_sampler
+        sampler = make_sampler(
+            temp=temperature,
+            top_p=top_p if top_p < 1.0 else 0.0  # top_p=1.0 means disabled in MLX
+        )
+
         start_time = time.time()
-        # MLX generate in this version doesn't support temp/temperature in generate_step()
-        # Only use max_tokens and verbose
+        # Generate with custom sampler for temperature control
         response_text = generate(
             model_obj,
             tokenizer,
             prompt=prompt,
             max_tokens=max_tokens,
+            sampler=sampler,
             verbose=False
         )
         latency = time.time() - start_time

@@ -1,0 +1,7 @@
+MMLU EVALUATION SUMMARY
+============================================================
+Input file: mmlu_VibeThinker-1.5B-mlx-8Bit_agents2_rounds2.json
+Questions evaluated: 10
+Correct answers: 5/10
+Accuracy: 0.500 ± 0.158
+Percentage: 50.0%

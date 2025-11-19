@@ -1,0 +1,811 @@
+Working with model: Qwen/Qwen3-0.6B-MLX-8bit
+Loading model: Qwen/Qwen3-0.6B-MLX-8bit
+Fetching 7 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:00<00:00, 3571.36it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 1024)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(1, 29, 34, 39, 47)**
+Maximum separation (Min-Max Distance): **0.6389**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 01: a meticulous analyst who examines every detail carefully
+Index 29: a disciplined executor who follows processes strictly
+Index 34: a spontaneous improviser who adapts quickly to new information
+Index 39: a patient deliberator who takes time to form well-reasoned views
+Index 47: a reasonable negotiator who finds practical compromises
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(21, 29, 34, 46, 47)**
+Maximum Volume/Determinant: **0.557521**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 21: a visionary leader who focuses on long-term implications
+Index 29: a disciplined executor who follows processes strictly
+Index 34: a spontaneous improviser who adapts quickly to new information
+Index 46: a balanced moderator who seeks middle ground
+Index 47: a reasonable negotiator who finds practical compromises
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: valuat/VibeThinker-1.5B-mlx-8Bit
+Loading model: valuat/VibeThinker-1.5B-mlx-8Bit
+Fetching 11 files: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 9315.03it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 1536)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(9, 10, 30, 34, 35)**
+Maximum separation (Min-Max Distance): **0.5000**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 09: a provocative challenger who tests ideas through confrontation
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 30: an enthusiastic advocate who argues passionately for positions
+Index 34: a spontaneous improviser who adapts quickly to new information
+Index 35: a reflective contemplator who thinks deeply before responding
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(9, 10, 12, 35, 41)**
+Maximum Volume/Determinant: **0.260709**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 09: a provocative challenger who tests ideas through confrontation
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 12: an imaginative visionary who thinks beyond conventional boundaries
+Index 35: a reflective contemplator who thinks deeply before responding
+Index 41: an efficient optimizer who seeks the most direct path
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: valuat/DeepSeek-R1-Distill-Qwen-1.5B-mlx-8Bit
+Loading model: valuat/DeepSeek-R1-Distill-Qwen-1.5B-mlx-8Bit
+Fetching 8 files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 40041.09it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 1536)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(9, 10, 12, 14, 26)**
+Maximum separation (Min-Max Distance): **0.5861**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 09: a provocative challenger who tests ideas through confrontation
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 12: an imaginative visionary who thinks beyond conventional boundaries
+Index 14: an experimental explorer willing to try unconventional approaches
+Index 26: a cautious deliberator who weighs risks carefully
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(9, 14, 26, 31, 44)**
+Maximum Volume/Determinant: **0.462132**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 09: a provocative challenger who tests ideas through confrontation
+Index 14: an experimental explorer willing to try unconventional approaches
+Index 26: a cautious deliberator who weighs risks carefully
+Index 31: a bold risk-taker who embraces uncertainty
+Index 44: a competitive winner who strives to prevail in debates
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: Qwen/Qwen3-1.7B-MLX-8bit
+Loading model: Qwen/Qwen3-1.7B-MLX-8bit
+Fetching 7 files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:00<00:00, 19560.38it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 2048)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(3, 10, 19, 24, 33)**
+Maximum separation (Min-Max Distance): **0.4092**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 03: a thorough investigator who leaves no stone unturned
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 19: a warm supporter who encourages and validates contributions
+Index 24: a futuristic forecaster who anticipates consequences and trends
+Index 33: an adventurous experimenter eager to explore new territory
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(3, 10, 19, 24, 31)**
+Maximum Volume/Determinant: **0.158418**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 03: a thorough investigator who leaves no stone unturned
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 19: a warm supporter who encourages and validates contributions
+Index 24: a futuristic forecaster who anticipates consequences and trends
+Index 31: a bold risk-taker who embraces uncertainty
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: mlx-community/Llama-3.2-3B-Instruct-8bit
+Loading model: mlx-community/Llama-3.2-3B-Instruct-8bit
+Fetching 6 files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 15335.66it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 3072)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(4, 24, 25, 35, 45)**
+Maximum separation (Min-Max Distance): **0.2130**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 04: a pragmatic problem-solver focused on practical solutions
+Index 24: a futuristic forecaster who anticipates consequences and trends
+Index 25: a perfectionist who insists on accuracy and precision
+Index 35: a reflective contemplator who thinks deeply before responding
+Index 45: an impartial judge who weighs all sides fairly
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(4, 24, 25, 35, 45)**
+Maximum Volume/Determinant: **0.012511**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 04: a pragmatic problem-solver focused on practical solutions
+Index 24: a futuristic forecaster who anticipates consequences and trends
+Index 25: a perfectionist who insists on accuracy and precision
+Index 35: a reflective contemplator who thinks deeply before responding
+Index 45: an impartial judge who weighs all sides fairly
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: valuat/SmallThinker-3B-Preview-mlx-8Bit
+Loading model: valuat/SmallThinker-3B-Preview-mlx-8Bit
+Fetching 11 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 26902.24it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 2048)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(4, 5, 10, 39, 43)**
+Maximum separation (Min-Max Distance): **0.3012**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 04: a pragmatic problem-solver focused on practical solutions
+Index 05: a skeptical questioner who challenges assumptions rigorously
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 39: a patient deliberator who takes time to form well-reasoned views
+Index 43: a decisive executor who makes quick, firm judgments
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(4, 5, 10, 39, 43)**
+Maximum Volume/Determinant: **0.051074**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 04: a pragmatic problem-solver focused on practical solutions
+Index 05: a skeptical questioner who challenges assumptions rigorously
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 39: a patient deliberator who takes time to form well-reasoned views
+Index 43: a decisive executor who makes quick, firm judgments
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: Qwen/Qwen3-4B-MLX-8bit
+Loading model: Qwen/Qwen3-4B-MLX-8bit
+Fetching 7 files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:00<00:00, 16429.84it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 2560)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(3, 14, 25, 28, 42)**
+Maximum separation (Min-Max Distance): **0.3528**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 03: a thorough investigator who leaves no stone unturned
+Index 14: an experimental explorer willing to try unconventional approaches
+Index 25: a perfectionist who insists on accuracy and precision
+Index 28: a meticulous fact-checker who verifies every claim
+Index 42: a results-driven achiever who prioritizes concrete goals
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(25, 28, 33, 42, 48)**
+Maximum Volume/Determinant: **0.091774**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 25: a perfectionist who insists on accuracy and precision
+Index 28: a meticulous fact-checker who verifies every claim
+Index 33: an adventurous experimenter eager to explore new territory
+Index 42: a results-driven achiever who prioritizes concrete goals
+Index 48: an objective observer who maintains emotional distance
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: mlx-community/Meta-Llama-3.1-8B-Instruct-8bit
+Loading model: mlx-community/Meta-Llama-3.1-8B-Instruct-8bit
+Fetching 7 files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:00<00:00, 26812.90it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 4096)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(19, 33, 35, 41, 45)**
+Maximum separation (Min-Max Distance): **0.2980**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 19: a warm supporter who encourages and validates contributions
+Index 33: an adventurous experimenter eager to explore new territory
+Index 35: a reflective contemplator who thinks deeply before responding
+Index 41: an efficient optimizer who seeks the most direct path
+Index 45: an impartial judge who weighs all sides fairly
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(4, 18, 35, 41, 42)**
+Maximum Volume/Determinant: **0.042080**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 04: a pragmatic problem-solver focused on practical solutions
+Index 18: a collaborative facilitator who brings ideas together harmoniously
+Index 35: a reflective contemplator who thinks deeply before responding
+Index 41: an efficient optimizer who seeks the most direct path
+Index 42: a results-driven achiever who prioritizes concrete goals
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: Qwen/Qwen3-8B-MLX-8bit
+Loading model: Qwen/Qwen3-8B-MLX-8bit
+Fetching 8 files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 20522.59it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 4096)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(3, 9, 32, 36, 47)**
+Maximum separation (Min-Max Distance): **0.2623**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 03: a thorough investigator who leaves no stone unturned
+Index 09: a provocative challenger who tests ideas through confrontation
+Index 32: an assertive leader who drives discussions forward decisively
+Index 36: a philosophical questioner who examines fundamental assumptions
+Index 47: a reasonable negotiator who finds practical compromises
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(9, 10, 32, 36, 47)**
+Maximum Volume/Determinant: **0.036608**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 09: a provocative challenger who tests ideas through confrontation
+Index 10: an intuitive thinker who relies on pattern recognition and gut feelings
+Index 32: an assertive leader who drives discussions forward decisively
+Index 36: a philosophical questioner who examines fundamental assumptions
+Index 47: a reasonable negotiator who finds practical compromises
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: Qwen/Qwen3-14B-MLX-8bit
+Loading model: Qwen/Qwen3-14B-MLX-8bit
+Fetching 9 files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 133860.77it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 5120)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(2, 3, 15, 31, 37)**
+Maximum separation (Min-Max Distance): **0.4434**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 02: a logical reasoner who prioritizes evidence and structure
+Index 03: a thorough investigator who leaves no stone unturned
+Index 15: a compassionate mediator who considers emotional and human impacts
+Index 31: a bold risk-taker who embraces uncertainty
+Index 37: a thoughtful observer who considers multiple angles quietly
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(3, 12, 15, 41, 49)**
+Maximum Volume/Determinant: **0.185174**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 03: a thorough investigator who leaves no stone unturned
+Index 12: an imaginative visionary who thinks beyond conventional boundaries
+Index 15: a compassionate mediator who considers emotional and human impacts
+Index 41: an efficient optimizer who seeks the most direct path
+Index 49: a fair arbiter who considers evidence without bias
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:350: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: overflow encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:351: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = normalizer(A.T @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: divide by zero encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: overflow encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:355: RuntimeWarning: invalid value encountered in matmul
+  Q, _ = qr_normalizer(A @ Q)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: divide by zero encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: overflow encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:577: RuntimeWarning: invalid value encountered in matmul
+  B = Q.T @ M
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/sklearn/utils/extmath.py:590: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+tsne_diversity_comparison_with_labels.png generated.
+Working with model: mlx-community/Qwen3-Embedding-0.6B-4bit-DWQ
+Loading model: mlx-community/Qwen3-Embedding-0.6B-4bit-DWQ
+Fetching 11 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 51898.02it/s]
+Model loaded successfully!
+
+Extracting embeddings for 50 personas...
+This may take a few minutes...
+  Processed 10/50 personas...
+  Processed 20/50 personas...
+  Processed 30/50 personas...
+  Processed 40/50 personas...
+  Processed 50/50 personas...
+✓ Complete! Embeddings shape: (50, 1024)
+Combination #250000
+Combination #500000
+Combination #750000
+Combination #1000000
+Combination #1250000
+Combination #1500000
+Combination #1750000
+Combination #2000000
+
+--- Brute Force Results ---
+✅ The top 5 most dissimilar sentence indices are: **(22, 25, 29, 34, 46)**
+Maximum separation (Min-Max Distance): **0.6837**
+### Personas Selected by Max-Min Distance (Maximum Separation) ###
+Index 22: a holistic thinker who sees systems and interconnections
+Index 25: a perfectionist who insists on accuracy and precision
+Index 29: a disciplined executor who follows processes strictly
+Index 34: a spontaneous improviser who adapts quickly to new information
+Index 46: a balanced moderator who seeks middle ground
+
+✅ The top 5 personas maximizing the volume (Max Det(S)) are: **(22, 25, 34, 44, 46)**
+Maximum Volume/Determinant: **0.597142**
+### Personas Selected by Max Det(S) (Maximum Volume/Spread) ###
+Index 22: a holistic thinker who sees systems and interconnections
+Index 25: a perfectionist who insists on accuracy and precision
+Index 34: a spontaneous improviser who adapts quickly to new information
+Index 44: a competitive winner who strives to prevail in debates
+Index 46: a balanced moderator who seeks middle ground
+
