@@ -491,36 +491,79 @@ python3 gen_gsm.py --model vllm-qwen25-7b --agents 4 --rounds 3
 
 ```
 .
-├── data/              # Datasets (included in repo)
-│   ├── biography/     # Ground truth biographies
-│   ├── gsm8k/         # GSM8K dataset
-│   └── mmlu/          # MMLU benchmark
-├── tasks/             # Task implementations
-│   ├── math/          # Arithmetic (gen_math.py)
-│   ├── gsm/           # GSM8K (gen_gsm.py)
-│   ├── biography/     # Biographies (gen_conversation.py, eval_conversation.py)
-│   └── mmlu/          # MMLU (gen_mmlu.py, eval_mmlu.py)
-├── utils/             # Shared utilities
-│   ├── llm_wrapper.py      # Multi-backend LLM interface
+├── data/                   # Datasets (included in repo)
+│   ├── biography/          # Ground truth biographies (article.json)
+│   ├── gsm8k/              # GSM8K dataset (train.jsonl, test.jsonl)
+│   └── mmlu/               # MMLU benchmark (*_test.csv files)
+│
+├── tasks/                  # Task implementations
+│   ├── math/               # Arithmetic reasoning
+│   │   └── gen_math.py     # Generation with inline evaluation
+│   ├── gsm/                # Grade school math (GSM8K)
+│   │   ├── gen_gsm.py      # Generation with inline evaluation
+│   │   └── eval_gsm.py     # Standalone evaluation (legacy)
+│   ├── biography/          # Computer scientist biographies
+│   │   ├── gen_conversation.py   # Generation script
+│   │   └── eval_conversation.py  # GPT-4 based evaluation
+│   └── mmlu/               # MMLU multiple-choice questions
+│       ├── gen_mmlu.py     # Generation with inline evaluation
+│       └── eval_mmlu.py    # Standalone evaluation with debug mode
+│
+├── experiments/            # HPC experiment infrastructure (NEW)
+│   ├── download_models.py  # Pre-cache model tokenizers/configs
+│   ├── hpc_test.sh         # Quick sanity check (all 4 tasks)
+│   ├── run_math_experiments.sh       # 220 math experiments
+│   ├── run_gsm_experiments.sh        # 220 GSM experiments
+│   ├── run_biography_experiments.sh  # 220 biography experiments
+│   ├── run_mmlu_experiments.sh       # 220 MMLU experiments
+│   └── README.md           # Experiment documentation
+│
+├── utils/                  # Shared utilities
+│   ├── llm_wrapper.py      # Multi-backend LLM interface (MLX/vLLM/Ollama)
 │   ├── config.py           # Configuration management
-│   ├── model_cache.py      # Model loading/caching
-│   └── helpers.py          # Shared functions
-├── scripts/           # Analysis and benchmarking
-│   ├── aggregate_results.py       # Combine results
-│   ├── plot_by_model.py          # Visualization
-│   ├── plot_by_task.py           # Comparison plots
-│   ├── benchmark_gsm_baseline.sh  # GSM benchmark
-│   ├── benchmark_math_baseline.sh # Math benchmark
-│   └── README_BENCHMARKS.md       # Benchmark documentation
-├── results/           # Experiment outputs
-│   ├── summary.p      # Aggregated results
-│   └── summary.csv    # Human-readable summary
-├── plots/             # Generated visualizations
-├── config.yaml        # Central configuration
-├── requirements.txt   # Cross-platform dependencies
-├── requirements_hpc.txt  # Linux/HPC with vLLM
-├── CLAUDE.md          # Internal technical documentation
-└── README.md          # This file
+│   ├── model_cache.py      # Model loading/caching with cleanup
+│   ├── helpers.py          # Shared functions (accuracy, diversity metrics)
+│   └── ORIGINAL_STUDY_PARAMETERS.md  # Original paper parameters
+│
+├── scripts/                # Analysis and benchmarking
+│   ├── aggregate_results.py          # Combine experiment results
+│   ├── plot_by_model.py              # Per-model visualizations
+│   ├── plot_by_task.py               # Task comparison plots
+│   ├── benchmark_gsm_baseline.sh     # GSM baseline benchmark
+│   ├── benchmark_math_baseline.sh    # Math baseline benchmark
+│   ├── README_BENCHMARKS.md          # Benchmark documentation
+│   └── test_model_output.py          # Model testing utilities
+│
+├── results/                # Experiment outputs
+│   ├── baseline/           # Baseline experiment results (NEW)
+│   │   ├── math/           # Math task results
+│   │   ├── gsm/            # GSM task results
+│   │   ├── biography/      # Biography task results
+│   │   └── mmlu/           # MMLU task results
+│   ├── summary.p           # Aggregated results (tracked in git)
+│   └── summary.csv         # Human-readable summary (tracked in git)
+│
+├── personas/               # Cognitive diversity research (NEW)
+│   ├── diversity_optimization_2821r.ipynb      # Jupyter notebook
+│   ├── diversity_optimization_2821r_mlx.py     # Python script version
+│   ├── embedding_search.py                     # Embedding analysis
+│   ├── persona_v1_data.txt & persona_v1_results.txt
+│   └── persona_v2_data.txt & persona_v2_results.txt
+│
+├── plots/                  # Generated visualizations (gitignored)
+│   └── *.png               # t-SNE plots, experiment results
+│
+├── text/                   # Project documentation (NEW)
+│   └── abstract.txt        # Research abstract
+│
+├── legacy/                 # Deprecated code (not actively maintained)
+│   └── eval_gsm.py         # Old standalone GSM evaluation
+│
+├── config.yaml             # Central configuration
+├── requirements.txt        # Cross-platform dependencies
+├── requirements_hpc.txt    # Linux/HPC with vLLM
+├── CLAUDE.md               # Internal technical documentation
+└── README.md               # This file
 ```
 
 ---
