@@ -50,7 +50,6 @@ Multiple LLM agents independently solve the same problem, then see each other's 
 
 ### Prerequisites
 - **Python:** 3.10+ (tested with 3.12.7)
-- **Command:** Use `python3` and `pip3` (not `python` or `pip`)
 - **Platform:** macOS (Apple Silicon), Linux (NVIDIA GPUs), or Windows
 
 ### 1. Clone Repository
@@ -63,14 +62,14 @@ cd slm_multiagent_debate
 
 #### **macOS (Apple Silicon - M1/M2/M3/M4)**
 ```bash
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 - MLX packages will automatically install for Apple Silicon
 - Models are already optimized and ready to use
 
 #### **Linux/HPC (NVIDIA GPUs)**
 ```bash
-pip3 install -r requirements_hpc.txt
+pip install -r requirements_hpc.txt
 ```
 - Installs vLLM, PyTorch with CUDA, transformers
 - Tested on Ubuntu 22.04 with dual RTX 3090 (48GB VRAM)
@@ -78,14 +77,14 @@ pip3 install -r requirements_hpc.txt
 
 **Verify GPU setup:**
 ```bash
-python3 -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
-python3 -c "import torch; print(f'GPU count: {torch.cuda.device_count()}')"
+python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
+python -c "import torch; print(f'GPU count: {torch.cuda.device_count()}')"
 nvidia-smi  # Check GPU status
 ```
 
 #### **Cross-Platform (Ollama)**
 ```bash
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 
 # Install Ollama
 # macOS/Linux:
@@ -103,10 +102,10 @@ ollama pull deepseek-r1:1.5b
 ### 3. Verify Installation
 ```bash
 # Check vLLM (Linux only)
-python3 -c "from vllm import LLM; print('vLLM ready')"
+python -c "from vllm import LLM; print('vLLM ready')"
 
 # Check MLX (macOS only)
-python3 -c "import mlx_lm; print('MLX ready')"
+python -c "import mlx_lm; print('MLX ready')"
 
 # Check Ollama (all platforms)
 ollama list
@@ -122,13 +121,13 @@ ollama list
 Pre-download all model tokenizers and configs to avoid runtime delays:
 
 ```bash
-python3 experiments/download_models.py
+python experiments/download_models.py
 ```
 
 This caches tokenizers/configs for all 11 vLLM models. Model weights (10-40GB each) will download automatically on first use.
 
 **Duration:** ~5-10 minutes
-**Disk space:** ~500MB for tokenizers/configs
+**Disk space:** ~250GB for all files (tokenizers/configs/model weights)
 
 ### Step 2: Run HPC Test (Verify Setup)
 Test that everything works before running full experiments:
