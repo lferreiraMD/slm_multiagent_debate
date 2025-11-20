@@ -12,6 +12,9 @@ IMPORTANT: This script is intended for HPC/Linux with vLLM backend.
 Usage:
     python3 download_models.py [--model MODEL_NAME]
 
+    # If you encounter CUDA memory fragmentation issues, set:
+    export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
 Examples:
     # Download all vLLM models
     python3 download_models.py
@@ -21,8 +24,54 @@ Examples:
 """
 
 import argparse
+import gc
+import os
 import sys
 from pathlib import Path
+
+# Suppress NCCL process group warning from vLLM worker processes
+os.environ['TORCH_DISTRIBUTED_DEBUG'] = 'OFF'
+os.environ['NCCL_DEBUG'] = 'ERROR'  # Only show NCCL errors
+os.environ['TORCH_CPP_LOG_LEVEL'] = 'ERROR'  # Only show C++ errors
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning, module='torch.distributed')
+
+from vllm import LLM
+from transformers import AutoTokenizer
+
+from huggingface_hub import login
+import os
+from dotenv import load_dotenv
+import logging
+
+# Suppress verbose logging from vLLM and related libraries
+logging.getLogger("vllm").setLevel(logging.WARNING)
+logging.getLogger("transformers").setLevel(logging.WARNING)
+logging.getLogger("torch").setLevel(logging.WARNING)
+logging.getLogger("torch.distributed").setLevel(logging.ERROR)
+logging.getLogger("huggingface_hub").setLevel(logging.WARNING)
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get HuggingFace token from environment
+hf_token = os.environ.get("HF_TOKEN")
+
+if hf_token:
+    login(token=hf_token)
+    print("✓ HuggingFace login successful!")
+else:
+    print("⚠ HF_TOKEN not found in .env file or environment variables")
+    print("  Some models may require authentication to download.")
+
+try:
+    import torch
+    import torch.distributed as dist
+    TORCH_AVAILABLE = True
+except ImportError:
+    TORCH_AVAILABLE = False
+    dist = None
+
 
 # Add project root to path to import utils
 project_root = Path(__file__).parent.parent
@@ -32,19 +81,19 @@ from transformers import AutoTokenizer, AutoConfig
 from utils import resolve_model_name
 
 # vLLM model aliases from config.yaml
-VLLM_MODELS = [
-    "vllm-qwen3-0.6b",
-    "vllm-vibethinker",
-    "vllm-deepseek",
-    "vllm-qwen3-1.7b",
-    "vllm-llama32-3b",
-    "vllm-smallthinker",
-    "vllm-qwen3-4b",
-    "vllm-llama31-8b",
-    "vllm-qwen3-8b",
-    "vllm-qwen3-14b",
-    "vllm-oss-20b",
-]
+VLLM_MODELS = {
+    'vllm-qwen3-0.6b':      "Qwen/Qwen3-0.6B",
+    'vllm-vibethinker':	    "WeiboAI/VibeThinker-1.5B",
+    'vllm-deepseek':	    "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    'vllm-qwen3-1.7b':	    "Qwen/Qwen3-1.7B",
+    'vllm-llama32-3b':	    "meta-llama/Llama-3.2-3B-Instruct",
+    'vllm-smallthinker':	"PowerInfer/SmallThinker-3B-Preview",
+    'vllm-qwen3-4b':	    "Qwen/Qwen3-4B-Instruct-2507",
+    'vllm-llama31-8b':	    "meta-llama/Llama-3.1-8B-Instruct",
+    'vllm-qwen3-8b':	    "Qwen/Qwen3-8B",
+    'vllm-qwen3-14b':	    "Qwen/Qwen3-14B",
+    'vllm-oss-20b':	        "openai/gpt-oss-20b"
+}
 
 
 def download_model(model_alias: str) -> bool:
@@ -73,25 +122,48 @@ def download_model(model_alias: str) -> bool:
         print("  → Downloading tokenizer...")
         tokenizer = AutoTokenizer.from_pretrained(
             model_path,
-            trust_remote_code=True
         )
         print(f"  ✓ Tokenizer cached ({len(tokenizer)} tokens)")
 
         # Download model config (includes architecture info)
         print("  → Downloading model config...")
-        config = AutoConfig.from_pretrained(
+        _ = AutoConfig.from_pretrained(
             model_path,
-            trust_remote_code=True
         )
         print(f"  ✓ Config cached")
 
-        # Note: We don't download full weights here because:
-        # 1. Some models are 20B+ parameters (40GB+ downloads)
-        # 2. vLLM will auto-download on first use
-        # 3. This script focuses on caching tokenizer/config for speed
+        # Download model weights
+        print("  → Downloading model weights...")
+        llm = LLM(
+            model=model_path,
+            tensor_parallel_size=1,  # Adjust for multi-GPU
+            max_model_len=2048,  # Limit context length to reduce KV cache memory
+            gpu_memory_utilization=0.7,  # Use 70% of GPU memory (leaves room for cleanup)
+            enforce_eager=True,  # Disable flash-attn and use eager mode (fixes compatibility issues)
+            disable_custom_all_reduce=True  # Disable custom kernels
+        )
+
+        # Explicitly delete model to free GPU memory
+        print("  → Cleaning up GPU memory...")
+        del llm
+
+        # Aggressive cleanup to ensure GPU memory is fully released
+        if TORCH_AVAILABLE and torch.cuda.is_available():
+            # Destroy distributed process group if initialized
+            if dist is not None and dist.is_initialized():
+                dist.destroy_process_group()
+
+            torch.cuda.synchronize()  # Wait for all CUDA operations to complete
+            torch.cuda.empty_cache()  # Clear CUDA cache
+            torch.cuda.ipc_collect()  # Collect CUDA IPC memory
+
+        gc.collect()  # Force garbage collection
+
+        # Give GPU a moment to fully release memory
+        import time
+        time.sleep(2)
 
         print(f"  ✓ Successfully cached {model_alias}")
-        print(f"  ℹ Note: Model weights will download on first vLLM use")
         return True
 
     except Exception as e:
@@ -122,14 +194,21 @@ def main():
     print("="*60)
     print(f"Models to download: {len(models_to_download)}")
     print(f"Cache location: ~/.cache/huggingface/hub/")
-    print(f"Note: Only tokenizer/config cached, weights download on first use")
+    print(f"Note: Downloads tokenizer, config, and full model weights")
     print("="*60)
 
     # Download each model
     results = {}
     for i, model_alias in enumerate(models_to_download, 1):
+        # Handle both cases: dict (VLLM_MODELS) and list ([args.model])
+        if isinstance(models_to_download, dict):
+            model_path = models_to_download[model_alias]
+        else:
+            # models_to_download is a list, model_alias is already the model name
+            model_path = model_alias
+
         print(f"\n[{i}/{len(models_to_download)}] Processing {model_alias}...")
-        success = download_model(model_alias)
+        success = download_model(model_path)
         results[model_alias] = success
 
     # Summary

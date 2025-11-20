@@ -8,8 +8,8 @@
 set -e  # Exit on first error
 
 # Test configuration
-MODEL="vllm-vibethinker"
-AGENTS=2
+MODEL="Qwen/Qwen3-0.6B"
+AGENTS=3
 ROUNDS=2
 NUM_PROBLEMS=10  # Small number for quick testing
 
