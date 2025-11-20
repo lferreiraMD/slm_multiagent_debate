@@ -28,6 +28,8 @@ Model requirements:
 import mlx.core as mx
 from mlx_lm import load
 import numpy as np
+import pickle
+import os
 import matplotlib.pyplot as plt
 from itertools import combinations
 from scipy.spatial.distance import pdist, squareform
@@ -36,7 +38,12 @@ import umap
 from sklearn.manifold import TSNE
 
 ### Auxillary functions
-# The MaxMin metric ensures all personas are far apart from each other.
+# Saves object as pickle object
+def save_object(_obj, _filepath):
+    with open(_filepath, 'wb') as outp:
+        pickle.dump(_obj, outp, pickle.HIGHEST_PROTOCOL)
+#
+# # The MaxMin metric ensures all personas are far apart from each other.
 def get_diversity_score(indices, distance_matrix):
     """Calculates the minimum pairwise distance within the subset."""
     # np.ix_ allows indexing both rows and columns simultaneously
@@ -163,9 +170,9 @@ def plot_embeddings(_model, _embeddings, _personas, _maxmin_indices, _maxdet_ind
     colors = np.full(nrows, 'lightgray', dtype=object) # Default color is light gray
     #
     # Create masks for the two sets
-    min_dist_mask = np.zeros(N, dtype=bool)
+    min_dist_mask = np.zeros(nrows, dtype=bool)
     min_dist_mask[list(_maxmin_indices)] = True
-    det_volume_mask = np.zeros(N, dtype=bool)
+    det_volume_mask = np.zeros(nrows, dtype=bool)
     det_volume_mask[list(_maxdet_indices)] = True
     #
     # Identify points that are in BOTH sets (intersection)
@@ -176,7 +183,7 @@ def plot_embeddings(_model, _embeddings, _personas, _maxmin_indices, _maxdet_ind
     colors[det_volume_mask & ~intersection_mask] = 'blue'
     colors[min_dist_mask & ~intersection_mask] = 'green'
     #
-    # 4. Plotting
+    # Plotting
     plt.figure(figsize=(10, 8))
     handles = [
         plt.scatter([], [], color='lightgray', label='All Other Personas'),
@@ -196,13 +203,15 @@ def plot_embeddings(_model, _embeddings, _personas, _maxmin_indices, _maxdet_ind
     #
     model_short = _model.split('/')[1]
     persona_short = get_variable_name(_personas)
+    num_personas = len(_maxmin_indices)
+    #
     plt.title(f't-SNE Visualization of Persona Diversity Selection - {model_short}', fontsize=14)
     plt.xlabel('t-SNE Dimension 1')
     plt.ylabel('t-SNE Dimension 2')
     plt.legend(handles=handles, loc='best', title="Diversity Criteria")
     plt.grid(True, alpha=0.3)
     plt.tight_layout() # Adjust layout to prevent labels from being cut off
-    plt.savefig(f'tsne_diversity_comparison_{persona_short}_{model_short}.png')
+    plt.savefig(f'tsne_diversity_comparison_a{num_personas}_{persona_short}_{model_short}.png')
     print("tsne_diversity_comparison_with_labels.png generated.")
 #
 def get_embeddings(_model, _personas):
@@ -435,24 +444,29 @@ personas_v2 = [
 'a linguistic anthropologist who views the solution as a structure of cultural symbols and shared meaning'
 ]
 
-#exec(f"{variable_name_str} = {value}")
+def create_output_filepath(_path, _model, _persona_list, _num_personas):
+    _persona_short = get_variable_name(_persona_list)
+    _model_short = _model.split('/')[1]
+    _final_path = os.path.join(_path, f"results_{_num_personas}_agents_{_persona_short}_{_model_short}.pk")
+    return _final_path
+#
+def run_it_all(_output_dir, _model_dict, _num_personas, _persona_list):
+    for _key in _model_dict.keys():
+        _model = _model_dict[_key]
+        _embed = get_embeddings(_model, _persona_list)
+        _distance_matrix, _similarity_matrix = cosine_distance_matrix(_embed)
+        _results = brute_force_search(_num_personas, _persona_list, _distance_matrix, _similarity_matrix)
+        _results_path = create_output_filepath(_output_dir, _model, _persona_list, _num_personas)
+        save_object(_results, _results_path)
+        plot_embeddings(_model, _embed, _persona_list, _results['best_indices'], _results['best_indices_det'])
+#
+OUTPUT_DIR = '/Users/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/personas'
+num_personas_list = [2, 3, 4, 5, 6, 7]
+personas_list = [personas_v1, personas_v2]
 
-num_personas = 5
-# personas_v1
-for key in model_dict.keys():
-    model = model_dict[key]
-    embed = get_embeddings(model, personas_v1)
-    distance_matrix, similarity_matrix = cosine_distance_matrix(embed)
-    results = brute_force_search(num_personas, personas_v1, distance_matrix, similarity_matrix)
-    plot_embeddings(model, embed, personas_v1, results['best_indices'], results['best_indices_det'])
-
-# personas_v2
-for key in model_dict.keys():
-    model = model_dict[key]
-    embed = get_embeddings(model, personas_v2)
-    distance_matrix, similarity_matrix = cosine_distance_matrix(embed)
-    results = brute_force_search(num_personas, personas_v2, distance_matrix, similarity_matrix)
-    plot_embeddings(model, embed, personas_v2, results['best_indices'], results['best_indices_det'])
+for num_personas in num_personas_list:
+    for personas in personas_list:
+        run_it_all(OUTPUT_DIR, model_dict, num_personas, personas)
 
 # cat+grep line: cat persona_v2_results.txt | grep -E "top|Loading|Min-Max|Determinant|Index" > persona_v2_data.txt
 

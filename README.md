@@ -366,25 +366,71 @@ This will:
 - **1.3-1.5:** More creative, diverse responses
 - **>1.5:** Highly random (may reduce coherence)
 
-### Combined Diversity (Model + Temperature)
+### Persona Diversity (Cognitive Style Experiments)
 
-Combine both model and temperature diversity for maximum cognitive variation:
+Use different personas (reasoning styles/perspectives) for each agent via system prompts:
+
+```bash
+python3 gen_gsm.py \
+  --model vllm-llama32-3b \
+  --agents 3 \
+  --rounds 2 \
+  --agent-personas skeptic analyst intuitive
+```
+
+This will:
+- Agent 1: Skeptical questioner who challenges assumptions
+- Agent 2: Meticulous analyst who examines details
+- Agent 3: Intuitive thinker who relies on pattern recognition
+- Output filename: `gsm_Llama-3.2-3B_persona_skeptic+analyst+intuitive_agents3_rounds2.json`
+
+**Available Personas:**
+- **100 predefined personas** in `config.yaml` with callsign aliases
+- **50 v1 (moderate):** Professional styles like `skeptic`, `analyst`, `innovator`, `strategist`
+- **50 v2 (extreme):** Creative styles like `cryptographer`, `zenmaster`, `baroque`, `anarchist`
+- View all personas: `grep "^  [a-z]*:" config.yaml | head -100`
+
+**Example Persona Callsigns:**
+```
+# V1 - Moderate/Professional
+skeptic, analyst, logical, intuitive, innovator, visionary,
+strategist, perfectionist, advocate, contemplator, doer, judge
+
+# V2 - Extreme/Creative
+cryptographer, baroque, quantum, anarchist, zenmaster,
+grandmaster, alchemist, cosmichorror, pirate, dronecommander
+```
+
+**Custom Personas:**
+You can also use full descriptions instead of callsigns:
+```bash
+python3 gen_gsm.py \
+  --agents 2 \
+  --agent-personas \
+    "a skeptical questioner who challenges assumptions" \
+    "a creative innovator who generates novel solutions"
+```
+
+### Combined Diversity (Model + Temperature + Persona)
+
+Combine all three diversity types for maximum cognitive variation:
 
 ```bash
 python3 gen_gsm.py \
   --agents 3 \
   --rounds 2 \
   --agent-models vllm-llama32-3b vllm-qwen25-7b vllm-deepseek \
-  --agent-temperatures 0.7 1.0 1.3
+  --agent-temperatures 0.7 1.0 1.3 \
+  --agent-personas skeptic analyst intuitive
 ```
 
 This creates the richest diversity:
-- Agent 1: Llama 3.2 3B @ temp=0.7
-- Agent 2: Qwen 2.5 7B @ temp=1.0
-- Agent 3: DeepSeek 1.5B @ temp=1.3
-- Output filename: `gsm_deepseek+llama32-3b+qwen25-7b_temp0.7+1.0+1.3_agents3_rounds2.json`
+- Agent 1: Llama 3.2 3B @ temp=0.7 + skeptical persona
+- Agent 2: Qwen 2.5 7B @ temp=1.0 + analytical persona
+- Agent 3: DeepSeek 1.5B @ temp=1.3 + intuitive persona
+- Output filename: `gsm_deepseek+llama32-3b+qwen25-7b_temp0.7+1.0+1.3_persona_skeptic+analyst+intuitive_agents3_rounds2.json`
 
-**Note:** All generation scripts (`gen_math.py`, `gen_gsm.py`, `gen_conversation.py`, `gen_mmlu.py`) support both `--agent-models` and `--agent-temperatures` arguments. The number of models/temperatures must match the number of agents.
+**Note:** All generation scripts (`gen_math.py`, `gen_gsm.py`, `gen_conversation.py`, `gen_mmlu.py`) support `--agent-models`, `--agent-temperatures`, and `--agent-personas` arguments. The number of models/temperatures/personas must match the number of agents.
 
 ---
 
@@ -691,8 +737,11 @@ python3 tasks/gsm/gen_gsm.py
 - Multi-platform support (Mac MLX, Linux vLLM, Ollama)
 - All 4 tasks migrated to local inference
 - Inline evaluation for math and GSM tasks
-- Model diversity support (different models per agent)
-- Parameter diversity support (different temperatures per agent)
+- **Three types of cognitive diversity fully implemented:**
+  - Model diversity support (different models per agent)
+  - Parameter diversity support (different temperatures per agent)
+  - **Persona diversity support (different reasoning styles per agent)** ⭐ NEW!
+- 100 predefined personas (50 moderate + 50 extreme) with unique callsigns
 - Automated benchmarking scripts
 - Results aggregation and visualization
 - Comprehensive documentation
@@ -700,13 +749,14 @@ python3 tasks/gsm/gen_gsm.py
 ### 🔄 In Progress
 - Baseline benchmark experiments (GSM, Math)
 - Full-scale multiagent debate experiments
-- Cognitive diversity analysis (model + temperature variation)
+- Cognitive diversity analysis (model + temperature + persona variation)
+- Persona diversity experiments across all tasks
 
 ### 📋 Planned
-- Prompt diversity experiments (different system prompts per agent)
 - Large-scale experiments (1000+ problems per task)
-- Biography and MMLU full evaluation
+- Biography and MMLU full evaluation with personas
 - Statistical analysis of diversity impact on debate performance
+- Persona effectiveness analysis (which personas improve reasoning most?)
 
 ---
 

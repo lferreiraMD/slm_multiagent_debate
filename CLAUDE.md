@@ -68,6 +68,7 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 - **n:** Number of completions per API call (currently 1)
 - **agent-models:** Optional list of models (one per agent) for model diversity
 - **agent-temperatures:** Optional list of temperatures (one per agent) for parameter diversity
+- **agent-personas:** Optional list of persona callsigns (one per agent) for cognitive diversity
 
 ## Technical Implementation
 
@@ -163,21 +164,67 @@ python3 gen_gsm.py \
 - **1.3-1.5:** Increased diversity, good for creative tasks
 - **>1.5:** High randomness, may reduce coherence
 
-### 3. Combined Diversity (Model + Temperature)
-Maximum cognitive diversity by combining both model and parameter variation.
+### 3. Persona Diversity (Cognitive Style)
+Agents use different personas (reasoning styles/perspectives) defined via system prompts, creating diversity through varied cognitive approaches.
+
+**Implementation:** Use `--agent-personas` to specify different persona callsigns per agent.
+
+```bash
+python3 gen_gsm.py \
+  --model vllm-llama32-3b \
+  --agents 3 \
+  --rounds 2 \
+  --agent-personas skeptic analyst intuitive
+```
+
+**Technical Details:**
+- **100 predefined personas** available in `config.yaml` with callsign aliases
+  - **50 v1 personas:** Moderate, professional styles (analyst, skeptic, innovator, etc.)
+  - **50 v2 personas:** Extreme, creative styles (cryptographer, zenmaster, baroque, etc.)
+- Each persona is injected as a system message: `{"role": "system", "content": "You are {persona}."}`
+- The `generate_answer()` function prepends the system message before the first user message
+- Persona resolution via `resolve_persona()` supports both callsigns and full descriptions
+- Output filename includes persona descriptor: `gsm_Llama-3.2-3B_persona_skeptic+analyst+intuitive_agents3_rounds2.json`
+- Helper function `get_persona_descriptor()` extracts short names for filenames
+
+**Example Personas (v1 - Moderate):**
+- `skeptic`: "a skeptical questioner who challenges assumptions rigorously"
+- `analyst`: "a meticulous analyst who examines every detail carefully"
+- `intuitive`: "an intuitive thinker who relies on pattern recognition and gut feelings"
+- `pragmatic`: "a pragmatic problem-solver focused on practical solutions"
+- `innovator`: "a creative innovator who generates novel solutions and perspectives"
+
+**Example Personas (v2 - Extreme):**
+- `cryptographer`: "a nihilistic cryptographer who only trusts solutions verifiable by zero-knowledge proofs"
+- `zenmaster`: "a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements"
+- `baroque`: "a Baroque music theorist fixated on harmonic counterpoint and structural symmetry"
+- `anarchist`: "a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed"
+- `grandmaster`: "an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay"
+
+**Persona Guidelines:**
+- **v1 personas:** Best for standard reasoning tasks, professional diversity
+- **v2 personas:** Best for creative exploration, maximum cognitive diversity
+- **Mix v1+v2:** Combine moderate and extreme personas for hybrid diversity
+- **Full descriptions:** Can also pass full persona descriptions instead of callsigns
+
+### 4. Combined Diversity (Model + Temperature + Persona)
+Maximum cognitive diversity by combining model, parameter, and persona variation.
 
 ```bash
 python3 gen_gsm.py \
   --agents 3 \
   --rounds 2 \
   --agent-models vllm-llama32-3b vllm-qwen25-7b vllm-deepseek \
-  --agent-temperatures 0.7 1.0 1.3
+  --agent-temperatures 0.7 1.0 1.3 \
+  --agent-personas skeptic analyst intuitive
 ```
 
-**Output filename:** `gsm_deepseek+llama32-3b+qwen25-7b_temp0.7+1.0+1.3_agents3_rounds2.json`
+**Output filename:** `gsm_deepseek+llama32-3b+qwen25-7b_temp0.7+1.0+1.3_persona_skeptic+analyst+intuitive_agents3_rounds2.json`
 
-### 4. Prompt Diversity (Planned)
-Future work: Different system prompts or reasoning styles per agent (e.g., "intuitive", "analytical", "skeptic").
+This creates the richest possible cognitive diversity:
+- **Model diversity:** Different architectures and training (DeepSeek 1.5B, Llama 3B, Qwen 7B)
+- **Temperature diversity:** Different sampling strategies (conservative, balanced, creative)
+- **Persona diversity:** Different reasoning styles (skeptical, analytical, intuitive)
 
 ## Local LLM Framework Strategy
 
@@ -642,11 +689,13 @@ The `legacy/` directory contains deprecated or superseded code that is no longer
 - ✅ **Model caching implemented** - Automatically caches loaded models between runs
 - ✅ **Configuration centralized** - All settings in `config.yaml`, supports CLI overrides
 - ✅ **Results tracking configured** - Summary files tracked in git, individual runs ignored
-- ✅ **Cognitive diversity support** - Model diversity and parameter diversity (temperature) fully implemented
-  - Model diversity: `--agent-models` allows different models per agent
-  - Temperature diversity: `--agent-temperatures` allows different sampling temperatures per agent
-  - Both features work together for maximum cognitive diversity
-  - Filenames automatically include diversity descriptors (e.g., `gsm_model1+model2_temp0.7+1.0_agents2_rounds2.json`)
+- ✅ **Cognitive diversity support** - Three types of diversity fully implemented:
+  - **Model diversity:** `--agent-models` allows different models per agent
+  - **Temperature diversity:** `--agent-temperatures` allows different sampling temperatures per agent
+  - **Persona diversity:** `--agent-personas` allows different reasoning styles/perspectives per agent (NEW!)
+  - All three features work together for maximum cognitive diversity
+  - Filenames automatically include diversity descriptors (e.g., `gsm_model1+model2_temp0.7+1.0_persona_skeptic+analyst_agents2_rounds2.json`)
+- ✅ **100 predefined personas** - 50 moderate (v1) + 50 extreme (v2) personas with unique callsigns
 
 ### Repository Management
 - **Results tracking:** `results/summary.p` and `results/summary.csv` are tracked in git

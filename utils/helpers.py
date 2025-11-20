@@ -15,13 +15,14 @@ def generate_answer(
     generation_params: Dict[str, Any],
     agent_id: int = 0,
     agent_models: Optional[List[str]] = None,
-    agent_gen_params: Optional[List[Dict[str, Any]]] = None
+    agent_gen_params: Optional[List[Dict[str, Any]]] = None,
+    agent_personas: Optional[List[str]] = None
 ) -> Dict[str, Any]:
     """
-    Generate LLM response with optional per-agent model and parameter selection.
+    Generate LLM response with optional per-agent model, parameter, and persona selection.
 
-    Supports cognitive diversity experiments by allowing different models and
-    generation parameters for each agent in multiagent debate.
+    Supports cognitive diversity experiments by allowing different models, generation
+    parameters, and personas for each agent in multiagent debate.
 
     Args:
         answer_context: Chat message history for this agent
@@ -32,6 +33,8 @@ def generate_answer(
                      uses agent_models[agent_id] instead of model_name
         agent_gen_params: Optional list of generation param dicts (one per agent).
                          If provided, uses agent_gen_params[agent_id] instead of generation_params
+        agent_personas: Optional list of persona descriptions (one per agent).
+                       If provided, prepends system message with persona for this agent
 
     Returns:
         OpenAI-compatible completion response dict
@@ -49,6 +52,11 @@ def generate_answer(
         >>> params_list = [{"temperature": 0.7}, {"temperature": 1.0}, {"temperature": 1.3}]
         >>> generate_answer(context, "deepseek", params, agent_id=2, agent_gen_params=params_list)
         # Uses temperature=1.3 for agent 2
+
+        # Persona diversity (Condition 5)
+        >>> personas = ["a skeptical questioner", "an intuitive thinker", "a meticulous analyst"]
+        >>> generate_answer(context, "deepseek", params, agent_id=0, agent_personas=personas)
+        # Prepends system message: "You are a skeptical questioner."
     """
     from utils import ChatCompletion
 
@@ -62,10 +70,20 @@ def generate_answer(
                       if agent_gen_params and len(agent_gen_params) > agent_id
                       else generation_params)
 
+    # Inject persona as system message if provided
+    context_with_persona = answer_context
+    if agent_personas and len(agent_personas) > agent_id:
+        persona = agent_personas[agent_id]
+        # Check if context already has a system message at the beginning
+        if not answer_context or answer_context[0].get("role") != "system":
+            # Prepend system message with persona
+            system_msg = {"role": "system", "content": f"You are {persona}."}
+            context_with_persona = [system_msg] + answer_context
+
     try:
         completion = ChatCompletion.create(
             model=selected_model,
-            messages=answer_context,
+            messages=context_with_persona,
             **selected_params
         )
     except Exception as e:
@@ -73,7 +91,7 @@ def generate_answer(
         print("Retrying due to an error......")
         time.sleep(20)
         return generate_answer(answer_context, model_name, generation_params,
-                              agent_id, agent_models, agent_gen_params)
+                              agent_id, agent_models, agent_gen_params, agent_personas)
 
     return completion
 
@@ -321,3 +339,72 @@ def get_temperature_descriptor(
     # Create descriptor with sorted temperatures
     temp_strs = [f"{t:.1f}" for t in temps]  # Keep original order, not sorted
     return "temp" + "+".join(temp_strs)
+
+
+def get_persona_descriptor(
+    agent_personas: Optional[List[str]] = None
+) -> Optional[str]:
+    """
+    Generate persona descriptor for output filenames.
+
+    Extracts short names from persona descriptions to create a compact
+    descriptor for filename generation.
+
+    Args:
+        agent_personas: Optional list of per-agent persona descriptions
+
+    Returns:
+        Persona descriptor like "persona_skeptic+analyst+intuitive" or None if homogeneous
+
+    Examples:
+        >>> personas = ["a skeptical questioner", "an intuitive thinker", "a meticulous analyst"]
+        >>> get_persona_descriptor(personas)
+        'persona_skeptic+intuitive+meticulous'
+
+        >>> personas = ["a skeptical questioner", "a skeptical questioner"]
+        >>> get_persona_descriptor(personas)
+        None  # All same, no descriptor needed
+
+        >>> get_persona_descriptor(None)
+        None  # No persona diversity
+    """
+    if agent_personas is None:
+        return None
+
+    # Check if all personas are the same (no diversity)
+    unique_personas = list(set(agent_personas))
+    if len(unique_personas) == 1:
+        return None  # All agents have same persona, no descriptor needed
+
+    # Extract short descriptive names from each persona
+    short_names = []
+    for persona in agent_personas:
+        # Extract the key characteristic word from the persona description
+        # Examples:
+        #   "a skeptical questioner who..." → "skeptic"
+        #   "an intuitive thinker who..." → "intuitive"
+        #   "a meticulous analyst who..." → "meticulous"
+
+        # Split on spaces and find the descriptive adjective/noun
+        words = persona.lower().split()
+
+        # Skip articles and common prefixes
+        skip_words = {"a", "an", "the"}
+        content_words = [w for w in words if w not in skip_words]
+
+        if not content_words:
+            short_names.append("unknown")
+            continue
+
+        # Use first meaningful word as short descriptor
+        # Usually the first word after "a/an" is the key descriptor
+        short_name = content_words[0]
+
+        # Truncate to 12 characters max for filename friendliness
+        if len(short_name) > 12:
+            short_name = short_name[:12]
+
+        short_names.append(short_name)
+
+    # Join with + to create descriptor
+    return "persona_" + "+".join(short_names)

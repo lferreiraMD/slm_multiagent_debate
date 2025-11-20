@@ -50,34 +50,10 @@ DEFAULT_EXPERIMENT_CONFIGS = {
     },
 }
 
-# Model aliases for convenience
-MODEL_ALIASES = {
-    # MLX models (Mac M4 Pro with Apple Silicon)
-    "deepseek": "valuat/DeepSeek-R1-Distill-Qwen-1.5B-mlx-fp16",
-    "llama32-3b": "mlx-community/Llama-3.2-3B-Instruct",
-    "smallthinker": "valuat/SmallThinker-3B-Preview-mlx-fp16",
-    "qwen25-7b": "valuat/Qwen2.5-7B-Instruct-1M-mlx-fp16",
-    "llama31-8b": "mlx-community/Meta-Llama-3.1-8B-Instruct-8bit",
-    "llama31-8b-fp16": "valuat/Meta-Llama-3.1-8B-Instruct-mlx-fp16",
-    "qwen25-14b": "valuat/Qwen2.5-14B-Instruct-1M-mlx-fp16",
-    "vibethinker": "valuat/VibeThinker-1.5B-mlx-8Bit",
-
-    # vLLM models (Linux with NVIDIA GPUs - HuggingFace originals)
-    "vllm-deepseek": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
-    "vllm-vibethinker-1.5b": "WeiboAI/VibeThinker-1.5B",
-    "vllm-smallthinker-3b": "PowerInfer/SmallThinker-3B-Preview",
-    "vllm-llama32-3b": "meta-llama/Llama-3.2-3B-Instruct",
-    "vllm-qwen25-7b": "Qwen/Qwen2.5-7B-Instruct",
-    "vllm-llama31-8b": "meta-llama/Meta-Llama-3.1-8B-Instruct",
-    "vllm-qwen25-14b": "Qwen/Qwen2.5-14B-Instruct",
-
-    # Ollama models (Cross-platform - GGUF format)
-    "ollama-deepseek": "deepseek-r1:1.5b",
-    "ollama-llama32": "llama3.2:3b",
-    "ollama-qwen25-7b": "qwen2.5:7b",
-    "ollama-llama31-8b": "llama3.1:8b",
-    "ollama-qwen25-14b": "qwen2.5:14b",
-}
+# Model and persona aliases loaded from config.yaml at runtime
+# These are populated by load_config() to ensure single source of truth
+MODEL_ALIASES = {}
+PERSONA_ALIASES = {}
 
 
 def get_generation_params(override: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
@@ -142,6 +118,35 @@ def resolve_model_name(model: str) -> str:
     return MODEL_ALIASES.get(model, model)
 
 
+def resolve_persona(persona: str) -> str:
+    """
+    Resolve persona alias to full description.
+
+    Args:
+        persona: Persona callsign/alias or full description
+
+    Returns:
+        Full persona description
+
+    Raises:
+        ValueError: If persona alias not found and doesn't look like a full description
+    """
+    # Check if it's an alias in PERSONA_ALIASES
+    if persona in PERSONA_ALIASES:
+        return PERSONA_ALIASES[persona]
+
+    # If not an alias, check if it looks like a full description
+    # (contains spaces and is reasonably long)
+    if " " in persona and len(persona) > 20:
+        return persona
+
+    # Otherwise, it's an unknown alias
+    raise ValueError(
+        f"Unknown persona alias: '{persona}'. "
+        f"Check config.yaml for available personas or provide a full description."
+    )
+
+
 def get_dataset_path(task: str, base_dir: Optional[str] = None) -> str:
     """
     Get dataset path for a task.
@@ -185,7 +190,10 @@ def get_dataset_path(task: str, base_dir: Optional[str] = None) -> str:
 
 def load_config(config_path: Optional[str] = None) -> Dict[str, Any]:
     """
-    Load configuration from YAML file.
+    Load configuration from YAML file and populate global aliases.
+
+    This function populates MODEL_ALIASES and PERSONA_ALIASES from config.yaml
+    to ensure a single source of truth for all model and persona definitions.
 
     Args:
         config_path: Path to config file (defaults to config.yaml in repo root)
@@ -193,6 +201,8 @@ def load_config(config_path: Optional[str] = None) -> Dict[str, Any]:
     Returns:
         Configuration dict
     """
+    global MODEL_ALIASES, PERSONA_ALIASES
+
     if config_path is None:
         config_path = Path(__file__).parent.parent / "config.yaml"
 
@@ -201,11 +211,22 @@ def load_config(config_path: Optional[str] = None) -> Dict[str, Any]:
         return {
             "generation": DEFAULT_GENERATION_PARAMS,
             "experiments": DEFAULT_EXPERIMENT_CONFIGS,
-            "models": MODEL_ALIASES,
+            "models": {},
+            "personas": {},
         }
 
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
+
+    # Populate MODEL_ALIASES from config for resolve_model_name() to use
+    if "models" in config:
+        MODEL_ALIASES.clear()
+        MODEL_ALIASES.update(config["models"])
+
+    # Populate PERSONA_ALIASES from config for resolve_persona() to use
+    if "personas" in config:
+        PERSONA_ALIASES.clear()
+        PERSONA_ALIASES.update(config["personas"])
 
     return config
 
