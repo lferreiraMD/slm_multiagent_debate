@@ -9,15 +9,37 @@ COMPSCI 2821R, Fall 2025, Harvard School of Engineering and Applied Sciences
 - Gardenia Liu <gardenialiu@college.harvard.edu>
 - Kaden Zheng <kadenzheng@college.harvard.edu>
 
+## 🚀 HPC Quick Start (Linux + NVIDIA GPUs)
+
+**The codebase is 100% ready for HPC deployment. No code changes needed.**
+
+```bash
+# 1. Clone and install
+git clone https://github.com/lferreiraMD/slm_multiagent_debate.git
+cd slm_multiagent_debate
+pip3 install -r requirements_hpc.txt
+
+# 2. Verify setup (tests all 4 tasks, takes ~15 min)
+bash experiments/hpc_test.sh
+
+# 3. Run experiments
+bash experiments/run_math_experiments.sh  # 220 experiments (~2 hours on dual RTX 3090)
+bash experiments/run_gsm_experiments.sh   # 220 experiments (~4 hours on dual RTX 3090)
+```
+
+**Verified configuration:** Ubuntu 22.04, vLLM 0.11.0, 2x RTX 3090 (48GB VRAM), CUDA 12.4
+
+---
+
 ## Project Overview
 
 ### Original Research
-This codebase implements the paper ["Improving Factuality and Reasoning in Language Models through Multiagent Debate"](https://arxiv.org/abs/2305.14325) by Du et al. (2023). The core hypothesis is that multiple language model agents debating a problem over several rounds can improve reasoning accuracy and factual correctness compared to single-shot inference.
+Replicates ["Improving Factuality and Reasoning in Language Models through Multiagent Debate"](https://arxiv.org/abs/2305.14325) (Du et al., 2023) using **locally-hosted Small Language Models (SLMs)** instead of GPT-3.5-turbo.
 
 **Original Paper:** [Project Page](https://composable-models.github.io/llm_debate/) | [ArXiv](https://arxiv.org/abs/2305.14325)
 
 ### Our Adaptation
-**Goal:** Replicate the multiagent debate experiments using locally-hosted Small Language Models (SLMs) instead of OpenAI's GPT-3.5-turbo-0301.
+**Goal:** Test multiagent debate with SLMs and explore whether "cognitive diversity" (model/temperature/persona variations) improves results.
 
 **Motivation:**
 - Reduce API costs and dependencies
@@ -37,20 +59,20 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 
 #### 1. **Math** (`./tasks/math/`)
 - **Task:** Simple arithmetic expressions (e.g., `a+b*c+d-e*f`)
-- **Configuration:** 2 agents, 3 rounds
+- **Default Configuration:** 2 agents, 3 rounds
 - **Evaluation:** Automated comparison with ground truth
 - **Files:** `gen_math.py` (generates and evaluates)
 
 #### 2. **Grade School Math (GSM)** (`./tasks/gsm/`)
 - **Task:** Multi-step word problems requiring arithmetic reasoning
 - **Dataset:** [OpenAI GSM8K](https://github.com/openai/grade-school-math) (included in `data/gsm8k/`)
-- **Configuration:** 3 agents, 2 rounds
+- **Default Configuration:** 3 agents, 2 rounds
 - **Evaluation:** Inline evaluation during generation, extracts from `\boxed{answer}` format
 - **Files:** `gen_gsm.py` (generation with inline eval), `eval_gsm.py` (legacy, for re-evaluating old files)
 
 #### 3. **Biography** (`./tasks/biography/`)
 - **Task:** Generate bullet-point biographies of computer scientists
-- **Configuration:** 3 agents, 2 rounds, 40 people
+- **Default Configuration:** 3 agents, 2 rounds, 40 people
 - **Evaluation:** Manual or automated fact-checking against Wikipedia/sources
 - **Files:** `gen_conversation.py` (generation), `eval_conversation.py` (evaluation)
 - **Data:** `data/biography/article.json` with ground truth biographies
@@ -58,7 +80,7 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 #### 4. **MMLU** (`./tasks/mmlu/`)
 - **Task:** Multiple-choice questions across academic subjects (A/B/C/D)
 - **Dataset:** [MMLU benchmark](https://github.com/hendrycks/test) (included in `data/mmlu/`)
-- **Configuration:** 3 agents, 2 rounds
+- **Default Configuration:** 3 agents, 2 rounds
 - **Evaluation:** Inline evaluation during generation, extracts letter answers
 - **Files:** `gen_mmlu.py` (generation with inline eval), `eval_mmlu.py` (standalone eval with detailed parsing)
 
@@ -73,7 +95,7 @@ This codebase implements the paper ["Improving Factuality and Reasoning in Langu
 ## Technical Implementation
 
 ### Completed Architecture
-All generation scripts (`gen_*.py`) have been migrated to use MLX-LM via a custom wrapper:
+All generation scripts (`gen_*.py`) have been adapted to use MLX-LM via a custom wrapper:
 
 ```python
 # Current implementation:
@@ -201,12 +223,6 @@ python3 gen_gsm.py \
 - `anarchist`: "a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed"
 - `grandmaster`: "an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay"
 
-**Persona Guidelines:**
-- **v1 personas:** Best for standard reasoning tasks, professional diversity
-- **v2 personas:** Best for creative exploration, maximum cognitive diversity
-- **Mix v1+v2:** Combine moderate and extreme personas for hybrid diversity
-- **Full descriptions:** Can also pass full persona descriptions instead of callsigns
-
 ### 4. Combined Diversity (Model + Temperature + Persona)
 Maximum cognitive diversity by combining model, parameter, and persona variation.
 
@@ -233,17 +249,12 @@ This creates the richest possible cognitive diversity:
 #### Mac M4 Pro (Local Development): MLX-LM
 **Why MLX-LM?**
 - Models already downloaded in MLX format (`/Users/leonardo/.cache/huggingface/hub`)
-- Native Apple Silicon optimization (best performance on M4 Pro)
-- Direct Python API, no server needed
 - Already installed: `mlx-lm==0.28.1`, `mlx==0.29.2`
 - Supports multiple simultaneous model instances
 - Zero additional downloads required
 
 **Installation:**
-Already installed! Verify with:
-```bash
-python3 -m pip show mlx-lm
-```
+Already installed!
 
 **Usage Example:**
 ```python
@@ -300,16 +311,6 @@ ollama pull deepseek-r1:1.5b
 # Run experiments
 python3 gen_math.py --model ollama-llama32 --agents 2 --rounds 3
 ```
-
-**Model Equivalents Across Platforms:**
-
-| Size | Mac (MLX) | Linux (vLLM) | Any (Ollama) |
-|------|-----------|--------------|--------------|
-| 1.5B | `deepseek` | `vllm-deepseek` | `ollama-deepseek` |
-| 3B | `llama32-3b` | `vllm-llama32-3b` | `ollama-llama32` |
-| 7B | `qwen25-7b` | `vllm-qwen25-7b` | `ollama-qwen25-7b` |
-| 8B | `llama31-8b` | `vllm-llama31-8b` | `ollama-llama31-8b` |
-| 14B | `qwen25-14b` | `vllm-qwen25-14b` | `ollama-qwen25-14b` |
 
 ## Available Models
 
