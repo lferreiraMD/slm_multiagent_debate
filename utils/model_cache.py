@@ -4,8 +4,24 @@ Model caching to avoid reloading the same model multiple times.
 Critical for memory efficiency when running multiple agents with the same model.
 """
 
-from typing import Tuple, Any, Optional
+from typing import Tuple, Any, Optional, Dict
 import threading
+import os
+
+# Import GPU auto-configuration (only used for vLLM backend)
+try:
+    from .gpu_config import (
+        get_vllm_optimal_config,
+        detect_vllm_gpus,
+        get_gpu_info_string,
+        is_vllm_backend
+    )
+    GPU_CONFIG_AVAILABLE = True
+except ImportError:
+    GPU_CONFIG_AVAILABLE = False
+
+# Environment variable to disable auto-config
+VLLM_DISABLE_AUTO_CONFIG = os.environ.get('VLLM_DISABLE_AUTO_CONFIG', '').lower() in ('1', 'true', 'yes')
 
 
 class ModelCache:
@@ -31,7 +47,9 @@ class ModelCache:
     def get_or_load(
         self,
         model_path: str,
-        backend: str = "mlx"
+        backend: str = "mlx",
+        use_case: str = 'production',
+        override_params: Optional[Dict] = None
     ) -> Tuple[Any, Any]:
         """
         Get model from cache or load it.
@@ -39,11 +57,17 @@ class ModelCache:
         Args:
             model_path: Path or name of model to load
             backend: Backend to use ('mlx', 'ollama', 'vllm')
+            use_case: vLLM use case ('production', 'debate', 'download')
+            override_params: Optional dict to override vLLM auto-config
 
         Returns:
             Tuple of (model, tokenizer) for MLX/vLLM, or model for Ollama
         """
-        cache_key = f"{backend}:{model_path}"
+        # Include use_case in cache key for vLLM (different configs = different cache entries)
+        if backend == "vllm":
+            cache_key = f"{backend}:{use_case}:{model_path}"
+        else:
+            cache_key = f"{backend}:{model_path}"
 
         # Check cache first
         with self._cache_lock:

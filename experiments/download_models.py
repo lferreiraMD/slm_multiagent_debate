@@ -79,6 +79,7 @@ sys.path.insert(0, str(project_root))
 
 from transformers import AutoTokenizer, AutoConfig
 from utils import resolve_model_name
+from utils.gpu_config import detect_vllm_gpus, get_vllm_optimal_config, print_gpu_summary, get_gpu_info_string
 
 # vLLM model aliases from config.yaml
 VLLM_MODELS = {
@@ -96,7 +97,7 @@ VLLM_MODELS = {
 }
 
 
-def download_model(model_alias: str) -> bool:
+def download_model(model_alias: str, gpu_info: dict = None, auto_gpu_enabled: bool = True) -> bool:
     """
     Download a single model to HuggingFace cache.
 
@@ -134,14 +135,28 @@ def download_model(model_alias: str) -> bool:
 
         # Download model weights
         print("  → Downloading model weights...")
-        llm = LLM(
-            model=model_path,
-            tensor_parallel_size=1,  # Adjust for multi-GPU
-            max_model_len=2048,  # Limit context length to reduce KV cache memory
-            gpu_memory_utilization=0.7,  # Use 70% of GPU memory (leaves room for cleanup)
-            enforce_eager=True,  # Disable flash-attn and use eager mode (fixes compatibility issues)
-            disable_custom_all_reduce=True  # Disable custom kernels
-        )
+
+        # Get optimal vLLM config (auto-detected or manual)
+        if auto_gpu_enabled and gpu_info:
+            vllm_config = get_vllm_optimal_config(
+                model_path,
+                use_case='download',
+                gpu_info=gpu_info
+            )
+            print(f"  Using auto-config: {get_gpu_info_string(gpu_info)}")
+        else:
+            # Fallback to conservative manual config
+            vllm_config = {
+                'tensor_parallel_size': 1,
+                'max_model_len': 2048,
+                'gpu_memory_utilization': 0.7,
+                'enforce_eager': True,
+                'disable_custom_all_reduce': True,
+                'enable_sleep_mode': True,
+            }
+            print("  Using manual config (auto-GPU disabled)")
+
+        llm = LLM(model=model_path, **vllm_config)
 
         # Explicitly delete model to free GPU memory
         print("  → Cleaning up GPU memory...")
@@ -181,7 +196,23 @@ def main():
         default=None,
         help="Specific model to download (default: all vLLM models)"
     )
+    parser.add_argument(
+        "--disable-auto-gpu",
+        action="store_true",
+        help="Disable automatic GPU detection and configuration"
+    )
     args = parser.parse_args()
+
+    # Detect GPUs and get optimal config (unless disabled)
+    gpu_info = None
+    auto_gpu_enabled = not args.disable_auto_gpu
+
+    if auto_gpu_enabled:
+        gpu_info = detect_vllm_gpus()
+        if gpu_info:
+            print()
+            print_gpu_summary(gpu_info, use_case='download')
+            print()
 
     # Determine which models to download
     if args.model:
@@ -208,7 +239,7 @@ def main():
             model_path = model_alias
 
         print(f"\n[{i}/{len(models_to_download)}] Processing {model_alias}...")
-        success = download_model(model_path)
+        success = download_model(model_path, gpu_info=gpu_info, auto_gpu_enabled=auto_gpu_enabled)
         results[model_alias] = success
 
     # Summary
@@ -237,3 +268,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv

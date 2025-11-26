@@ -11,6 +11,8 @@ from .llm_wrapper import ChatCompletion
 from .config import load_config, get_generation_params, resolve_model_name, resolve_persona, get_experiment_config, get_dataset_path
 from .model_cache import ModelCache
 from .helpers import construct_assistant_message, most_frequent, compute_accuracy, read_jsonl, parse_bullets, write_jsonl, generate_answer, get_model_descriptor, get_temperature_descriptor, get_persona_descriptor
+from .cuda_cleanup import release_cuda_memory, get_cuda_memory_stats, print_cuda_memory_summary
+from .gpu_config import is_vllm_backend, detect_vllm_gpus, get_vllm_optimal_config, print_gpu_summary, get_gpu_info_string
 
 __all__ = [
     'ChatCompletion',
@@ -31,4 +33,12 @@ __all__ = [
     'get_model_descriptor',
     'get_temperature_descriptor',
     'get_persona_descriptor',
+    'release_cuda_memory',
+    'get_cuda_memory_stats',
+    'print_cuda_memory_summary',
+    'is_vllm_backend',
+    'detect_vllm_gpus',
+    'get_vllm_optimal_config',
+    'print_gpu_summary',
+    'get_gpu_info_string',
 ]
