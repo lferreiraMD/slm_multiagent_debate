@@ -25,17 +25,34 @@ Model requirements:
     - Specify a different MLX model by changing model_name
 """
 
-import mlx.core as mx
-from mlx_lm import load
+import sys
 import numpy as np
 import pickle
 import os
+import argparse
 import matplotlib.pyplot as plt
 from itertools import combinations
 from scipy.spatial.distance import pdist, squareform
 from scipy.optimize import differential_evolution
 import umap
 from sklearn.manifold import TSNE
+
+# Add project root to path for utils import
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.gpu_config import is_vllm_backend, detect_vllm_gpus, print_gpu_summary
+from utils.cuda_cleanup import release_cuda_memory
+
+# Conditional imports based on backend
+if is_vllm_backend():
+    from transformers import AutoModel, AutoTokenizer
+    import torch
+    BACKEND = 'vllm'
+    print("[Backend] vLLM detected - using transformers for embeddings")
+else:
+    import mlx.core as mx
+    from mlx_lm import load
+    BACKEND = 'mlx'
+    print("[Backend] MLX detected - using MLX for embeddings")
 
 ### Auxillary functions
 # Saves object as pickle object
@@ -68,7 +85,7 @@ def get_volume_score(indices, similarity_matrix):
     # We must use float64 here for robust determinant calculation to avoid precision errors
     return np.linalg.det(sub_matrix.astype(np.float64))
 #
-def brute_force_search(_n_personas, _personas_list, _distance_matrix, _similarity_matrix):
+def brute_force_search(_n_personas, _personas_list, _distance_matrix, _similarity_matrix, _small=True):
     '''
     Finds best personas by brute force search, i.e., all combinations possible.
     Returns
@@ -130,11 +147,14 @@ def brute_force_search(_n_personas, _personas_list, _distance_matrix, _similarit
     #
     results = {}
     results['best_indices'] = best_indices
-    results['best_indices_det'] = best_indices_det  
+    results['best_indices_det'] = best_indices_det
     results['maxmin_personas'] = selected_personas_min_dist
     results['maxdet_personas'] = selected_personas_det_volume
-    results['score_list'] = score_list
-    results['volume_list'] = volume_list
+    results['maxmin_score'] = best_score  # MaxMin distance value
+    results['maxdet_volume'] = best_volume  # MaxDet determinant value
+    if not _small:
+        results['score_list'] = score_list
+        results['volume_list'] = volume_list
     return results 
 #
 # Compute pairwise distance matrix (using cosine distance)
@@ -148,6 +168,7 @@ def cosine_distance_matrix(_embeddings):
     # Convert to distance (1 - similarity)
     _distance_matrix = 1 - _similarity_matrix
     return _distance_matrix, _similarity_matrix
+#
 # Return variable name as a string
 def get_variable_name(obj):
     for name, value in globals().items():
@@ -158,7 +179,7 @@ def get_variable_name(obj):
             return name
     return None
 #
-def plot_embeddings(_model, _embeddings, _personas, _maxmin_indices, _maxdet_indices):
+def plot_embeddings(_model, _embeddings, _personas, _maxmin_indices, _maxdet_indices, _framework):
     '''
     Plots embeddings for better visualization.
     '''
@@ -211,12 +232,12 @@ def plot_embeddings(_model, _embeddings, _personas, _maxmin_indices, _maxdet_ind
     plt.legend(handles=handles, loc='best', title="Diversity Criteria")
     plt.grid(True, alpha=0.3)
     plt.tight_layout() # Adjust layout to prevent labels from being cut off
-    plt.savefig(f'tsne_diversity_comparison_a{num_personas}_{persona_short}_{model_short}.png')
+    plt.savefig(f'tsne_diversity_comparison_{_framework}_{num_personas}_{persona_short}_{model_short}.png')
     print("tsne_diversity_comparison_with_labels.png generated.")
 #
-def get_embeddings(_model, _personas):
+def get_embeddings_mlx(_model, _personas):
     """
-    Extract embedding from model's hidden states.
+    Extract embedding from model's hidden states using MLX backend.
 
     MLX approach: We use the model's internal structure to get hidden representations.
     Since MLX models don't expose hidden states the same way as transformers,
@@ -284,6 +305,99 @@ def get_embeddings(_model, _personas):
     print(f"✓ Complete! Embeddings shape: {new_embeddings.shape}")
     return new_embeddings
 
+def get_embeddings_vllm(_model, _personas):
+    """
+    Extract embeddings using vLLM backend (Linux with NVIDIA GPUs).
+
+    Uses transformers AutoModel with GPU auto-configuration for optimal performance.
+    """
+    # Detect GPUs and print summary
+    gpu_info = detect_vllm_gpus()
+    if gpu_info and gpu_info['count'] > 0:
+        print_gpu_summary(gpu_info, use_case=None)
+
+        # For embedding extraction, always use single GPU to avoid tensor placement issues
+        # (We process one prompt at a time, so no benefit from multi-GPU sharding)
+        device_map = {"": "cuda:0"}
+        if gpu_info['count'] > 1:
+            print(f"[GPU Config] Multi-GPU detected: Using cuda:0 for embeddings (single-prompt processing)")
+        else:
+            print(f"[GPU Config] Single GPU: Loading model on cuda:0")
+    else:
+        # CPU fallback
+        device_map = {"": "cpu"}
+        print("[GPU Config] No GPUs detected: Using CPU (will be slow)")
+
+    print(f"\nLoading model: {_model}")
+
+    # Load model with optimal device mapping
+    model = AutoModel.from_pretrained(
+        _model,
+        trust_remote_code=True,
+        device_map=device_map,
+        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32
+    )
+    tokenizer = AutoTokenizer.from_pretrained(_model, trust_remote_code=True)
+
+    print("Model loaded successfully!")
+
+    # Extract embeddings for all personas
+    print(f"\nExtracting embeddings for {len(_personas)} personas...")
+    print("This may take a few minutes...")
+
+    new_embeddings = []
+    for i, persona in enumerate(_personas):
+        if (i + 1) % 10 == 0:
+            print(f"  Processed {i + 1}/{len(_personas)} personas...")
+
+        prompt = f"You are {persona}."
+
+        # Tokenize input (no padding needed - processing single prompts)
+        inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
+
+        # Move inputs to same device as model
+        if torch.cuda.is_available():
+            inputs = {k: v.cuda() for k, v in inputs.items()}
+
+        # Extract hidden states
+        with torch.no_grad():
+            outputs = model(**inputs, output_hidden_states=True)
+
+            # Get last hidden layer
+            # outputs.hidden_states is a tuple of (num_layers + 1) tensors
+            # Shape: (batch_size, seq_len, hidden_dim)
+            hidden_states = outputs.hidden_states[-1]
+
+            # Mean pooling across sequence length (axis=1)
+            # Shape: (batch_size, hidden_dim) -> (hidden_dim,)
+            embedding = hidden_states.mean(dim=1).squeeze()
+
+        # Move to CPU and convert to numpy
+        new_embeddings.append(embedding.cpu().numpy())
+
+    new_embeddings = np.array(new_embeddings).astype(np.float64)
+    print(f"✓ Complete! Embeddings shape: {new_embeddings.shape}")
+
+    # Clean up GPU memory aggressively (critical for sequential model loading)
+    print("[GPU Cleanup] Releasing GPU memory...")
+    del model
+    del tokenizer
+    release_cuda_memory(delay=2.0, verbose=True)
+
+    return new_embeddings
+
+def get_embeddings(_model, _personas):
+    """
+    Route to appropriate embedding extractor based on detected backend.
+
+    Automatically detects MLX (Mac) vs vLLM (Linux/HPC) and uses
+    the correct implementation for embedding extraction.
+    """
+    if is_vllm_backend():
+        return get_embeddings_vllm(_model, _personas)
+    else:
+        return get_embeddings_mlx(_model, _personas)
+
 #### List of available models:
 ## Regular LLMs:
 # qwen3-0.6b:   "Qwen/Qwen3-0.6B-MLX-8bit"
@@ -315,6 +429,20 @@ model_dict = {
 #    "oss-gpt-20b": "mlx-community/gpt-oss-20b-MXFP4-Q8",
 #    "all-MiniLM-L6": "mlx-community/all-MiniLM-L6-v2-8bit",
     "qwen3-embed-600m": "mlx-community/Qwen3-Embedding-0.6B-4bit-DWQ"
+}
+
+model_dict_vllm = {
+    "vllm-qwen3-0.6b": "Qwen/Qwen3-0.6B",
+    "vllm-vibethinker": "WeiboAI/VibeThinker-1.5B",
+    "vllm-deepseek": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "vllm-qwen3-1.7b": "Qwen/Qwen3-1.7B",
+    "vllm-llama32-3b": "meta-llama/Llama-3.2-3B-Instruct",
+    "vllm-smallthinker": "PowerInfer/SmallThinker-3B-Preview",
+    "vllm-qwen3-4b": "Qwen/Qwen3-4B-Instruct-2507",
+    "vllm-llama31-8b": "meta-llama/Llama-3.1-8B-Instruct",
+    "vllm-qwen3-8b": "Qwen/Qwen3-8B",
+    "vllm-qwen3-14b": "Qwen/Qwen3-14B",
+#   "vllm-oss-20b": "openai/gpt-oss-20b"
 }
 
 ### DATA
@@ -444,33 +572,80 @@ personas_v2 = [
 'a linguistic anthropologist who views the solution as a structure of cultural symbols and shared meaning'
 ]
 
-def create_output_filepath(_path, _model, _persona_list, _num_personas):
+def create_output_filepath(_path, _model, _persona_list, _num_personas, _framework):
     _persona_short = get_variable_name(_persona_list)
     _model_short = _model.split('/')[1]
-    _final_path = os.path.join(_path, f"results_{_num_personas}_agents_{_persona_short}_{_model_short}.pk")
+    _final_path = os.path.join(_path, f"results_{_framework}_{_num_personas}_agents_{_persona_short}_{_model_short}.pk")
     return _final_path
 #
-def run_it_all(_output_dir, _model_dict, _num_personas, _persona_list):
+def run_it_all(_output_dir, _model_dict, _num_personas, _persona_list, _framework):
     for _key in _model_dict.keys():
         _model = _model_dict[_key]
         _embed = get_embeddings(_model, _persona_list)
         _distance_matrix, _similarity_matrix = cosine_distance_matrix(_embed)
         _results = brute_force_search(_num_personas, _persona_list, _distance_matrix, _similarity_matrix)
-        _results_path = create_output_filepath(_output_dir, _model, _persona_list, _num_personas)
+        _results_path = create_output_filepath(_output_dir, _model, _persona_list, _num_personas, _framework)
         save_object(_results, _results_path)
-        plot_embeddings(_model, _embed, _persona_list, _results['best_indices'], _results['best_indices_det'])
+        plot_embeddings(_model, _embed, _persona_list, _results['best_indices'], _results['best_indices_det'], _framework)
 #
-OUTPUT_DIR = '/Users/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/personas'
-num_personas_list = [2, 3, 4, 5, 6, 7]
-personas_list = [personas_v1, personas_v2]
+def main():
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(
+        description="Extract embeddings and optimize persona selection for cognitive diversity"
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=str,
+        required=True,
+        help="Output directory for results and plots"
+    )
+    parser.add_argument(
+        "--num-personas",
+        type=int,
+        nargs="+",
+        default=[2, 3, 4, 5, 6, 7],
+        help="List of persona counts to test (default: 2 3 4 5 6 7)"
+    )
+    args = parser.parse_args()
 
-for num_personas in num_personas_list:
-    for personas in personas_list:
-        run_it_all(OUTPUT_DIR, model_dict, num_personas, personas)
+    # Validate output directory
+    OUTPUT_DIR = os.path.abspath(args.output_dir)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    print(f"[Config] Output directory: {OUTPUT_DIR}")
+
+    num_personas_list = args.num_personas
+    personas_list = [personas_v1, personas_v2]
+
+    # Auto-detect backend and select appropriate model dict
+    if is_vllm_backend():
+        models = model_dict_vllm
+        framework = 'vllm'
+        print(f"[Config] Backend: vLLM (Linux/HPC)")
+    else:
+        models = model_dict
+        framework = 'mlx'
+        print(f"[Config] Backend: MLX (Mac)")
+
+    print(f"[Config] Testing persona counts: {num_personas_list}")
+    print(f"[Config] Persona sets: v1 (moderate), v2 (extreme)")
+    print(f"[Config] Models: {len(models)}")
+    print()
+
+    for num_personas in num_personas_list:
+        for personas in personas_list:
+            run_it_all(OUTPUT_DIR, models, num_personas, personas, framework)
+
+
+
+
+if __name__ == "__main__":
+    main()
+
+
 
 # cat+grep line: cat persona_v2_results.txt | grep -E "top|Loading|Min-Max|Determinant|Index" > persona_v2_data.txt
 
-
+'''
 # Computing UMAP embeddings (2D, 3D)
 reducer_2d = umap.UMAP(n_components=2, random_state=42)
 reducer_3d = umap.UMAP(n_components=3, random_state=42)
@@ -497,3 +672,4 @@ ax.set_zlabel('UMAP 3')
 ax.set_title('UMAP Embeddings of Personas (3D)')
 plt.colorbar(boundaries=np.arange(11)-0.5).set_ticks(np.arange(10))
 plt.show()
+'''
