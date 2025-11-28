@@ -46,6 +46,7 @@ results/*
 # Generated plots
 plots/*.png
 !plots/.gitkeep
+personas/*.png  # Exclude t-SNE persona diversity plots
 
 # IDE
 .vscode/

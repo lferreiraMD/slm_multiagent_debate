@@ -39,7 +39,7 @@ from sklearn.manifold import TSNE
 
 # Add project root to path for utils import
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.gpu_config import is_vllm_backend, detect_vllm_gpus, print_gpu_summary
+from utils.gpu_config import is_vllm_backend, detect_vllm_gpus, print_gpu_summary, get_vllm_optimal_config
 from utils.cuda_cleanup import release_cuda_memory
 
 # Conditional imports based on backend
@@ -47,7 +47,7 @@ if is_vllm_backend():
     from transformers import AutoModel, AutoTokenizer
     import torch
     BACKEND = 'vllm'
-    print("[Backend] vLLM detected - using transformers for embeddings")
+    print("[Backend] vLLM detected - using transformers with multi-GPU for embeddings")
 else:
     import mlx.core as mx
     from mlx_lm import load
@@ -307,30 +307,32 @@ def get_embeddings_mlx(_model, _personas):
 
 def get_embeddings_vllm(_model, _personas):
     """
-    Extract embeddings using vLLM backend (Linux with NVIDIA GPUs).
+    Extract embeddings using transformers with multi-GPU support (Linux with NVIDIA GPUs).
 
-    Uses transformers AutoModel with GPU auto-configuration for optimal performance.
+    Uses device_map="auto" to shard large models across both RTX 3090 GPUs.
+    Properly handles tensor placement to avoid device mismatch errors.
     """
     # Detect GPUs and print summary
     gpu_info = detect_vllm_gpus()
+
     if gpu_info and gpu_info['count'] > 0:
         print_gpu_summary(gpu_info, use_case=None)
 
-        # For embedding extraction, always use single GPU to avoid tensor placement issues
-        # (We process one prompt at a time, so no benefit from multi-GPU sharding)
-        device_map = {"": "cuda:0"}
+        # Enable multi-GPU sharding for large models
+        device_map = "auto"
         if gpu_info['count'] > 1:
-            print(f"[GPU Config] Multi-GPU detected: Using cuda:0 for embeddings (single-prompt processing)")
+            print(f"\n[GPU Config] Multi-GPU detected: Using device_map='auto' to shard across {gpu_info['count']} GPUs")
+            print(f"[GPU Config] Total VRAM: {gpu_info['total_vram_gb']:.1f} GB")
         else:
-            print(f"[GPU Config] Single GPU: Loading model on cuda:0")
+            print(f"[GPU Config] Single GPU: Using device_map='auto'")
     else:
         # CPU fallback
-        device_map = {"": "cpu"}
+        device_map = "cpu"
         print("[GPU Config] No GPUs detected: Using CPU (will be slow)")
 
     print(f"\nLoading model: {_model}")
 
-    # Load model with optimal device mapping
+    # Load model with multi-GPU sharding
     model = AutoModel.from_pretrained(
         _model,
         trust_remote_code=True,
@@ -340,6 +342,17 @@ def get_embeddings_vllm(_model, _personas):
     tokenizer = AutoTokenizer.from_pretrained(_model, trust_remote_code=True)
 
     print("Model loaded successfully!")
+
+    # Determine which device the model's first parameter is on
+    # (critical for proper tensor placement with multi-GPU sharding)
+    if torch.cuda.is_available():
+        try:
+            first_device = next(model.parameters()).device
+            print(f"[GPU Config] Model's primary device: {first_device}")
+        except StopIteration:
+            first_device = torch.device("cuda:0")
+    else:
+        first_device = torch.device("cpu")
 
     # Extract embeddings for all personas
     print(f"\nExtracting embeddings for {len(_personas)} personas...")
@@ -355,9 +368,9 @@ def get_embeddings_vllm(_model, _personas):
         # Tokenize input (no padding needed - processing single prompts)
         inputs = tokenizer(prompt, return_tensors="pt", truncation=True)
 
-        # Move inputs to same device as model
-        if torch.cuda.is_available():
-            inputs = {k: v.cuda() for k, v in inputs.items()}
+        # Move inputs to the SAME device as model's first parameter
+        # This prevents "tensors on different devices" errors
+        inputs = {k: v.to(first_device) for k, v in inputs.items()}
 
         # Extract hidden states
         with torch.no_grad():

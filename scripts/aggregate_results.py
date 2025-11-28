@@ -26,35 +26,71 @@ from utils.helpers import most_frequent
 
 def parse_filename(filepath):
     """
-    Extract task, model, agents, rounds from result filename.
+    Extract task, model, agents, rounds, diversity type from result filename.
 
     Expected formats:
     - math_{model}_agents{N}_rounds{N}.p
     - gsm_{model}_agents{N}_rounds{N}.json
     - biography_{model}_agents{N}_rounds{N}.json
     - mmlu_{model}_agents{N}_rounds{N}.json
+    - gsm_{model}_temp0.7+1.0+1.3_agents{N}_rounds{N}.json  (temperature diversity)
+    - gsm_{model}_persona_{personas}_agents{N}_rounds{N}.json  (persona diversity)
+    - gsm_{model1+model2+model3}_agents{N}_rounds{N}.json  (model diversity)
 
     Returns:
-        dict with keys: task, model_name, num_agents, num_rounds, filepath
+        dict with keys: task, model_name, num_agents, num_rounds, diversity_type, filepath
         or None if parsing fails
     """
     filename = Path(filepath).name
 
-    # Pattern: {task}_{model}_agents{N}_rounds{N}.{ext}
-    pattern = r'^(\w+)_(.+?)_agents(\d+)_rounds(\d+)\.(p|json)$'
-    match = re.match(pattern, filename)
-
-    if not match:
+    # Extract task (first component before _)
+    if not '_' in filename:
         print(f"Warning: Could not parse filename: {filename}")
         return None
 
-    task, model_name, agents, rounds, ext = match.groups()
+    task = filename.split('_')[0]
+
+    # Extract agents and rounds (always at the end)
+    agents_rounds_pattern = r'agents(\d+)_rounds(\d+)\.(p|json)$'
+    agents_rounds_match = re.search(agents_rounds_pattern, filename)
+
+    if not agents_rounds_match:
+        print(f"Warning: Could not parse agents/rounds in filename: {filename}")
+        return None
+
+    num_agents = int(agents_rounds_match.group(1))
+    num_rounds = int(agents_rounds_match.group(2))
+
+    # Extract middle part (between task and agents/rounds)
+    middle_part = filename[len(task)+1:agents_rounds_match.start()-1]
+
+    # Determine diversity type and model name
+    diversity_type = 'baseline'  # Default
+    model_name = middle_part
+
+    # Check for temperature diversity (pattern: temp{float}+{float}+...)
+    if 'temp' in middle_part:
+        diversity_type = 'temperature'
+        # Extract model name (everything before _temp)
+        model_name = middle_part.split('_temp')[0]
+
+    # Check for persona diversity (pattern: persona_{personas})
+    elif 'persona' in middle_part:
+        diversity_type = 'persona'
+        # Extract model name (everything before _persona)
+        model_name = middle_part.split('_persona')[0]
+
+    # Check for model diversity (pattern: {model1+model2+model3})
+    elif '+' in middle_part:
+        diversity_type = 'model'
+        # model_name stays as is (amalgamated name)
 
     return {
         'task': task,
         'model_name': model_name,
-        'num_agents': int(agents),
-        'num_rounds': int(rounds),
+        'num_agents': num_agents,
+        'num_rounds': num_rounds,
+        'diversity_type': diversity_type,
         'filepath': filepath
     }
 
@@ -325,14 +361,14 @@ def aggregate_results(tasks_dir='tasks'):
 
     Returns:
         pandas DataFrame with columns: task, model_name, number_agents,
-        number_rounds, average_accuracy, stdev_accuracy
+        number_rounds, diversity_type, average_accuracy, stdev_accuracy
     """
     tasks_dir = Path(tasks_dir)
 
     if not tasks_dir.exists():
         print(f"Tasks directory not found: {tasks_dir}")
         return pd.DataFrame(columns=['task', 'model_name', 'num_agents', 'num_rounds',
-                                     'avg_accuracy', 'std_accuracy'])
+                                     'diversity_type', 'avg_accuracy', 'std_accuracy'])
 
     # Find all result files in task subdirectories
     result_files = []
@@ -376,12 +412,13 @@ def aggregate_results(tasks_dir='tasks'):
             'model_name': metadata['model_name'],
             'num_agents': metadata['num_agents'],
             'num_rounds': metadata['num_rounds'],
+            'diversity_type': metadata['diversity_type'],
             'avg_accuracy': avg_acc,
             'std_accuracy': std_acc
         }
         rows.append(row)
 
-        print(f"  Accuracy: {avg_acc:.3f} ± {std_acc:.3f}")
+        print(f"  Diversity: {metadata['diversity_type']}, Accuracy: {avg_acc:.3f} ± {std_acc:.3f}")
 
     # Create DataFrame
     df = pd.DataFrame(rows)
@@ -410,8 +447,8 @@ def main():
         print("\nNo results found to aggregate.")
         return
 
-    # Sort by task, model, agents, rounds
-    df = df.sort_values(['task', 'model_name', 'num_agents', 'num_rounds'])
+    # Sort by task, model, diversity_type, agents, rounds
+    df = df.sort_values(['task', 'model_name', 'diversity_type', 'num_agents', 'num_rounds'])
 
     # Display summary
     print("\n" + "=" * 60)
@@ -433,9 +470,9 @@ def main():
             existing_df = pd.read_pickle(output_path)
 
             # Merge with new results (avoid duplicates)
-            # Create unique key
-            df['_key'] = df.apply(lambda row: f"{row['task']}_{row['model_name']}_a{row['num_agents']}_r{row['num_rounds']}", axis=1)
-            existing_df['_key'] = existing_df.apply(lambda row: f"{row['task']}_{row['model_name']}_a{row['num_agents']}_r{row['num_rounds']}", axis=1)
+            # Create unique key (include diversity_type)
+            df['_key'] = df.apply(lambda row: f"{row['task']}_{row['model_name']}_{row['diversity_type']}_a{row['num_agents']}_r{row['num_rounds']}", axis=1)
+            existing_df['_key'] = existing_df.apply(lambda row: f"{row['task']}_{row['model_name']}_{row.get('diversity_type', 'baseline')}_a{row['num_agents']}_r{row['num_rounds']}", axis=1)
 
             # Keep new results, add existing ones that aren't duplicates
             new_keys = set(df['_key'])
@@ -444,7 +481,7 @@ def main():
             # Combine
             df = pd.concat([df, existing_unique], ignore_index=True)
             df = df.drop('_key', axis=1)
-            df = df.sort_values(['task', 'model_name', 'num_agents', 'num_rounds'])
+            df = df.sort_values(['task', 'model_name', 'diversity_type', 'num_agents', 'num_rounds'])
 
             print(f"Merged with {len(existing_unique)} existing results")
         except Exception as e:

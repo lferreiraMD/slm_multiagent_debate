@@ -8,6 +8,7 @@ from utils import (
     ChatCompletion,
     load_config,
     resolve_model_name,
+    resolve_persona,
     get_experiment_config,
     get_dataset_path,
     construct_assistant_message,
@@ -16,7 +17,8 @@ from utils import (
     most_frequent,
     ModelCache,
     get_model_descriptor,
-    get_temperature_descriptor
+    get_temperature_descriptor,
+    get_persona_descriptor
 )
 import json
 import numpy as np
@@ -114,6 +116,8 @@ if __name__ == "__main__":
                        help="Per-agent models for model diversity (space-separated aliases or paths)")
     parser.add_argument("--agent-temperatures", type=float, nargs="+", default=None,
                        help="Per-agent temperatures for parameter diversity (space-separated floats)")
+    parser.add_argument("--agent-personas", type=str, nargs="+", default=None,
+                       help="Per-agent personas for cognitive diversity (space-separated callsigns or descriptions)")
     args = parser.parse_args()
 
     # Load configuration
@@ -154,6 +158,16 @@ if __name__ == "__main__":
 
         print(f"Using temperature diversity with {len(agent_gen_params)} different temperatures")
 
+    # Per-agent persona configuration (for cognitive diversity experiments)
+    agent_personas = None
+    if args.agent_personas:
+        if len(args.agent_personas) != agents:
+            raise ValueError(f"Number of personas ({len(args.agent_personas)}) must match number of agents ({agents})")
+
+        # Resolve persona callsigns to full descriptions
+        agent_personas = [resolve_persona(p) for p in args.agent_personas]
+        print(f"Using persona diversity with {len(agent_personas)} different personas")
+
     # Dataset path
     dataset_path = get_dataset_path("gsm")
 
@@ -171,6 +185,10 @@ if __name__ == "__main__":
         print(f"Temperature diversity mode:")
         for i, params in enumerate(agent_gen_params):
             print(f"  Agent {i+1}: temp={params['temperature']}")
+    if agent_personas:
+        print(f"Persona diversity mode:")
+        for i, persona in enumerate(agent_personas):
+            print(f"  Agent {i+1}: {persona[:60]}...")
     print(f"Agents: {agents}")
     print(f"Rounds: {rounds}")
     print(f"Problems: {num_problems}")
@@ -206,7 +224,8 @@ if __name__ == "__main__":
 
                 completion = generate_answer(agent_context, model_name, generation_params,
                                             agent_id=i, agent_models=agent_models,
-                                            agent_gen_params=agent_gen_params)
+                                            agent_gen_params=agent_gen_params,
+                                            agent_personas=agent_personas)
 
                 assistant_message = construct_assistant_message(completion)
                 agent_context.append(assistant_message)
@@ -225,12 +244,16 @@ if __name__ == "__main__":
     # Save results
     model_descriptor = get_model_descriptor(model_name, agent_models)
     temp_descriptor = get_temperature_descriptor(agent_gen_params)
+    persona_descriptor = get_persona_descriptor(agent_personas)
 
-    # Build filename with optional temperature descriptor
+    # Build filename with optional diversity descriptors
+    filename_parts = ["gsm", model_descriptor]
     if temp_descriptor:
-        output_filename = f"gsm_{model_descriptor}_{temp_descriptor}_agents{agents}_rounds{rounds}.json"
-    else:
-        output_filename = f"gsm_{model_descriptor}_agents{agents}_rounds{rounds}.json"
+        filename_parts.append(temp_descriptor)
+    if persona_descriptor:
+        filename_parts.append(persona_descriptor)
+    filename_parts.extend([f"agents{agents}", f"rounds{rounds}"])
+    output_filename = "_".join(filename_parts) + ".json"
 
     json.dump(generated_description, open(output_filename, "w"))
 
