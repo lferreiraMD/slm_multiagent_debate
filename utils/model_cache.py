@@ -108,19 +108,59 @@ class ModelCache:
         from vllm import LLM
         from transformers import AutoTokenizer
 
+        # Get context length from config.yaml model_metadata
+        max_model_len = self._get_model_context_length(model_path)
+
+        print(f"[ModelCache] Using max_model_len={max_model_len} for {model_path}")
+
         llm = LLM(
             model=model_path,
-            tensor_parallel_size=1,  # Adjust for multi-GPU
-            trust_remote_code=True
+            max_model_len=max_model_len,
+            gpu_memory_utilization=0.90,
+            tensor_parallel_size=1,     # Adjust for multi-GPU
+        #    cpu_offload_gb=24           # CPU offload in GB (for 14B model)
         )
 
         # Load tokenizer separately for chat template support
         tokenizer = AutoTokenizer.from_pretrained(
             model_path,
-            trust_remote_code=True
         )
 
         return llm, tokenizer
+
+    def _get_model_context_length(self, model_path: str) -> int:
+        """
+        Get model context length from config.yaml model_metadata.
+
+        Args:
+            model_path: HuggingFace model path
+
+        Returns:
+            Context length in tokens (default: 32768 if not found)
+        """
+        try:
+            from .config import load_config
+            config = load_config()
+
+            # Find model alias that matches this model_path
+            models = config.get('models', {})
+            model_alias = None
+            for alias, path in models.items():
+                if path == model_path:
+                    model_alias = alias
+                    break
+
+            if model_alias:
+                metadata = config.get('model_metadata', {}).get(model_alias, {})
+                context_length = metadata.get('context_length', 32768)
+                return context_length
+            else:
+                print(f"[ModelCache] Warning: Model {model_path} not found in config.yaml, using default context_length=32768")
+                return 32768
+
+        except Exception as e:
+            print(f"[ModelCache] Warning: Failed to read context_length from config: {e}, using default 32768")
+            return 32768
 
     def shutdown(self):
         """Shutdown all cached models properly (especially vLLM engines)."""

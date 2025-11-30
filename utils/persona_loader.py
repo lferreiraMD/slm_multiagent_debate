@@ -25,11 +25,15 @@ VLLM_TO_CSV_MODEL_MAP = {
     'vllm-vibethinker': 'VibeThinker-1.5B',
     'vllm-deepseek': 'DeepSeek-R1-Distill-Qwen-1.5B',
     'vllm-qwen3-1.7b': 'Qwen3-1.7B',
+    'vllm-gemma2-2b': 'gemma-2-2b-it',
     'vllm-llama32-3b': 'Llama-3.2-3B-Instruct',
+    'vllm-phi3-mini': 'Phi-3-mini-4k-instruct',
     'vllm-smallthinker': 'SmallThinker-3B-Preview',
     'vllm-qwen3-4b': 'Qwen3-4B-Instruct-2507',
+    'vllm-mistral-7b': 'Mistral-7B-Instruct-v0.3',
     'vllm-llama31-8b': 'Llama-3.1-8B-Instruct',
     'vllm-qwen3-8b': 'Qwen3-8B',
+    'vllm-gemma2-9b': 'gemma-2-9b-it',
     'vllm-qwen3-14b': 'Qwen3-14B',
 }
 

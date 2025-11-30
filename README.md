@@ -314,6 +314,27 @@ See `config.yaml` for complete list.
 
 ---
 
+## Hardware Configurations
+
+### Dual RTX 3090 (48GB VRAM Total)
+- **Directory:** experiments/linux/
+- **Models:** 10 (0.6B to 14B parameters)
+- **Experiments:** 240 (60 per task × 4 tasks)
+- **Documentation:** experiments/linux/README.md
+
+### Single RTX 3090 (24GB VRAM)
+- **Directory:** experiments/linux_single/
+- **Models:** 9 (0.6B to 8B parameters, excludes 14B)
+- **Experiments:** 216 (54 per task × 4 tasks)
+- **Documentation:** experiments/linux_single/README.md
+
+**Choosing the right configuration:**
+- Use `experiments/linux/` if you have 2+ GPUs with 24GB+ VRAM each
+- Use `experiments/linux_single/` if you have 1 GPU with 24GB VRAM
+- Both configurations use identical task scripts and data
+
+---
+
 ## Running Experiments
 
 ### Basic Usage

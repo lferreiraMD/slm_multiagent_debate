@@ -168,6 +168,27 @@ if __name__ == "__main__":
         agent_personas = [resolve_persona(p) for p in args.agent_personas]
         print(f"Using persona diversity with {len(agent_personas)} different personas")
 
+    # Auto-enable temperature diversity if no other diversity exists
+    # If multiple agents with same model and no persona diversity, use different temperatures
+    temp_diversity_config = config.get("temperature_diversity", {})
+    temp_diversity_enabled = temp_diversity_config.get("enabled", True)
+
+    if agents > 1 and agent_models is None and agent_personas is None and agent_gen_params is None and temp_diversity_enabled:
+        # Read temperature range from config
+        min_temp = temp_diversity_config.get("min_temp", 0.7)
+        max_temp = temp_diversity_config.get("max_temp", 1.3)
+
+        # Create temperature range distributed across agents
+        temps = np.linspace(min_temp, max_temp, agents)
+        agent_gen_params = []
+        for temp in temps:
+            params = generation_params.copy()
+            params['temperature'] = float(temp)
+            agent_gen_params.append(params)
+        temp_list = [f"{p['temperature']:.2f}" for p in agent_gen_params]
+        print(f"Auto-enabled temperature diversity (no model/persona diversity detected)")
+        print(f"Using {len(agent_gen_params)} different temperatures: {temp_list}")
+
     # Dataset path
     dataset_path = get_dataset_path("gsm")
 
@@ -204,16 +225,16 @@ if __name__ == "__main__":
     questions = read_jsonl(dataset_path)
     random.shuffle(questions)
 
-    for data in questions[:num_problems]:
+    for problem_idx, data in enumerate(questions[:num_problems]):
         question = data['question']
         answer = data['answer']
 
-        agent_contexts = [[{"role": "user", "content": """Can you solve the following math problem? {} Explain your reasoning. Your final answer should be a single numerical number, in the form \\boxed{{answer}}, at the end of your response. """.format(question)}] for agent in range(agents)]
+        agent_contexts = [[{"role": "user", "content": """Can you solve the following math problem? {} Answer in English only. Explain your reasoning. Your final answer should be a single numerical number, in the form \\boxed{{answer}}, at the end of your response. """.format(question)}] for agent in range(agents)]
 
         for round in range(rounds):
             for i, agent_context in enumerate(agent_contexts):
 
-                print(f"\n--- Round {round + 1}, Agent {i + 1}/{agents} ---")
+                print(f"\n--- Problem {problem_idx + 1}/{num_problems}, Round {round + 1}, Agent {i + 1}/{agents} ---")
 
                 if round != 0:
                     agent_contexts_other = agent_contexts[:i] + agent_contexts[i+1:]

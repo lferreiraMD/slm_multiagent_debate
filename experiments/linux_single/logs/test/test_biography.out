@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/tasks/biography/gen_conversation.py", line 112, in <module>
+    raise ValueError(f"Number of personas ({len(args.agent_personas)}) must match number of agents ({agents})")
+ValueError: Number of personas (29) must match number of agents (2)
+[W1128 17:07:40.814970911 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

@@ -2,7 +2,7 @@
 
 # Default model to use (can be alias or full path)
 # Override with --model argument at runtime
-model: "vibethinker"  # 1.5B - smallest, fastest for testing
+model: "vllm-vibethinker"  # 1.5B - smallest, fastest for testing
 
 # Generation parameters (matching GPT-3.5-turbo-0301 defaults)
 generation:
@@ -11,31 +11,37 @@ generation:
   top_p: 1.0           # Full nucleus sampling
   n: 1                 # One completion per call
 
+# Temperature diversity settings (for auto-enabling when no other diversity exists)
+temperature_diversity:
+  enabled: true        # Auto-enable temperature diversity when no model/persona diversity
+  min_temp: 0.5        # Minimum temperature for diversity range
+  max_temp: 0.99999    # Maximum temperature for diversity range
+
 # Default experiment configurations (from original study)
 experiments:
   math:
     agents: 2
     rounds: 3
     num_problems: 100
-    random_seed: 0
+    random_seed: 42
 
   gsm:
     agents: 3
     rounds: 2
     num_problems: 100
-    random_seed: 0
+    random_seed: 42
 
   biography:
     agents: 3
     rounds: 2
     num_people: 40
-    random_seed: 1
+    random_seed: 42
 
   mmlu:
     agents: 3
     rounds: 2
     num_questions: 100
-    random_seed: 0
+    random_seed: 42
 
 # Model aliases (for convenience)
 models:
@@ -56,15 +62,19 @@ models:
   # vLLM models (Linux with NVIDIA GPUs - HuggingFace originals)
   vllm-qwen3-0.6b: "Qwen/Qwen3-0.6B"
   vllm-vibethinker: "WeiboAI/VibeThinker-1.5B"
-  vllm-deepseek: "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
-  vllm-qwen3-1.7b: "Qwen/Qwen3-1.7B"
-  vllm-llama32-3b: "meta-llama/Llama-3.2-3B-Instruct"
+#  vllm-deepseek: "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+#  vllm-qwen3-1.7b: "Qwen/Qwen3-1.7B"
+#  vllm-llama32-3b: "meta-llama/Llama-3.2-3B-Instruct"
+  vllm-gemma2-2b: "google/gemma-2-2b-it"  # 2B, Google, English-first
   vllm-smallthinker: "PowerInfer/SmallThinker-3B-Preview"
+  vllm-phi3-mini: "microsoft/Phi-3-mini-4k-instruct"  # 3.8B, strong English
   vllm-qwen3-4b: "Qwen/Qwen3-4B-Instruct-2507"
+  vllm-mistral-7b: "mistralai/Mistral-7B-Instruct-v0.3"  # 7B, European focus
   vllm-llama31-8b: "meta-llama/Llama-3.1-8B-Instruct"
-  vllm-qwen3-8b: "Qwen/Qwen3-VL-8B-Instruct"
+#  vllm-qwen3-8b: "Qwen/Qwen3-8B"
+  vllm-gemma2-9b: "google/gemma-2-9b-it"  # 9B, more capable
   vllm-qwen3-14b: "Qwen/Qwen3-14B"
-  vllm-oss-20b: "openai/gpt-oss-20b"
+#  vllm-oss-20b: "openai/gpt-oss-20b"
 
   # Ollama models (Cross-platform - GGUF format)
   ollama-deepseek: "deepseek-r1:1.5b"
@@ -72,6 +82,99 @@ models:
   ollama-qwen25-7b: "qwen2.5:7b"
   ollama-llama31-8b: "llama3.1:8b"
   ollama-qwen25-14b: "qwen2.5:14b"
+
+# Model metadata (VRAM requirements, parameter counts)
+# Used for filtering models based on hardware constraints
+model_metadata:
+  vllm-qwen3-0.6b:
+    vram_gb: 2
+    params: "0.6B"
+    context_length: 32768
+    description: "Smallest Qwen3 model"
+
+  vllm-vibethinker:
+    vram_gb: 4
+    params: "1.5B"
+    context_length: 32768
+    description: "VibeThinker reasoning model"
+
+  vllm-deepseek:
+    vram_gb: 4
+    params: "1.5B"
+    context_length: 32768
+    description: "DeepSeek-R1 distilled model"
+
+  vllm-qwen3-1.7b:
+    vram_gb: 4
+    params: "1.7B"
+    context_length: 32768
+    description: "Qwen3 1.7B model"
+
+  vllm-gemma2-2b:
+    vram_gb: 5
+    params: "2B"
+    context_length: 8192
+    description: "Google Gemma 2 2B (English-first)"
+
+  vllm-llama32-3b:
+    vram_gb: 7
+    params: "3B"
+    context_length: 131072
+    description: "Llama 3.2 3B Instruct"
+
+  vllm-smallthinker:
+    vram_gb: 7
+    params: "3B"
+    context_length: 32768
+    description: "SmallThinker reasoning model"
+
+  vllm-phi3-mini:
+    vram_gb: 8
+    params: "3.8B"
+    context_length: 4096
+    description: "Microsoft Phi-3 Mini (English-optimized)"
+
+  vllm-qwen3-4b:
+    vram_gb: 9
+    params: "4B"
+    context_length: 32768
+    description: "Qwen3 4B Instruct"
+
+  vllm-mistral-7b:
+    vram_gb: 15
+    params: "7B"
+    context_length: 32768
+    description: "Mistral 7B Instruct (European languages)"
+
+  vllm-qwen3-8b:
+    vram_gb: 16
+    params: "8B"
+    context_length: 32768
+    description: "Qwen3 8B model"
+
+  vllm-llama31-8b:
+    vram_gb: 17
+    params: "8B"
+    context_length: 131072
+    description: "Llama 3.1 8B Instruct"
+
+  vllm-gemma2-9b:
+    vram_gb: 19
+    params: "9B"
+    context_length: 8192
+    description: "Google Gemma 2 9B (fits 24GB with care)"
+
+  vllm-qwen3-14b:
+    vram_gb: 28
+    params: "14B"
+    context_length: 32768
+    description: "Qwen3 14B model (requires >24GB VRAM)"
+
+  vllm-oss-20b:
+    vram_gb: 40
+    params: "20B"
+    context_length: 32768
+    description: "GPT-OSS 20B model (requires >24GB VRAM)"
 
 # Dataset paths (relative to repo root)
 datasets:
