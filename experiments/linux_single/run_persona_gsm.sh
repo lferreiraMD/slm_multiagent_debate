@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Linux SINGLE GPU parallel execution script for persona diversity gsm experiments
-# Runs 54 experiments using GNU parallel or background processes
+# Linux SINGLE GPU persona diversity gsm experiments
+# Runs 54 experiments sequentially
 # Optimized for Ubuntu with vLLM on single NVIDIA RTX 3090 (24GB VRAM)
 
 set -e
@@ -151,7 +151,7 @@ except Exception as e:
     # Pre-flight GPU memory check
     if ! check_gpu_memory "$model_alias" "$n_agents"; then
         echo "[Job $job_num/$TOTAL_JOBS] ⚠ Skipping due to insufficient GPU memory"
-        echo "[Job $job_num/$TOTAL_JOBS] ⚠ Run with MAX_PARALLEL=1 or clear GPU memory" >> "$LOG_DIR/job_${job_id}.out"
+        echo "[Job $job_num/$TOTAL_JOBS] ⚠ Clear GPU memory and restart" >> "$LOG_DIR/job_${job_id}.out"
         return 2  # Return code 2 = skipped due to memory
     fi
 
