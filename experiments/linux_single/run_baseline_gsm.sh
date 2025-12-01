@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Linux SINGLE GPU parallel execution script for baseline GSM experiments
-# Runs 36 experiments using GNU parallel or background processes
+# Linux SINGLE GPU baseline GSM experiments
+# Runs 36 experiments sequentially
 # Optimized for Ubuntu with vLLM on single NVIDIA RTX 3090 (24GB VRAM)
 
 set -e
@@ -122,7 +122,7 @@ except Exception as e:
 
     if ! check_gpu_memory "$model_alias" "$n_agents"; then
         echo "[Job $job_num/$TOTAL_JOBS] ⚠ Skipping due to insufficient GPU memory"
-        echo "[Job $job_num/$TOTAL_JOBS] ⚠ Run with MAX_PARALLEL=1 or clear GPU memory" >> "$LOG_DIR/job_${job_id}.out"
+        echo "[Job $job_num/$TOTAL_JOBS] ⚠ Clear GPU memory and restart" >> "$LOG_DIR/job_${job_id}.out"
         return 2
     fi
 
