@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Linux SINGLE GPU parallel execution script for persona diversity mmlu experiments
-# Runs 54 experiments using GNU parallel or background processes
+# Linux SINGLE GPU parallel execution script for baseline math experiments
+# Runs 36 experiments using GNU parallel or background processes
 # Optimized for Ubuntu with vLLM on single NVIDIA RTX 3090 (24GB VRAM)
 
 set -e
@@ -13,14 +13,15 @@ export CUDA_VISIBLE_DEVICES=1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-TASK="mmlu"
-RESULTS_DIR="$PROJECT_ROOT/results/persona_experiments/$TASK"
+TASK="math"
+RESULTS_DIR="$PROJECT_ROOT/results/baseline/$TASK"
 
 echo "=================================================="
-echo "Linux Single GPU Persona Diversity - MMLU Task"
+echo "Linux Single GPU Baseline - Math Task"
 echo "=================================================="
 echo "Hardware: Single RTX 3090 (24GB VRAM)"
 echo "Models: 9 (0.6B-8B, excluding 14B)"
+echo "Agent Counts: [1, 3, 5, 7] (single-agent baseline + multiagent debate)"
 echo "Project root: $PROJECT_ROOT"
 echo "Script dir: $SCRIPT_DIR"
 echo ""
@@ -78,34 +79,31 @@ else:
 export -f check_gpu_memory
 
 # Configuration
-CONFIG_FILE="$SCRIPT_DIR/configs/persona_${TASK}_jobs.txt"
-LOG_DIR="$SCRIPT_DIR/logs/${TASK}"
+CONFIG_FILE="$SCRIPT_DIR/configs/baseline_${TASK}_jobs.txt"
+LOG_DIR="$SCRIPT_DIR/logs/${TASK}_baseline"
 MAX_PARALLEL=${MAX_PARALLEL:-2}  # Default: 2 parallel jobs (safe for small models)
 
-# Create log directory
-mkdir -p "$LOG_DIR"
+# Create log and results directories
+mkdir -p "$LOG_DIR" "$RESULTS_DIR"
 
 # Check if config file exists
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Error: Config file not found: $CONFIG_FILE"
-    echo "Run generate_job_configs.py first:"
-    echo "  python3 $SCRIPT_DIR/generate_job_configs.py"
+    echo "Run generate_baseline_configs.py first:"
+    echo "  python3 $SCRIPT_DIR/generate_baseline_configs.py"
     exit 1
 fi
 
-# Count total jobs (excluding header) - should be 54 for single GPU (9 models)
+# Count total jobs (excluding header)
 TOTAL_JOBS=$(($(wc -l < "$CONFIG_FILE") - 1))
 
 echo "Configuration:"
 echo "  Config file: $CONFIG_FILE"
-echo "  Total jobs: $TOTAL_JOBS (expected: 54)"
+echo "  Total jobs: $TOTAL_JOBS (expected: 36)"
 echo "  Max parallel: $MAX_PARALLEL"
 echo "  Log directory: $LOG_DIR"
 echo "  Results directory: $RESULTS_DIR"
 echo "=================================================="
-
-# Create results directory if it doesn't exist
-mkdir -p "$RESULTS_DIR"
 echo ""
 
 # Function to run a single job
@@ -113,14 +111,29 @@ run_job() {
     local job_line="$1"
     local job_num="$2"
 
-    # Parse CSV line
-    IFS=',' read -r job_id model_alias n_agents rounds task num_param num_value random_seed personas_tuple <<< "$job_line"
+    # Parse CSV line using Python for proper CSV quoting support
+    eval "$(python3 -c "
+import csv
+import sys
 
-    # Remove quotes from personas_tuple
-    personas_tuple=$(echo "$personas_tuple" | sed 's/^"//;s/"$//')
+try:
+    # Parse CSV line (handles quoted fields with commas correctly)
+    row = next(csv.reader(['$job_line']))
+    job_id, model_alias, n_agents, rounds, task, num_param, num_value, random_seed = row
 
-    # Convert persona tuple to space-separated args
-    personas_args=$(echo "$personas_tuple" | sed "s/[()']//g" | sed 's/, / /g')
+    # Output as bash variable assignments
+    print(f'job_id={job_id}')
+    print(f'model_alias={model_alias}')
+    print(f'n_agents={n_agents}')
+    print(f'rounds={rounds}')
+    print(f'task={task}')
+    print(f'num_param={num_param}')
+    print(f'num_value={num_value}')
+    print(f'random_seed={random_seed}')
+except Exception as e:
+    print(f'echo \"ERROR: CSV parsing failed: {e}\" >&2')
+    exit(1)
+")"
 
     echo "[Job $job_num/$TOTAL_JOBS] Starting: model=$model_alias agents=$n_agents"
 
@@ -134,13 +147,12 @@ run_job() {
     # Navigate to task directory
     cd "$PROJECT_ROOT/tasks/$task"
 
-    # Run experiment
+    # Run experiment (baseline = no --agent-personas argument)
     python3 gen_${task}.py \
         --model "$model_alias" \
         --agents "$n_agents" \
         --rounds "$rounds" \
-        --num-questions "$num_value" \
-        --agent-personas $personas_args \
+        --num-problems "$num_value" \
         --output-directory "$RESULTS_DIR" \
         > "$LOG_DIR/job_${job_id}.out" 2>&1
 
@@ -156,7 +168,7 @@ run_job() {
 }
 
 export -f run_job
-export PROJECT_ROOT TASK LOG_DIR TOTAL_JOBS
+export PROJECT_ROOT TASK LOG_DIR TOTAL_JOBS RESULTS_DIR
 
 # Check if GNU parallel is available
 if command -v parallel &> /dev/null; then
@@ -204,10 +216,11 @@ fi
 
 echo ""
 echo "=================================================="
-echo "MMLU Task Experiments Complete"
+echo "Math Task Baseline Experiments Complete"
 echo "=================================================="
 echo "Exit code: $exit_code"
 echo "Logs: $LOG_DIR"
+echo "Results: $RESULTS_DIR"
 echo ""
 
 # Count successes and failures
@@ -215,12 +228,12 @@ SUCCESS_COUNT=$(grep -l "Exit code: 0" "$LOG_DIR"/*.out 2>/dev/null | wc -l || e
 FAILURE_COUNT=$(( TOTAL_JOBS - SUCCESS_COUNT ))
 
 echo "Results:"
-echo "  Successful: $SUCCESS_COUNT / $TOTAL_JOBS (expected: 54)"
+echo "  Successful: $SUCCESS_COUNT / $TOTAL_JOBS (expected: 36)"
 echo "  Failed: $FAILURE_COUNT / $TOTAL_JOBS"
 if [ $FAILURE_COUNT -gt 0 ]; then
     echo ""
     echo "Tip: Check logs for OOM errors. If present, reduce MAX_PARALLEL:"
-    echo "  MAX_PARALLEL=1 bash run_persona_mmlu.sh"
+    echo "  MAX_PARALLEL=1 bash run_baseline_math.sh"
 fi
 echo "=================================================="
 

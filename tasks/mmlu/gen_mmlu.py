@@ -28,6 +28,7 @@ import argparse
 import re
 import numpy as np
 from typing import Optional
+import os
 
 
 def parse_mmlu_answer(input_str: str) -> Optional[str]:
@@ -98,6 +99,8 @@ if __name__ == "__main__":
                        help="Per-agent temperatures for parameter diversity (space-separated floats)")
     parser.add_argument("--agent-personas", type=str, nargs="+", default=None,
                        help="Per-agent personas for cognitive diversity (space-separated callsigns or descriptions)")
+    parser.add_argument("--output-directory", type=str, default=".",
+                       help="Directory to save output files (default: current directory)")
     args = parser.parse_args()
 
     # Load configuration
@@ -260,12 +263,17 @@ if __name__ == "__main__":
     filename_parts.extend([f"agents{agents}", f"rounds{rounds}"])
     output_filename = "_".join(filename_parts) + ".json"
 
-    json.dump(response_dict, open(output_filename, "w"))
+    # Create output directory if it doesn't exist
+    os.makedirs(args.output_directory, exist_ok=True)
+
+    # Save to output directory
+    output_path = os.path.join(args.output_directory, output_filename)
+    json.dump(response_dict, open(output_path, "w"))
 
     print("\n" + "=" * 60)
     print("GENERATION & EVALUATION COMPLETE")
     print("=" * 60)
-    print(f"Results saved to: {output_filename}")
+    print(f"Results saved to: {output_path}")
     print(f"Questions processed: {len(response_dict)}")
     if len(accuracies) > 0:
         print(f"Final accuracy: {np.mean(accuracies):.3f} ± {np.std(accuracies) / (len(accuracies) ** 0.5):.3f}")

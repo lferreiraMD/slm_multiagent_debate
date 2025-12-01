@@ -14,6 +14,7 @@ export CUDA_VISIBLE_DEVICES=1
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 TASK="gsm"
+RESULTS_DIR="$PROJECT_ROOT/results/persona_experiments/$TASK"
 
 echo "=================================================="
 echo "Linux Single GPU Persona Diversity - GSM Task"
@@ -100,7 +101,11 @@ echo "  Config file: $CONFIG_FILE"
 echo "  Total jobs: $TOTAL_JOBS (expected: 54)"
 echo "  Max parallel: $MAX_PARALLEL"
 echo "  Log directory: $LOG_DIR"
+echo "  Results directory: $RESULTS_DIR"
 echo "=================================================="
+
+# Create results directory if it doesn't exist
+mkdir -p "$RESULTS_DIR"
 echo ""
 
 # Function to run a single job
@@ -136,6 +141,7 @@ run_job() {
         --rounds "$rounds" \
         --num-problems "$num_value" \
         --agent-personas $personas_args \
+        --output-directory "$RESULTS_DIR" \
         > "$LOG_DIR/job_${job_id}.out" 2>&1
 
     exit_code=$?

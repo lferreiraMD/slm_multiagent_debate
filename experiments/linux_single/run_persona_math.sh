@@ -6,14 +6,22 @@
 
 set -e
 
+# LAPTOP WITH EXTERNAL GPU
 # Force CUDA to use only GPU #1 (RTX 3090)
 # GPU 0 = GTX 1650 (4GB) - internal, insufficient VRAM
 # GPU 1 = RTX 3090 (24GB) - external, target GPU
-export CUDA_VISIBLE_DEVICES=1
+
+# RESEARCH WORKSTATIOS WITH 2X RTX 3090
+# Force CUDA to use BOTH GPUs
+# GPU 0 = RTX 3090 (24GB) - internal, target GPU
+# GPU 1 = RTX 3090 (24GB) - internal, target GPU
+
+export CUDA_VISIBLE_DEVICES=0,1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 TASK="math"
+RESULTS_DIR="$PROJECT_ROOT/results/persona_experiments/$TASK"
 
 echo "=================================================="
 echo "Linux Single GPU Persona Diversity - Math Task"
@@ -100,7 +108,11 @@ echo "  Config file: $CONFIG_FILE"
 echo "  Total jobs: $TOTAL_JOBS (expected: 54)"
 echo "  Max parallel: $MAX_PARALLEL"
 echo "  Log directory: $LOG_DIR"
+echo "  Results directory: $RESULTS_DIR"
 echo "=================================================="
+
+# Create results directory if it doesn't exist
+mkdir -p "$RESULTS_DIR"
 echo ""
 
 # Function to run a single job
@@ -108,14 +120,40 @@ run_job() {
     local job_line="$1"
     local job_num="$2"
 
-    # Parse CSV line
-    IFS=',' read -r job_id model_alias n_agents rounds task num_param num_value random_seed personas_tuple <<< "$job_line"
+    # Parse CSV line using Python for proper CSV quoting support
+    eval "$(python3 -c "
+import csv
+import ast
+import sys
 
-    # Remove quotes from personas_tuple
-    personas_tuple=$(echo "$personas_tuple" | sed 's/^"//;s/"$//')
+try:
+    # Parse CSV line (handles quoted fields with commas correctly)
+    row = next(csv.reader(['$job_line']))
+    job_id, model_alias, n_agents, rounds, task, num_param, num_value, random_seed, personas_tuple = row
 
-    # Convert persona tuple to space-separated args
-    personas_args=$(echo "$personas_tuple" | sed "s/[()']//g" | sed 's/, / /g')
+    # Parse personas tuple string representation into list
+    try:
+        personas = ast.literal_eval(personas_tuple)
+        # Build bash array syntax: 'persona1' 'persona2' 'persona3'
+        personas_args = ' '.join(repr(p) for p in personas)
+    except Exception as e:
+        print(f'echo \"ERROR: Failed to parse personas: {e}\" >&2')
+        personas_args = ''
+
+    # Output as bash variable assignments
+    print(f'job_id={job_id}')
+    print(f'model_alias={model_alias}')
+    print(f'n_agents={n_agents}')
+    print(f'rounds={rounds}')
+    print(f'task={task}')
+    print(f'num_param={num_param}')
+    print(f'num_value={num_value}')
+    print(f'random_seed={random_seed}')
+    print(f'personas_args=({personas_args})')
+except Exception as e:
+    print(f'echo \"ERROR: CSV parsing failed: {e}\" >&2')
+    exit(1)
+")"
 
     echo "[Job $job_num/$TOTAL_JOBS] Starting: model=$model_alias agents=$n_agents"
 
@@ -135,7 +173,8 @@ run_job() {
         --agents "$n_agents" \
         --rounds "$rounds" \
         --num-problems "$num_value" \
-        --agent-personas $personas_args \
+        --agent-personas ${personas_args} \
+        --output-directory "$RESULTS_DIR" \
         > "$LOG_DIR/job_${job_id}.out" 2>&1
 
     exit_code=$?

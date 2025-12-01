@@ -24,6 +24,7 @@ import time
 import pickle
 from tqdm import tqdm
 import argparse
+import os
 
 
 def construct_message(other_agents, question, idx, compress_context=True):
@@ -115,6 +116,8 @@ if __name__ == "__main__":
                        help="Compress context by extracting answers only (default: True, saves ~95%% tokens)")
     parser.add_argument("--no-compress-context", dest="compress_context", action="store_false",
                        help="Disable context compression (use full agent responses)")
+    parser.add_argument("--output-directory", type=str, default=".",
+                       help="Directory to save output files (default: current directory)")
     args = parser.parse_args()
 
     # Load configuration
@@ -286,10 +289,15 @@ if __name__ == "__main__":
     filename_parts.extend([f"agents{agents}", f"rounds{rounds}"])
     output_filename = "_".join(filename_parts) + ".p"
 
-    pickle.dump(generated_description, open(output_filename, "wb"))
+    # Create output directory if it doesn't exist
+    os.makedirs(args.output_directory, exist_ok=True)
+
+    # Save to output directory
+    output_path = os.path.join(args.output_directory, output_filename)
+    pickle.dump(generated_description, open(output_path, "wb"))
 
     print("=" * 60)
-    print(f"Results saved to: {output_filename}")
+    print(f"Results saved to: {output_path}")
     print(f"Final performance: {np.mean(scores):.3f} ± {np.std(scores) / (len(scores) ** 0.5):.3f}")
     print("=" * 60)
 

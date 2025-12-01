@@ -24,6 +24,7 @@ import random
 from tqdm import tqdm
 import argparse
 import time
+import os
 
 
 def filter_people(person):
@@ -65,6 +66,8 @@ if __name__ == "__main__":
                        help="Per-agent temperatures for parameter diversity (space-separated floats)")
     parser.add_argument("--agent-personas", type=str, nargs="+", default=None,
                        help="Per-agent personas for cognitive diversity (space-separated callsigns or descriptions)")
+    parser.add_argument("--output-directory", type=str, default=".",
+                       help="Directory to save output files (default: current directory)")
     args = parser.parse_args()
 
     # Load configuration
@@ -224,10 +227,15 @@ if __name__ == "__main__":
     filename_parts.extend([f"agents{agents}", f"rounds{rounds}"])
     output_filename = "_".join(filename_parts) + ".json"
 
-    json.dump(generated_description, open(output_filename, "w"))
+    # Create output directory if it doesn't exist
+    os.makedirs(args.output_directory, exist_ok=True)
+
+    # Save to output directory
+    output_path = os.path.join(args.output_directory, output_filename)
+    json.dump(generated_description, open(output_path, "w"))
 
     print("=" * 60)
-    print(f"Results saved to: {output_filename}")
+    print(f"Results saved to: {output_path}")
     print(f"Total people processed: {len(generated_description)}")
     print("=" * 60)
 

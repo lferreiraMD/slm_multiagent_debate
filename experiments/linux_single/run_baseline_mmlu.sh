@@ -1,26 +1,24 @@
 #!/bin/bash
 
-# Linux SINGLE GPU parallel execution script for persona diversity mmlu experiments
-# Runs 54 experiments using GNU parallel or background processes
+# Linux SINGLE GPU parallel execution script for baseline MMLU experiments
+# Runs 36 experiments using GNU parallel or background processes
 # Optimized for Ubuntu with vLLM on single NVIDIA RTX 3090 (24GB VRAM)
 
 set -e
 
-# Force CUDA to use only GPU #1 (RTX 3090)
-# GPU 0 = GTX 1650 (4GB) - internal, insufficient VRAM
-# GPU 1 = RTX 3090 (24GB) - external, target GPU
 export CUDA_VISIBLE_DEVICES=1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 TASK="mmlu"
-RESULTS_DIR="$PROJECT_ROOT/results/persona_experiments/$TASK"
+RESULTS_DIR="$PROJECT_ROOT/results/baseline/$TASK"
 
 echo "=================================================="
-echo "Linux Single GPU Persona Diversity - MMLU Task"
+echo "Linux Single GPU Baseline - MMLU Task"
 echo "=================================================="
 echo "Hardware: Single RTX 3090 (24GB VRAM)"
 echo "Models: 9 (0.6B-8B, excluding 14B)"
+echo "Agent Counts: [1, 3, 5, 7] (single-agent baseline + multiagent debate)"
 echo "Project root: $PROJECT_ROOT"
 echo "Script dir: $SCRIPT_DIR"
 echo ""
@@ -30,7 +28,6 @@ check_gpu_memory() {
     local model_alias="$1"
     local n_agents="$2"
 
-    # Use Python to check available VRAM
     local mem_info=$(python3 -c "
 import sys
 sys.path.insert(0, '$PROJECT_ROOT')
@@ -45,7 +42,6 @@ else:
 
     IFS=',' read -r free_gb total_gb <<< "$mem_info"
 
-    # Estimate required memory (rough heuristics)
     local required_gb=0
     case "$model_alias" in
         *0.6b*|*vibethinker*) required_gb=2 ;;
@@ -57,11 +53,9 @@ else:
         *) required_gb=10 ;;
     esac
 
-    # Add overhead for multi-agent (KV cache: 0.5GB per agent)
     local overhead=$(echo "$n_agents * 0.5" | bc -l)
     required_gb=$(echo "$required_gb + $overhead" | bc -l)
 
-    # Check if enough free memory (1GB safety margin)
     local available=$(echo "$free_gb - 1.0" | bc -l)
     local sufficient=$(echo "$available >= $required_gb" | bc -l)
 
@@ -77,70 +71,70 @@ else:
 
 export -f check_gpu_memory
 
-# Configuration
-CONFIG_FILE="$SCRIPT_DIR/configs/persona_${TASK}_jobs.txt"
-LOG_DIR="$SCRIPT_DIR/logs/${TASK}"
-MAX_PARALLEL=${MAX_PARALLEL:-2}  # Default: 2 parallel jobs (safe for small models)
+CONFIG_FILE="$SCRIPT_DIR/configs/baseline_${TASK}_jobs.txt"
+LOG_DIR="$SCRIPT_DIR/logs/${TASK}_baseline"
+MAX_PARALLEL=${MAX_PARALLEL:-2}
 
-# Create log directory
-mkdir -p "$LOG_DIR"
+mkdir -p "$LOG_DIR" "$RESULTS_DIR"
 
-# Check if config file exists
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Error: Config file not found: $CONFIG_FILE"
-    echo "Run generate_job_configs.py first:"
-    echo "  python3 $SCRIPT_DIR/generate_job_configs.py"
+    echo "Run generate_baseline_configs.py first:"
+    echo "  python3 $SCRIPT_DIR/generate_baseline_configs.py"
     exit 1
 fi
 
-# Count total jobs (excluding header) - should be 54 for single GPU (9 models)
 TOTAL_JOBS=$(($(wc -l < "$CONFIG_FILE") - 1))
 
 echo "Configuration:"
 echo "  Config file: $CONFIG_FILE"
-echo "  Total jobs: $TOTAL_JOBS (expected: 54)"
+echo "  Total jobs: $TOTAL_JOBS (expected: 36)"
 echo "  Max parallel: $MAX_PARALLEL"
 echo "  Log directory: $LOG_DIR"
 echo "  Results directory: $RESULTS_DIR"
 echo "=================================================="
-
-# Create results directory if it doesn't exist
-mkdir -p "$RESULTS_DIR"
 echo ""
 
-# Function to run a single job
 run_job() {
     local job_line="$1"
     local job_num="$2"
 
-    # Parse CSV line
-    IFS=',' read -r job_id model_alias n_agents rounds task num_param num_value random_seed personas_tuple <<< "$job_line"
+    eval "$(python3 -c "
+import csv
+import sys
 
-    # Remove quotes from personas_tuple
-    personas_tuple=$(echo "$personas_tuple" | sed 's/^"//;s/"$//')
+try:
+    row = next(csv.reader(['$job_line']))
+    job_id, model_alias, n_agents, rounds, task, num_param, num_value, random_seed = row
 
-    # Convert persona tuple to space-separated args
-    personas_args=$(echo "$personas_tuple" | sed "s/[()']//g" | sed 's/, / /g')
+    print(f'job_id={job_id}')
+    print(f'model_alias={model_alias}')
+    print(f'n_agents={n_agents}')
+    print(f'rounds={rounds}')
+    print(f'task={task}')
+    print(f'num_param={num_param}')
+    print(f'num_value={num_value}')
+    print(f'random_seed={random_seed}')
+except Exception as e:
+    print(f'echo \"ERROR: CSV parsing failed: {e}\" >&2')
+    exit(1)
+\")"
 
     echo "[Job $job_num/$TOTAL_JOBS] Starting: model=$model_alias agents=$n_agents"
 
-    # Pre-flight GPU memory check
     if ! check_gpu_memory "$model_alias" "$n_agents"; then
         echo "[Job $job_num/$TOTAL_JOBS] ⚠ Skipping due to insufficient GPU memory"
         echo "[Job $job_num/$TOTAL_JOBS] ⚠ Run with MAX_PARALLEL=1 or clear GPU memory" >> "$LOG_DIR/job_${job_id}.out"
-        return 2  # Return code 2 = skipped due to memory
+        return 2
     fi
 
-    # Navigate to task directory
     cd "$PROJECT_ROOT/tasks/$task"
 
-    # Run experiment
-    python3 gen_${task}.py \
+    python3 gen_mmlu.py \
         --model "$model_alias" \
         --agents "$n_agents" \
         --rounds "$rounds" \
         --num-questions "$num_value" \
-        --agent-personas $personas_args \
         --output-directory "$RESULTS_DIR" \
         > "$LOG_DIR/job_${job_id}.out" 2>&1
 
@@ -156,14 +150,12 @@ run_job() {
 }
 
 export -f run_job
-export PROJECT_ROOT TASK LOG_DIR TOTAL_JOBS
+export PROJECT_ROOT TASK LOG_DIR TOTAL_JOBS RESULTS_DIR
 
-# Check if GNU parallel is available
 if command -v parallel &> /dev/null; then
     echo "Using GNU parallel for job execution"
     echo ""
 
-    # Skip header and run jobs in parallel
     tail -n +2 "$CONFIG_FILE" | nl -v 1 | parallel --colsep '\t' --jobs "$MAX_PARALLEL" run_job {2} {1}
 
     exit_code=$?
@@ -173,54 +165,49 @@ else
     echo "Install with: sudo apt-get install parallel"
     echo ""
 
-    # Fallback: use background processes with job control
     job_num=0
     active_jobs=0
 
     while IFS= read -r line; do
-        # Skip header
         if [ $job_num -eq 0 ]; then
             job_num=1
             continue
         fi
 
-        # Wait if we've hit max parallel jobs
         while [ $active_jobs -ge $MAX_PARALLEL ]; do
-            wait -n  # Wait for any job to finish
+            wait -n
             active_jobs=$((active_jobs - 1))
         done
 
-        # Run job in background
         run_job "$line" "$job_num" &
         active_jobs=$((active_jobs + 1))
         job_num=$((job_num + 1))
 
     done < "$CONFIG_FILE"
 
-    # Wait for all remaining jobs
     wait
     exit_code=$?
 fi
 
 echo ""
 echo "=================================================="
-echo "MMLU Task Experiments Complete"
+echo "MMLU Task Baseline Experiments Complete"
 echo "=================================================="
 echo "Exit code: $exit_code"
 echo "Logs: $LOG_DIR"
+echo "Results: $RESULTS_DIR"
 echo ""
 
-# Count successes and failures
 SUCCESS_COUNT=$(grep -l "Exit code: 0" "$LOG_DIR"/*.out 2>/dev/null | wc -l || echo 0)
 FAILURE_COUNT=$(( TOTAL_JOBS - SUCCESS_COUNT ))
 
 echo "Results:"
-echo "  Successful: $SUCCESS_COUNT / $TOTAL_JOBS (expected: 54)"
+echo "  Successful: $SUCCESS_COUNT / $TOTAL_JOBS (expected: 36)"
 echo "  Failed: $FAILURE_COUNT / $TOTAL_JOBS"
 if [ $FAILURE_COUNT -gt 0 ]; then
     echo ""
     echo "Tip: Check logs for OOM errors. If present, reduce MAX_PARALLEL:"
-    echo "  MAX_PARALLEL=1 bash run_persona_mmlu.sh"
+    echo "  MAX_PARALLEL=1 bash run_baseline_mmlu.sh"
 fi
 echo "=================================================="
 

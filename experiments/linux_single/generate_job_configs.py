@@ -31,11 +31,15 @@ from utils.persona_loader import get_optimal_personas
 from utils import load_config
 
 # Load config to populate MODEL_ALIASES (needed by persona loader)
-load_config()
+config = load_config()
 
-# Hardware constraints - Single GPU (24GB VRAM)
-MAX_VRAM_GB = 24
-AGENT_COUNTS = [2, 3, 4, 5, 6, 7]
+# Hardware constraints - Single GPU (24GB VRAM) or Double GPU (48GB VRAM)
+# Edit below
+MAX_VRAM_GB = 48
+SEED = 42
+
+# Load agent counts from config.yaml (single source of truth)
+AGENT_COUNTS = config.get('agent_counts', [3, 5, 7])
 
 
 def load_vllm_models(max_vram_gb=MAX_VRAM_GB):
@@ -104,25 +108,25 @@ TASKS = {
         'rounds': 3,
         'num_param': 'num_problems',
         'num_value': 100,
-        'random_seed': 0
+        'random_seed': SEED
     },
     'gsm': {
         'rounds': 3,
         'num_param': 'num_problems',
         'num_value': 100,
-        'random_seed': 0
+        'random_seed': SEED
     },
     'biography': {
         'rounds': 3,
         'num_param': 'num_people',
         'num_value': 40,
-        'random_seed': 0
+        'random_seed': SEED
     },
     'mmlu': {
         'rounds': 3,
         'num_param': 'num_questions',
         'num_value': 100,
-        'random_seed': 0
+        'random_seed': SEED
     }
 }
 
