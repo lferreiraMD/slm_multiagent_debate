@@ -113,14 +113,40 @@ run_job() {
     local job_line="$1"
     local job_num="$2"
 
-    # Parse CSV line
-    IFS=',' read -r job_id model_alias n_agents rounds task num_param num_value random_seed personas_tuple <<< "$job_line"
+    # Parse CSV line using Python for proper CSV quoting support
+    eval "$(python3 -c "
+import csv
+import ast
+import sys
 
-    # Remove quotes from personas_tuple
-    personas_tuple=$(echo "$personas_tuple" | sed 's/^"//;s/"$//')
+try:
+    # Parse CSV line (handles quoted fields with commas correctly)
+    row = next(csv.reader(['$job_line']))
+    job_id, model_alias, n_agents, rounds, task, num_param, num_value, random_seed, personas_tuple = row
 
-    # Convert persona tuple to space-separated args
-    personas_args=$(echo "$personas_tuple" | sed "s/[()']//g" | sed 's/, / /g')
+    # Parse personas tuple string representation into list
+    try:
+        personas = ast.literal_eval(personas_tuple)
+        # Build bash array syntax: 'persona1' 'persona2' 'persona3'
+        personas_args = ' '.join(repr(p) for p in personas)
+    except Exception as e:
+        print(f'echo \"ERROR: Failed to parse personas: {e}\" >&2')
+        personas_args = ''
+
+    # Output as bash variable assignments
+    print(f'job_id={job_id}')
+    print(f'model_alias={model_alias}')
+    print(f'n_agents={n_agents}')
+    print(f'rounds={rounds}')
+    print(f'task={task}')
+    print(f'num_param={num_param}')
+    print(f'num_value={num_value}')
+    print(f'random_seed={random_seed}')
+    print(f'personas_args=({personas_args})')
+except Exception as e:
+    print(f'echo \"ERROR: CSV parsing failed: {e}\" >&2')
+    exit(1)
+\")"
 
     echo "[Job $job_num/$TOTAL_JOBS] Starting: model=$model_alias agents=$n_agents"
 
