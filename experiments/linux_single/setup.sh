@@ -1,33 +1,44 @@
 #!/bin/bash
 
-# Quick setup script for Linux persona diversity experiments
-# Prepares job configs and makes scripts executable
+# Quick setup script for Linux baseline and persona diversity experiments
+# Generates job configs for both baseline and persona experiments
+# Makes scripts executable
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "=================================================="
-echo "Linux Persona Diversity Experiments - Setup"
+echo "Linux Baseline & Persona Diversity Experiments - Setup"
 echo "=================================================="
 echo ""
 
 # 1. Make all scripts executable
-echo "[1/3] Making scripts executable..."
+echo "[1/4] Making scripts executable..."
 chmod +x "$SCRIPT_DIR"/*.sh
 echo "  ✓ All .sh files are now executable"
 echo ""
 
-# 2. Generate job configurations
-echo "[2/3] Generating job configurations..."
-if python3 "$SCRIPT_DIR/generate_job_configs.py"; then
-    echo "  ✓ Job configs generated successfully"
+# 2. Generate baseline job configurations
+echo "[2/4] Generating baseline job configurations..."
+if python3 "$SCRIPT_DIR/generate_baseline_configs.py"; then
+    echo "  ✓ Baseline job configs generated successfully"
 else
-    echo "  ✗ Failed to generate job configs"
+    echo "  ✗ Failed to generate baseline job configs"
     exit 1
 fi
 echo ""
 
-# 3. Create log directories
-echo "[3/3] Creating log directories..."
+# 3. Generate persona job configurations
+echo "[3/4] Generating persona job configurations..."
+if python3 "$SCRIPT_DIR/generate_job_configs.py"; then
+    echo "  ✓ Persona job configs generated successfully"
+else
+    echo "  ✗ Failed to generate persona job configs"
+    exit 1
+fi
+echo ""
+
+# 4. Create log directories
+echo "[4/4] Creating log directories..."
 mkdir -p "$SCRIPT_DIR/logs"/{math,gsm,biography,mmlu,test}
 echo "  ✓ Log directories created"
 echo ""
