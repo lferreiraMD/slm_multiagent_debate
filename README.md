@@ -146,8 +146,41 @@ This runs a quick sanity check:
 **Duration:** ~5-10 minutes on dual RTX 3090
 **If test passes:** You're ready for full experiments!
 
-### Step 3: Run Full Experiments
-After successful testing, run the baseline experiments:
+### Step 3: Run Baseline Experiments (Quick)
+
+For single GPU (RTX 3090 with 24GB VRAM), run baseline experiments:
+
+```bash
+cd experiments/linux_single
+
+# Generate job configurations
+python3 generate_baseline_configs.py
+
+# Run individual tasks (24 experiments each)
+bash run_baseline_math.sh      # ~10-15 minutes
+bash run_baseline_gsm.sh       # ~15-20 minutes
+bash run_baseline_biography.sh # ~20-30 minutes
+bash run_baseline_mmlu.sh      # ~25-35 minutes
+
+# Or run all tasks in parallel
+bash run_baseline_math.sh &
+bash run_baseline_gsm.sh &
+bash run_baseline_biography.sh &
+bash run_baseline_mmlu.sh &
+wait
+```
+
+Each task tests:
+- **6 models** (filtered by 24GB VRAM limit)
+- **4 agent counts** (1, 3, 5, 7)
+- **Total:** 24 experiments per task, 96 total
+
+**Results:** Saved to `results/baseline/{task}/`
+**Logs:** Saved to `experiments/linux_single/logs/{task}_baseline/`
+
+### Step 4: Run Full Experiments (Comprehensive)
+
+After baseline completion, run comprehensive multiagent debate experiments:
 
 ```bash
 # Run individual tasks (220 experiments each)
@@ -163,14 +196,6 @@ After successful testing, run the baseline experiments:
 ./experiments/run_mmlu_experiments.sh &
 wait
 ```
-
-Each script tests:
-- **11 models** (vllm-qwen3-0.6b through vllm-oss-20b)
-- **4 agent counts** (1, 3, 5, 7)
-- **5 round counts** (2, 3, 4, 5, 6)
-- **Total:** 220 experiments per task, 880 total
-
-**Results:** Saved to `results/baseline/{task}/`
 
 See `experiments/README.md` for detailed documentation.
 

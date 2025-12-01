@@ -182,6 +182,64 @@ ollama pull deepseek-r1:1.5b
 2. config.yaml: `model: "deepseek"`
 3. Fallback: `"deepseek"`
 
+**Agent Counts Configuration (NEW):**
+- `agent_counts: [3, 5, 7]` in config.yaml is the single source of truth
+- **Baseline experiments** (no personas): Prepend 1 → [1, 3, 5, 7]
+- **Persona experiments** (cognitive diversity): Use [3, 5, 7] directly (n_agents=1 has no personas in database)
+
+## Baseline Experiment Infrastructure
+
+**Purpose:** Test single-agent performance (baseline) vs. multiagent debate (3, 5, 7 agents) without persona diversity.
+
+### Generate Baseline Job Configurations
+
+```bash
+cd experiments/linux_single
+python3 generate_baseline_configs.py [--max-vram-gb 24]
+```
+
+**Output:**
+- `configs/baseline_math_jobs.txt` (24 jobs: 6 models × 4 agent counts)
+- `configs/baseline_gsm_jobs.txt` (24 jobs)
+- `configs/baseline_biography_jobs.txt` (24 jobs)
+- `configs/baseline_mmlu_jobs.txt` (24 jobs)
+- **Total:** 96 baseline experiment configurations
+
+**CSV Structure (8 fields, no personas):**
+```
+job_id,model_alias,n_agents,rounds,task,num_param,num_value,random_seed
+1,vllm-qwen3-0.6b,1,3,math,num_problems,100,42
+2,vllm-qwen3-0.6b,3,3,math,num_problems,100,42
+...
+```
+
+### Execute Baseline Experiments
+
+```bash
+# Run all math baseline experiments (24 jobs)
+bash run_baseline_math.sh
+
+# Run all GSM baseline experiments
+bash run_baseline_gsm.sh
+
+# Run all biography baseline experiments
+bash run_baseline_biography.sh
+
+# Run all MMLU baseline experiments
+bash run_baseline_mmlu.sh
+```
+
+**Options:**
+- `MAX_PARALLEL=2 bash run_baseline_math.sh` - Run 2 jobs in parallel (default)
+- `MAX_PARALLEL=1 bash run_baseline_math.sh` - Run 1 job at a time (safer for 24GB GPUs)
+
+**Output Locations:**
+- Results: `results/baseline/{task}/`
+- Logs: `logs/{task}_baseline/job_*.out`
+
+**Robust CSV Parsing:**
+All baseline scripts use Python's `csv.reader` for proper handling of quoted CSV fields. This prevents the persona tuple parsing errors that occurred with bash IFS-based parsing.
+
 ## Project Status
 
 ### ✅ Phase 1 & 2: Complete (52 items)
@@ -195,15 +253,21 @@ ollama pull deepseek-r1:1.5b
 - **NEW (2025-11-30):** 14 models with full metadata (context_length, VRAM, params)
 - **NEW (2025-11-30):** Auto-enable temperature diversity (0.5-1.5 range)
 - **NEW (2025-11-30):** English-only prompt instructions for multilingual models
+- **NEW (2025-12-01):** Complete baseline experiment infrastructure
+  - `generate_baseline_configs.py`: Generates 96 baseline job configs (24 per task × 4 tasks)
+  - `run_baseline_{math,gsm,biography,mmlu}.sh`: Execute baseline experiments with robust CSV parsing
+  - Single source of truth: `agent_counts: [3,5,7]` in config.yaml (baseline scripts prepend 1)
+  - Fixed CSV parsing in all persona run scripts using Python csv.reader
 
 ### 🔄 Phase 3: Current Experiments (In Progress)
 - [x] ✅ Add 4 new English-centric models (Gemma-2, Phi-3, Mistral)
 - [x] ✅ Calculate optimal personas for all 14 models (v2, MaxDet)
 - [x] ✅ Implement context compression (math task proof of concept)
-- [ ] Complete baselines across all 14 models
+- [x] ✅ Complete baseline experiment infrastructure (24 jobs per task, agent_counts=[1,3,5,7])
+- [ ] Execute baseline experiments across all models
 - [ ] Test Ollama backend
-- [ ] Run multiagent debate experiments (2-7 agents)
-- [ ] Test cognitive diversity combinations (persona experiments)
+- [ ] Run multiagent debate experiments with persona diversity
+- [ ] Test cognitive diversity combinations (all diversity types)
 
 ### 📋 Phase 4: Analysis & Paper
 - [ ] Statistical analysis of debate benefits
@@ -224,8 +288,14 @@ ollama pull deepseek-r1:1.5b
 │   ├── linux/              # Dual RTX 3090 (240 experiments)
 │   │   ├── README.md       # Multi-GPU documentation
 │   │   └── ...
-│   ├── linux_single/       # Single RTX 3090 (216 experiments)
-│   │   ├── README.md       # Single GPU documentation
+│   ├── linux_single/       # Single RTX 3090 (96 baseline + 72 persona experiments)
+│   │   ├── generate_baseline_configs.py    # Generate baseline job configs (96 jobs)
+│   │   ├── generate_job_configs.py         # Generate persona job configs (72 jobs)
+│   │   ├── run_baseline_{math,gsm,biography,mmlu}.sh   # Baseline execution scripts
+│   │   ├── run_persona_{math,gsm,biography,mmlu}.sh    # Persona execution scripts
+│   │   ├── configs/                        # Generated job config CSVs
+│   │   ├── logs/                           # Experiment logs
+│   │   ├── README.md                       # Single GPU documentation
 │   │   └── ...
 │   ├── download_models.py
 │   ├── hpc_test.sh
