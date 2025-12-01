@@ -25,11 +25,8 @@ echo "Persona selection: MaxDet v2 (extreme personas)"
 echo "=================================================="
 echo ""
 
-# Configuration
-export MAX_PARALLEL=${MAX_PARALLEL:-2}  # Override with env var if needed
-
 echo "Configuration:"
-echo "  Max parallel jobs: $MAX_PARALLEL"
+echo "  Execution: Sequential (one task at a time)"
 echo "  GPU assignment: Single RTX 3090 (auto-detected by vLLM)"
 echo ""
 
