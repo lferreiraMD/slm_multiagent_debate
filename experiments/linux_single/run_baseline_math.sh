@@ -1,15 +1,19 @@
-#!/bin/bash
-
-# Linux SINGLE GPU baseline math experiments
-# Runs 36 experiments sequentially
-# Optimized for Ubuntu with vLLM on single NVIDIA RTX 3090 (24GB VRAM)
+#!/usr/bin/env bash
+# Optimized for Ubuntu with vLLM
 
 set -e
 
+# LAPTOP WITH EXTERNAL GPU
 # Force CUDA to use only GPU #1 (RTX 3090)
 # GPU 0 = GTX 1650 (4GB) - internal, insufficient VRAM
 # GPU 1 = RTX 3090 (24GB) - external, target GPU
-export CUDA_VISIBLE_DEVICES=1
+
+# RESEARCH WORKSTATIOS WITH 2X RTX 3090
+# Force CUDA to use BOTH GPUs
+# GPU 0 = RTX 3090 (24GB) - internal, target GPU
+# GPU 1 = RTX 3090 (24GB) - internal, target GPU
+
+export CUDA_VISIBLE_DEVICES=0,1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
@@ -17,11 +21,9 @@ TASK="math"
 RESULTS_DIR="$PROJECT_ROOT/results/baseline/$TASK"
 
 echo "=================================================="
-echo "Linux Single GPU Baseline - Math Task"
+echo "Linux Baseline - Math Task"
 echo "=================================================="
-echo "Hardware: Single RTX 3090 (24GB VRAM)"
-echo "Models: 9 (0.6B-8B, excluding 14B)"
-echo "Agent Counts: [1, 3, 5, 7] (single-agent baseline + multiagent debate)"
+echo "Hardware: Single or Double RTX 3090 (24GB VRAM)"
 echo "Project root: $PROJECT_ROOT"
 echo "Script dir: $SCRIPT_DIR"
 echo ""
@@ -98,7 +100,7 @@ TOTAL_JOBS=$(($(wc -l < "$CONFIG_FILE") - 1))
 
 echo "Configuration:"
 echo "  Config file: $CONFIG_FILE"
-echo "  Total jobs: $TOTAL_JOBS (expected: 36)"
+echo "  Total jobs: $TOTAL_JOBS"
 echo "  Log directory: $LOG_DIR"
 echo "  Results directory: $RESULTS_DIR"
 echo "=================================================="

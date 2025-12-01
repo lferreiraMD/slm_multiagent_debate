@@ -1,27 +1,25 @@
-#!/bin/bash
-
-# Linux SINGLE GPU persona diversity math experiments
-# Runs 54 experiments sequentially
-# Optimized for Ubuntu with vLLM on single NVIDIA RTX 3090 (24GB VRAM)
+#!/usr/bin/env bash
+# Optimized for Ubuntu with vLLM
 
 set -e
 
-# LAPTOP WITH EXTERNAL GPU
-# Force CUDA to use only GPU #1 (RTX 3090)
-# GPU 0 = GTX 1650 (4GB) - internal, insufficient VRAM
-# GPU 1 = RTX 3090 (24GB) - external, target GPU
-
-# RESEARCH WORKSTATIOS WITH 2X RTX 3090
-# Force CUDA to use BOTH GPUs
-# GPU 0 = RTX 3090 (24GB) - internal, target GPU
-# GPU 1 = RTX 3090 (24GB) - internal, target GPU
-
-export CUDA_VISIBLE_DEVICES=0,1
+# GPU Configuration: Respect user preference or use all GPUs
+# If CUDA_VISIBLE_DEVICES is already set by the user, keep it.
+# If not, default to using all available GPUs (empty value usually implies all).
+if [ -z "$CUDA_VISIBLE_DEVICES" ]; then
+    echo "No specific GPUs requested. Using all available GPUs."
+else
+    echo "Using requested GPUs: $CUDA_VISIBLE_DEVICES"
+    export CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES"
+fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 TASK="math"
 RESULTS_DIR="$PROJECT_ROOT/results/persona_experiments/$TASK"
+
+# Source multi-GPU memory check function
+source "$SCRIPT_DIR/check_gpu_memory.sh"
 
 echo "=================================================="
 echo "Linux Single GPU Persona Diversity - Math Task"
@@ -31,58 +29,6 @@ echo "Models: 9 (0.6B-8B, excluding 14B)"
 echo "Project root: $PROJECT_ROOT"
 echo "Script dir: $SCRIPT_DIR"
 echo ""
-
-# GPU memory check function
-check_gpu_memory() {
-    local model_alias="$1"
-    local n_agents="$2"
-
-    # Use Python to check available VRAM
-    local mem_info=$(python3 -c "
-import sys
-sys.path.insert(0, '$PROJECT_ROOT')
-from utils.cuda_cleanup import get_cuda_memory_stats
-
-stats = get_cuda_memory_stats(device=0)
-if stats:
-    print(f\"{stats['free']:.2f},{stats['total']:.2f}\")
-else:
-    print('0,0')
-" 2>/dev/null)
-
-    IFS=',' read -r free_gb total_gb <<< "$mem_info"
-
-    # Estimate required memory (rough heuristics)
-    local required_gb=0
-    case "$model_alias" in
-        *0.6b*|*vibethinker*) required_gb=2 ;;
-        *1.7b*|*deepseek*) required_gb=4 ;;
-        *3b*|*smallthinker*) required_gb=7 ;;
-        *4b*) required_gb=9 ;;
-        *7b*) required_gb=15 ;;
-        *8b*) required_gb=17 ;;
-        *) required_gb=10 ;;
-    esac
-
-    # Add overhead for multi-agent (KV cache: 0.5GB per agent)
-    local overhead=$(echo "$n_agents * 0.5" | bc -l)
-    required_gb=$(echo "$required_gb + $overhead" | bc -l)
-
-    # Check if enough free memory (1GB safety margin)
-    local available=$(echo "$free_gb - 1.0" | bc -l)
-    local sufficient=$(echo "$available >= $required_gb" | bc -l)
-
-    if [ "$(echo "$sufficient == 1" | bc -l)" -eq 1 ]; then
-        echo "GPU memory OK: ${free_gb}GB free, ~${required_gb}GB required"
-        return 0
-    else
-        echo "WARNING: Low GPU memory! ${free_gb}GB free, ~${required_gb}GB required"
-        echo "Clear GPU memory or restart the GPU before continuing"
-        return 1
-    fi
-}
-
-export -f check_gpu_memory
 
 # Configuration
 CONFIG_FILE="$SCRIPT_DIR/configs/persona_${TASK}_jobs.txt"

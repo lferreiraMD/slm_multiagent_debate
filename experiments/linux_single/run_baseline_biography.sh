@@ -1,12 +1,19 @@
-#!/bin/bash
-
-# Linux SINGLE GPU baseline biography experiments
-# Runs 36 experiments sequentially
-# Optimized for Ubuntu with vLLM on single NVIDIA RTX 3090 (24GB VRAM)
+#!/usr/bin/env bash
+# Optimized for Ubuntu with vLLM
 
 set -e
 
-export CUDA_VISIBLE_DEVICES=1
+# LAPTOP WITH EXTERNAL GPU
+# Force CUDA to use only GPU #1 (RTX 3090)
+# GPU 0 = GTX 1650 (4GB) - internal, insufficient VRAM
+# GPU 1 = RTX 3090 (24GB) - external, target GPU
+
+# RESEARCH WORKSTATIOS WITH 2X RTX 3090
+# Force CUDA to use BOTH GPUs
+# GPU 0 = RTX 3090 (24GB) - internal, target GPU
+# GPU 1 = RTX 3090 (24GB) - internal, target GPU
+
+export CUDA_VISIBLE_DEVICES=0,1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
