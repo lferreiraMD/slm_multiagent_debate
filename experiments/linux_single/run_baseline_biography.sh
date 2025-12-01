@@ -64,7 +64,7 @@ else:
         return 0
     else
         echo "WARNING: Low GPU memory! ${free_gb}GB free, ~${required_gb}GB required"
-        echo "Consider reducing MAX_PARALLEL or clearing GPU memory"
+        echo "Clear GPU memory or restart the GPU before continuing"
         return 1
     fi
 }
@@ -73,7 +73,6 @@ export -f check_gpu_memory
 
 CONFIG_FILE="$SCRIPT_DIR/configs/baseline_${TASK}_jobs.txt"
 LOG_DIR="$SCRIPT_DIR/logs/${TASK}_baseline"
-MAX_PARALLEL=${MAX_PARALLEL:-2}
 
 mkdir -p "$LOG_DIR" "$RESULTS_DIR"
 
@@ -89,7 +88,6 @@ TOTAL_JOBS=$(($(wc -l < "$CONFIG_FILE") - 1))
 echo "Configuration:"
 echo "  Config file: $CONFIG_FILE"
 echo "  Total jobs: $TOTAL_JOBS (expected: 36)"
-echo "  Max parallel: $MAX_PARALLEL"
 echo "  Log directory: $LOG_DIR"
 echo "  Results directory: $RESULTS_DIR"
 echo "=================================================="
@@ -149,45 +147,31 @@ except Exception as e:
     return $exit_code
 }
 
-export -f run_job
-export PROJECT_ROOT TASK LOG_DIR TOTAL_JOBS RESULTS_DIR
+# Run jobs sequentially
+echo "Running jobs sequentially..."
+echo ""
 
-if command -v parallel &> /dev/null; then
-    echo "Using GNU parallel for job execution"
-    echo ""
+job_num=0
+exit_code=0
 
-    tail -n +2 "$CONFIG_FILE" | nl -v 1 | parallel --colsep '\t' --jobs "$MAX_PARALLEL" run_job {2} {1}
+while IFS= read -r line; do
+    # Skip header
+    if [ $job_num -eq 0 ]; then
+        job_num=1
+        continue
+    fi
 
-    exit_code=$?
+    run_job "$line" "$job_num"
+    job_status=$?
 
-else
-    echo "GNU parallel not found, using background processes"
-    echo "Install with: sudo apt-get install parallel"
-    echo ""
+    # Track if any job failed (but continue running others)
+    if [ $job_status -ne 0 ]; then
+        exit_code=$job_status
+    fi
 
-    job_num=0
-    active_jobs=0
+    job_num=$((job_num + 1))
 
-    while IFS= read -r line; do
-        if [ $job_num -eq 0 ]; then
-            job_num=1
-            continue
-        fi
-
-        while [ $active_jobs -ge $MAX_PARALLEL ]; do
-            wait -n
-            active_jobs=$((active_jobs - 1))
-        done
-
-        run_job "$line" "$job_num" &
-        active_jobs=$((active_jobs + 1))
-        job_num=$((job_num + 1))
-
-    done < "$CONFIG_FILE"
-
-    wait
-    exit_code=$?
-fi
+done < "$CONFIG_FILE"
 
 echo ""
 echo "=================================================="
@@ -206,8 +190,7 @@ echo "  Successful: $SUCCESS_COUNT / $TOTAL_JOBS (expected: 36)"
 echo "  Failed: $FAILURE_COUNT / $TOTAL_JOBS"
 if [ $FAILURE_COUNT -gt 0 ]; then
     echo ""
-    echo "Tip: Check logs for OOM errors. If present, reduce MAX_PARALLEL:"
-    echo "  MAX_PARALLEL=1 bash run_baseline_biography.sh"
+    echo "Tip: Check logs in $LOG_DIR for errors"
 fi
 echo "=================================================="
 
