@@ -191,6 +191,13 @@ def save_jobs_to_csv(jobs, output_path):
         writer.writeheader()
         writer.writerows(jobs)
 
+    # Force Unix line endings (handles cross-platform file sync issues)
+    with open(output_path, 'rb') as f:
+        content = f.read()
+    content = content.replace(b'\r\n', b'\n').replace(b'\r', b'\n')
+    with open(output_path, 'wb') as f:
+        f.write(content)
+
     print(f"  Saved {len(jobs)} jobs to {output_path}")
 
 

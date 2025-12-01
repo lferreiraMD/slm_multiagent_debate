@@ -1,5 +1,262 @@
-Traceback (most recent call last):
-  File "/home/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/tasks/mmlu/gen_mmlu.py", line 145, in <module>
-    raise ValueError(f"Number of personas ({len(args.agent_personas)}) must match number of agents ({agents})")
-ValueError: Number of personas (29) must match number of agents (2)
-[W1128 17:07:42.839854476 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+Using persona diversity with 3 different personas
+============================================================
+MMLU Task - Multiagent Debate
+============================================================
+Model: Qwen/Qwen3-0.6B
+Persona diversity mode:
+  Agent 1: a Kantian deontologist who judges all actions strictly by th...
+  Agent 2: a deep-sea volcanologist focused on extremes of pressure, he...
+  Agent 3: a Renaissance painter who values perspective, light, shadow,...
+Agents: 3
+Rounds: 3
+Questions: 3
+Dataset: /home/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/data/mmlu
+Generation params: {'temperature': 1.0, 'max_tokens': None, 'top_p': 1.0, 'n': 1}
+============================================================
+Found 57 MMLU test files
+
+--- Problem 1/3, Round 1, Agent 1/3 ---
+INFO 12-01 10:23:11 [__init__.py:216] Automatically detected platform cuda.
+[ModelCache] Loading model: Qwen/Qwen3-0.6B (backend=vllm)
+[ModelCache] Using max_model_len=32768 for Qwen/Qwen3-0.6B
+INFO 12-01 10:23:13 [utils.py:233] non-default args: {'max_model_len': 32768, 'disable_log_stats': True}
+INFO 12-01 10:23:14 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 12-01 10:23:14 [model.py:1510] Using max model len 32768
+INFO 12-01 10:23:14 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=8192.
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:14 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:14 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-0.6B', speculative_config=None, tokenizer='Qwen/Qwen3-0.6B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-0.6B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:16 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:16 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:16 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-0.6B...
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:16 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:16 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:17 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:17 [weight_utils.py:450] No model.safetensors.index.json found in remote.
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  6.57it/s]
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  6.56it/s]
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m 
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:17 [default_loader.py:267] Loading weights took 0.18 seconds
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:18 [gpu_model_runner.py:2653] Model loading took 1.1201 GiB and 0.764876 seconds
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:21 [backends.py:548] Using cache directory: /home/leonardo/.cache/vllm/torch_compile_cache/3f140339fb/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:21 [backends.py:559] Dynamo bytecode transform time: 2.86 s
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:22 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 1.246 s
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:23 [monitor.py:34] torch.compile takes 2.86 s in total
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:23 [gpu_worker.py:298] Available KV cache memory: 19.63 GiB
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:24 [kv_cache_utils.py:1087] GPU KV cache size: 183,760 tokens
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:24 [kv_cache_utils.py:1091] Maximum concurrency for 32,768 tokens per request: 5.61x
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▉         | 6/67 [00:00<00:01, 51.68it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 12/67 [00:00<00:01, 52.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 18/67 [00:00<00:00, 53.66it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  36%|███▌      | 24/67 [00:00<00:00, 55.22it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▍     | 30/67 [00:00<00:00, 56.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▌    | 37/67 [00:00<00:00, 59.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▌   | 44/67 [00:00<00:00, 60.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▌  | 51/67 [00:00<00:00, 62.22it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 59/67 [00:00<00:00, 65.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  99%|█████████▊| 66/67 [00:01<00:00, 65.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:01<00:00, 59.98it/s]
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):  14%|█▍        | 5/35 [00:00<00:00, 50.00it/s]Capturing CUDA graphs (decode, FULL):  31%|███▏      | 11/35 [00:00<00:00, 53.63it/s]Capturing CUDA graphs (decode, FULL):  49%|████▊     | 17/35 [00:00<00:00, 55.41it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 24/35 [00:00<00:00, 60.86it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████▏| 32/35 [00:00<00:00, 65.65it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:00<00:00, 62.04it/s]
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:26 [gpu_model_runner.py:3480] Graph capturing finished in 2 secs, took 0.63 GiB
+[1;36m(EngineCore_DP0 pid=4022538)[0;0m INFO 12-01 10:23:26 [core.py:210] init engine (profile, create kv cache, warmup model) took 8.38 seconds
+INFO 12-01 10:23:27 [llm.py:306] Supported_tasks: ['generate']
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 337.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.77s/it, est. speed input: 103.40 toks/s, output: 337.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.77s/it, est. speed input: 103.40 toks/s, output: 337.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.77s/it, est. speed input: 103.40 toks/s, output: 337.67 toks/s]
+Agent 1 response: (A)...
+
+--- Problem 1/3, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 871.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.69s/it, est. speed input: 42.75 toks/s, output: 324.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.69s/it, est. speed input: 42.75 toks/s, output: 324.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.69s/it, est. speed input: 42.75 toks/s, output: 324.64 toks/s]
+Agent 2 response: (C)...
+
+--- Problem 1/3, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 958.26it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 230.00 toks/s, output: 338.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 230.00 toks/s, output: 338.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 230.00 toks/s, output: 338.93 toks/s]
+Agent 3 response: (A)...
+
+--- Problem 1/3, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1022.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 467.64 toks/s, output: 340.43 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 467.64 toks/s, output: 340.43 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 467.64 toks/s, output: 340.43 toks/s]
+Agent 1 response: (A)...
+
+--- Problem 1/3, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1061.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 202.32 toks/s, output: 339.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 202.32 toks/s, output: 339.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 202.32 toks/s, output: 339.36 toks/s]
+Agent 2 response: (C)  
+
+The reasoning from other agent solutions (A) and (A) supports option (C) as follows: Option (...
+
+--- Problem 1/3, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1107.26it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.06s/it, est. speed input: 181.70 toks/s, output: 338.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.06s/it, est. speed input: 181.70 toks/s, output: 338.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.06s/it, est. speed input: 181.70 toks/s, output: 338.62 toks/s]
+Agent 3 response: (A)  
+
+In (A), the description aligns with the assumption that gender shapes how nationhood is conce...
+
+--- Problem 1/3, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 499.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 745.79 toks/s, output: 333.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 745.79 toks/s, output: 333.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 745.79 toks/s, output: 333.48 toks/s]
+Agent 1 response: (A)...
+
+--- Problem 1/3, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 734.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 791.44 toks/s, output: 333.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 791.44 toks/s, output: 333.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 791.44 toks/s, output: 333.52 toks/s]
+Agent 2 response: (C)  
+
+Using the reasoning from other agents, option (C) correctly highlights how gender shapes how ...
+
+--- Problem 1/3, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 717.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 622.54 toks/s, output: 331.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 622.54 toks/s, output: 331.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 622.54 toks/s, output: 331.96 toks/s]
+Agent 3 response: (C)  
+
+**(A)** provides a clearer explanation of how gender shapes nationhood by highlighting the ro...
+
+Running accuracy: 0.000 ± 0.000
+
+--- Problem 2/3, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 646.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.93s/it, est. speed input: 293.46 toks/s, output: 334.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.93s/it, est. speed input: 293.46 toks/s, output: 334.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.93s/it, est. speed input: 293.46 toks/s, output: 334.93 toks/s]
+Agent 1 response: (B)...
+
+--- Problem 2/3, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 676.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 435.81 toks/s, output: 334.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 435.81 toks/s, output: 334.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 435.81 toks/s, output: 334.94 toks/s]
+Agent 2 response: (B) Some elites converted to Islam, but lower classes kept their traditional beliefs....
+
+--- Problem 2/3, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 862.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.16s/it, est. speed input: 178.52 toks/s, output: 328.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.16s/it, est. speed input: 178.52 toks/s, output: 328.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.17s/it, est. speed input: 178.52 toks/s, output: 328.60 toks/s]
+Agent 3 response: (B) Some elites converted to Islam, but lower classes kept their traditional beliefs....
+
+--- Problem 2/3, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 626.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 502.82 toks/s, output: 336.43 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 502.82 toks/s, output: 336.43 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 502.82 toks/s, output: 336.43 toks/s]
+Agent 1 response: (B)...
+
+--- Problem 2/3, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 794.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.76s/it, est. speed input: 387.97 toks/s, output: 334.57 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.76s/it, est. speed input: 387.97 toks/s, output: 334.57 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.76s/it, est. speed input: 387.97 toks/s, output: 334.57 toks/s]
+Agent 2 response: (B) Some elites converted to Islam, but lower classes kept their traditional beliefs....
+
+--- Problem 2/3, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 718.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.02s/it, est. speed input: 337.41 toks/s, output: 333.45 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.02s/it, est. speed input: 337.41 toks/s, output: 333.45 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.02s/it, est. speed input: 337.41 toks/s, output: 333.45 toks/s]
+Agent 3 response: (B) Some elites converted to Islam, but lower classes kept their traditional beliefs....
+
+--- Problem 2/3, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 645.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 645.79 toks/s, output: 335.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 645.79 toks/s, output: 335.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 645.79 toks/s, output: 335.00 toks/s]
+Agent 1 response: (B)...
+
+--- Problem 2/3, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 648.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it, est. speed input: 499.10 toks/s, output: 333.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it, est. speed input: 499.10 toks/s, output: 333.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it, est. speed input: 499.10 toks/s, output: 333.15 toks/s]
+Agent 2 response: (B) Some elites converted to Islam, but lower classes kept their traditional beliefs.  
+
+**Explanati...
+
+--- Problem 2/3, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 665.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 706.81 toks/s, output: 334.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 706.81 toks/s, output: 334.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 706.81 toks/s, output: 334.38 toks/s]
+Agent 3 response: (B) Some elites converted to Islam, but lower classes kept their traditional beliefs....
+
+Running accuracy: 0.500 ± 0.354
+
+--- Problem 3/3, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1255.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 129.05 toks/s, output: 340.30 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 129.05 toks/s, output: 340.30 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 129.05 toks/s, output: 340.30 toks/s]
+Agent 1 response: (A) Share options, Senior managers, Share Price...
+
+--- Problem 3/3, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1441.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 100.96 toks/s, output: 337.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 100.96 toks/s, output: 337.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 100.96 toks/s, output: 337.74 toks/s]
+Agent 2 response: (B)...
+
+--- Problem 3/3, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1316.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 231.08 toks/s, output: 339.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 231.08 toks/s, output: 339.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 231.08 toks/s, output: 339.01 toks/s]
+Agent 3 response: (A) Share options, Senior managers, Share Price,...
+
+--- Problem 3/3, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1188.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.63s/it, est. speed input: 168.43 toks/s, output: 338.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.63s/it, est. speed input: 168.43 toks/s, output: 338.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.63s/it, est. speed input: 168.43 toks/s, output: 338.70 toks/s]
+Agent 1 response: (A) Share options, Senior managers, Share Price...
+
+--- Problem 3/3, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1208.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 266.53 toks/s, output: 339.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 266.53 toks/s, output: 339.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 266.53 toks/s, output: 339.48 toks/s]
+Agent 2 response: (B)...
+
+--- Problem 3/3, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1371.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.29it/s, est. speed input: 353.38 toks/s, output: 340.42 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.29it/s, est. speed input: 353.38 toks/s, output: 340.42 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.29it/s, est. speed input: 353.38 toks/s, output: 340.42 toks/s]
+Agent 3 response: (A) Share options, Senior managers, Share Price...
+
+--- Problem 3/3, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1193.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 415.75 toks/s, output: 338.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 415.75 toks/s, output: 338.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 415.75 toks/s, output: 338.96 toks/s]
+Agent 1 response: (A) Share options, Senior managers, Share Price...
+
+--- Problem 3/3, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1145.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 427.61 toks/s, output: 338.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 427.61 toks/s, output: 338.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 427.61 toks/s, output: 338.47 toks/s]
+Agent 2 response: (B)...
+
+--- Problem 3/3, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1116.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 255.52 toks/s, output: 337.31 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 255.52 toks/s, output: 337.31 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 255.52 toks/s, output: 337.31 toks/s]
+Agent 3 response: (A) Share options, Senior managers, Share Price...
+
+Running accuracy: 0.667 ± 0.272
+
+============================================================
+GENERATION & EVALUATION COMPLETE
+============================================================
+Results saved to: mmlu_Qwen3-0.6B_persona_kantian+deep-sea+renaissance_agents3_rounds3.json
+Questions processed: 3
+Final accuracy: 0.667 ± 0.272
+============================================================
+[ModelCache] Shut down vLLM model: vllm:production:Qwen/Qwen3-0.6B
+[ModelCache] All models shut down

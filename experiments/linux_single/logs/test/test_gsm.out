@@ -1,8 +1,4 @@
-[2025-11-29 18:00:16] INFO utils.py:253: non-default args: {'max_model_len': 4096, 'cpu_offload_gb': 24, 'disable_log_stats': True}
-[2025-11-29 18:00:17] INFO model.py:631: Resolved architecture: Qwen3ForCausalLM
-[2025-11-29 18:00:17] INFO model.py:1745: Using max model len 4096
-[2025-11-29 18:00:19] INFO scheduler.py:216: Chunked prefill is enabled with max_num_batched_tokens=8192.
-Using persona diversity with 2 different personas
+Using persona diversity with 3 different personas
 ============================================================
 GSM Task - Multiagent Debate
 ============================================================
@@ -10,42 +6,270 @@ Model: Qwen/Qwen3-0.6B
 Persona diversity mode:
   Agent 1: a Kantian deontologist who judges all actions strictly by th...
   Agent 2: a deep-sea volcanologist focused on extremes of pressure, he...
-Agents: 2
+  Agent 3: a Renaissance painter who values perspective, light, shadow,...
+Agents: 3
 Rounds: 3
 Problems: 3
 Dataset: /home/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/data/gsm8k/test.jsonl
 Generation params: {'temperature': 1.0, 'max_tokens': None, 'top_p': 1.0, 'n': 1}
 ============================================================
 
---- Problem 1/3, Round 1, Agent 1/2 ---
+--- Problem 1/3, Round 1, Agent 1/3 ---
+INFO 12-01 10:20:47 [__init__.py:216] Automatically detected platform cuda.
 [ModelCache] Loading model: Qwen/Qwen3-0.6B (backend=vllm)
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:19] INFO core.py:93: Initializing a V1 LLM engine (v0.11.2) with config: model='Qwen/Qwen3-0.6B', speculative_config=None, tokenizer='Qwen/Qwen3-0.6B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-0.6B, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'use_inductor': None, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {}, 'max_cudagraph_capture_size': 512, 'local_cache_dir': None}
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:20] INFO parallel_state.py:1208: world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://192.168.1.57:57135 backend=nccl
+[ModelCache] Using max_model_len=32768 for Qwen/Qwen3-0.6B
+INFO 12-01 10:20:49 [utils.py:233] non-default args: {'max_model_len': 32768, 'disable_log_stats': True}
+INFO 12-01 10:20:50 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 12-01 10:20:50 [model.py:1510] Using max model len 32768
+INFO 12-01 10:20:50 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=8192.
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:51 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:51 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-0.6B', speculative_config=None, tokenizer='Qwen/Qwen3-0.6B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-0.6B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
 [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
 [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
 [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
 [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
 [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
 [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:20] INFO parallel_state.py:1394: rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:21] INFO gpu_model_runner.py:3259: Starting to load model Qwen/Qwen3-0.6B...
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:21] INFO cuda.py:418: Valid backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:21] INFO cuda.py:427: Using FLASH_ATTN backend.
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:22] INFO weight_utils.py:481: No model.safetensors.index.json found in remote.
-[1;36m(EngineCore_DP0 pid=352067)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
-[1;36m(EngineCore_DP0 pid=352067)[0;0m Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.73it/s]
-[1;36m(EngineCore_DP0 pid=352067)[0;0m Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.72it/s]
-[1;36m(EngineCore_DP0 pid=352067)[0;0m 
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:23] INFO default_loader.py:314: Loading weights took 0.30 seconds
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:23] INFO gpu_model_runner.py:3338: Model loading took 0.2997 GiB memory and 1.739458 seconds
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:30] INFO backends.py:631: Using cache directory: /home/leonardo/.cache/vllm/torch_compile_cache/540d48d876/rank_0_0/backbone for vLLM's torch.compile
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:30] INFO backends.py:647: Dynamo bytecode transform time: 7.23 s
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:34] INFO backends.py:210: Directly load the compiled graph(s) for dynamic shape from the cache, took 3.295 s
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:00:36] INFO monitor.py:34: torch.compile takes 10.52 s in total
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:01:14] INFO gpu_worker.py:359: Available KV cache memory: 19.50 GiB
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:01:14] INFO kv_cache_utils.py:1229: GPU KV cache size: 182,528 tokens
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:01:14] INFO kv_cache_utils.py:1234: Maximum concurrency for 4,096 tokens per request: 44.56x
-[1;36m(EngineCore_DP0 pid=352067)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   2%|▏         | 1/51 [00:02<01:58,  2.36s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:04<01:56,  2.37s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 3/51 [00:07<02:03,  2.58s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:10<02:05,  2.68s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|▉         | 5/51 [00:13<02:02,  2.66s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:15<01:59,  2.65s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▎        | 7/51 [00:18<01:56,  2.65s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:20<01:53,  2.65s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 9/51 [00:23<01:47,  2.55s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:25<01:42,  2.50s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 11/51 [00:28<01:38,  2.45s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:30<01:34,  2.42s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 13/51 [00:32<01:29,  2.35s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:34<01:24,  2.29s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▉       | 15/51 [00:36<01:21,  2.26s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 16/51 [00:39<01:17,  2.23s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 17/51 [00:40<01:05,  1.93s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:41<00:56,  1.73s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 19/51 [00:42<00:50,  1.58s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 20/51 [00:43<00:45,  1.47s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  41%|████      | 21/51 [00:45<00:41,  1.40s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 22/51 [00:46<00:38,  1.34s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 23/51 [00:47<00:36,  1.30s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 24/51 [00:48<00:34,  1.27s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 25/51 [00:50<00:32,  1.24s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 26/51 [00:51<00:30,  1.22s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  53%|█████▎    | 27/51 [00:52<00:29,  1.21s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 28/51 [00:53<00:27,  1.20s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 29/51 [00:54<00:26,  1.19s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 30/51 [00:55<00:24,  1.19s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 31/51 [00:57<00:23,  1.18s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 32/51 [00:58<00:23,  1.24s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 33/51 [00:59<00:19,  1.06s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 34/51 [00:59<00:16,  1.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 35/51 [01:00<00:13,  1.17it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 36/51 [01:01<00:11,  1.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 37/51 [01:01<00:10,  1.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 38/51 [01:02<00:09,  1.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▋  | 39/51 [01:03<00:08,  1.36it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 40/51 [01:03<00:07,  1.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 41/51 [01:04<00:06,  1.59it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 42/51 [01:04<00:05,  1.75it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▍ | 43/51 [01:05<00:04,  1.90it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▋ | 44/51 [01:05<00:03,  2.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 45/51 [01:05<00:02,  2.12it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 46/51 [01:06<00:02,  2.23it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  92%|█████████▏| 47/51 [01:06<00:01,  2.12it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 48/51 [01:07<00:01,  2.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 49/51 [01:07<00:00,  2.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 50/51 [01:08<00:00,  1.98it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [01:08<00:00,  2.03it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [01:08<00:00,  1.35s/it]
-[1;36m(EngineCore_DP0 pid=352067)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   3%|▎         | 1/35 [00:01<00:42,  1.25s/it]Capturing CUDA graphs (decode, FULL):   6%|▌         | 2/35 [00:02<00:41,  1.25s/it]Capturing CUDA graphs (decode, FULL):   9%|▊         | 3/35 [00:03<00:39,  1.24s/it]Capturing CUDA graphs (decode, FULL):  11%|█▏        | 4/35 [00:04<00:38,  1.24s/it]Capturing CUDA graphs (decode, FULL):  14%|█▍        | 5/35 [00:06<00:36,  1.23s/it]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:07<00:35,  1.23s/it]Capturing CUDA graphs (decode, FULL):  20%|██        | 7/35 [00:08<00:34,  1.22s/it]Capturing CUDA graphs (decode, FULL):  23%|██▎       | 8/35 [00:09<00:32,  1.22s/it]Capturing CUDA graphs (decode, FULL):  26%|██▌       | 9/35 [00:10<00:31,  1.20s/it]Capturing CUDA graphs (decode, FULL):  29%|██▊       | 10/35 [00:12<00:29,  1.20s/it]Capturing CUDA graphs (decode, FULL):  31%|███▏      | 11/35 [00:13<00:28,  1.19s/it]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 12/35 [00:14<00:27,  1.19s/it]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 13/35 [00:15<00:26,  1.19s/it]Capturing CUDA graphs (decode, FULL):  40%|████      | 14/35 [00:16<00:24,  1.18s/it]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 15/35 [00:18<00:23,  1.18s/it]Capturing CUDA graphs (decode, FULL):  46%|████▌     | 16/35 [00:19<00:23,  1.24s/it]Capturing CUDA graphs (decode, FULL):  49%|████▊     | 17/35 [00:20<00:19,  1.06s/it]Capturing CUDA graphs (decode, FULL):  51%|█████▏    | 18/35 [00:20<00:15,  1.06it/s]Capturing CUDA graphs (decode, FULL):  54%|█████▍    | 19/35 [00:21<00:13,  1.17it/s]Capturing CUDA graphs (decode, FULL):  57%|█████▋    | 20/35 [00:22<00:11,  1.26it/s]Capturing CUDA graphs (decode, FULL):  60%|██████    | 21/35 [00:22<00:10,  1.33it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 22/35 [00:23<00:09,  1.38it/s]Capturing CUDA graphs (decode, FULL):  66%|██████▌   | 23/35 [00:24<00:08,  1.36it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 24/35 [00:24<00:07,  1.43it/s]Capturing CUDA graphs (decode, FULL):  71%|███████▏  | 25/35 [00:25<00:06,  1.59it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▍  | 26/35 [00:25<00:05,  1.76it/s]Capturing CUDA graphs (decode, FULL):  77%|███████▋  | 27/35 [00:26<00:04,  1.91it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 28/35 [00:26<00:03,  2.03it/s]Capturing CUDA graphs (decode, FULL):  83%|████████▎ | 29/35 [00:26<00:02,  2.15it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▌ | 30/35 [00:27<00:02,  2.25it/s]Capturing CUDA graphs (decode, FULL):  89%|████████▊ | 31/35 [00:27<00:01,  2.14it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████▏| 32/35 [00:28<00:01,  2.07it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 33/35 [00:28<00:00,  2.02it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 34/35 [00:29<00:00,  1.99it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:29<00:00,  2.05it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:29<00:00,  1.17it/s]
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:02:53] INFO gpu_model_runner.py:4244: Graph capturing finished in 99 secs, took 0.50 GiB
-[1;36m(EngineCore_DP0 pid=352067)[0;0m [2025-11-29 18:02:53] INFO core.py:250: init engine (profile, create kv cache, warmup model) took 150.29 seconds
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:52 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:52 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:52 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-0.6B...
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:53 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:53 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:53 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:53 [weight_utils.py:450] No model.safetensors.index.json found in remote.
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  6.61it/s]
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  6.60it/s]
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m 
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:53 [default_loader.py:267] Loading weights took 0.18 seconds
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:54 [gpu_model_runner.py:2653] Model loading took 1.1201 GiB and 0.772133 seconds
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:57 [backends.py:548] Using cache directory: /home/leonardo/.cache/vllm/torch_compile_cache/3f140339fb/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:57 [backends.py:559] Dynamo bytecode transform time: 2.92 s
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:59 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 1.235 s
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:20:59 [monitor.py:34] torch.compile takes 2.92 s in total
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:21:00 [gpu_worker.py:298] Available KV cache memory: 19.63 GiB
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:21:00 [kv_cache_utils.py:1087] GPU KV cache size: 183,760 tokens
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:21:00 [kv_cache_utils.py:1091] Maximum concurrency for 32,768 tokens per request: 5.61x
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   7%|▋         | 5/67 [00:00<00:01, 48.05it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▋        | 11/67 [00:00<00:01, 49.81it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 17/67 [00:00<00:00, 51.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 23/67 [00:00<00:00, 53.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▍     | 30/67 [00:00<00:00, 56.11it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▌    | 37/67 [00:00<00:00, 59.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▌   | 44/67 [00:00<00:00, 59.94it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 50/67 [00:00<00:00, 57.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▎ | 56/67 [00:00<00:00, 57.87it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  93%|█████████▎| 62/67 [00:01<00:00, 57.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:01<00:00, 55.94it/s]
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):  14%|█▍        | 5/35 [00:00<00:00, 48.00it/s]Capturing CUDA graphs (decode, FULL):  29%|██▊       | 10/35 [00:00<00:00, 48.98it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 15/35 [00:00<00:00, 49.36it/s]Capturing CUDA graphs (decode, FULL):  60%|██████    | 21/35 [00:00<00:00, 53.07it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 28/35 [00:00<00:00, 56.94it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:00<00:00, 59.59it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:00<00:00, 55.85it/s]
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:21:02 [gpu_model_runner.py:3480] Graph capturing finished in 2 secs, took 0.63 GiB
+[1;36m(EngineCore_DP0 pid=4021416)[0;0m INFO 12-01 10:21:02 [core.py:210] init engine (profile, create kv cache, warmup model) took 8.65 seconds
+INFO 12-01 10:21:03 [llm.py:306] Supported_tasks: ['generate']
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 382.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 120.40 toks/s, output: 338.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 120.40 toks/s, output: 338.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 120.40 toks/s, output: 338.92 toks/s]
+Agent 1 response: \boxed{52}...
+
+--- Problem 1/3, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1586.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.35s/it, est. speed input: 43.58 toks/s, output: 339.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.35s/it, est. speed input: 43.58 toks/s, output: 339.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.35s/it, est. speed input: 43.58 toks/s, output: 339.66 toks/s]
+Agent 2 response: $$
+\frac{47 + 52 + 57}{3} = \frac{156}{3} = 52
+$$
+
+The average of the three measurements is $\boxed{...
+
+--- Problem 1/3, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1589.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it, est. speed input: 124.26 toks/s, output: 342.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it, est. speed input: 124.26 toks/s, output: 342.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it, est. speed input: 124.26 toks/s, output: 342.78 toks/s]
+Agent 3 response: \boxed{52}...
+
+--- Problem 1/3, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1086.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it, est. speed input: 212.97 toks/s, output: 340.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it, est. speed input: 212.97 toks/s, output: 340.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it, est. speed input: 212.97 toks/s, output: 340.63 toks/s]
+Agent 1 response: \boxed{52}...
+
+--- Problem 1/3, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1290.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 343.50 toks/s, output: 340.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 343.50 toks/s, output: 340.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 343.50 toks/s, output: 340.65 toks/s]
+Agent 2 response: $$
+\frac{47 + 52 + 57}{3} = \frac{156}{3} = 52
+$$
+
+The average of the three measurements is $\boxed{...
+
+--- Problem 1/3, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1364.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 366.13 toks/s, output: 339.75 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 366.13 toks/s, output: 339.75 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 366.13 toks/s, output: 339.75 toks/s]
+Agent 3 response: \boxed{52}...
+
+--- Problem 1/3, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 979.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 465.65 toks/s, output: 337.55 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 465.65 toks/s, output: 337.55 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it, est. speed input: 465.65 toks/s, output: 337.55 toks/s]
+Agent 1 response: \boxed{52}...
+
+--- Problem 1/3, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 943.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 421.51 toks/s, output: 338.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 421.51 toks/s, output: 338.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 421.51 toks/s, output: 338.37 toks/s]
+Agent 2 response: $$
+\frac{47 + 52 + 57}{3} = \frac{156}{3} = 52
+$$
+
+The average of the three measurements is $\boxed{...
+
+--- Problem 1/3, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 979.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s, est. speed input: 783.54 toks/s, output: 338.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s, est. speed input: 783.54 toks/s, output: 338.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s, est. speed input: 783.54 toks/s, output: 338.12 toks/s]
+Agent 3 response: $$
+\boxed{52}
+$$...
+
+Running accuracy: 1.000 ± 0.000
+
+--- Problem 2/3, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1679.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.01s/it, est. speed input: 58.62 toks/s, output: 341.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.01s/it, est. speed input: 58.62 toks/s, output: 341.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.01s/it, est. speed input: 58.62 toks/s, output: 341.77 toks/s]
+Agent 1 response: \boxed{5}...
+
+--- Problem 2/3, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1944.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.22s/it, est. speed input: 18.96 toks/s, output: 327.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.22s/it, est. speed input: 18.96 toks/s, output: 327.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.22s/it, est. speed input: 18.96 toks/s, output: 327.97 toks/s]
+Agent 2 response: \boxed{10}...
+
+--- Problem 2/3, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1903.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.68s/it, est. speed input: 25.01 toks/s, output: 334.07 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.68s/it, est. speed input: 25.01 toks/s, output: 334.07 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.68s/it, est. speed input: 25.01 toks/s, output: 334.07 toks/s]
+Agent 3 response: Jordan has two children who each require 5 diaper changes per day. Therefore, the total number of di...
+
+--- Problem 2/3, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1084.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.09s/it, est. speed input: 175.78 toks/s, output: 339.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.09s/it, est. speed input: 175.78 toks/s, output: 339.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.09s/it, est. speed input: 175.78 toks/s, output: 339.59 toks/s]
+Agent 1 response: \boxed{5}...
+
+--- Problem 2/3, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 986.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.66s/it, est. speed input: 100.17 toks/s, output: 331.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.66s/it, est. speed input: 100.17 toks/s, output: 331.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.66s/it, est. speed input: 100.17 toks/s, output: 331.61 toks/s]
+Agent 2 response: \boxed{10}...
+
+--- Problem 2/3, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1173.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.24s/it, est. speed input: 163.54 toks/s, output: 338.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.24s/it, est. speed input: 163.54 toks/s, output: 338.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.24s/it, est. speed input: 163.54 toks/s, output: 338.69 toks/s]
+Agent 3 response: $$
+\boxed{10}
+$$...
+
+--- Problem 2/3, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 981.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.13s/it, est. speed input: 164.32 toks/s, output: 331.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.13s/it, est. speed input: 164.32 toks/s, output: 331.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.13s/it, est. speed input: 164.32 toks/s, output: 331.52 toks/s]
+Agent 1 response: \boxed{5}...
+
+--- Problem 2/3, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 982.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.03s/it, est. speed input: 73.09 toks/s, output: 318.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.03s/it, est. speed input: 73.09 toks/s, output: 318.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.03s/it, est. speed input: 73.09 toks/s, output: 318.51 toks/s]
+Agent 2 response: Jordan has 2 children who each require 5 diaper changes per day, so the children need $5 \, \text{di...
+
+--- Problem 2/3, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1006.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.41s/it, est. speed input: 150.24 toks/s, output: 330.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.41s/it, est. speed input: 150.24 toks/s, output: 330.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.41s/it, est. speed input: 150.24 toks/s, output: 330.64 toks/s]
+Agent 3 response: $$
+\boxed{5}
+$$...
+
+Running accuracy: 1.000 ± 0.000
+
+--- Problem 3/3, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1493.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.90s/it, est. speed input: 31.63 toks/s, output: 331.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.90s/it, est. speed input: 31.63 toks/s, output: 331.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.90s/it, est. speed input: 31.63 toks/s, output: 331.14 toks/s]
+Agent 1 response: The maximum number of boxes that can be loaded onto the truck without exceeding the bridge's weight ...
+
+--- Problem 3/3, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1744.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.94s/it, est. speed input: 31.39 toks/s, output: 330.46 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.94s/it, est. speed input: 31.39 toks/s, output: 330.46 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.94s/it, est. speed input: 31.39 toks/s, output: 330.46 toks/s]
+Agent 2 response: To determine the maximum number of identical boxes that can be loaded onto the truck without exceedi...
+
+--- Problem 3/3, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1754.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 23.59 toks/s, output: 325.31 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 23.59 toks/s, output: 325.31 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 23.59 toks/s, output: 325.31 toks/s]
+Agent 3 response: \boxed{83}...
+
+--- Problem 3/3, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 818.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 425.84 toks/s, output: 334.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 425.84 toks/s, output: 334.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 425.84 toks/s, output: 334.84 toks/s]
+Agent 1 response: The maximum number of boxes that can be loaded onto the truck while not exceeding the bridge's weigh...
+
+--- Problem 3/3, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 902.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 527.56 toks/s, output: 334.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 527.56 toks/s, output: 334.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 527.56 toks/s, output: 334.67 toks/s]
+Agent 2 response: ```  
+$$ \boxed{83} $$  
+```...
+
+--- Problem 3/3, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 884.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 342.43 toks/s, output: 336.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 342.43 toks/s, output: 336.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 342.43 toks/s, output: 336.13 toks/s]
+Agent 3 response: The total weight effective on the bridge is $ 5000 - 3755 = 1245 $ pounds. Each box weighs 15 pounds...
+
+--- Problem 3/3, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 695.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 721.27 toks/s, output: 333.46 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 721.27 toks/s, output: 333.46 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 721.27 toks/s, output: 333.46 toks/s]
+Agent 1 response: The maximum number of boxes that can be loaded onto the truck while not exceeding the bridge's weigh...
+
+--- Problem 3/3, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 685.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 692.83 toks/s, output: 332.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 692.83 toks/s, output: 332.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 692.83 toks/s, output: 332.94 toks/s]
+Agent 2 response: $$
+\boxed{83}
+$$...
+
+--- Problem 3/3, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 690.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 736.89 toks/s, output: 332.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 736.89 toks/s, output: 332.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 736.89 toks/s, output: 332.65 toks/s]
+Agent 3 response: $$
+\boxed{83}
+$$...
+
+Running accuracy: 1.000 ± 0.000
+
+============================================================
+GENERATION & EVALUATION COMPLETE
+============================================================
+Results saved to: gsm_Qwen3-0.6B_persona_kantian+deep-sea+renaissance_agents3_rounds3.json
+Problems processed: 3
+Final accuracy: 1.000 ± 0.000
+============================================================
+[ModelCache] Shut down vLLM model: vllm:production:Qwen/Qwen3-0.6B
+[ModelCache] All models shut down

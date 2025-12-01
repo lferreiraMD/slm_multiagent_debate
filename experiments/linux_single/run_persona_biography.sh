@@ -187,6 +187,7 @@ job_num=0
 exit_code=0
 
 while IFS= read -r line; do
+    line="${line%$'\r'}"  # Strip trailing \r if present (handles CRLF)
     # Skip header
     if [ $job_num -eq 0 ]; then
         job_num=1

@@ -117,7 +117,7 @@ class ModelCache:
             model=model_path,
             max_model_len=max_model_len,
             gpu_memory_utilization=0.90,
-            tensor_parallel_size=1,     # Adjust for multi-GPU
+            tensor_parallel_size=2,     # Adjust for multi-GPU
         #    cpu_offload_gb=24           # CPU offload in GB (for 14B model)
         )
 

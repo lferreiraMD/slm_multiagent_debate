@@ -30,20 +30,20 @@ experiments:
     random_seed: 42
 
   gsm:
-    agents: 3
-    rounds: 2
+    agents: 2
+    rounds: 3
     num_problems: 100
     random_seed: 42
 
   biography:
-    agents: 3
-    rounds: 2
+    agents: 2
+    rounds: 3
     num_people: 40
     random_seed: 42
 
   mmlu:
-    agents: 3
-    rounds: 2
+    agents: 2
+    rounds: 3
     num_questions: 100
     random_seed: 42
 

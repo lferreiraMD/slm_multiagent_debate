@@ -445,17 +445,21 @@ model_dict = {
 }
 
 model_dict_vllm = {
-    "vllm-qwen3-0.6b": "Qwen/Qwen3-0.6B",
-    "vllm-vibethinker": "WeiboAI/VibeThinker-1.5B",
-    "vllm-deepseek": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
-    "vllm-qwen3-1.7b": "Qwen/Qwen3-1.7B",
-    "vllm-llama32-3b": "meta-llama/Llama-3.2-3B-Instruct",
-    "vllm-smallthinker": "PowerInfer/SmallThinker-3B-Preview",
-    "vllm-qwen3-4b": "Qwen/Qwen3-4B-Instruct-2507",
-    "vllm-llama31-8b": "meta-llama/Llama-3.1-8B-Instruct",
-    "vllm-qwen3-8b": "Qwen/Qwen3-8B",
-    "vllm-qwen3-14b": "Qwen/Qwen3-14B",
-#   "vllm-oss-20b": "openai/gpt-oss-20b"
+    #"vllm-qwen3-0.6b":     "Qwen/Qwen3-0.6B",
+    #"vllm-vibethinker":    "WeiboAI/VibeThinker-1.5B",
+    #"vllm-deepseek":       "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    #"vllm-qwen3-1.7b":     "Qwen/Qwen3-1.7B",
+    #"vllm-llama32-3b":     "meta-llama/Llama-3.2-3B-Instruct",
+    #"vllm-smallthinker":   "PowerInfer/SmallThinker-3B-Preview",
+    #"vllm-qwen3-4b":       "Qwen/Qwen3-4B-Instruct-2507",
+    #"vllm-llama31-8b":     "meta-llama/Llama-3.1-8B-Instruct",
+    #"vllm-qwen3-8b":       "Qwen/Qwen3-8B",
+    #"vllm-qwen3-14b":      "Qwen/Qwen3-14B",
+    #"vllm-gemma2-2b":       "google/gemma-2-2b-it",  # 2B, Google, English-first
+    #"vllm-phi3-mini":       "microsoft/Phi-3-mini-4k-instruct",  # 3.8B, strong English
+    #"vllm-mistral-7b":      "mistralai/Mistral-7B-Instruct-v0.3",  # 7B, European focus
+    #"vllm-gemma2-9b":       "google/gemma-2-9b-it"  # 9B, more capable
+    #"vllm-oss-20b":        "openai/gpt-oss-20b"
 }
 
 ### DATA
