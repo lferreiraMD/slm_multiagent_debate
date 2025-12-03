@@ -9,7 +9,7 @@ set -e
 # Force CUDA to use only GPU #1 (RTX 3090)
 # GPU 0 = GTX 1650 (4GB) - internal, insufficient VRAM
 # GPU 1 = RTX 3090 (24GB) - external, target GPU
-export CUDA_VISIBLE_DEVICES=1
+export CUDA_VISIBLE_DEVICES=0,1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 

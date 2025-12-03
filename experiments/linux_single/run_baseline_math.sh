@@ -18,7 +18,7 @@ export CUDA_VISIBLE_DEVICES=0,1
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 TASK="math"
-RESULTS_DIR="$PROJECT_ROOT/results/baseline/$TASK"
+RESULTS_DIR="$SCRIPT_DIR/results/$TASK"
 
 echo "=================================================="
 echo "Linux Baseline - Math Task"
@@ -148,7 +148,7 @@ except Exception as e:
     cd "$PROJECT_ROOT/tasks/$task"
 
     # Run experiment (baseline = no --agent-personas argument)
-    python3 gen_${task}.py \
+    python3 gen_${task}_clean.py \
         --model "$model_alias" \
         --agents "$n_agents" \
         --rounds "$rounds" \

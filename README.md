@@ -199,6 +199,35 @@ wait
 
 See `experiments/README.md` for detailed documentation.
 
+### Step 5: SLURM Job Submission (HPC Clusters)
+
+For HPC environments with SLURM scheduler, submit all persona experiments as independent jobs:
+
+```bash
+cd experiments/linux_single/slurm
+bash launch.sh
+```
+
+This submits **60 independent SLURM jobs** (job array):
+- **Tasks 1-15:** Math (5 models × 3 agent counts)
+- **Tasks 16-30:** GSM (5 models × 3 agent counts)
+- **Tasks 31-45:** Biography (5 models × 3 agent counts)
+- **Tasks 46-60:** MMLU (5 models × 3 agent counts)
+
+**Key features:**
+- All jobs hardcoded (no runtime CSV parsing - maximum reliability)
+- SLURM distributes jobs across available GPUs automatically
+- Activates pyenv environment automatically
+- Results saved to `experiments/linux_single/results/{task}/`
+
+**Monitor progress:**
+```bash
+squeue -u $USER              # Check job status
+tail -f logs/slurm_*.out     # Watch logs in real-time
+```
+
+See `experiments/linux_single/slurm/README.md` for full documentation.
+
 ---
 
 ## Available Tasks

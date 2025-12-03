@@ -1,0 +1,1209 @@
+# Generated case statement - DO NOT EDIT MANUALLY
+# Regenerate with: python3 generate_hardcoded_cases.py
+
+case $TASK_ID in
+    1)
+        echo "[Task 1] MATH - job 1: vllm-qwen3-0.6b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-qwen3-0.6b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_1_task1.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    2)
+        echo "[Task 2] MATH - job 2: vllm-qwen3-0.6b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-qwen3-0.6b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_2_task2.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    3)
+        echo "[Task 3] MATH - job 3: vllm-qwen3-0.6b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-qwen3-0.6b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a hyper-capitalist financier who evaluates every move solely on ROI (Return on Investment) and marginal profit' \
+                    'a pre-lingual infant whose understanding is limited to basic sensations, needs, and spatial presence' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_3_task3.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    4)
+        echo "[Task 4] MATH - job 4: vllm-vibethinker, 3 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-vibethinker \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_4_task4.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    5)
+        echo "[Task 5] MATH - job 5: vllm-vibethinker, 5 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-vibethinker \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_5_task5.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    6)
+        echo "[Task 6] MATH - job 6: vllm-vibethinker, 7 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-vibethinker \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_6_task6.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    7)
+        echo "[Task 7] MATH - job 7: vllm-llama32-3b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-llama32-3b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_7_task7.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    8)
+        echo "[Task 8] MATH - job 8: vllm-llama32-3b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-llama32-3b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_8_task8.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    9)
+        echo "[Task 9] MATH - job 9: vllm-llama32-3b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-llama32-3b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_9_task9.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    10)
+        echo "[Task 10] MATH - job 10: vllm-mistral-7b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-mistral-7b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_10_task10.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    11)
+        echo "[Task 11] MATH - job 11: vllm-mistral-7b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-mistral-7b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_11_task11.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    12)
+        echo "[Task 12] MATH - job 12: vllm-mistral-7b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-mistral-7b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_12_task12.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    13)
+        echo "[Task 13] MATH - job 13: vllm-qwen3-14b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-qwen3-14b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_13_task13.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    14)
+        echo "[Task 14] MATH - job 14: vllm-qwen3-14b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-qwen3-14b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_14_task14.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    15)
+        echo "[Task 15] MATH - job 15: vllm-qwen3-14b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/math"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_math.py \
+                --model vllm-qwen3-14b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Roman imperial jurist who strictly adheres to precedent and codified legal language' \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'a mythological hero'"'"'s sidekick who is overly cautious, risk-averse, and constantly points out dangers' \
+                --output-directory "$RESULTS_DIR/math" \
+            > "$LOG_DIR/math/job_15_task15.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    16)
+        echo "[Task 16] GSM - job 1: vllm-qwen3-0.6b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-qwen3-0.6b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_1_task16.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    17)
+        echo "[Task 17] GSM - job 2: vllm-qwen3-0.6b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-qwen3-0.6b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_2_task17.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    18)
+        echo "[Task 18] GSM - job 3: vllm-qwen3-0.6b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-qwen3-0.6b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a hyper-capitalist financier who evaluates every move solely on ROI (Return on Investment) and marginal profit' \
+                    'a pre-lingual infant whose understanding is limited to basic sensations, needs, and spatial presence' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_3_task18.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    19)
+        echo "[Task 19] GSM - job 4: vllm-vibethinker, 3 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-vibethinker \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_4_task19.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    20)
+        echo "[Task 20] GSM - job 5: vllm-vibethinker, 5 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-vibethinker \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_5_task20.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    21)
+        echo "[Task 21] GSM - job 6: vllm-vibethinker, 7 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-vibethinker \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_6_task21.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    22)
+        echo "[Task 22] GSM - job 7: vllm-llama32-3b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-llama32-3b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_7_task22.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    23)
+        echo "[Task 23] GSM - job 8: vllm-llama32-3b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-llama32-3b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_8_task23.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    24)
+        echo "[Task 24] GSM - job 9: vllm-llama32-3b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-llama32-3b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_9_task24.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    25)
+        echo "[Task 25] GSM - job 10: vllm-mistral-7b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-mistral-7b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_10_task25.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    26)
+        echo "[Task 26] GSM - job 11: vllm-mistral-7b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-mistral-7b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_11_task26.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    27)
+        echo "[Task 27] GSM - job 12: vllm-mistral-7b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-mistral-7b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_12_task27.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    28)
+        echo "[Task 28] GSM - job 13: vllm-qwen3-14b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-qwen3-14b \
+                --agents 3 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_13_task28.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    29)
+        echo "[Task 29] GSM - job 14: vllm-qwen3-14b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-qwen3-14b \
+                --agents 5 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_14_task29.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    30)
+        echo "[Task 30] GSM - job 15: vllm-qwen3-14b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/gsm"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_gsm.py \
+                --model vllm-qwen3-14b \
+                --agents 7 \
+                --rounds 3 \
+                --num-problems 20 \
+                --agent-personas \
+                    'a Roman imperial jurist who strictly adheres to precedent and codified legal language' \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'a mythological hero'"'"'s sidekick who is overly cautious, risk-averse, and constantly points out dangers' \
+                --output-directory "$RESULTS_DIR/gsm" \
+            > "$LOG_DIR/gsm/job_15_task30.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    31)
+        echo "[Task 31] BIOGRAPHY - job 1: vllm-qwen3-0.6b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-qwen3-0.6b \
+                --agents 3 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_1_task31.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    32)
+        echo "[Task 32] BIOGRAPHY - job 2: vllm-qwen3-0.6b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-qwen3-0.6b \
+                --agents 5 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_2_task32.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    33)
+        echo "[Task 33] BIOGRAPHY - job 3: vllm-qwen3-0.6b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-qwen3-0.6b \
+                --agents 7 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a hyper-capitalist financier who evaluates every move solely on ROI (Return on Investment) and marginal profit' \
+                    'a pre-lingual infant whose understanding is limited to basic sensations, needs, and spatial presence' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_3_task33.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    34)
+        echo "[Task 34] BIOGRAPHY - job 4: vllm-vibethinker, 3 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-vibethinker \
+                --agents 3 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_4_task34.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    35)
+        echo "[Task 35] BIOGRAPHY - job 5: vllm-vibethinker, 5 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-vibethinker \
+                --agents 5 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_5_task35.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    36)
+        echo "[Task 36] BIOGRAPHY - job 6: vllm-vibethinker, 7 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-vibethinker \
+                --agents 7 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_6_task36.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    37)
+        echo "[Task 37] BIOGRAPHY - job 7: vllm-llama32-3b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-llama32-3b \
+                --agents 3 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_7_task37.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    38)
+        echo "[Task 38] BIOGRAPHY - job 8: vllm-llama32-3b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-llama32-3b \
+                --agents 5 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_8_task38.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    39)
+        echo "[Task 39] BIOGRAPHY - job 9: vllm-llama32-3b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-llama32-3b \
+                --agents 7 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_9_task39.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    40)
+        echo "[Task 40] BIOGRAPHY - job 10: vllm-mistral-7b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-mistral-7b \
+                --agents 3 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_10_task40.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    41)
+        echo "[Task 41] BIOGRAPHY - job 11: vllm-mistral-7b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-mistral-7b \
+                --agents 5 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_11_task41.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    42)
+        echo "[Task 42] BIOGRAPHY - job 12: vllm-mistral-7b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-mistral-7b \
+                --agents 7 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_12_task42.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    43)
+        echo "[Task 43] BIOGRAPHY - job 13: vllm-qwen3-14b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-qwen3-14b \
+                --agents 3 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_13_task43.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    44)
+        echo "[Task 44] BIOGRAPHY - job 14: vllm-qwen3-14b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-qwen3-14b \
+                --agents 5 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_14_task44.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    45)
+        echo "[Task 45] BIOGRAPHY - job 15: vllm-qwen3-14b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/biography"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_conversation.py \
+                --model vllm-qwen3-14b \
+                --agents 7 \
+                --rounds 3 \
+                --num-people 20 \
+                --agent-personas \
+                    'a Roman imperial jurist who strictly adheres to precedent and codified legal language' \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'a mythological hero'"'"'s sidekick who is overly cautious, risk-averse, and constantly points out dangers' \
+                --output-directory "$RESULTS_DIR/biography" \
+            > "$LOG_DIR/biography/job_15_task45.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    46)
+        echo "[Task 46] MMLU - job 1: vllm-qwen3-0.6b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-qwen3-0.6b \
+                --agents 3 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_1_task46.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    47)
+        echo "[Task 47] MMLU - job 2: vllm-qwen3-0.6b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-qwen3-0.6b \
+                --agents 5 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_2_task47.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    48)
+        echo "[Task 48] MMLU - job 3: vllm-qwen3-0.6b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-qwen3-0.6b \
+                --agents 7 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a quantum physicist who models all decisions as probabilistic wave function collapse' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a hyper-capitalist financier who evaluates every move solely on ROI (Return on Investment) and marginal profit' \
+                    'a pre-lingual infant whose understanding is limited to basic sensations, needs, and spatial presence' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_3_task48.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    49)
+        echo "[Task 49] MMLU - job 4: vllm-vibethinker, 3 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-vibethinker \
+                --agents 3 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_4_task49.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    50)
+        echo "[Task 50] MMLU - job 5: vllm-vibethinker, 5 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-vibethinker \
+                --agents 5 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a drone swarm commander who views the task as parallel processing over numerous, interchangeable units' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_5_task50.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    51)
+        echo "[Task 51] MMLU - job 6: vllm-vibethinker, 7 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-vibethinker \
+                --agents 7 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a forensic pathologist who works backward from the failure state to determine the precise cause of death' \
+                    'a stand-up comedian who evaluates suggestions based on their absurdity, timing, and satirical value' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_6_task51.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    52)
+        echo "[Task 52] MMLU - job 7: vllm-llama32-3b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-llama32-3b \
+                --agents 3 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_7_task52.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    53)
+        echo "[Task 53] MMLU - job 8: vllm-llama32-3b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-llama32-3b \
+                --agents 5 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_8_task53.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    54)
+        echo "[Task 54] MMLU - job 9: vllm-llama32-3b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-llama32-3b \
+                --agents 7 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Soviet-era bureaucrat who prioritizes documentation, adherence to arbitrary quotas, and triplicate forms' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a cosmic horror narrator who frames the problem as an ancient, unknowable, and terrifying truth' \
+                    'a Renaissance painter who values perspective, light, shadow, and visual harmony in the final presentation' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_9_task54.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    55)
+        echo "[Task 55] MMLU - job 10: vllm-mistral-7b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-mistral-7b \
+                --agents 3 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_10_task55.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    56)
+        echo "[Task 56] MMLU - job 11: vllm-mistral-7b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-mistral-7b \
+                --agents 5 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a resource auditor who views every input as a budget line item that must be strictly justified' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_11_task56.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    57)
+        echo "[Task 57] MMLU - job 12: vllm-mistral-7b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-mistral-7b \
+                --agents 7 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a Kantian deontologist who judges all actions strictly by their moral imperative and universal rule application' \
+                    'a Gothic novelist who focuses on dramatic irony, foreshadowing, and latent horror' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'an expert chess grandmaster who analyzes all moves based on look-ahead, board state, and counterplay' \
+                    'a hermetic alchemist who seeks to transmute the problem into a perfect, pure, and philosophical gold standard' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_12_task57.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    58)
+        echo "[Task 58] MMLU - job 13: vllm-qwen3-14b, 3 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-qwen3-14b \
+                --agents 3 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_13_task58.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    59)
+        echo "[Task 59] MMLU - job 14: vllm-qwen3-14b, 5 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-qwen3-14b \
+                --agents 5 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_14_task59.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    60)
+        echo "[Task 60] MMLU - job 15: vllm-qwen3-14b, 7 agents"
+        cd "$PROJECT_ROOT/tasks/mmlu"
+        srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
+            python3 gen_mmlu.py \
+                --model vllm-qwen3-14b \
+                --agents 7 \
+                --rounds 3 \
+                --num-questions 20 \
+                --agent-personas \
+                    'a Roman imperial jurist who strictly adheres to precedent and codified legal language' \
+                    'a radical anarchist who views all imposed structures and hierarchies as fundamentally flawed' \
+                    'an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages' \
+                    'a Zen master who communicates only through non-sequiturs, koans, and minimal, cryptic statements' \
+                    'a deep-sea volcanologist focused on extremes of pressure, heat, and slow geologic change' \
+                    'a systems engineer who focuses strictly on modularity, inter-component dependencies, and error states' \
+                    'a mythological hero'"'"'s sidekick who is overly cautious, risk-averse, and constantly points out dangers' \
+                --output-directory "$RESULTS_DIR/mmlu" \
+            > "$LOG_DIR/mmlu/job_15_task60.out" 2>&1
+        EXIT_CODE=$?
+        ;;
+
+    *)
+        echo "ERROR: Invalid task ID: $TASK_ID"
+        exit 1
+        ;;
+esac

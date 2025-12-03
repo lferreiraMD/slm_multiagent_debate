@@ -412,6 +412,169 @@ python3 gen_math.py --agents 7 --rounds 3 --no-compress-context
 
 **Status:** Implemented for math task (proof of concept). Can be extended to GSM, biography, MMLU if needed.
 
+## Context Overflow Investigation (December 2024)
+
+### Problem Description
+
+During baseline math experiments, SmallThinker-3B (32768 token context limit) failed with context overflow error despite having context compression enabled:
+
+```
+decoder prompt (length 32838) is longer than the maximum model length of 32768
+```
+
+**Failure scenario:**
+- Task: Math baseline (job_10)
+- Model: SmallThinker-3B (vllm-smallthinker)
+- Config: 3 agents, 3 rounds
+- Location: Problem 2/100, Round 3, Agent 2/3
+- Context compression: ACTIVE (96.9% savings reported)
+
+**Contradictory evidence:**
+- GSM and biography tasks completed successfully with ALL vLLM models
+- Test config: 7 agents, 3 rounds (worse than math's 3 agents)
+- No compression implemented in GSM/biography
+
+### Key Discovery: Compression Implementation Gap
+
+Investigation revealed context compression is ONLY implemented in the math task:
+
+| Task | Compression | Status | Evidence |
+|------|-------------|--------|----------|
+| **Math** | ✓ YES | Fails at 3 agents | `tasks/math/gen_math.py:48-75` |
+| **GSM** | ✗ NO | Succeeds at 7 agents | `tasks/gsm/gen_gsm.py:30` |
+| **Biography** | ✗ NO | Succeeds at 7 agents | `tasks/biography/gen_conversation.py:37` |
+| **MMLU** | ✗ NO | Not tested | `tasks/mmlu/gen_mmlu.py:60` |
+
+**Compression implementation** (math only):
+```python
+def construct_message(other_agents, question, idx, compress_context=True):
+    if compress_context:
+        # Extract numerical answers only (~95% token reduction)
+        for i, agent in enumerate(other_agents):
+            extracted_answer = parse_answer(agent[idx]["content"])
+            answers.append(f"Agent {i+1}: {extracted_answer}")
+    else:
+        # Include full responses (same as other tasks)
+        for agent in other_agents:
+            response = "\n\n One agent response: ```{}```".format(agent_response)
+```
+
+### Investigation Steps
+
+**1. Initial hypothesis (INVALIDATED):**
+- Suspected `max_tokens=40960` for reasoning models was the issue
+- Reasoning: 40K output + input would exceed 32K total context
+- **Disproven:** Biography/GSM succeed with same models at 7 agents
+
+**2. Token usage analysis:**
+Created `experiments/linux_single/analyze_response_lengths.py` to measure actual context usage.
+
+**Biography test results** (SmallThinker-3B, 7 agents, 3 rounds):
+```
+Total context: 21,272 tokens (under 32,768 limit) ✓
+  User messages: 16,343 tokens (other agents' responses)
+  Assistant messages: 4,929 tokens (own responses)
+  Messages: 6 total (3 user, 3 assistant)
+```
+
+**Key insight:** SmallThinker generates ~1.6K tokens per response in biography, NOT the 10-15K initially hypothesized for reasoning models.
+
+**3. Current hypothesis:**
+Either:
+- Math's compression is broken and making context WORSE somehow
+- SmallThinker generates much longer responses for math vs biography
+- Math's context accumulation logic differs from other tasks
+
+### Testing Approach
+
+**Created `tasks/math/gen_math_clean.py`:**
+- Identical to gen_math.py but WITHOUT compression
+- Matches GSM/biography/MMLU structure (full responses)
+- Purpose: Isolate whether compression is the problem
+
+```python
+def construct_message(other_agents, question, idx):
+    """NO compression - matches GSM/biography/MMLU."""
+    prefix_string = "These are the recent/updated opinions from other agents: "
+    for agent in other_agents:
+        response = "\n\n One agent response: ```{}```".format(agent_response)
+        prefix_string = prefix_string + response
+```
+
+**Created `experiments/linux_single/test_context_overflow.sh`:**
+- Stress test: 7 agents, 3 rounds, 2 problems per model
+- Tests all vLLM models (excluding qwen3-0.6b, llama, oss-gpt-20b)
+- 44 total tests (11 models × 4 tasks)
+- CUDA cleanup after each run to prevent memory leaks
+
+### Results Directory Restructure
+
+Created local results directory to isolate linux_single experiments:
+
+```
+experiments/linux_single/results/
+├── math/
+├── gsm/
+├── biography/
+└── mmlu/
+```
+
+**Updated all 8 scripts** (4 baseline + 4 persona):
+```bash
+# Changed from:
+RESULTS_DIR="$PROJECT_ROOT/results/baseline/$TASK"
+
+# To:
+RESULTS_DIR="$SCRIPT_DIR/results/$TASK"
+```
+
+Baseline/persona distinction preserved in filenames.
+
+### Tools Created
+
+**1. `experiments/linux_single/analyze_response_lengths.py`**
+- Analyzes token usage in output files (JSON or pickle)
+- Shows per-message breakdown with role, length, preview
+- Reports total context size and role distribution
+- Usage: `python3 analyze_response_lengths.py <output_file>`
+
+**2. `tasks/math/gen_math_clean.py`**
+- Math generation WITHOUT compression
+- Matches GSM/biography/MMLU structure
+- 277 lines (vs 307 in original gen_math.py)
+- CLI: Same as gen_math.py but no `--compress-context` flags
+
+**3. `experiments/linux_single/test_context_overflow.sh`**
+- Comprehensive stress test (7 agents, 3 rounds)
+- 218 lines, 44 test cases
+- CUDA cleanup between runs
+- Tests all tasks: math (clean), GSM, biography, MMLU
+
+### Status: Under Investigation
+
+**Completed:**
+- Analyzed all 4 task scripts (compression gap identified)
+- Created token analysis tool
+- Biography test: 21,272 tokens with 7 agents ✓
+- Created gen_math_clean.py for comparison testing
+- Created comprehensive stress test script
+- Restructured results directory
+
+**In Progress:**
+- Testing VibeThinker with gen_math_clean.py (7 agents, 3 rounds)
+- Baseline math with qwen3-0.6b: SUCCESSFUL ✓
+
+**Next Steps:**
+1. If gen_math_clean.py succeeds → compression is broken
+2. If gen_math_clean.py also fails → math generates too many tokens
+3. Consider extending compression to other tasks if beneficial
+4. Investigate why compression fails for math specifically
+
+**Files to resume investigation:**
+- Test logs: `experiments/linux_single/logs/math_baseline/`
+- Test results: `experiments/linux_single/results/math/`
+- Analysis tool: `experiments/linux_single/analyze_response_lengths.py`
+
 ## vLLM Auto-Configuration (NEW)
 
 ### Status: IN PROGRESS

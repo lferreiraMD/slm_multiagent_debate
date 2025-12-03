@@ -18,7 +18,7 @@ export CUDA_VISIBLE_DEVICES=0,1
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 TASK="biography"
-RESULTS_DIR="$PROJECT_ROOT/results/baseline/$TASK"
+RESULTS_DIR="$SCRIPT_DIR/results/$TASK"
 
 echo "=================================================="
 echo "Linux Single GPU Baseline - Biography Task"

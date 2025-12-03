@@ -16,7 +16,7 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 TASK="gsm"
-RESULTS_DIR="$PROJECT_ROOT/results/persona_experiments/$TASK"
+RESULTS_DIR="$SCRIPT_DIR/results/$TASK"
 
 # Source multi-GPU memory check function
 source "$SCRIPT_DIR/check_gpu_memory.sh"

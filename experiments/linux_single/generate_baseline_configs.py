@@ -103,25 +103,25 @@ TASKS = {
     'math': {
         'rounds': 3,
         'num_param': 'num_problems',
-        'num_value': 100,
+        'num_value': 20,
         'random_seed': SEED
     },
     'gsm': {
         'rounds': 3,
         'num_param': 'num_problems',
-        'num_value': 100,
+        'num_value': 20,
         'random_seed': SEED
     },
     'biography': {
         'rounds': 3,
         'num_param': 'num_people',
-        'num_value': 40,
+        'num_value': 20,
         'random_seed': SEED
     },
     'mmlu': {
         'rounds': 3,
         'num_param': 'num_questions',
-        'num_value': 100,
+        'num_value': 20,
         'random_seed': SEED
     }
 }
