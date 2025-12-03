@@ -42,8 +42,8 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 RESULTS_DIR="$SCRIPT_DIR/results"
 LOG_DIR="$SLURM_DIR/logs"
 
-# Create log directories
-mkdir -p "$LOG_DIR"/{math,gsm,biography,mmlu}
+# Create log and results directories
+mkdir -p "$LOG_DIR"
 mkdir -p "$RESULTS_DIR"/{math,gsm,biography,mmlu}
 
 # Activate pyenv environment

@@ -768,3 +768,13 @@ Agent 1 receiving other agents' responses...
 [1;36m(Worker_TP0 pid=546599)[0;0m INFO 12-03 15:17:05 [multiproc_executor.py:558] Parent process exited, terminating worker
 [1;36m(Worker_TP0 pid=546599)[0;0m INFO 12-03 15:17:05 [multiproc_executor.py:599] WorkerProc shutting down.
 [1;36m(Worker_TP1 pid=546600)[0;0m INFO 12-03 15:17:05 [multiproc_executor.py:558] Parent process exited, terminating worker
+Agent 1 response: The expression to evaluate is \(15 + 12 \times 17 + 14 - 20 \times 23\).
+
+First, perform the multipl...
+performance: 0.05 0.04873397172404481
+============================================================
+Results saved to: /home/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/experiments/linux_single/results/math/math_VibeThinker-1.5B_agents1_rounds3.p
+Final performance: 0.050 ± 0.049
+============================================================
+[ModelCache] Shut down vLLM model: vllm:production:WeiboAI/VibeThinker-1.5B
+[ModelCache] All models shut down
