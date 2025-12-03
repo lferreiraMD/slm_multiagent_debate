@@ -23,12 +23,14 @@
 
 set -e
 
-# Random fixes
-export VLLM_WORKER_MULTIPROC_METHOD=spawn
-export HF_HOME=/temp_work/ch269957
+# HPC-DEPENDENT SETTINGS
+export HF_HOME=/temp_work/ch269957 # Sets location of HF models
 
 # Get array task ID (1-60)
 TASK_ID=$SLURM_ARRAY_TASK_ID
+
+# vLLM flag
+export VLLM_WORKER_MULTIPROC_METHOD=spawn
 
 # Setup paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

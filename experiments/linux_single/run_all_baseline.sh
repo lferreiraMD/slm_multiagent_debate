@@ -14,19 +14,17 @@ export CUDA_VISIBLE_DEVICES=0,1
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "=================================================="
-echo "Linux Single GPU Baseline - All Tasks"
+echo "Linux GPU Baseline - All Tasks"
 echo "=================================================="
-echo "Hardware: Single RTX 3090 (24GB VRAM)"
-echo "Total: 96 experiments (24 per task × 4 tasks)"
+echo "Hardware: 2x RTX 3090 (24GB VRAM)"
 echo "Tasks: math, gsm, biography, mmlu"
-echo "Models: 6 (0.6B to 14B, filtered by VRAM)"
 echo "Agent counts: 1, 3, 5, 7 (single-agent baseline + multiagent)"
 echo "=================================================="
 echo ""
 
 echo "Configuration:"
 echo "  Execution: Sequential (one task at a time)"
-echo "  GPU assignment: Single RTX 3090 (auto-detected by vLLM)"
+echo "  GPU assignment: 2x RTX 3090 (auto-detected by vLLM)"
 echo ""
 
 # Detect GPU and warn if not single RTX 3090
