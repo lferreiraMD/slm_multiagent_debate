@@ -11,7 +11,7 @@ set -e  # Exit on first error
 MODEL="Qwen/Qwen3-0.6B"
 AGENTS=3
 ROUNDS=2
-NUM_PROBLEMS=10  # Small number for quick testing
+NUM_PROBLEMS=2  # Small number for quick testing
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
@@ -19,7 +19,7 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 echo "=========================================="
 echo "HPC REPOSITORY TEST"
 echo "=========================================="
-echo "Model: $MODEL (VibeThinker 1.5B)"
+echo "Model: $MODEL"
 echo "Agents: $AGENTS"
 echo "Rounds: $ROUNDS"
 echo "Problems per task: $NUM_PROBLEMS"
@@ -39,13 +39,12 @@ echo ""
 echo "[1/4] Testing Math Task..."
 echo "----------------------------------------"
 cd "$PROJECT_ROOT/tasks/math"
-python3 gen_math.py \
+python3 gen_math_clean.py \
     --model "$MODEL" \
     --agents "$AGENTS" \
     --rounds "$ROUNDS" \
     --num-problems "$NUM_PROBLEMS" \
-    --random-seed 0
-
+    
 MATH_RESULT=$(ls -t math_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
 if [ -n "$MATH_RESULT" ]; then
     echo "✓ Math task completed: $MATH_RESULT"
@@ -65,7 +64,6 @@ python3 gen_gsm.py \
     --agents "$AGENTS" \
     --rounds "$ROUNDS" \
     --num-problems "$NUM_PROBLEMS" \
-    --random-seed 0
 
 GSM_RESULT=$(ls -t gsm_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
 if [ -n "$GSM_RESULT" ]; then
@@ -85,8 +83,7 @@ python3 gen_conversation.py \
     --model "$MODEL" \
     --agents "$AGENTS" \
     --rounds "$ROUNDS" \
-    --num-people 5 \
-    --random-seed 1
+    --num-people "$NUM_PROBLEMS" \
 
 BIOGRAPHY_RESULT=$(ls -t biography_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
 if [ -n "$BIOGRAPHY_RESULT" ]; then
@@ -107,7 +104,6 @@ python3 gen_mmlu.py \
     --agents "$AGENTS" \
     --rounds "$ROUNDS" \
     --num-questions "$NUM_PROBLEMS" \
-    --random-seed 0
 
 MMLU_RESULT=$(ls -t mmlu_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
 if [ -n "$MMLU_RESULT" ]; then
