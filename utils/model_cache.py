@@ -94,7 +94,20 @@ class ModelCache:
         if not torch.cuda.is_available():
             raise RuntimeError("CUDA not available - vLLM requires GPU")
 
+        # Check CUDA_VISIBLE_DEVICES to understand SLURM allocation
+        import os
+        cuda_visible = os.environ.get('CUDA_VISIBLE_DEVICES', 'not set')
+        print(f"[ModelCache] CUDA_VISIBLE_DEVICES={cuda_visible}")
+
         gpu_count = torch.cuda.device_count()
+        print(f"[ModelCache] torch.cuda.device_count()={gpu_count}")
+
+        # Show each GPU
+        for i in range(gpu_count):
+            props = torch.cuda.get_device_properties(i)
+            vram_gb = props.total_memory / (1024**3)
+            print(f"[ModelCache] GPU {i}: {props.name}, {vram_gb:.1f}GB VRAM")
+
         total_vram_gb = sum(
             torch.cuda.get_device_properties(i).total_memory / (1024**3)
             for i in range(gpu_count)
@@ -110,8 +123,8 @@ class ModelCache:
         # Simple rule: 1 GPU → TP1, 2+ GPUs → TP2
         tensor_parallel_size = 1 if gpu_count == 1 else 2
 
-        print(f"[ModelCache] Detected {gpu_count} GPU(s), {total_vram_gb:.1f}GB total VRAM")
-        print(f"[ModelCache] Using tensor_parallel_size={tensor_parallel_size}")
+        print(f"[ModelCache] Total VRAM: {total_vram_gb:.1f}GB")
+        print(f"[ModelCache] Setting tensor_parallel_size={tensor_parallel_size}")
 
         # Load model
         llm = LLM(
@@ -120,6 +133,7 @@ class ModelCache:
             gpu_memory_utilization=0.90,
             tensor_parallel_size=tensor_parallel_size,
             disable_custom_all_reduce=True,
+            enforce_eager=True,  # Prevent CUDA graphs to avoid extra process spawning
         )
 
         # Load tokenizer

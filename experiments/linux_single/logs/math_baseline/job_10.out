@@ -845,3 +845,1380 @@ performance: 0.5714285714285714 0.1870439059165649
 Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2245.34it/s]
 
 Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 77.08 toks/s, output: 143.45 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 77.08 toks/s, output: 143.45 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 77.08 toks/s, output: 143.45 toks/s]
+Agent 1 response: To evaluate the expression 27 + 15 * 14 + 29 - 29 * 14, we need to follow the order of operations (P...
+
+--- Problem 8/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2343.19it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.51it/s, est. speed input: 108.94 toks/s, output: 143.73 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.51it/s, est. speed input: 108.94 toks/s, output: 143.73 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.51it/s, est. speed input: 108.94 toks/s, output: 143.73 toks/s]
+Agent 2 response: To calculate the result, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 15 and 14:...
+
+--- Problem 8/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2247.75it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 95.02 toks/s, output: 145.17 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 95.02 toks/s, output: 145.17 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 95.02 toks/s, output: 145.17 toks/s]
+Agent 3 response: To evaluate the expression 27+15*14+29-29*14, we need to follow the order of operations (PEMDAS):
+
+1...
+
+--- Problem 8/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1070.52it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it, est. speed input: 230.80 toks/s, output: 142.78 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it, est. speed input: 230.80 toks/s, output: 142.78 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it, est. speed input: 230.80 toks/s, output: 142.78 toks/s]
+Agent 1 response: Upon re-examining the expressions, I noticed that the order of operations was applied correctly. How...
+
+--- Problem 8/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1119.08it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 389.60 toks/s, output: 140.32 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 389.60 toks/s, output: 140.32 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 389.60 toks/s, output: 140.32 toks/s]
+Agent 2 response: Upon reviewing the additional agent responses, I noticed that there is a discrepancy in the order of...
+
+--- Problem 8/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1215.39it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.62it/s, est. speed input: 1237.77 toks/s, output: 133.74 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.62it/s, est. speed input: 1237.77 toks/s, output: 133.74 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.62it/s, est. speed input: 1237.77 toks/s, output: 133.74 toks/s]
+Agent 3 response: Both of these agents are following the order of operations and arriving at the same result, which me...
+
+--- Problem 8/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 715.75it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.22s/it, est. speed input: 853.90 toks/s, output: 140.41 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.22s/it, est. speed input: 853.90 toks/s, output: 140.41 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 853.90 toks/s, output: 140.41 toks/s]
+Agent 1 response: After carefully re-examining the expressions and considering the opinions from the agents, I can con...
+
+--- Problem 8/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 684.56it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 985.83 toks/s, output: 138.54 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 985.83 toks/s, output: 138.54 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 985.83 toks/s, output: 138.54 toks/s]
+Agent 2 response: After carefully reviewing the opinions of the agents, it's clear that both calculations are correct ...
+
+--- Problem 8/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 697.31it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 1058.70 toks/s, output: 136.64 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 1058.70 toks/s, output: 136.64 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s, est. speed input: 1058.70 toks/s, output: 136.64 toks/s]
+ 40%|████      | 8/20 [01:56<02:17, 11.47s/it]Agent 3 response: Both of the updated agents have identified the correct order of operations for the expression, which...
+performance: 0.5 0.17677669529663687
+
+--- Problem 9/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2158.67it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s, est. speed input: 85.51 toks/s, output: 144.88 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s, est. speed input: 85.51 toks/s, output: 144.88 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s, est. speed input: 85.51 toks/s, output: 144.88 toks/s]
+Agent 1 response: To solve the expression 29+18*11+22-19*24, we need to follow the order of operations (PEMDAS):
+
+1. M...
+
+--- Problem 9/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2205.21it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.56 toks/s, output: 145.54 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.56 toks/s, output: 145.54 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.56 toks/s, output: 145.54 toks/s]
+Agent 2 response: To solve the given expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 18 a...
+
+--- Problem 9/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2194.82it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 95.09 toks/s, output: 145.28 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 95.09 toks/s, output: 145.28 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 95.09 toks/s, output: 145.28 toks/s]
+Agent 3 response: To evaluate this expression, we need to follow the order of operations (PEMDAS/BODMAS):
+
+1. Multiply...
+
+--- Problem 9/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1144.42it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 539.82 toks/s, output: 139.99 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 539.82 toks/s, output: 139.99 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 539.82 toks/s, output: 139.99 toks/s]
+Agent 1 response: To solve the expression 29+18*11+22-19*24, we need to follow the order of operations (PEMDAS/BODMAS)...
+
+--- Problem 9/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1177.51it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.56s/it, est. speed input: 135.21 toks/s, output: 143.06 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.56s/it, est. speed input: 135.21 toks/s, output: 143.06 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.57s/it, est. speed input: 135.21 toks/s, output: 143.06 toks/s]
+Agent 2 response: After analyzing the different opinions, I will provide an updated conclusion.
+
+Both agents followed ...
+
+--- Problem 9/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1204.22it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:29<00:00, 29.30s/it, est. speed input: 16.45 toks/s, output: 139.78 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:29<00:00, 29.30s/it, est. speed input: 16.45 toks/s, output: 139.78 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:29<00:00, 29.30s/it, est. speed input: 16.45 toks/s, output: 139.78 toks/s]
+Agent 3 response: After carefully evaluating the expression using the provided opinions as additional guidance, it app...
+
+--- Problem 9/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 135.44it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  2.00s/it, est. speed input: 2644.12 toks/s, output: 101.72 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  2.00s/it, est. speed input: 2644.12 toks/s, output: 101.72 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  2.00s/it, est. speed input: 2644.12 toks/s, output: 101.72 toks/s]
+Agent 1 response: Based on the analysis of the opinions from different agents, the result of the expression 29+18*11+2...
+
+--- Problem 9/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 137.15it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.00s/it, est. speed input: 1317.67 toks/s, output: 118.11 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.00s/it, est. speed input: 1317.67 toks/s, output: 118.11 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.01s/it, est. speed input: 1317.67 toks/s, output: 118.11 toks/s]
+Agent 2 response: After analyzing the different opinions, I will provide an updated conclusion.
+
+Both Agent 1 and Agen...
+
+--- Problem 9/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 140.47it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 3075.93 toks/s, output: 99.67 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 3075.93 toks/s, output: 99.67 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 3075.93 toks/s, output: 99.67 toks/s]
+ 45%|████▌     | 9/20 [02:40<03:57, 21.61s/it]Agent 3 response: Based on the analysis of the opinions from different agents and the standard order of operations (PE...
+performance: 0.5555555555555556 0.16563466499998444
+
+--- Problem 10/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2381.77it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 94.03 toks/s, output: 143.65 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 94.03 toks/s, output: 143.65 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 94.03 toks/s, output: 143.65 toks/s]
+Agent 1 response: To solve the expression 2+4*18+6-20*8, we need to follow the order of operations (PEMDAS):
+
+1. Multi...
+
+--- Problem 10/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2303.30it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 82.69 toks/s, output: 144.71 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 82.69 toks/s, output: 144.71 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 82.69 toks/s, output: 144.71 toks/s]
+Agent 2 response: To solve the expression 2+4*18+6-20*8, we need to follow the order of operations (PEMDAS):
+
+1. Multi...
+
+--- Problem 10/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2335.36it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 83.17 toks/s, output: 144.38 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 83.17 toks/s, output: 144.38 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 83.17 toks/s, output: 144.38 toks/s]
+Agent 3 response: To find the result of the expression 2+4*18+6-20*8, we need to follow the order of operations (PEMDA...
+
+--- Problem 10/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1157.37it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 496.36 toks/s, output: 139.66 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 496.36 toks/s, output: 139.66 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 496.36 toks/s, output: 139.66 toks/s]
+Agent 1 response: Upon reviewing the responses, I noticed that both agents provided the same solution. To confirm, I w...
+
+--- Problem 10/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1162.82it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.04it/s, est. speed input: 512.42 toks/s, output: 140.03 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.04it/s, est. speed input: 512.42 toks/s, output: 140.03 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.04it/s, est. speed input: 512.42 toks/s, output: 140.03 toks/s]
+Agent 2 response: It seems like there's no discrepancy in the previous answers provided by the agents. Both of them co...
+
+--- Problem 10/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 913.59it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 449.49 toks/s, output: 140.12 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 449.49 toks/s, output: 140.12 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 449.49 toks/s, output: 140.12 toks/s]
+Agent 3 response: Upon reviewing the two agent responses, it appears that both are following the correct steps of eval...
+
+--- Problem 10/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 781.64it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 845.48 toks/s, output: 138.47 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 845.48 toks/s, output: 138.47 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 845.48 toks/s, output: 138.47 toks/s]
+Agent 1 response: After carefully reviewing the additional opinions, I can confirm that both agents have correctly fol...
+
+--- Problem 10/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 612.84it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.50s/it, est. speed input: 653.72 toks/s, output: 138.99 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.50s/it, est. speed input: 653.72 toks/s, output: 138.99 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.50s/it, est. speed input: 653.72 toks/s, output: 138.99 toks/s]
+Agent 2 response: It seems like the opinions from the agents have confirmed the previous answer, but with some additio...
+
+--- Problem 10/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 631.10it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.55it/s, est. speed input: 1519.27 toks/s, output: 136.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.55it/s, est. speed input: 1519.27 toks/s, output: 136.00 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.54it/s, est. speed input: 1519.27 toks/s, output: 136.00 toks/s]
+ 50%|█████     | 10/20 [02:48<02:56, 17.68s/it]Agent 3 response: After reviewing the additional opinions from the agents, it is clear that both responses confirm the...
+performance: 0.5 0.15811388300841897
+
+--- Problem 11/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2054.02it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.40it/s, est. speed input: 100.75 toks/s, output: 142.73 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.40it/s, est. speed input: 100.75 toks/s, output: 142.73 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.40it/s, est. speed input: 100.75 toks/s, output: 142.73 toks/s]
+Agent 1 response: To solve the given expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 17 a...
+
+--- Problem 11/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2201.73it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.53 toks/s, output: 143.23 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.53 toks/s, output: 143.23 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.53 toks/s, output: 143.23 toks/s]
+Agent 2 response: To solve the expression 6+17*3+24-27*13, we need to follow the order of operations (PEMDAS):
+
+1. Mul...
+
+--- Problem 11/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2318.58it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.56it/s, est. speed input: 112.36 toks/s, output: 143.57 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.56it/s, est. speed input: 112.36 toks/s, output: 143.57 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.56it/s, est. speed input: 112.36 toks/s, output: 143.57 toks/s]
+Agent 3 response: To calculate the result, we need to follow the order of operations (PEMDAS):
+
+1. First, calculate th...
+
+--- Problem 11/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1216.45it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 364.88 toks/s, output: 140.59 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 364.88 toks/s, output: 140.59 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 364.88 toks/s, output: 140.59 toks/s]
+Agent 1 response: After considering the alternative perspectives, I can see that both agents have followed the correct...
+
+--- Problem 11/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1178.84it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 386.90 toks/s, output: 139.59 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 386.90 toks/s, output: 139.59 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 386.90 toks/s, output: 139.59 toks/s]
+Agent 2 response: Upon reviewing the additional information, I found that the two agents presented the same solution, ...
+
+--- Problem 11/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1212.23it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 381.04 toks/s, output: 140.87 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 381.04 toks/s, output: 140.87 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 381.04 toks/s, output: 140.87 toks/s]
+Agent 3 response: Upon reviewing the updated opinions, it is clear that both agents have calculated the expression in ...
+
+--- Problem 11/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 756.55it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 687.94 toks/s, output: 139.49 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 687.94 toks/s, output: 139.49 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 687.94 toks/s, output: 139.49 toks/s]
+Agent 1 response: After carefully reviewing the additional opinions, I can see that there is a discrepancy in the orig...
+
+--- Problem 11/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 756.68it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.63s/it, est. speed input: 621.30 toks/s, output: 139.50 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.63s/it, est. speed input: 621.30 toks/s, output: 139.50 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.63s/it, est. speed input: 621.30 toks/s, output: 139.50 toks/s]
+Agent 2 response: Upon re-examining the updated opinions, I can see that the first agent is correct in stating that bo...
+
+--- Problem 11/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 777.01it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 717.25 toks/s, output: 139.05 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 717.25 toks/s, output: 139.05 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 717.25 toks/s, output: 139.05 toks/s]
+ 55%|█████▌    | 11/20 [02:59<02:18, 15.42s/it]Agent 3 response: After carefully reviewing the additional perspectives from the agents, I can confidently confirm tha...
+performance: 0.5454545454545454 0.150131422517231
+
+--- Problem 12/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2427.26it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.14it/s, est. speed input: 82.26 toks/s, output: 143.95 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.14it/s, est. speed input: 82.26 toks/s, output: 143.95 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.14it/s, est. speed input: 82.26 toks/s, output: 143.95 toks/s]
+Agent 1 response: To find the result, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 25 and 8: 25*8 ...
+
+--- Problem 12/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2439.97it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.48 toks/s, output: 143.56 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.48 toks/s, output: 143.56 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.48 toks/s, output: 143.56 toks/s]
+Agent 2 response: To find the result, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 25 and 8: 25*8 ...
+
+--- Problem 12/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2514.57it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.57 toks/s, output: 144.30 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.57 toks/s, output: 144.30 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.57 toks/s, output: 144.30 toks/s]
+Agent 3 response: To calculate this expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 25 an...
+
+--- Problem 12/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1322.71it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it, est. speed input: 472.70 toks/s, output: 139.91 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it, est. speed input: 472.70 toks/s, output: 139.91 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it, est. speed input: 472.70 toks/s, output: 139.91 toks/s]
+Agent 1 response: To find the result, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 25 and 8: 25*8 ...
+
+--- Problem 12/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1469.11it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 334.55 toks/s, output: 140.04 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 334.55 toks/s, output: 140.04 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 334.55 toks/s, output: 140.04 toks/s]
+Agent 2 response: I can review the expressions provided by the agents and follow their steps to calculate the result.
+...
+
+--- Problem 12/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1188.52it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.84s/it, est. speed input: 257.22 toks/s, output: 141.93 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.84s/it, est. speed input: 257.22 toks/s, output: 141.93 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.84s/it, est. speed input: 257.22 toks/s, output: 141.93 toks/s]
+Agent 3 response: Let's analyze the given opinions:
+
+In the first opinion, the order of operations is followed correct...
+
+--- Problem 12/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 653.32it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.32s/it, est. speed input: 855.98 toks/s, output: 137.50 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.32s/it, est. speed input: 855.98 toks/s, output: 137.50 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.32s/it, est. speed input: 855.98 toks/s, output: 137.50 toks/s]
+Agent 1 response: To find the result, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 25 and 8: 25*8 ...
+
+--- Problem 12/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 659.27it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 661.45 toks/s, output: 138.94 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 661.45 toks/s, output: 138.94 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 661.45 toks/s, output: 138.94 toks/s]
+Agent 2 response: After reviewing the updated opinions, I agree with the second agent's analysis. The initial answer o...
+
+--- Problem 12/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 661.04it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 1171.41 toks/s, output: 136.47 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 1171.41 toks/s, output: 136.47 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 1171.41 toks/s, output: 136.47 toks/s]
+ 60%|██████    | 12/20 [03:09<01:51, 13.97s/it]Agent 3 response: After analyzing the updated opinions, it is confirmed that both agents followed the correct order of...
+performance: 0.5833333333333334 0.14231876063832777
+
+--- Problem 13/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2291.97it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.53 toks/s, output: 143.23 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.53 toks/s, output: 143.23 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.53 toks/s, output: 143.23 toks/s]
+Agent 1 response: To solve the expression 19+27*14+27-6*11, we need to follow the order of operations (PEMDAS):
+
+1. Mu...
+
+--- Problem 13/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2321.14it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s, est. speed input: 101.54 toks/s, output: 143.84 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s, est. speed input: 101.54 toks/s, output: 143.84 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s, est. speed input: 101.54 toks/s, output: 143.84 toks/s]
+Agent 2 response: To solve this expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 27 and 14...
+
+--- Problem 13/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2296.99it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.34it/s, est. speed input: 96.31 toks/s, output: 144.45 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.34it/s, est. speed input: 96.31 toks/s, output: 144.45 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.34it/s, est. speed input: 96.31 toks/s, output: 144.45 toks/s]
+Agent 3 response: To evaluate the given expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 2...
+
+--- Problem 13/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1180.50it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 249.17 toks/s, output: 142.54 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 249.17 toks/s, output: 142.54 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 249.17 toks/s, output: 142.54 toks/s]
+Agent 1 response: Based on the provided opinions, there seems to be a discrepancy in the order of operations for the s...
+
+--- Problem 13/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1210.83it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.09it/s, est. speed input: 507.03 toks/s, output: 139.57 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.09it/s, est. speed input: 507.03 toks/s, output: 139.57 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.09it/s, est. speed input: 507.03 toks/s, output: 139.57 toks/s]
+Agent 2 response: After considering the alternative solutions, I have reevaluated the expression.
+
+The two alternative...
+
+--- Problem 13/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1213.63it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.91s/it, est. speed input: 243.52 toks/s, output: 141.92 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.91s/it, est. speed input: 243.52 toks/s, output: 141.92 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.91s/it, est. speed input: 243.52 toks/s, output: 141.92 toks/s]
+Agent 3 response: After considering the additional advice from the other agents, it appears that there is a disagreeme...
+
+--- Problem 13/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 649.47it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.69it/s, est. speed input: 2010.95 toks/s, output: 131.70 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.69it/s, est. speed input: 2010.95 toks/s, output: 131.70 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.69it/s, est. speed input: 2010.95 toks/s, output: 131.70 toks/s]
+Agent 1 response: Based on the provided opinions, there is a clear disagreement on the order of operations, and both m...
+
+--- Problem 13/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 684.11it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 1335.20 toks/s, output: 134.53 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 1335.20 toks/s, output: 134.53 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 1335.20 toks/s, output: 134.53 toks/s]
+Agent 2 response: After carefully considering the alternative solutions and the ongoing debate on the order of operati...
+
+--- Problem 13/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 648.87it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 809.92 toks/s, output: 138.73 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 809.92 toks/s, output: 138.73 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 809.92 toks/s, output: 138.73 toks/s]
+ 65%|██████▌   | 13/20 [03:19<01:29, 12.76s/it]Agent 3 response: After reevaluating the expression and considering the alternative solutions, it appears that there i...
+performance: 0.6153846153846154 0.13493200297031221
+
+--- Problem 14/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2201.73it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s, est. speed input: 93.49 toks/s, output: 144.13 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s, est. speed input: 93.49 toks/s, output: 144.13 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s, est. speed input: 93.49 toks/s, output: 144.13 toks/s]
+Agent 1 response: To solve the given expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 7 an...
+
+--- Problem 14/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2295.73it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 73.43 toks/s, output: 144.82 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 73.43 toks/s, output: 144.82 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 73.43 toks/s, output: 144.82 toks/s]
+Agent 2 response: To solve the expression 28+7*14+2-13*16, we need to follow the order of operations (PEMDAS):
+
+1. Mul...
+
+--- Problem 14/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2257.43it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s, est. speed input: 102.97 toks/s, output: 144.44 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s, est. speed input: 102.97 toks/s, output: 144.44 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s, est. speed input: 102.97 toks/s, output: 144.44 toks/s]
+Agent 3 response: To evaluate the given expression, we must follow the order of operations (PEMDAS):
+
+1. Multiply 7 an...
+
+--- Problem 14/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1189.20it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 498.03 toks/s, output: 139.08 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 498.03 toks/s, output: 139.08 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 498.03 toks/s, output: 139.08 toks/s]
+Agent 1 response: Considering the additional information, I will re-evaluate the expression.
+
+The correct steps are:
+
+...
+
+--- Problem 14/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1217.50it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 408.52 toks/s, output: 140.93 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 408.52 toks/s, output: 140.93 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 408.52 toks/s, output: 140.93 toks/s]
+Agent 2 response: After carefully reviewing the updated opinions, I agree with both agents. The correct steps to solve...
+
+--- Problem 14/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1206.65it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.57s/it, est. speed input: 309.58 toks/s, output: 141.12 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.57s/it, est. speed input: 309.58 toks/s, output: 141.12 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.57s/it, est. speed input: 309.58 toks/s, output: 141.12 toks/s]
+Agent 3 response: It appears that there's a potential issue with the provided agents' responses. The correct calculati...
+
+--- Problem 14/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 759.70it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it, est. speed input: 672.65 toks/s, output: 138.41 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it, est. speed input: 672.65 toks/s, output: 138.41 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it, est. speed input: 672.65 toks/s, output: 138.41 toks/s]
+Agent 1 response: Considering the additional information, I will re-evaluate the expression.
+
+The correct steps are:
+
+...
+
+--- Problem 14/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 765.94it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 1016.82 toks/s, output: 136.33 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 1016.82 toks/s, output: 136.33 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 1016.82 toks/s, output: 136.33 toks/s]
+Agent 2 response: After carefully reviewing the updated opinions, I agree with the second agent's revised explanation....
+
+--- Problem 14/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 697.89it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.07s/it, est. speed input: 999.72 toks/s, output: 139.62 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.07s/it, est. speed input: 999.72 toks/s, output: 139.62 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.07s/it, est. speed input: 999.72 toks/s, output: 139.62 toks/s]
+ 70%|███████   | 14/20 [03:29<01:11, 11.90s/it]Agent 3 response: After considering the updated opinions and revisiting the calculation process, I also agree with bot...
+performance: 0.6428571428571429 0.12806020814297073
+
+--- Problem 15/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2348.43it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.23 toks/s, output: 144.70 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.23 toks/s, output: 144.70 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.23 toks/s, output: 144.70 toks/s]
+Agent 1 response: To solve the given expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 17 a...
+
+--- Problem 15/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2699.04it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.53it/s, est. speed input: 109.90 toks/s, output: 145.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.53it/s, est. speed input: 109.90 toks/s, output: 145.00 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.53it/s, est. speed input: 109.90 toks/s, output: 145.00 toks/s]
+Agent 2 response: To calculate the result, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 17 and 7: ...
+
+--- Problem 15/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2283.24it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.62it/s, est. speed input: 116.67 toks/s, output: 144.21 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.62it/s, est. speed input: 116.67 toks/s, output: 144.21 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.62it/s, est. speed input: 116.67 toks/s, output: 144.21 toks/s]
+Agent 3 response: To find the result, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 17 and 7: 17*7 ...
+
+--- Problem 15/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1186.17it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.04it/s, est. speed input: 433.53 toks/s, output: 139.65 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.04it/s, est. speed input: 433.53 toks/s, output: 139.65 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.04it/s, est. speed input: 433.53 toks/s, output: 139.65 toks/s]
+Agent 1 response: Upon reviewing the additional opinions, it seems that the two agents have slightly different approac...
+
+--- Problem 15/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 962.22it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 316.92 toks/s, output: 140.94 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 316.92 toks/s, output: 140.94 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 316.92 toks/s, output: 140.94 toks/s]
+Agent 2 response: Upon reviewing the additional opinions, I can see that both agents have correctly evaluated the expr...
+
+--- Problem 15/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1049.36it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.21it/s, est. speed input: 504.34 toks/s, output: 139.42 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.21it/s, est. speed input: 504.34 toks/s, output: 139.42 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.21it/s, est. speed input: 504.34 toks/s, output: 139.42 toks/s]
+Agent 3 response: Let's take a closer look at the provided instructions and answers from the agents. Both agents follo...
+
+--- Problem 15/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 751.67it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 743.59 toks/s, output: 138.76 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 743.59 toks/s, output: 138.76 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 743.59 toks/s, output: 138.76 toks/s]
+Agent 1 response: Upon reviewing the additional opinions, it's clear that both agents have accurately evaluated the ex...
+
+--- Problem 15/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 765.38it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 845.94 toks/s, output: 138.36 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 845.94 toks/s, output: 138.36 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 845.94 toks/s, output: 138.36 toks/s]
+Agent 2 response: Upon reviewing the additional opinions, I can see that both agents have emphasized the importance of...
+
+--- Problem 15/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 774.29it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s, est. speed input: 1236.00 toks/s, output: 135.67 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s, est. speed input: 1236.00 toks/s, output: 135.67 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s, est. speed input: 1236.00 toks/s, output: 135.67 toks/s]
+ 75%|███████▌  | 15/20 [03:37<00:53, 10.76s/it]Agent 3 response: Let's take into consideration the additional insights from the updated opinions.
+
+Both agents agree ...
+performance: 0.6 0.12649110640673517
+
+--- Problem 16/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2232.20it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.51 toks/s, output: 143.19 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.51 toks/s, output: 143.19 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 84.51 toks/s, output: 143.19 toks/s]
+Agent 1 response: To solve the expression 5+21*9+3-21*28, we need to follow the order of operations (PEMDAS):
+
+1. Mult...
+
+--- Problem 16/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2211.02it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it, est. speed input: 71.15 toks/s, output: 143.28 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it, est. speed input: 71.15 toks/s, output: 143.28 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it, est. speed input: 71.15 toks/s, output: 143.28 toks/s]
+Agent 2 response: To evaluate the expression 5+21*9+3-21*28, we need to follow the order of operations (PEMDAS):
+
+1. M...
+
+--- Problem 16/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2077.42it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.33it/s, est. speed input: 96.06 toks/s, output: 142.75 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.33it/s, est. speed input: 96.06 toks/s, output: 142.75 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.33it/s, est. speed input: 96.06 toks/s, output: 142.75 toks/s]
+Agent 3 response: To solve the expression, follow the order of operations (PEMDAS):
+
+1. Multiply 21 and 9: 21*9 = 189
+...
+
+--- Problem 16/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1114.32it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 480.15 toks/s, output: 139.21 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 480.15 toks/s, output: 139.21 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 480.15 toks/s, output: 139.21 toks/s]
+Agent 1 response: To evaluate the expression 5+21*9+3-21*28, we need to follow the order of operations (PEMDAS):
+
+1. M...
+
+--- Problem 16/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1080.45it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 406.26 toks/s, output: 139.43 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 406.26 toks/s, output: 139.43 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 406.26 toks/s, output: 139.43 toks/s]
+Agent 2 response: Given the additional opinions, it seems that there's a discrepancy in the calculation. However, afte...
+
+--- Problem 16/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1111.37it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.41s/it, est. speed input: 18.50 toks/s, output: 139.47 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.41s/it, est. speed input: 18.50 toks/s, output: 139.47 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.41s/it, est. speed input: 18.50 toks/s, output: 139.47 toks/s]
+Agent 3 response: To solve the expression 5+21*9+3-21*28, we need to follow the order of operations (PEMDAS):
+
+1. Mult...
+
+--- Problem 16/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 157.18it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 2843.93 toks/s, output: 106.18 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 2843.93 toks/s, output: 106.18 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 2843.93 toks/s, output: 106.18 toks/s]
+Agent 1 response: To evaluate the expression 5+21*9+3-21*28, we need to follow the order of operations (PEMDAS):
+
+1. M...
+
+--- Problem 16/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 163.20it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it, est. speed input: 2849.62 toks/s, output: 105.18 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it, est. speed input: 2849.62 toks/s, output: 105.18 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it, est. speed input: 2849.62 toks/s, output: 105.18 toks/s]
+Agent 2 response: Given the additional opinions, it appears that there is still some discrepancy in the calculation. H...
+
+--- Problem 16/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 168.52it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 3738.70 toks/s, output: 96.76 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 3738.70 toks/s, output: 96.76 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 3738.70 toks/s, output: 96.76 toks/s]
+ 80%|████████  | 16/20 [04:14<01:14, 18.64s/it]Agent 3 response: To solve the expression 5+21*9+3-21*28, we need to follow the order of operations (PEMDAS):
+
+1. Mult...
+performance: 0.625 0.12103072956898178
+
+--- Problem 17/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2423.05it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.18it/s, est. speed input: 85.28 toks/s, output: 142.12 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.18it/s, est. speed input: 85.28 toks/s, output: 142.12 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.18it/s, est. speed input: 85.28 toks/s, output: 142.12 toks/s]
+Agent 1 response: To calculate the given expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply ...
+
+--- Problem 17/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 3019.66it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.02 toks/s, output: 143.41 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.02 toks/s, output: 143.41 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 89.02 toks/s, output: 143.41 toks/s]
+Agent 2 response: To solve the expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 25 and 11:...
+
+--- Problem 17/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2344.50it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 94.84 toks/s, output: 143.58 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 94.84 toks/s, output: 143.58 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s, est. speed input: 94.84 toks/s, output: 143.58 toks/s]
+Agent 3 response: To evaluate this expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 25 and...
+
+--- Problem 17/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1135.13it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 255.68 toks/s, output: 140.14 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 255.68 toks/s, output: 140.14 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 255.68 toks/s, output: 140.14 toks/s]
+Agent 1 response: After reviewing the updated opinions, I noticed that the agents had a slight difference in the order...
+
+--- Problem 17/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1163.79it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 401.23 toks/s, output: 139.34 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 401.23 toks/s, output: 139.34 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 401.23 toks/s, output: 139.34 toks/s]
+Agent 2 response: After considering the additional opinions, it appears that there is a small discrepancy in the step ...
+
+--- Problem 17/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1352.56it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 487.70 toks/s, output: 138.76 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 487.70 toks/s, output: 138.76 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 487.70 toks/s, output: 138.76 toks/s]
+Agent 3 response: Considering the updated information from the other agents, it appears that both of them are consiste...
+
+--- Problem 17/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 757.37it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.40s/it, est. speed input: 785.84 toks/s, output: 138.21 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.40s/it, est. speed input: 785.84 toks/s, output: 138.21 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.40s/it, est. speed input: 785.84 toks/s, output: 138.21 toks/s]
+Agent 1 response: After carefully analyzing the updated opinions from the agents, I can see that both agents have prov...
+
+--- Problem 17/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 689.17it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 1210.84 toks/s, output: 135.02 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 1210.84 toks/s, output: 135.02 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 1210.84 toks/s, output: 135.02 toks/s]
+Agent 2 response: After carefully considering the updated opinions from the agents, it appears that both agents agree ...
+
+--- Problem 17/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 684.45it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it, est. speed input: 710.15 toks/s, output: 139.07 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it, est. speed input: 710.15 toks/s, output: 139.07 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it, est. speed input: 710.15 toks/s, output: 139.07 toks/s]
+ 85%|████████▌ | 17/20 [04:25<00:48, 16.14s/it]Agent 3 response: After carefully considering the updates from the other agents, I can see that there was a disagreeme...
+performance: 0.6470588235294118 0.1159040430757386
+
+--- Problem 18/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2402.24it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it, est. speed input: 71.07 toks/s, output: 144.11 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it, est. speed input: 71.07 toks/s, output: 144.11 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it, est. speed input: 71.07 toks/s, output: 144.11 toks/s]
+Agent 1 response: To solve the expression 3 + 13*15 + 14 - 7*13, we need to follow the order of operations (PEMDAS):
+
+...
+
+--- Problem 18/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2263.52it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 94.33 toks/s, output: 144.12 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 94.33 toks/s, output: 144.12 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 94.33 toks/s, output: 144.12 toks/s]
+Agent 2 response: To solve the equation, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 13 and 15: 1...
+
+--- Problem 18/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2304.56it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 62.24 toks/s, output: 143.50 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 62.24 toks/s, output: 143.50 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 62.24 toks/s, output: 143.50 toks/s]
+Agent 3 response: To calculate this expression, we need to follow the order of operations, often remembered by the acr...
+
+--- Problem 18/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1053.58it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.62s/it, est. speed input: 343.55 toks/s, output: 140.51 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.62s/it, est. speed input: 343.55 toks/s, output: 140.51 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.62s/it, est. speed input: 343.55 toks/s, output: 140.51 toks/s]
+Agent 1 response: After considering the additional opinions, I can see that there's a slight discrepancy in the order ...
+
+--- Problem 18/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1038.45it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 382.89 toks/s, output: 139.35 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 382.89 toks/s, output: 139.35 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 382.89 toks/s, output: 139.35 toks/s]
+Agent 2 response: After considering the additional opinions from the other agents, I have reevaluated the expression. ...
+
+--- Problem 18/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 928.56it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 300.70 toks/s, output: 140.87 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 300.70 toks/s, output: 140.87 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 300.70 toks/s, output: 140.87 toks/s]
+Agent 3 response: It seems like there's a slight contradiction between the two agent responses. Let's analyze and reco...
+
+--- Problem 18/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 524.35it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 619.87 toks/s, output: 138.22 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 619.87 toks/s, output: 138.22 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 619.87 toks/s, output: 138.22 toks/s]
+Agent 1 response: After analyzing the additional opinions and reconciling the contradiction, I have concluded that the...
+
+--- Problem 18/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 568.41it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.00s/it, est. speed input: 652.40 toks/s, output: 138.48 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.00s/it, est. speed input: 652.40 toks/s, output: 138.48 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.00s/it, est. speed input: 652.40 toks/s, output: 138.48 toks/s]
+Agent 2 response: After carefully considering the additional opinions from the agents, I have reevaluated the expressi...
+
+--- Problem 18/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 604.11it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 1435.89 toks/s, output: 135.34 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 1435.89 toks/s, output: 135.34 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.10it/s, est. speed input: 1435.89 toks/s, output: 135.34 toks/s]
+ 90%|█████████ | 18/20 [04:38<00:30, 15.16s/it]Agent 3 response: After reviewing the additional opinions from the other agents, it appears that there is agreement on...
+performance: 0.6111111111111112 0.11490438561102646
+
+--- Problem 19/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2235.77it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 73.46 toks/s, output: 142.83 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 73.46 toks/s, output: 142.83 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 73.46 toks/s, output: 142.83 toks/s]
+Agent 1 response: To evaluate the expression 22+27*24+29-7*20, we need to follow the order of operations (PEMDAS):
+
+1....
+
+--- Problem 19/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2275.80it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s, est. speed input: 93.63 toks/s, output: 143.04 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s, est. speed input: 93.63 toks/s, output: 143.04 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s, est. speed input: 93.63 toks/s, output: 143.04 toks/s]
+Agent 2 response: To evaluate this expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 27 by ...
+
+--- Problem 19/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2244.14it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.29it/s, est. speed input: 92.54 toks/s, output: 142.66 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.29it/s, est. speed input: 92.54 toks/s, output: 142.66 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.28it/s, est. speed input: 92.54 toks/s, output: 142.66 toks/s]
+Agent 3 response: To find the result of this expression, we need to follow the order of operations (PEMDAS):
+
+1. Multi...
+
+--- Problem 19/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1121.77it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 419.33 toks/s, output: 140.06 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 419.33 toks/s, output: 140.06 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 419.33 toks/s, output: 140.06 toks/s]
+Agent 1 response: Upon reviewing the provided opinions, it appears that both agents have correctly followed the order ...
+
+--- Problem 19/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 974.74it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 395.14 toks/s, output: 139.98 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 395.14 toks/s, output: 139.98 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 395.14 toks/s, output: 139.98 toks/s]
+Agent 2 response: Upon reviewing the provided opinions from other agents, I noticed that there is a discrepancy in the...
+
+--- Problem 19/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1104.93it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.18s/it, est. speed input: 227.05 toks/s, output: 141.10 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.18s/it, est. speed input: 227.05 toks/s, output: 141.10 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.18s/it, est. speed input: 227.05 toks/s, output: 141.10 toks/s]
+Agent 3 response: Upon reviewing the opinions, I find that there seems to be a small discrepancy on steps 4 of each ag...
+
+--- Problem 19/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 547.70it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.31s/it, est. speed input: 520.50 toks/s, output: 139.87 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.31s/it, est. speed input: 520.50 toks/s, output: 139.87 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.31s/it, est. speed input: 520.50 toks/s, output: 139.87 toks/s]
+Agent 1 response: Upon reviewing the provided opinions, I found that there is indeed a discrepancy in the operations. ...
+
+--- Problem 19/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 641.33it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 698.74 toks/s, output: 137.77 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 698.74 toks/s, output: 137.77 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 698.74 toks/s, output: 137.77 toks/s]
+Agent 2 response: Upon reviewing the updated opinions from the agents, I noticed that there is a discrepancy in the fi...
+
+--- Problem 19/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 647.77it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.34s/it, est. speed input: 225.16 toks/s, output: 141.06 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.34s/it, est. speed input: 225.16 toks/s, output: 141.06 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.34s/it, est. speed input: 225.16 toks/s, output: 141.06 toks/s]
+ 95%|█████████▌| 19/20 [04:54<00:15, 15.57s/it]Agent 3 response: Upon reviewing the updated opinions from the agents, I found that there is indeed a discrepancy betw...
+performance: 0.631578947368421 0.11066473327112564
+
+--- Problem 20/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2197.12it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.36 toks/s, output: 143.40 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.36 toks/s, output: 143.40 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.46it/s, est. speed input: 105.36 toks/s, output: 143.40 toks/s]
+Agent 1 response: To solve the expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 12 and 17:...
+
+--- Problem 20/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2185.67it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 99.39 toks/s, output: 143.57 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 99.39 toks/s, output: 143.57 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 99.39 toks/s, output: 143.57 toks/s]
+Agent 2 response: To find the result of the given expression, we need to follow the order of operations (PEMDAS):
+
+1. ...
+
+--- Problem 20/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2136.68it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s, est. speed input: 86.38 toks/s, output: 143.97 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s, est. speed input: 86.38 toks/s, output: 143.97 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s, est. speed input: 86.38 toks/s, output: 143.97 toks/s]
+Agent 3 response: To calculate the result, we need to follow the order of operations (PEMDAS):
+
+1. Calculate 12*17
+   ...
+
+--- Problem 20/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1143.80it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s, est. speed input: 547.83 toks/s, output: 139.67 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s, est. speed input: 547.83 toks/s, output: 139.67 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s, est. speed input: 547.83 toks/s, output: 139.67 toks/s]
+Agent 1 response: To solve the expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 12 and 17:...
+
+--- Problem 20/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1166.38it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 514.95 toks/s, output: 139.20 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 514.95 toks/s, output: 139.20 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 514.95 toks/s, output: 139.20 toks/s]
+Agent 2 response: To find the result of the given expression, we need to follow the order of operations (PEMDAS):
+
+1. ...
+
+--- Problem 20/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1151.02it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 263.83 toks/s, output: 140.90 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 263.83 toks/s, output: 140.90 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 263.83 toks/s, output: 140.90 toks/s]
+Agent 3 response: Considering the additional information from the other agents, it seems that both have followed the c...
+
+--- Problem 20/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 732.63it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 1168.22 toks/s, output: 135.78 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 1168.22 toks/s, output: 135.78 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 1168.22 toks/s, output: 135.78 toks/s]
+Agent 1 response: To solve the expression, we need to follow the order of operations (PEMDAS):
+
+1. Multiply 12 and 17:...
+
+--- Problem 20/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 740.26it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 948.24 toks/s, output: 135.87 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 948.24 toks/s, output: 135.87 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 948.24 toks/s, output: 135.87 toks/s]
+Agent 2 response: To find the result of the given expression, we need to follow the order of operations (PEMDAS):
+
+1. ...
+
+--- Problem 20/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: meta-llama/Llama-3.2-3B-Instruct
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 682.00it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 780.79 toks/s, output: 140.04 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 780.79 toks/s, output: 140.04 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 780.79 toks/s, output: 140.04 toks/s]
+100%|██████████| 20/20 [05:03<00:00, 13.56s/it]100%|██████████| 20/20 [05:03<00:00, 15.17s/it]
+[1;36m(Worker_TP0 pid=572851)[0;0m INFO 12-03 16:32:21 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(Worker_TP0 pid=572851)[0;0m INFO 12-03 16:32:21 [multiproc_executor.py:599] WorkerProc shutting down.
+[1;36m(Worker_TP1 pid=572852)[0;0m INFO 12-03 16:32:21 [multiproc_executor.py:558] Parent process exited, terminating worker
+Agent 3 response: Considering the additional information from the other agents, it seems that both have followed the c...
+performance: 0.6 0.10954451150103323
+============================================================
+Results saved to: /home/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/experiments/linux_single/results/math/math_Llama-3.2-3B_temp0.5+0.7+1.0_agents3_rounds3.p
+Final performance: 0.600 ± 0.110
+============================================================
+[ModelCache] Shut down vLLM model: vllm:meta-llama/Llama-3.2-3B-Instruct
+[ModelCache] All models shut down
