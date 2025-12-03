@@ -6,9 +6,9 @@
 # Runs all 4 tasks with minimal configuration (3 agents, 2 rounds, 2 problems)
 
 # Test configuration
-AGENTS=3
-ROUNDS=2
-NUM_PROBLEMS=2  # Small number for quick testing
+AGENTS=7
+ROUNDS=3
+NUM_PROBLEMS=1  # Small number for quick testing
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
