@@ -1781,3 +1781,293 @@ Agent 1 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\
 Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2070.24it/s]
 
 Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.66s/it, est. speed input: 5.83 toks/s, output: 225.81 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.66s/it, est. speed input: 5.83 toks/s, output: 225.81 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.66s/it, est. speed input: 5.83 toks/s, output: 225.81 toks/s]
+Agent 2 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\), we follow the order of operations (...
+
+--- Problem 18/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1915.21it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.05s/it, est. speed input: 9.65 toks/s, output: 226.67 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.05s/it, est. speed input: 9.65 toks/s, output: 226.67 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.05s/it, est. speed input: 9.65 toks/s, output: 226.67 toks/s]
+Agent 3 response: The expression to evaluate is \(3 + 13 \times 15 + 14 - 7 \times 13\). According to the order of ope...
+
+--- Problem 18/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 701.86it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.48s/it, est. speed input: 357.74 toks/s, output: 221.98 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.48s/it, est. speed input: 357.74 toks/s, output: 221.98 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.48s/it, est. speed input: 357.74 toks/s, output: 221.98 toks/s]
+Agent 1 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\), we follow the order of operations (...
+
+--- Problem 18/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 703.15it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.09s/it, est. speed input: 287.24 toks/s, output: 223.19 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.09s/it, est. speed input: 287.24 toks/s, output: 223.19 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.09s/it, est. speed input: 287.24 toks/s, output: 223.19 toks/s]
+Agent 2 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\), we follow the order of operations (...
+
+--- Problem 18/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 688.83it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.17s/it, est. speed input: 408.95 toks/s, output: 221.52 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.17s/it, est. speed input: 408.95 toks/s, output: 221.52 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.17s/it, est. speed input: 408.95 toks/s, output: 221.52 toks/s]
+Agent 3 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\), we follow the order of operations (...
+
+--- Problem 18/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 421.33it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.68s/it, est. speed input: 663.35 toks/s, output: 220.87 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.68s/it, est. speed input: 663.35 toks/s, output: 220.87 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.68s/it, est. speed input: 663.35 toks/s, output: 220.87 toks/s]
+Agent 1 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\), we follow the order of operations (...
+
+--- Problem 18/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 384.94it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.16s/it, est. speed input: 820.09 toks/s, output: 222.69 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.16s/it, est. speed input: 820.09 toks/s, output: 222.69 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.16s/it, est. speed input: 820.09 toks/s, output: 222.69 toks/s]
+Agent 2 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\), we follow the order of operations (...
+
+--- Problem 18/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 423.97it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.69s/it, est. speed input: 660.47 toks/s, output: 223.63 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.69s/it, est. speed input: 660.47 toks/s, output: 223.63 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.69s/it, est. speed input: 660.47 toks/s, output: 223.63 toks/s]
+ 90%|█████████ | 18/20 [12:45<01:18, 39.17s/it]Agent 3 response: To solve the expression \(3 + 13 \times 15 + 14 - 7 \times 13\), we follow the order of operations (...
+performance: 0.1111111111111111 0.07407407407407407
+
+--- Problem 19/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2148.72it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.03s/it, est. speed input: 2.22 toks/s, output: 226.03 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.03s/it, est. speed input: 2.22 toks/s, output: 226.03 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.03s/it, est. speed input: 2.22 toks/s, output: 226.03 toks/s]
+Agent 1 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+
+--- Problem 19/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1731.75it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.19s/it, est. speed input: 4.54 toks/s, output: 226.40 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.19s/it, est. speed input: 4.54 toks/s, output: 226.40 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.19s/it, est. speed input: 4.54 toks/s, output: 226.40 toks/s]
+Agent 2 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+
+--- Problem 19/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1896.16it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 8.23 toks/s, output: 226.52 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 8.23 toks/s, output: 226.52 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 8.23 toks/s, output: 226.52 toks/s]
+Agent 3 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+
+--- Problem 19/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 648.57it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 503.07 toks/s, output: 219.88 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 503.07 toks/s, output: 219.88 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 503.07 toks/s, output: 219.88 toks/s]
+Agent 1 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+
+--- Problem 19/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 623.87it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it, est. speed input: 514.77 toks/s, output: 222.10 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it, est. speed input: 514.77 toks/s, output: 222.10 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it, est. speed input: 514.77 toks/s, output: 222.10 toks/s]
+Agent 2 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+
+--- Problem 19/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 710.42it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it, est. speed input: 479.27 toks/s, output: 221.86 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it, est. speed input: 479.27 toks/s, output: 221.86 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it, est. speed input: 479.27 toks/s, output: 221.86 toks/s]
+Agent 3 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), follow the order of operations (PE...
+
+--- Problem 19/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 477.11it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 877.06 toks/s, output: 221.95 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 877.06 toks/s, output: 221.95 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 877.06 toks/s, output: 221.95 toks/s]
+Agent 1 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+
+--- Problem 19/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 443.79it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it, est. speed input: 700.15 toks/s, output: 223.61 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it, est. speed input: 700.15 toks/s, output: 223.61 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it, est. speed input: 700.15 toks/s, output: 223.61 toks/s]
+Agent 2 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+
+--- Problem 19/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 474.74it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.43s/it, est. speed input: 639.29 toks/s, output: 223.94 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.43s/it, est. speed input: 639.29 toks/s, output: 223.94 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.43s/it, est. speed input: 639.29 toks/s, output: 223.94 toks/s]
+ 95%|█████████▌| 19/20 [13:51<00:47, 47.35s/it]Agent 3 response: To solve the expression \(22 + 27 \times 24 + 29 - 7 \times 20\), we follow the order of operations ...
+performance: 0.10526315789473684 0.07040590042736196
+
+--- Problem 20/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2193.67it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.79s/it, est. speed input: 12.09 toks/s, output: 225.73 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.79s/it, est. speed input: 12.09 toks/s, output: 225.73 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.79s/it, est. speed input: 12.09 toks/s, output: 225.73 toks/s]
+Agent 1 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2078.45it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.39s/it, est. speed input: 6.73 toks/s, output: 227.05 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.39s/it, est. speed input: 6.73 toks/s, output: 227.05 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.39s/it, est. speed input: 6.73 toks/s, output: 227.05 toks/s]
+Agent 2 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2011.66it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.03s/it, est. speed input: 9.96 toks/s, output: 226.64 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.03s/it, est. speed input: 9.96 toks/s, output: 226.64 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.03s/it, est. speed input: 9.96 toks/s, output: 226.64 toks/s]
+Agent 3 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 564.74it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 433.81 toks/s, output: 220.82 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 433.81 toks/s, output: 220.82 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 433.81 toks/s, output: 220.82 toks/s]
+Agent 1 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 743.93it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.89s/it, est. speed input: 439.82 toks/s, output: 221.76 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.89s/it, est. speed input: 439.82 toks/s, output: 221.76 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.89s/it, est. speed input: 439.82 toks/s, output: 221.76 toks/s]
+Agent 2 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 750.59it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 449.08 toks/s, output: 221.56 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 449.08 toks/s, output: 221.56 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.85s/it, est. speed input: 449.08 toks/s, output: 221.56 toks/s]
+Agent 3 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 474.58it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it, est. speed input: 890.48 toks/s, output: 220.17 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it, est. speed input: 890.48 toks/s, output: 220.17 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it, est. speed input: 890.48 toks/s, output: 220.17 toks/s]
+Agent 1 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 414.70it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.90s/it, est. speed input: 814.67 toks/s, output: 220.37 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.90s/it, est. speed input: 814.67 toks/s, output: 220.37 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.90s/it, est. speed input: 814.67 toks/s, output: 220.37 toks/s]
+Agent 2 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+
+--- Problem 20/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: WeiboAI/VibeThinker-1.5B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 466.40it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 864.23 toks/s, output: 221.50 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 864.23 toks/s, output: 221.50 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 864.23 toks/s, output: 221.50 toks/s]
+100%|██████████| 20/20 [14:26<00:00, 43.44s/it]100%|██████████| 20/20 [14:26<00:00, 43.32s/it]
+[1;36m(Worker_TP0 pid=549907)[0;0m INFO 12-03 15:31:38 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(Worker_TP0 pid=549907)[0;0m INFO 12-03 15:31:38 [multiproc_executor.py:599] WorkerProc shutting down.
+[1;36m(Worker_TP1 pid=549908)[0;0m INFO 12-03 15:31:38 [multiproc_executor.py:558] Parent process exited, terminating worker
+!!!!!!! Segfault encountered !!!!!!!
+  File "./signal/../sysdeps/unix/sysv/linux/x86_64/libc_sigaction.c", line 0, in 0x000077a33c84f51f
+
+!!!!!!! Segfault encountered !!!!!!!
+  File "./signal/../sysdeps/unix/sysv/linux/x86_64/libc_sigaction.c", line 0, in 0x00007005a38db51f
+
+Agent 3 response: To solve the expression \(15 + 12 \times 17 + 14 - 20 \times 23\), we follow the order of operations...
+performance: 0.1 0.0670820393249937
+============================================================
+Results saved to: /home/leonardo/Dropbox/Harvard/Fellowship/Classes/TopicsAI/project/slm_multiagent_debate/experiments/linux_single/results/math/math_VibeThinker-1.5B_temp0.5+0.7+1.0_agents3_rounds3.p
+Final performance: 0.100 ± 0.067
+============================================================
+[ModelCache] Shut down vLLM model: vllm:production:WeiboAI/VibeThinker-1.5B
+[ModelCache] All models shut down

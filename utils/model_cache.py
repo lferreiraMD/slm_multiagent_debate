@@ -8,21 +8,6 @@ from typing import Tuple, Any, Optional, Dict
 import threading
 import os
 
-# Import GPU auto-configuration (only used for vLLM backend)
-try:
-    from .gpu_config import (
-        get_vllm_optimal_config,
-        detect_vllm_gpus,
-        get_gpu_info_string,
-        is_vllm_backend
-    )
-    GPU_CONFIG_AVAILABLE = True
-except ImportError:
-    GPU_CONFIG_AVAILABLE = False
-
-# Environment variable to disable auto-config
-VLLM_DISABLE_AUTO_CONFIG = os.environ.get('VLLM_DISABLE_AUTO_CONFIG', '').lower() in ('1', 'true', 'yes')
-
 
 class ModelCache:
     """
@@ -47,9 +32,7 @@ class ModelCache:
     def get_or_load(
         self,
         model_path: str,
-        backend: str = "mlx",
-        use_case: str = 'production',
-        override_params: Optional[Dict] = None
+        backend: str = "mlx"
     ) -> Tuple[Any, Any]:
         """
         Get model from cache or load it.
@@ -57,17 +40,11 @@ class ModelCache:
         Args:
             model_path: Path or name of model to load
             backend: Backend to use ('mlx', 'ollama', 'vllm')
-            use_case: vLLM use case ('production', 'debate', 'download')
-            override_params: Optional dict to override vLLM auto-config
 
         Returns:
             Tuple of (model, tokenizer) for MLX/vLLM, or model for Ollama
         """
-        # Include use_case in cache key for vLLM (different configs = different cache entries)
-        if backend == "vllm":
-            cache_key = f"{backend}:{use_case}:{model_path}"
-        else:
-            cache_key = f"{backend}:{model_path}"
+        cache_key = f"{backend}:{model_path}"
 
         # Check cache first
         with self._cache_lock:
@@ -104,51 +81,49 @@ class ModelCache:
         return model, tokenizer
 
     def _load_vllm(self, model_path: str) -> Tuple[Any, Any]:
-        """Load vLLM model and tokenizer with auto-optimized configuration."""
+        """Load vLLM model and tokenizer."""
         from vllm import LLM
         from transformers import AutoTokenizer
+        import torch
 
-        # Get context length from config.yaml model_metadata
+        # Get context length from config.yaml
         max_model_len = self._get_model_context_length(model_path)
-
         print(f"[ModelCache] Using max_model_len={max_model_len} for {model_path}")
 
-        # Auto-detect optimal vLLM configuration (unless disabled)
-        if GPU_CONFIG_AVAILABLE and not VLLM_DISABLE_AUTO_CONFIG:
-            # Get optimal config for production use case
-            gpu_info = detect_vllm_gpus()
-            vllm_config = get_vllm_optimal_config(
-                model_path,
-                use_case='production',
-                gpu_info=gpu_info
-            )
+        # Simple GPU detection and validation
+        if not torch.cuda.is_available():
+            raise RuntimeError("CUDA not available - vLLM requires GPU")
 
-            # Override max_model_len with config.yaml value
-            vllm_config['max_model_len'] = max_model_len
-
-            # Print configuration summary
-            if gpu_info:
-                gpu_count = gpu_info.get('count', 0)
-                tp_size = vllm_config.get('tensor_parallel_size', 1)
-                print(f"[ModelCache] Auto-config: {gpu_count} GPU(s) detected, tensor_parallel_size={tp_size}")
-
-            llm = LLM(model=model_path, **vllm_config)
-
-        else:
-            # Fallback to hardcoded configuration
-            print("[ModelCache] GPU auto-config disabled or unavailable, using default config")
-            llm = LLM(
-                model=model_path,
-                max_model_len=max_model_len,
-                gpu_memory_utilization=0.90,
-                disable_custom_all_reduce=False,
-                tensor_parallel_size=2,
-            )
-
-        # Load tokenizer separately for chat template support
-        tokenizer = AutoTokenizer.from_pretrained(
-            model_path,
+        gpu_count = torch.cuda.device_count()
+        total_vram_gb = sum(
+            torch.cuda.get_device_properties(i).total_memory / (1024**3)
+            for i in range(gpu_count)
         )
+
+        # Enforce minimum VRAM requirement
+        if total_vram_gb < 40:
+            raise RuntimeError(
+                f"Insufficient VRAM: {total_vram_gb:.1f}GB detected. "
+                f"Minimum 40GB required (across 1-2 GPUs)."
+            )
+
+        # Simple rule: 1 GPU → TP1, 2+ GPUs → TP2
+        tensor_parallel_size = 1 if gpu_count == 1 else 2
+
+        print(f"[ModelCache] Detected {gpu_count} GPU(s), {total_vram_gb:.1f}GB total VRAM")
+        print(f"[ModelCache] Using tensor_parallel_size={tensor_parallel_size}")
+
+        # Load model
+        llm = LLM(
+            model=model_path,
+            max_model_len=max_model_len,
+            gpu_memory_utilization=0.90,
+            tensor_parallel_size=tensor_parallel_size,
+            disable_custom_all_reduce=True,
+        )
+
+        # Load tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
 
         return llm, tokenizer
 
