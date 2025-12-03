@@ -38,7 +38,7 @@ export VLLM_WORKER_MULTIPROC_METHOD=spawn
 # Setup paths using SLURM_SUBMIT_DIR (directory where sbatch was called)
 SLURM_DIR="${SLURM_SUBMIT_DIR}"
 SCRIPT_DIR="$(cd "$SLURM_DIR/.." && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 RESULTS_DIR="$SCRIPT_DIR/results"
 LOG_DIR="$SLURM_DIR/logs"
 
