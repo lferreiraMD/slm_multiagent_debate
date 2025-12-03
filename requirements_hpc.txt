@@ -20,6 +20,9 @@ torch>=2.6.0
 torchaudio>=2.6.0
 torchvision>=0.21.0
 
+# HuggingFace library for login (controlled models)
+huggingface-hub<1.0,>=0.34.0
+
 # HuggingFace transformers for model loading
 transformers>=4.55.0
 

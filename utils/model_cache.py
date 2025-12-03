@@ -104,7 +104,7 @@ class ModelCache:
         return model, tokenizer
 
     def _load_vllm(self, model_path: str) -> Tuple[Any, Any]:
-        """Load vLLM model and tokenizer."""
+        """Load vLLM model and tokenizer with auto-optimized configuration."""
         from vllm import LLM
         from transformers import AutoTokenizer
 
@@ -113,14 +113,37 @@ class ModelCache:
 
         print(f"[ModelCache] Using max_model_len={max_model_len} for {model_path}")
 
-        llm = LLM(
-            model=model_path,
-            max_model_len=max_model_len,
-            gpu_memory_utilization=0.90,
-            disable_custom_all_reduce=False,
-            tensor_parallel_size=2,     # Adjust for multi-GPU
-        #    cpu_offload_gb=24           # CPU offload in GB (for 14B model)
-        )
+        # Auto-detect optimal vLLM configuration (unless disabled)
+        if GPU_CONFIG_AVAILABLE and not VLLM_DISABLE_AUTO_CONFIG:
+            # Get optimal config for production use case
+            gpu_info = detect_vllm_gpus()
+            vllm_config = get_vllm_optimal_config(
+                model_path,
+                use_case='production',
+                gpu_info=gpu_info
+            )
+
+            # Override max_model_len with config.yaml value
+            vllm_config['max_model_len'] = max_model_len
+
+            # Print configuration summary
+            if gpu_info:
+                gpu_count = gpu_info.get('count', 0)
+                tp_size = vllm_config.get('tensor_parallel_size', 1)
+                print(f"[ModelCache] Auto-config: {gpu_count} GPU(s) detected, tensor_parallel_size={tp_size}")
+
+            llm = LLM(model=model_path, **vllm_config)
+
+        else:
+            # Fallback to hardcoded configuration
+            print("[ModelCache] GPU auto-config disabled or unavailable, using default config")
+            llm = LLM(
+                model=model_path,
+                max_model_len=max_model_len,
+                gpu_memory_utilization=0.90,
+                disable_custom_all_reduce=False,
+                tensor_parallel_size=2,
+            )
 
         # Load tokenizer separately for chat template support
         tokenizer = AutoTokenizer.from_pretrained(

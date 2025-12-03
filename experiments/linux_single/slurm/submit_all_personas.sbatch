@@ -37,10 +37,12 @@ mkdir -p "$LOG_DIR"/{math,gsm,biography,mmlu}
 mkdir -p "$RESULTS_DIR"/{math,gsm,biography,mmlu}
 
 # Activate pyenv environment
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-pyenv shell slm
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# Activate conda environment
+conda activate slm
 
 echo "============================================================"
 echo "SLURM Array Task: $TASK_ID"
