@@ -35,11 +35,12 @@ TASK_ID=$SLURM_ARRAY_TASK_ID
 # vLLM flag
 export VLLM_WORKER_MULTIPROC_METHOD=spawn
 
-# Setup paths
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+# Setup paths using SLURM_SUBMIT_DIR (directory where sbatch was called)
+SLURM_DIR="${SLURM_SUBMIT_DIR}"
+SCRIPT_DIR="$(cd "$SLURM_DIR/.." && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 RESULTS_DIR="$SCRIPT_DIR/results"
-LOG_DIR="$SCRIPT_DIR/slurm/logs"
+LOG_DIR="$SLURM_DIR/logs"
 
 # Create log directories
 mkdir -p "$LOG_DIR"/{math,gsm,biography,mmlu}
