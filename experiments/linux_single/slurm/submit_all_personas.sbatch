@@ -43,7 +43,7 @@ RESULTS_DIR="$SCRIPT_DIR/results"
 LOG_DIR="$SLURM_DIR/logs"
 
 # Create log and results directories
-mkdir -p "$LOG_DIR"
+mkdir -p "$LOG_DIR"/{math,gsm,biography,mmlu}
 mkdir -p "$RESULTS_DIR"/{math,gsm,biography,mmlu}
 
 # Activate pyenv environment
