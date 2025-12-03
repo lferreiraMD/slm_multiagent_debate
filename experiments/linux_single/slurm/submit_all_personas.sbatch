@@ -23,6 +23,10 @@
 
 set -e
 
+# Random fixes
+export VLLM_WORKER_MULTIPROC_METHOD=spawn
+export HF_HOME=/temp_work/ch269957
+
 # Get array task ID (1-60)
 TASK_ID=$SLURM_ARRAY_TASK_ID
 
@@ -55,7 +59,7 @@ case $TASK_ID in
         echo "[Task 1] MATH - job 1: vllm-qwen3-0.6b, 3 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-qwen3-0.6b \
                 --agents 3 \
                 --rounds 3 \
@@ -73,7 +77,7 @@ case $TASK_ID in
         echo "[Task 2] MATH - job 2: vllm-qwen3-0.6b, 5 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-qwen3-0.6b \
                 --agents 5 \
                 --rounds 3 \
@@ -93,7 +97,7 @@ case $TASK_ID in
         echo "[Task 3] MATH - job 3: vllm-qwen3-0.6b, 7 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-qwen3-0.6b \
                 --agents 7 \
                 --rounds 3 \
@@ -115,7 +119,7 @@ case $TASK_ID in
         echo "[Task 4] MATH - job 4: vllm-vibethinker, 3 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-vibethinker \
                 --agents 3 \
                 --rounds 3 \
@@ -133,7 +137,7 @@ case $TASK_ID in
         echo "[Task 5] MATH - job 5: vllm-vibethinker, 5 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-vibethinker \
                 --agents 5 \
                 --rounds 3 \
@@ -153,7 +157,7 @@ case $TASK_ID in
         echo "[Task 6] MATH - job 6: vllm-vibethinker, 7 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-vibethinker \
                 --agents 7 \
                 --rounds 3 \
@@ -175,7 +179,7 @@ case $TASK_ID in
         echo "[Task 7] MATH - job 7: vllm-llama32-3b, 3 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-llama32-3b \
                 --agents 3 \
                 --rounds 3 \
@@ -193,7 +197,7 @@ case $TASK_ID in
         echo "[Task 8] MATH - job 8: vllm-llama32-3b, 5 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-llama32-3b \
                 --agents 5 \
                 --rounds 3 \
@@ -213,7 +217,7 @@ case $TASK_ID in
         echo "[Task 9] MATH - job 9: vllm-llama32-3b, 7 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-llama32-3b \
                 --agents 7 \
                 --rounds 3 \
@@ -235,7 +239,7 @@ case $TASK_ID in
         echo "[Task 10] MATH - job 10: vllm-mistral-7b, 3 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-mistral-7b \
                 --agents 3 \
                 --rounds 3 \
@@ -253,7 +257,7 @@ case $TASK_ID in
         echo "[Task 11] MATH - job 11: vllm-mistral-7b, 5 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-mistral-7b \
                 --agents 5 \
                 --rounds 3 \
@@ -273,7 +277,7 @@ case $TASK_ID in
         echo "[Task 12] MATH - job 12: vllm-mistral-7b, 7 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-mistral-7b \
                 --agents 7 \
                 --rounds 3 \
@@ -295,7 +299,7 @@ case $TASK_ID in
         echo "[Task 13] MATH - job 13: vllm-qwen3-14b, 3 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-qwen3-14b \
                 --agents 3 \
                 --rounds 3 \
@@ -313,7 +317,7 @@ case $TASK_ID in
         echo "[Task 14] MATH - job 14: vllm-qwen3-14b, 5 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-qwen3-14b \
                 --agents 5 \
                 --rounds 3 \
@@ -333,7 +337,7 @@ case $TASK_ID in
         echo "[Task 15] MATH - job 15: vllm-qwen3-14b, 7 agents"
         cd "$PROJECT_ROOT/tasks/math"
         srun -p bch-gpu-pe -c 1 --mem 16G --gpus 1 \
-            python3 gen_math.py \
+            python3 gen_math_clean.py \
                 --model vllm-qwen3-14b \
                 --agents 7 \
                 --rounds 3 \
