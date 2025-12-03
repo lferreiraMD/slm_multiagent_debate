@@ -3016,3 +3016,1381 @@ Agent 2 receiving other agents' responses...
 Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1076.57it/s]
 
 Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it, est. speed input: 195.85 toks/s, output: 311.14 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it, est. speed input: 195.85 toks/s, output: 311.14 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it, est. speed input: 195.85 toks/s, output: 311.14 toks/s]
+Agent 2 response: The result is 358.  
+Answer: 358...
+
+--- Problem 13/20, Round 2, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1338.75it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 104.52 toks/s, output: 312.39 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 104.52 toks/s, output: 312.39 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 104.52 toks/s, output: 312.39 toks/s]
+Agent 3 response: The result of the expression is 358.  
+
+The result of the expression is 358....
+
+--- Problem 13/20, Round 2, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1152.28it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 207.47 toks/s, output: 315.51 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 207.47 toks/s, output: 315.51 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 207.47 toks/s, output: 315.51 toks/s]
+Agent 4 response: The result of the expression is 358....
+
+--- Problem 13/20, Round 2, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1375.63it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.69it/s, est. speed input: 713.25 toks/s, output: 309.51 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.69it/s, est. speed input: 713.25 toks/s, output: 309.51 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.69it/s, est. speed input: 713.25 toks/s, output: 309.51 toks/s]
+Agent 5 response: The result of the expression is 358....
+
+--- Problem 13/20, Round 2, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1089.71it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 210.21 toks/s, output: 314.12 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 210.21 toks/s, output: 314.12 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 210.21 toks/s, output: 314.12 toks/s]
+Agent 6 response: The result of the expression is 358. Therefore, the final answer is 358....
+
+--- Problem 13/20, Round 2, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1136.36it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 234.20 toks/s, output: 313.74 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 234.20 toks/s, output: 313.74 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 234.20 toks/s, output: 313.74 toks/s]
+Agent 7 response: The result is 358. The updated answer is 358....
+
+--- Problem 13/20, Round 3, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1054.11it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 380.46 toks/s, output: 310.62 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 380.46 toks/s, output: 310.62 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 380.46 toks/s, output: 310.62 toks/s]
+Agent 1 response: The result of the expression is 358.  
+
+Answer: 358...
+
+--- Problem 13/20, Round 3, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 907.66it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 409.98 toks/s, output: 313.10 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 409.98 toks/s, output: 313.10 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 409.98 toks/s, output: 313.10 toks/s]
+Agent 2 response: The result is 358.  
+Answer: 358...
+
+--- Problem 13/20, Round 3, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 838.36it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s, est. speed input: 819.38 toks/s, output: 309.42 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s, est. speed input: 819.38 toks/s, output: 309.42 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s, est. speed input: 819.38 toks/s, output: 309.42 toks/s]
+Agent 3 response: The result of the expression is 358.  
+
+Answer: 358...
+
+--- Problem 13/20, Round 3, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 817.92it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 397.50 toks/s, output: 311.12 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 397.50 toks/s, output: 311.12 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 397.50 toks/s, output: 311.12 toks/s]
+Agent 4 response: The result of the expression is 358....
+
+--- Problem 13/20, Round 3, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 823.38it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 549.42 toks/s, output: 310.64 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 549.42 toks/s, output: 310.64 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 549.42 toks/s, output: 310.64 toks/s]
+Agent 5 response: The result of the expression is 358....
+
+--- Problem 13/20, Round 3, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 830.56it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.67it/s, est. speed input: 790.98 toks/s, output: 312.04 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.67it/s, est. speed input: 790.98 toks/s, output: 312.04 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.67it/s, est. speed input: 790.98 toks/s, output: 312.04 toks/s]
+Agent 6 response: The result of the expression is 358. Therefore, the final answer is 358....
+
+--- Problem 13/20, Round 3, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 843.92it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 362.20 toks/s, output: 313.29 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 362.20 toks/s, output: 313.29 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 362.20 toks/s, output: 313.29 toks/s]
+ 65%|██████▌   | 13/20 [08:37<04:21, 37.34s/it]Agent 7 response: The result is 358....
+performance: 0.9230769230769231 0.07390530175619407
+
+--- Problem 14/20, Round 1, Agent 1/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2003.97it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.59s/it, est. speed input: 30.12 toks/s, output: 313.09 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.59s/it, est. speed input: 30.12 toks/s, output: 313.09 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.59s/it, est. speed input: 30.12 toks/s, output: 313.09 toks/s]
+Agent 1 response: -80
+
+The result of the expression is -80....
+
+--- Problem 14/20, Round 1, Agent 2/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1874.97it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 22.77 toks/s, output: 313.08 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 22.77 toks/s, output: 313.08 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 22.77 toks/s, output: 313.08 toks/s]
+Agent 2 response: -80...
+
+--- Problem 14/20, Round 1, Agent 3/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2006.84it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 27.48 toks/s, output: 314.86 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 27.48 toks/s, output: 314.86 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 27.48 toks/s, output: 314.86 toks/s]
+Agent 3 response: The result of 28+7*14+2-13*16 is -80....
+
+--- Problem 14/20, Round 1, Agent 4/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1921.35it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it, est. speed input: 17.95 toks/s, output: 313.75 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it, est. speed input: 17.95 toks/s, output: 313.75 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it, est. speed input: 17.95 toks/s, output: 313.75 toks/s]
+Agent 4 response: -80...
+
+--- Problem 14/20, Round 1, Agent 5/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2355.03it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.90s/it, est. speed input: 25.28 toks/s, output: 312.87 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.90s/it, est. speed input: 25.28 toks/s, output: 312.87 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.90s/it, est. speed input: 25.28 toks/s, output: 312.87 toks/s]
+Agent 5 response: -80...
+
+--- Problem 14/20, Round 1, Agent 6/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2314.74it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.53s/it, est. speed input: 18.94 toks/s, output: 312.83 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.53s/it, est. speed input: 18.94 toks/s, output: 312.83 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 18.94 toks/s, output: 312.83 toks/s]
+Agent 6 response: -80...
+
+--- Problem 14/20, Round 1, Agent 7/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2357.68it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.10s/it, est. speed input: 22.91 toks/s, output: 314.03 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.10s/it, est. speed input: 22.91 toks/s, output: 314.03 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.10s/it, est. speed input: 22.91 toks/s, output: 314.03 toks/s]
+Agent 7 response: The result of the expression is -80....
+
+--- Problem 14/20, Round 2, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1526.31it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 233.65 toks/s, output: 309.58 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 233.65 toks/s, output: 309.58 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s, est. speed input: 233.65 toks/s, output: 309.58 toks/s]
+Agent 1 response: The result of the expression is -80....
+
+--- Problem 14/20, Round 2, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1584.55it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 204.55 toks/s, output: 311.93 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 204.55 toks/s, output: 311.93 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 204.55 toks/s, output: 311.93 toks/s]
+Agent 2 response: -80...
+
+--- Problem 14/20, Round 2, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1496.36it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s, est. speed input: 209.53 toks/s, output: 312.19 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s, est. speed input: 209.53 toks/s, output: 312.19 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s, est. speed input: 209.53 toks/s, output: 312.19 toks/s]
+Agent 3 response: The result of the expression is -80....
+
+--- Problem 14/20, Round 2, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1589.35it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it, est. speed input: 136.53 toks/s, output: 311.28 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it, est. speed input: 136.53 toks/s, output: 311.28 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 136.53 toks/s, output: 311.28 toks/s]
+Agent 4 response: The result of the expression is -80.  
+
+Answer: -80...
+
+--- Problem 14/20, Round 2, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1530.21it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 200.14 toks/s, output: 311.22 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 200.14 toks/s, output: 311.22 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 200.14 toks/s, output: 311.22 toks/s]
+Agent 5 response: -80...
+
+--- Problem 14/20, Round 2, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1565.62it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 177.12 toks/s, output: 311.73 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 177.12 toks/s, output: 311.73 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it, est. speed input: 177.12 toks/s, output: 311.73 toks/s]
+Agent 6 response: -80...
+
+--- Problem 14/20, Round 2, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1562.12it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 206.26 toks/s, output: 310.42 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 206.26 toks/s, output: 310.42 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 206.26 toks/s, output: 310.42 toks/s]
+Agent 7 response: The result of the expression is -80....
+
+--- Problem 14/20, Round 3, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1106.97it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s, est. speed input: 362.77 toks/s, output: 305.27 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s, est. speed input: 362.77 toks/s, output: 305.27 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s, est. speed input: 362.77 toks/s, output: 305.27 toks/s]
+Agent 1 response: The result of the expression is -80....
+
+--- Problem 14/20, Round 3, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1233.98it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 299.09 toks/s, output: 308.57 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 299.09 toks/s, output: 308.57 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 299.09 toks/s, output: 308.57 toks/s]
+Agent 2 response: -80...
+
+--- Problem 14/20, Round 3, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1188.19it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 337.39 toks/s, output: 310.16 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 337.39 toks/s, output: 310.16 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 337.39 toks/s, output: 310.16 toks/s]
+Agent 3 response: The result of the expression is -80....
+
+--- Problem 14/20, Round 3, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1133.60it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 291.29 toks/s, output: 312.27 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 291.29 toks/s, output: 312.27 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it, est. speed input: 291.29 toks/s, output: 312.27 toks/s]
+Agent 4 response: The result of the expression is -80.  
+
+Answer: -80...
+
+--- Problem 14/20, Round 3, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1128.11it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.38s/it, est. speed input: 251.51 toks/s, output: 312.39 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.38s/it, est. speed input: 251.51 toks/s, output: 312.39 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.38s/it, est. speed input: 251.51 toks/s, output: 312.39 toks/s]
+Agent 5 response: -80...
+
+--- Problem 14/20, Round 3, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1239.09it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.18it/s, est. speed input: 409.09 toks/s, output: 312.41 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.18it/s, est. speed input: 409.09 toks/s, output: 312.41 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.18it/s, est. speed input: 409.09 toks/s, output: 312.41 toks/s]
+Agent 6 response: -80...
+
+--- Problem 14/20, Round 3, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1146.92it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 370.86 toks/s, output: 309.94 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 370.86 toks/s, output: 309.94 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 370.86 toks/s, output: 309.94 toks/s]
+ 70%|███████   | 14/20 [09:06<03:29, 34.98s/it]Agent 7 response: The result of the expression is -80....
+performance: 0.9285714285714286 0.0688302936899594
+
+--- Problem 15/20, Round 1, Agent 1/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2316.02it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.51s/it, est. speed input: 30.50 toks/s, output: 310.27 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.51s/it, est. speed input: 30.50 toks/s, output: 310.27 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.51s/it, est. speed input: 30.50 toks/s, output: 310.27 toks/s]
+Agent 1 response: 96...
+
+--- Problem 15/20, Round 1, Agent 2/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2537.39it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.33s/it, est. speed input: 34.54 toks/s, output: 312.40 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.33s/it, est. speed input: 34.54 toks/s, output: 312.40 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.33s/it, est. speed input: 34.54 toks/s, output: 312.40 toks/s]
+Agent 2 response: 96...
+
+--- Problem 15/20, Round 1, Agent 3/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2514.57it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 33.86 toks/s, output: 313.56 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 33.86 toks/s, output: 313.56 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 33.86 toks/s, output: 313.56 toks/s]
+Agent 3 response: 96...
+
+--- Problem 15/20, Round 1, Agent 4/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2470.14it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 31.73 toks/s, output: 313.18 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 31.73 toks/s, output: 313.18 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 31.73 toks/s, output: 313.18 toks/s]
+Agent 4 response: 96...
+
+--- Problem 15/20, Round 1, Agent 5/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2362.99it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 26.00 toks/s, output: 313.15 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 26.00 toks/s, output: 313.15 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it, est. speed input: 26.00 toks/s, output: 313.15 toks/s]
+Agent 5 response: 96...
+
+--- Problem 15/20, Round 1, Agent 6/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2343.19it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 32.56 toks/s, output: 310.04 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 32.56 toks/s, output: 310.04 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 32.56 toks/s, output: 310.04 toks/s]
+Agent 6 response: 96
+
+The result of the expression 3 + 17*7 + 3 - 1*29 is 96....
+
+--- Problem 15/20, Round 1, Agent 7/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1971.93it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.34s/it, est. speed input: 19.62 toks/s, output: 311.43 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.34s/it, est. speed input: 19.62 toks/s, output: 311.43 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.34s/it, est. speed input: 19.62 toks/s, output: 311.43 toks/s]
+Agent 7 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 2, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1509.83it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 195.90 toks/s, output: 310.17 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 195.90 toks/s, output: 310.17 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 195.90 toks/s, output: 310.17 toks/s]
+Agent 1 response: The result of the expression 3 + 17*7 + 3 - 1*29 is 96.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 2, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1334.92it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 232.11 toks/s, output: 311.62 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 232.11 toks/s, output: 311.62 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 232.11 toks/s, output: 311.62 toks/s]
+Agent 2 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 2, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1369.79it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 297.69 toks/s, output: 311.47 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 297.69 toks/s, output: 311.47 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 297.69 toks/s, output: 311.47 toks/s]
+Agent 3 response: The result of the expression is 96.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 2, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1516.38it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it, est. speed input: 211.11 toks/s, output: 310.79 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it, est. speed input: 211.11 toks/s, output: 310.79 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it, est. speed input: 211.11 toks/s, output: 310.79 toks/s]
+Agent 4 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 2, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1491.57it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it, est. speed input: 207.31 toks/s, output: 314.80 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it, est. speed input: 207.31 toks/s, output: 314.80 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it, est. speed input: 207.31 toks/s, output: 314.80 toks/s]
+Agent 5 response: Answer: 96...
+
+--- Problem 15/20, Round 2, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1496.90it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 230.91 toks/s, output: 313.22 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 230.91 toks/s, output: 313.22 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s, est. speed input: 230.91 toks/s, output: 313.22 toks/s]
+Agent 6 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 2, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1530.77it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 202.83 toks/s, output: 312.69 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 202.83 toks/s, output: 312.69 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.07s/it, est. speed input: 202.83 toks/s, output: 312.69 toks/s]
+Agent 7 response: The result of the expression 3 + 17*7 + 3 - 1*29 is 96.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 3, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 907.07it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 486.66 toks/s, output: 305.95 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 486.66 toks/s, output: 305.95 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 486.66 toks/s, output: 305.95 toks/s]
+Agent 1 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 3, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 728.68it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 422.38 toks/s, output: 309.52 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 422.38 toks/s, output: 309.52 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 422.38 toks/s, output: 309.52 toks/s]
+Agent 2 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 3, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 786.33it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 589.14 toks/s, output: 309.03 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 589.14 toks/s, output: 309.03 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 589.14 toks/s, output: 309.03 toks/s]
+Agent 3 response: The result of the expression is 96.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 3, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 804.43it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.14it/s, est. speed input: 580.90 toks/s, output: 310.42 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.14it/s, est. speed input: 580.90 toks/s, output: 310.42 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.14it/s, est. speed input: 580.90 toks/s, output: 310.42 toks/s]
+Agent 4 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 3, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 799.68it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 565.16 toks/s, output: 310.89 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 565.16 toks/s, output: 310.89 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 565.16 toks/s, output: 310.89 toks/s]
+Agent 5 response: Answer: 96...
+
+--- Problem 15/20, Round 3, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 983.19it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 478.87 toks/s, output: 312.35 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 478.87 toks/s, output: 312.35 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it, est. speed input: 478.87 toks/s, output: 312.35 toks/s]
+Agent 6 response: The result of the expression $3 + 17 \times 7 + 3 - 1 \times 29$ is $96$.  
+
+Answer: 96...
+
+--- Problem 15/20, Round 3, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 979.52it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.52s/it, est. speed input: 334.26 toks/s, output: 311.93 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.52s/it, est. speed input: 334.26 toks/s, output: 311.93 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.52s/it, est. speed input: 334.26 toks/s, output: 311.93 toks/s]
+ 75%|███████▌  | 15/20 [09:32<02:40, 32.13s/it]Agent 7 response: The result of the expression 3 + 17*7 + 3 - 1*29 is 96.  
+
+Answer: 96...
+performance: 0.9333333333333333 0.06440611887195306
+
+--- Problem 16/20, Round 1, Agent 1/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2036.07it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.91s/it, est. speed input: 16.17 toks/s, output: 310.32 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.91s/it, est. speed input: 16.17 toks/s, output: 310.32 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.91s/it, est. speed input: 16.17 toks/s, output: 310.32 toks/s]
+Agent 1 response: -391...
+
+--- Problem 16/20, Round 1, Agent 2/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1971.93it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.33s/it, est. speed input: 20.19 toks/s, output: 311.82 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.33s/it, est. speed input: 20.19 toks/s, output: 311.82 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.33s/it, est. speed input: 20.19 toks/s, output: 311.82 toks/s]
+Agent 2 response: -391
+
+The result of the expression is -391....
+
+--- Problem 16/20, Round 1, Agent 3/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2480.37it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.07s/it, est. speed input: 22.75 toks/s, output: 315.09 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.07s/it, est. speed input: 22.75 toks/s, output: 315.09 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.07s/it, est. speed input: 22.75 toks/s, output: 315.09 toks/s]
+Agent 3 response: -391...
+
+--- Problem 16/20, Round 1, Agent 4/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1985.00it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.08s/it, est. speed input: 22.60 toks/s, output: 314.42 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.08s/it, est. speed input: 22.60 toks/s, output: 314.42 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.08s/it, est. speed input: 22.60 toks/s, output: 314.42 toks/s]
+Agent 4 response: -391...
+
+--- Problem 16/20, Round 1, Agent 5/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2505.56it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.33s/it, est. speed input: 14.12 toks/s, output: 312.77 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.33s/it, est. speed input: 14.12 toks/s, output: 312.77 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.33s/it, est. speed input: 14.12 toks/s, output: 312.77 toks/s]
+Agent 5 response: -391
+
+The result of the expression is -391....
+
+--- Problem 16/20, Round 1, Agent 6/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2570.04it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 22.30 toks/s, output: 314.07 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 22.30 toks/s, output: 314.07 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 22.30 toks/s, output: 314.07 toks/s]
+Agent 6 response: -391
+
+Statement: The result of the expression is -391....
+
+--- Problem 16/20, Round 1, Agent 7/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2462.89it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.27s/it, est. speed input: 20.72 toks/s, output: 314.27 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.27s/it, est. speed input: 20.72 toks/s, output: 314.27 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.27s/it, est. speed input: 20.72 toks/s, output: 314.27 toks/s]
+Agent 7 response: -391
+
+The result of the expression is -391....
+
+--- Problem 16/20, Round 2, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1426.15it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 211.09 toks/s, output: 309.33 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 211.09 toks/s, output: 309.33 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 211.09 toks/s, output: 309.33 toks/s]
+Agent 1 response: -391...
+
+--- Problem 16/20, Round 2, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1563.29it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.58s/it, est. speed input: 137.27 toks/s, output: 311.23 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.58s/it, est. speed input: 137.27 toks/s, output: 311.23 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.58s/it, est. speed input: 137.27 toks/s, output: 311.23 toks/s]
+Agent 2 response: The result of the expression is -391....
+
+--- Problem 16/20, Round 2, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1478.43it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 206.22 toks/s, output: 311.69 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 206.22 toks/s, output: 311.69 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 206.22 toks/s, output: 311.69 toks/s]
+Agent 3 response: -391...
+
+--- Problem 16/20, Round 2, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1411.75it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 240.43 toks/s, output: 313.55 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 240.43 toks/s, output: 313.55 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 240.43 toks/s, output: 313.55 toks/s]
+Agent 4 response: The result of the expression is -391....
+
+--- Problem 16/20, Round 2, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1429.55it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.74it/s, est. speed input: 378.11 toks/s, output: 311.89 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.74it/s, est. speed input: 378.11 toks/s, output: 311.89 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.74it/s, est. speed input: 378.11 toks/s, output: 311.89 toks/s]
+Agent 5 response: The result of the expression is -391....
+
+--- Problem 16/20, Round 2, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1494.76it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it, est. speed input: 116.71 toks/s, output: 312.48 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it, est. speed input: 116.71 toks/s, output: 312.48 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it, est. speed input: 116.71 toks/s, output: 312.48 toks/s]
+Agent 6 response: The result of the expression is -391. 
+
+Answer: -391...
+
+--- Problem 16/20, Round 2, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1515.83it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 201.25 toks/s, output: 312.54 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 201.25 toks/s, output: 312.54 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 201.25 toks/s, output: 312.54 toks/s]
+Agent 7 response: The result of the expression is -391....
+
+--- Problem 16/20, Round 3, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1139.14it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 424.14 toks/s, output: 307.75 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 424.14 toks/s, output: 307.75 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 424.14 toks/s, output: 307.75 toks/s]
+Agent 1 response: -391...
+
+--- Problem 16/20, Round 3, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1170.94it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 312.62 toks/s, output: 310.14 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 312.62 toks/s, output: 310.14 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it, est. speed input: 312.62 toks/s, output: 310.14 toks/s]
+Agent 2 response: The result of the expression is -391....
+
+--- Problem 16/20, Round 3, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1161.54it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 344.78 toks/s, output: 312.02 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 344.78 toks/s, output: 312.02 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 344.78 toks/s, output: 312.02 toks/s]
+Agent 3 response: -391...
+
+--- Problem 16/20, Round 3, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1203.53it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 296.04 toks/s, output: 315.56 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 296.04 toks/s, output: 315.56 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 296.04 toks/s, output: 315.56 toks/s]
+Agent 4 response: The result of the expression is -391....
+
+--- Problem 16/20, Round 3, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1185.17it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 300.89 toks/s, output: 314.38 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 300.89 toks/s, output: 314.38 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.26s/it, est. speed input: 300.89 toks/s, output: 314.38 toks/s]
+Agent 5 response: The result of the expression is -391....
+
+--- Problem 16/20, Round 3, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1204.57it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 474.22 toks/s, output: 312.81 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 474.22 toks/s, output: 312.81 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 474.22 toks/s, output: 312.81 toks/s]
+Agent 6 response: The result of the expression is -391. 
+
+Answer: -391...
+
+--- Problem 16/20, Round 3, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1188.86it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s, est. speed input: 570.00 toks/s, output: 312.82 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s, est. speed input: 570.00 toks/s, output: 312.82 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s, est. speed input: 570.00 toks/s, output: 312.82 toks/s]
+ 80%|████████  | 16/20 [10:04<02:08, 32.21s/it]Agent 7 response: The result of the expression is -391....
+performance: 0.9375 0.06051536478449089
+
+--- Problem 17/20, Round 1, Agent 1/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2435.72it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.81s/it, est. speed input: 26.54 toks/s, output: 313.48 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.81s/it, est. speed input: 26.54 toks/s, output: 313.48 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.81s/it, est. speed input: 26.54 toks/s, output: 313.48 toks/s]
+Agent 1 response: 32
+
+The result of the expression $17 + 25 \times 11 + 1 - 9 \times 29$ is 32....
+
+--- Problem 17/20, Round 1, Agent 2/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2274.57it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 25.04 toks/s, output: 317.15 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 25.04 toks/s, output: 317.15 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 25.04 toks/s, output: 317.15 toks/s]
+Agent 2 response: 32...
+
+--- Problem 17/20, Round 1, Agent 3/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2268.42it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 27.42 toks/s, output: 314.14 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 27.42 toks/s, output: 314.14 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 27.42 toks/s, output: 314.14 toks/s]
+Agent 3 response: The result of the expression 17 + 25*11 + 1 - 9*29 is 32. 
+
+Answer: 32...
+
+--- Problem 17/20, Round 1, Agent 4/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2406.37it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.12s/it, est. speed input: 9.37 toks/s, output: 312.74 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.12s/it, est. speed input: 9.37 toks/s, output: 312.74 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.12s/it, est. speed input: 9.37 toks/s, output: 312.74 toks/s]
+Agent 4 response: The result of the expression is 32....
+
+--- Problem 17/20, Round 1, Agent 5/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2399.49it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.14s/it, est. speed input: 22.40 toks/s, output: 315.93 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.14s/it, est. speed input: 22.40 toks/s, output: 315.93 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.14s/it, est. speed input: 22.40 toks/s, output: 315.93 toks/s]
+Agent 5 response: 122...
+
+--- Problem 17/20, Round 1, Agent 6/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2517.59it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.98s/it, est. speed input: 24.30 toks/s, output: 316.44 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.98s/it, est. speed input: 24.30 toks/s, output: 316.44 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.98s/it, est. speed input: 24.30 toks/s, output: 316.44 toks/s]
+Agent 6 response: 32...
+
+--- Problem 17/20, Round 1, Agent 7/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2376.38it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.34s/it, est. speed input: 20.52 toks/s, output: 314.59 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.34s/it, est. speed input: 20.52 toks/s, output: 314.59 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.34s/it, est. speed input: 20.52 toks/s, output: 314.59 toks/s]
+Agent 7 response: 32
+
+The result of the expression is 32....
+
+--- Problem 17/20, Round 2, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1432.97it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 213.02 toks/s, output: 309.84 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 213.02 toks/s, output: 309.84 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 213.02 toks/s, output: 309.84 toks/s]
+Agent 1 response: The result of the expression is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 2, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1207.69it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 171.03 toks/s, output: 313.08 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 171.03 toks/s, output: 313.08 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.42s/it, est. speed input: 171.03 toks/s, output: 313.08 toks/s]
+Agent 2 response: The result of the expression $17 + 25 \times 11 + 1 - 9 \times 29$ is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 2, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1482.09it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 209.44 toks/s, output: 314.16 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 209.44 toks/s, output: 314.16 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 209.44 toks/s, output: 314.16 toks/s]
+Agent 3 response: The result of the expression is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 2, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1492.10it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.75s/it, est. speed input: 88.07 toks/s, output: 313.71 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.75s/it, est. speed input: 88.07 toks/s, output: 313.71 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.75s/it, est. speed input: 88.07 toks/s, output: 313.71 toks/s]
+Agent 4 response: The result of the expression is 32....
+
+--- Problem 17/20, Round 2, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1489.45it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it, est. speed input: 109.11 toks/s, output: 314.25 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it, est. speed input: 109.11 toks/s, output: 314.25 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it, est. speed input: 109.11 toks/s, output: 314.25 toks/s]
+Agent 5 response: The result of the expression $17 + 25 \times 11 + 1 - 9 \times 29$ is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 2, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1469.62it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 177.26 toks/s, output: 314.23 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 177.26 toks/s, output: 314.23 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 177.26 toks/s, output: 314.23 toks/s]
+Agent 6 response: The result of the expression $17 + 25 \times 11 + 1 - 9 \times 29$ is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 2, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1505.49it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 205.73 toks/s, output: 311.15 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 205.73 toks/s, output: 311.15 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 205.73 toks/s, output: 311.15 toks/s]
+Agent 7 response: The result of the expression is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 3, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1101.73it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 572.77 toks/s, output: 305.40 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 572.77 toks/s, output: 305.40 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 572.77 toks/s, output: 305.40 toks/s]
+Agent 1 response: The result of the expression is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 3, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1174.88it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 475.01 toks/s, output: 307.08 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 475.01 toks/s, output: 307.08 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.08s/it, est. speed input: 475.01 toks/s, output: 307.08 toks/s]
+Agent 2 response: The result of the expression $17 + 25 \times 11 + 1 - 9 \times 29$ is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 3, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1025.25it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  2.00s/it, est. speed input: 256.21 toks/s, output: 308.75 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  2.00s/it, est. speed input: 256.21 toks/s, output: 308.75 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  2.00s/it, est. speed input: 256.21 toks/s, output: 308.75 toks/s]
+Agent 3 response: The result of the expression is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 3, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1029.78it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 512.76 toks/s, output: 308.45 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 512.76 toks/s, output: 308.45 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 512.76 toks/s, output: 308.45 toks/s]
+Agent 4 response: The result of the expression is 32....
+
+--- Problem 17/20, Round 3, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1157.69it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s, est. speed input: 551.25 toks/s, output: 307.92 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s, est. speed input: 551.25 toks/s, output: 307.92 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s, est. speed input: 551.25 toks/s, output: 307.92 toks/s]
+Agent 5 response: The result of the expression $17 + 25 \times 11 + 1 - 9 \times 29$ is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 3, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1173.89it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it, est. speed input: 227.83 toks/s, output: 310.15 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it, est. speed input: 227.83 toks/s, output: 310.15 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it, est. speed input: 227.83 toks/s, output: 310.15 toks/s]
+Agent 6 response: The result of the expression $17 + 25 \times 11 + 1 - 9 \times 29$ is 32.  
+
+Answer: 32...
+
+--- Problem 17/20, Round 3, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1038.19it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.62it/s, est. speed input: 831.53 toks/s, output: 308.57 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.62it/s, est. speed input: 831.53 toks/s, output: 308.57 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.62it/s, est. speed input: 831.53 toks/s, output: 308.57 toks/s]
+ 85%|████████▌ | 17/20 [10:41<01:41, 33.67s/it]Agent 7 response: The result of the expression is 32.  
+
+Answer: 32...
+performance: 0.9411764705882353 0.05706720589090188
+
+--- Problem 18/20, Round 1, Agent 1/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2475.98it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.85s/it, est. speed input: 9.89 toks/s, output: 309.62 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.85s/it, est. speed input: 9.89 toks/s, output: 309.62 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.85s/it, est. speed input: 9.89 toks/s, output: 309.62 toks/s]
+Agent 1 response: The result of the expression is 121. 
+
+The final answer is 121....
+
+--- Problem 18/20, Round 1, Agent 2/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2434.30it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.50s/it, est. speed input: 19.24 toks/s, output: 313.39 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.50s/it, est. speed input: 19.24 toks/s, output: 313.39 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.50s/it, est. speed input: 19.24 toks/s, output: 313.39 toks/s]
+Agent 2 response: The result of the expression is 123....
+
+--- Problem 18/20, Round 1, Agent 3/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2480.37it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.67s/it, est. speed input: 28.77 toks/s, output: 312.83 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.67s/it, est. speed input: 28.77 toks/s, output: 312.83 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.67s/it, est. speed input: 28.77 toks/s, output: 312.83 toks/s]
+Agent 3 response: 123
+
+The result of the expression is 123....
+
+--- Problem 18/20, Round 1, Agent 4/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2391.28it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.53s/it, est. speed input: 18.94 toks/s, output: 313.65 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.53s/it, est. speed input: 18.94 toks/s, output: 313.65 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 18.94 toks/s, output: 313.65 toks/s]
+Agent 4 response: 123...
+
+--- Problem 18/20, Round 1, Agent 5/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2377.72it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.26s/it, est. speed input: 21.26 toks/s, output: 312.76 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.26s/it, est. speed input: 21.26 toks/s, output: 312.76 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.26s/it, est. speed input: 21.26 toks/s, output: 312.76 toks/s]
+Agent 5 response: The result of the expression is 121....
+
+--- Problem 18/20, Round 1, Agent 6/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2391.28it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.19s/it, est. speed input: 15.03 toks/s, output: 313.45 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.19s/it, est. speed input: 15.03 toks/s, output: 313.45 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.19s/it, est. speed input: 15.03 toks/s, output: 313.45 toks/s]
+Agent 6 response: 121
+
+Answer: 121...
+
+--- Problem 18/20, Round 1, Agent 7/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2302.03it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.67s/it, est. speed input: 13.07 toks/s, output: 313.59 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.67s/it, est. speed input: 13.07 toks/s, output: 313.59 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.67s/it, est. speed input: 13.07 toks/s, output: 313.59 toks/s]
+Agent 7 response: The expression evaluates to 123. 
+
+The result is **123**....
+
+--- Problem 18/20, Round 2, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 926.92it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 128.82 toks/s, output: 309.72 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 128.82 toks/s, output: 309.72 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 128.82 toks/s, output: 309.72 toks/s]
+Agent 1 response: The result of the expression is 123. 
+
+The final answer is 123....
+
+--- Problem 18/20, Round 2, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1396.24it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.92s/it, est. speed input: 46.75 toks/s, output: 309.76 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.92s/it, est. speed input: 46.75 toks/s, output: 309.76 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.92s/it, est. speed input: 46.75 toks/s, output: 309.76 toks/s]
+Agent 2 response: The result of the expression is 131.  
+
+The answer is 131....
+
+--- Problem 18/20, Round 2, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1227.48it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 138.71 toks/s, output: 311.79 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 138.71 toks/s, output: 311.79 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it, est. speed input: 138.71 toks/s, output: 311.79 toks/s]
+Agent 3 response: The result of the expression is 123.  
+
+Answer: 123...
+
+--- Problem 18/20, Round 2, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1373.38it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.99s/it, est. speed input: 46.12 toks/s, output: 308.62 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.99s/it, est. speed input: 46.12 toks/s, output: 308.62 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.99s/it, est. speed input: 46.12 toks/s, output: 308.62 toks/s]
+Agent 4 response: Answer: 121...
+
+--- Problem 18/20, Round 2, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1381.52it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.57s/it, est. speed input: 146.83 toks/s, output: 309.61 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.57s/it, est. speed input: 146.83 toks/s, output: 309.61 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.57s/it, est. speed input: 146.83 toks/s, output: 309.61 toks/s]
+Agent 5 response: The result of the expression is 121....
+
+--- Problem 18/20, Round 2, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1463.98it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 158.72 toks/s, output: 307.09 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 158.72 toks/s, output: 307.09 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it, est. speed input: 158.72 toks/s, output: 307.09 toks/s]
+Agent 6 response: 121
+
+Answer: 121...
+
+--- Problem 18/20, Round 2, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1485.24it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it, est. speed input: 86.24 toks/s, output: 310.47 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it, est. speed input: 86.24 toks/s, output: 310.47 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it, est. speed input: 86.24 toks/s, output: 310.47 toks/s]
+Agent 7 response: The result of the expression is 121.  
+
+The result is **121**....
+
+--- Problem 18/20, Round 3, Agent 1/7 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 739.61it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it, est. speed input: 293.01 toks/s, output: 305.98 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it, est. speed input: 293.01 toks/s, output: 305.98 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it, est. speed input: 293.01 toks/s, output: 305.98 toks/s]
+Agent 1 response: The result of the expression is 121. 
+
+The final answer is 121....
+
+--- Problem 18/20, Round 3, Agent 2/7 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1051.20it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.64s/it, est. speed input: 261.43 toks/s, output: 310.79 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.64s/it, est. speed input: 261.43 toks/s, output: 310.79 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.64s/it, est. speed input: 261.43 toks/s, output: 310.79 toks/s]
+Agent 2 response: The result of the expression is 121.  
+
+The answer is 121....
+
+--- Problem 18/20, Round 3, Agent 3/7 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 991.33it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it, est. speed input: 280.71 toks/s, output: 312.11 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it, est. speed input: 280.71 toks/s, output: 312.11 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it, est. speed input: 280.71 toks/s, output: 312.11 toks/s]
+Agent 3 response: The result of the expression is 121.  
+
+Answer: 121...
+
+--- Problem 18/20, Round 3, Agent 4/7 ---
+Agent 4 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1025.75it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 291.61 toks/s, output: 310.64 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 291.61 toks/s, output: 310.64 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it, est. speed input: 291.61 toks/s, output: 310.64 toks/s]
+Agent 4 response: Answer: 121...
+
+--- Problem 18/20, Round 3, Agent 5/7 ---
+Agent 5 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1081.01it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.61s/it, est. speed input: 76.43 toks/s, output: 308.21 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.61s/it, est. speed input: 76.43 toks/s, output: 308.21 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.61s/it, est. speed input: 76.43 toks/s, output: 308.21 toks/s]
+Agent 5 response: The result of the expression is 121....
+
+--- Problem 18/20, Round 3, Agent 6/7 ---
+Agent 6 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 999.83it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 290.14 toks/s, output: 307.04 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 290.14 toks/s, output: 307.04 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 290.14 toks/s, output: 307.04 toks/s]
+Agent 6 response: Answer: 123...
+
+--- Problem 18/20, Round 3, Agent 7/7 ---
+Agent 7 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 1044.40it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.43s/it, est. speed input: 300.62 toks/s, output: 308.32 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.43s/it, est. speed input: 300.62 toks/s, output: 308.32 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.43s/it, est. speed input: 300.62 toks/s, output: 308.32 toks/s]
+ 90%|█████████ | 18/20 [11:36<01:19, 39.89s/it]Agent 7 response: The result of the expression is 121.  
+
+The result is **121**....
+performance: 0.9444444444444444 0.05399029532264168
+
+--- Problem 19/20, Round 1, Agent 1/7 ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 2233.39it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A

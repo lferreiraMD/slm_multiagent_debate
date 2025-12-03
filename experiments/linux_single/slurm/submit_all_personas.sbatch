@@ -51,7 +51,9 @@ mkdir -p "$RESULTS_DIR"/{math,gsm,biography,mmlu}
 # export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"
 
-# Activate conda environment
+# Initialize and activate conda environment
+# Source conda.sh to initialize conda in SLURM job (doesn't source ~/.bashrc)
+source $(conda info --base)/etc/profile.d/conda.sh
 conda activate slm
 
 echo "============================================================"
