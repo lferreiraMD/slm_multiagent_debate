@@ -46,32 +46,33 @@ class ModelCache:
         """
         cache_key = f"{backend}:{model_path}"
 
-        # Check cache first
+        # Hold lock for entire operation to prevent race condition
+        # where multiple threads try to load the same model simultaneously
         with self._cache_lock:
+            # Check cache first
             if cache_key in self._cache:
                 print(f"[ModelCache] Using cached model: {model_path}")
                 return self._cache[cache_key]
 
-        # Load model
-        print(f"[ModelCache] Loading model: {model_path} (backend={backend})")
+            # Load model (under lock to prevent concurrent loading)
+            print(f"[ModelCache] Loading model: {model_path} (backend={backend})")
 
-        if backend == "mlx":
-            model, tokenizer = self._load_mlx(model_path)
-            result = (model, tokenizer)
-        elif backend == "vllm":
-            model, tokenizer = self._load_vllm(model_path)
-            result = (model, tokenizer)
-        elif backend == "ollama":
-            # Ollama doesn't need to load models in Python
-            result = (None, None)
-        else:
-            raise ValueError(f"Unknown backend: {backend}")
+            if backend == "mlx":
+                model, tokenizer = self._load_mlx(model_path)
+                result = (model, tokenizer)
+            elif backend == "vllm":
+                model, tokenizer = self._load_vllm(model_path)
+                result = (model, tokenizer)
+            elif backend == "ollama":
+                # Ollama doesn't need to load models in Python
+                result = (None, None)
+            else:
+                raise ValueError(f"Unknown backend: {backend}")
 
-        # Cache it
-        with self._cache_lock:
+            # Cache it (already under lock)
             self._cache[cache_key] = result
 
-        return result
+            return result
 
     def _load_mlx(self, model_path: str) -> Tuple[Any, Any]:
         """Load MLX model and tokenizer."""
@@ -82,6 +83,7 @@ class ModelCache:
 
     def _load_vllm(self, model_path: str) -> Tuple[Any, Any]:
         """Load vLLM model and tokenizer."""
+        import os
         from vllm import LLM
         from transformers import AutoTokenizer
         import torch
