@@ -5,11 +5,9 @@
 # Tests all uncommented vLLM models from config.yaml
 # Runs all 4 tasks with minimal configuration (3 agents, 2 rounds, 2 problems)
 
-set -e
-
 # Test configuration
 AGENTS=2
-ROUNDS=3
+ROUNDS=2
 NUM_PROBLEMS=1  # Small number for quick testing
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
