@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # HPC Test Script
-# Quick sanity check to verify the repository works on HPC/Linux with vLLM
-# Runs all 4 tasks with minimal configuration (2 agents, 2 rounds)
-# Uses vllm-vibethinker (1.5B) for fast testing
+# Comprehensive sanity check to verify the repository works on HPC/Linux with vLLM
+# Tests all uncommented vLLM models from config.yaml
+# Runs all 4 tasks with minimal configuration (3 agents, 2 rounds, 2 problems)
 
 set -e  # Exit on first error
 
 # Test configuration
-MODEL="Qwen/Qwen3-0.6B"
 AGENTS=3
 ROUNDS=2
 NUM_PROBLEMS=2  # Small number for quick testing
@@ -16,113 +15,177 @@ NUM_PROBLEMS=2  # Small number for quick testing
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
+# All uncommented vLLM models from config.yaml (lines 67-80)
+MODELS=(
+    "vllm-qwen3-0.6b"
+    "vllm-vibethinker"
+    "vllm-llama32-3b"
+    "vllm-mistral-7b"
+    "vllm-qwen3-14b"
+)
+
 echo "=========================================="
-echo "HPC REPOSITORY TEST"
+echo "HPC COMPREHENSIVE REPOSITORY TEST"
 echo "=========================================="
-echo "Model: $MODEL"
+echo "Testing ${#MODELS[@]} vLLM models across 4 tasks"
+echo "Models: ${MODELS[@]}"
 echo "Agents: $AGENTS"
 echo "Rounds: $ROUNDS"
 echo "Problems per task: $NUM_PROBLEMS"
 echo "Project root: $PROJECT_ROOT"
 echo "=========================================="
 echo ""
-echo "This will test all 4 tasks to verify:"
+echo "This will verify:"
 echo "  ✓ vLLM backend is working"
-echo "  ✓ Models can be loaded"
-echo "  ✓ Generation scripts run successfully"
+echo "  ✓ All models can be loaded"
+echo "  ✓ All generation scripts run successfully"
 echo "  ✓ Results are saved correctly"
 echo ""
 echo "=========================================="
 echo ""
 
-# Test 1: Math Task
-echo "[1/4] Testing Math Task..."
-echo "----------------------------------------"
-cd "$PROJECT_ROOT/tasks/math"
-python3 gen_math_clean.py \
-    --model "$MODEL" \
-    --agents "$AGENTS" \
-    --rounds "$ROUNDS" \
-    --num-problems "$NUM_PROBLEMS" \
-    
-MATH_RESULT=$(ls -t math_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
-if [ -n "$MATH_RESULT" ]; then
-    echo "✓ Math task completed: $MATH_RESULT"
-    rm "$MATH_RESULT"  # Clean up test file
-else
-    echo "✗ Math task failed: No output file found"
-    exit 1
-fi
-echo ""
+TOTAL_TESTS=$((${#MODELS[@]} * 4))
+CURRENT_TEST=0
+FAILED_TESTS=()
 
-# Test 2: GSM Task
-echo "[2/4] Testing GSM Task..."
-echo "----------------------------------------"
-cd "$PROJECT_ROOT/tasks/gsm"
-python3 gen_gsm.py \
-    --model "$MODEL" \
-    --agents "$AGENTS" \
-    --rounds "$ROUNDS" \
-    --num-problems "$NUM_PROBLEMS" \
+# Test each model
+for MODEL in "${MODELS[@]}"; do
+    echo ""
+    echo "╔════════════════════════════════════════╗"
+    echo "║  Testing Model: $MODEL"
+    echo "╚════════════════════════════════════════╝"
+    echo ""
 
-GSM_RESULT=$(ls -t gsm_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
-if [ -n "$GSM_RESULT" ]; then
-    echo "✓ GSM task completed: $GSM_RESULT"
-    rm "$GSM_RESULT"  # Clean up test file
-else
-    echo "✗ GSM task failed: No output file found"
-    exit 1
-fi
-echo ""
+    # Test 1: Math Task
+    ((CURRENT_TEST++))
+    echo "[$CURRENT_TEST/$TOTAL_TESTS] Math Task - $MODEL"
+    echo "----------------------------------------"
+    cd "$PROJECT_ROOT/tasks/math"
 
-# Test 3: Biography Task
-echo "[3/4] Testing Biography Task..."
-echo "----------------------------------------"
-cd "$PROJECT_ROOT/tasks/biography"
-python3 gen_conversation.py \
-    --model "$MODEL" \
-    --agents "$AGENTS" \
-    --rounds "$ROUNDS" \
-    --num-people "$NUM_PROBLEMS" \
+    if python3 gen_math_clean.py \
+        --model "$MODEL" \
+        --agents "$AGENTS" \
+        --rounds "$ROUNDS" \
+        --num-problems "$NUM_PROBLEMS" 2>&1 | tee /tmp/hpc_test_math.log; then
 
-BIOGRAPHY_RESULT=$(ls -t biography_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
-if [ -n "$BIOGRAPHY_RESULT" ]; then
-    echo "✓ Biography task completed: $BIOGRAPHY_RESULT"
-    rm "$BIOGRAPHY_RESULT"  # Clean up test file
-else
-    echo "✗ Biography task failed: No output file found"
-    exit 1
-fi
-echo ""
+        # Math saves as .p (pickle) not .json
+        MATH_RESULT=$(ls -t math_*_agents${AGENTS}_rounds${ROUNDS}.p 2>/dev/null | head -1)
+        if [ -n "$MATH_RESULT" ]; then
+            echo "✓ Math task completed: $MATH_RESULT"
+            rm "$MATH_RESULT"  # Clean up test file
+        else
+            echo "✗ Math task failed: No output file found (.p expected)"
+            FAILED_TESTS+=("Math - $MODEL (no output file)")
+        fi
+    else
+        echo "✗ Math task failed: Script error"
+        FAILED_TESTS+=("Math - $MODEL (script error)")
+    fi
+    echo ""
 
-# Test 4: MMLU Task
-echo "[4/4] Testing MMLU Task..."
-echo "----------------------------------------"
-cd "$PROJECT_ROOT/tasks/mmlu"
-python3 gen_mmlu.py \
-    --model "$MODEL" \
-    --agents "$AGENTS" \
-    --rounds "$ROUNDS" \
-    --num-questions "$NUM_PROBLEMS" \
+    # Test 2: GSM Task
+    ((CURRENT_TEST++))
+    echo "[$CURRENT_TEST/$TOTAL_TESTS] GSM Task - $MODEL"
+    echo "----------------------------------------"
+    cd "$PROJECT_ROOT/tasks/gsm"
 
-MMLU_RESULT=$(ls -t mmlu_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
-if [ -n "$MMLU_RESULT" ]; then
-    echo "✓ MMLU task completed: $MMLU_RESULT"
-    rm "$MMLU_RESULT"  # Clean up test file
-else
-    echo "✗ MMLU task failed: No output file found"
-    exit 1
-fi
-echo ""
+    if python3 gen_gsm.py \
+        --model "$MODEL" \
+        --agents "$AGENTS" \
+        --rounds "$ROUNDS" \
+        --num-problems "$NUM_PROBLEMS" 2>&1 | tee /tmp/hpc_test_gsm.log; then
 
-# All tests passed
+        GSM_RESULT=$(ls -t gsm_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
+        if [ -n "$GSM_RESULT" ]; then
+            echo "✓ GSM task completed: $GSM_RESULT"
+            rm "$GSM_RESULT"  # Clean up test file
+        else
+            echo "✗ GSM task failed: No output file found (.json expected)"
+            FAILED_TESTS+=("GSM - $MODEL (no output file)")
+        fi
+    else
+        echo "✗ GSM task failed: Script error"
+        FAILED_TESTS+=("GSM - $MODEL (script error)")
+    fi
+    echo ""
+
+    # Test 3: Biography Task
+    ((CURRENT_TEST++))
+    echo "[$CURRENT_TEST/$TOTAL_TESTS] Biography Task - $MODEL"
+    echo "----------------------------------------"
+    cd "$PROJECT_ROOT/tasks/biography"
+
+    if python3 gen_conversation.py \
+        --model "$MODEL" \
+        --agents "$AGENTS" \
+        --rounds "$ROUNDS" \
+        --num-people "$NUM_PROBLEMS" 2>&1 | tee /tmp/hpc_test_bio.log; then
+
+        BIOGRAPHY_RESULT=$(ls -t biography_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
+        if [ -n "$BIOGRAPHY_RESULT" ]; then
+            echo "✓ Biography task completed: $BIOGRAPHY_RESULT"
+            rm "$BIOGRAPHY_RESULT"  # Clean up test file
+        else
+            echo "✗ Biography task failed: No output file found (.json expected)"
+            FAILED_TESTS+=("Biography - $MODEL (no output file)")
+        fi
+    else
+        echo "✗ Biography task failed: Script error"
+        FAILED_TESTS+=("Biography - $MODEL (script error)")
+    fi
+    echo ""
+
+    # Test 4: MMLU Task
+    ((CURRENT_TEST++))
+    echo "[$CURRENT_TEST/$TOTAL_TESTS] MMLU Task - $MODEL"
+    echo "----------------------------------------"
+    cd "$PROJECT_ROOT/tasks/mmlu"
+
+    if python3 gen_mmlu.py \
+        --model "$MODEL" \
+        --agents "$AGENTS" \
+        --rounds "$ROUNDS" \
+        --num-questions "$NUM_PROBLEMS" 2>&1 | tee /tmp/hpc_test_mmlu.log; then
+
+        MMLU_RESULT=$(ls -t mmlu_*_agents${AGENTS}_rounds${ROUNDS}.json 2>/dev/null | head -1)
+        if [ -n "$MMLU_RESULT" ]; then
+            echo "✓ MMLU task completed: $MMLU_RESULT"
+            rm "$MMLU_RESULT"  # Clean up test file
+        else
+            echo "✗ MMLU task failed: No output file found (.json expected)"
+            FAILED_TESTS+=("MMLU - $MODEL (no output file)")
+        fi
+    else
+        echo "✗ MMLU task failed: Script error"
+        FAILED_TESTS+=("MMLU - $MODEL (script error)")
+    fi
+    echo ""
+done
+
+# Summary
 echo "=========================================="
-echo "✓ ALL TESTS PASSED!"
-echo "=========================================="
-echo ""
-echo "HPC setup is working correctly. You can now:"
-echo "  1. Run full experiments with ./experiments/run_*_experiments.sh"
-echo "  2. Optionally pre-cache models with python3 experiments/download_models.py"
-echo ""
-echo "Test files were automatically cleaned up."
-echo "=========================================="
+if [ ${#FAILED_TESTS[@]} -eq 0 ]; then
+    echo "✓ ALL TESTS PASSED! ($TOTAL_TESTS/$TOTAL_TESTS)"
+    echo "=========================================="
+    echo ""
+    echo "HPC setup is working correctly. You can now:"
+    echo "  1. Run baseline experiments: cd experiments/linux_single && bash run_all_baseline.sh"
+    echo "  2. Run persona experiments: cd experiments/linux_single/slurm && bash launch.sh"
+    echo "  3. Aggregate results: cd experiments/linux_single && python3 aggregate_baseline_results.py"
+    echo ""
+    echo "All test files were automatically cleaned up."
+    echo "=========================================="
+    exit 0
+else
+    echo "✗ SOME TESTS FAILED (${#FAILED_TESTS[@]}/$TOTAL_TESTS failed)"
+    echo "=========================================="
+    echo ""
+    echo "Failed tests:"
+    for test in "${FAILED_TESTS[@]}"; do
+        echo "  - $test"
+    done
+    echo ""
+    echo "Check logs in /tmp/hpc_test_*.log for details"
+    echo "=========================================="
+    exit 1
+fi
