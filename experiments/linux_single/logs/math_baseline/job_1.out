@@ -1,0 +1,49 @@
+============================================================
+Math Task - Multiagent Debate (NO COMPRESSION)
+============================================================
+Model: vllm-qwen3-0.6b
+Agents: 1
+Rounds: 3
+Problems: 20
+Generation params: {'temperature': 1.0, 'max_tokens': None, 'top_p': 1.0, 'n': 1}
+============================================================
+  0%|          | 0/20 [00:00<?, ?it/s]
+--- Problem 1/20, Round 1, Agent 1/1 ---
+INFO 12-03 11:51:33 [__init__.py:216] Automatically detected platform cuda.
+[ModelCache] Loading model: vllm-qwen3-0.6b (backend=vllm)
+[ModelCache] Warning: Model vllm-qwen3-0.6b not found in config.yaml, using default context_length=32768
+[ModelCache] Using max_model_len=32768 for vllm-qwen3-0.6b
+[ModelCache] Auto-config: 2 GPU(s) detected, tensor_parallel_size=2
+INFO 12-03 11:51:36 [utils.py:233] non-default args: {'max_model_len': 32768, 'tensor_parallel_size': 2, 'max_num_batched_tokens': 8192, 'disable_log_stats': True, 'disable_custom_all_reduce': True, 'enable_chunked_prefill': True, 'enable_sleep_mode': True, 'model': 'vllm-qwen3-0.6b'}
+Error occurred: vllm-qwen3-0.6b is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Retrying due to an error......
+[ModelCache] Loading model: vllm-qwen3-0.6b (backend=vllm)
+[ModelCache] Warning: Model vllm-qwen3-0.6b not found in config.yaml, using default context_length=32768
+[ModelCache] Using max_model_len=32768 for vllm-qwen3-0.6b
+[ModelCache] Auto-config: 2 GPU(s) detected, tensor_parallel_size=2
+INFO 12-03 11:51:56 [utils.py:233] non-default args: {'max_model_len': 32768, 'tensor_parallel_size': 2, 'max_num_batched_tokens': 8192, 'disable_log_stats': True, 'disable_custom_all_reduce': True, 'enable_chunked_prefill': True, 'enable_sleep_mode': True, 'model': 'vllm-qwen3-0.6b'}
+Error occurred: vllm-qwen3-0.6b is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Retrying due to an error......
+[ModelCache] Loading model: vllm-qwen3-0.6b (backend=vllm)
+[ModelCache] Warning: Model vllm-qwen3-0.6b not found in config.yaml, using default context_length=32768
+[ModelCache] Using max_model_len=32768 for vllm-qwen3-0.6b
+[ModelCache] Auto-config: 2 GPU(s) detected, tensor_parallel_size=2
+INFO 12-03 11:52:16 [utils.py:233] non-default args: {'max_model_len': 32768, 'tensor_parallel_size': 2, 'max_num_batched_tokens': 8192, 'disable_log_stats': True, 'disable_custom_all_reduce': True, 'enable_chunked_prefill': True, 'enable_sleep_mode': True, 'model': 'vllm-qwen3-0.6b'}
+Error occurred: vllm-qwen3-0.6b is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Retrying due to an error......
+[ModelCache] Loading model: vllm-qwen3-0.6b (backend=vllm)
+[ModelCache] Warning: Model vllm-qwen3-0.6b not found in config.yaml, using default context_length=32768
+[ModelCache] Using max_model_len=32768 for vllm-qwen3-0.6b
+[ModelCache] Auto-config: 2 GPU(s) detected, tensor_parallel_size=2
+INFO 12-03 11:52:36 [utils.py:233] non-default args: {'max_model_len': 32768, 'tensor_parallel_size': 2, 'max_num_batched_tokens': 8192, 'disable_log_stats': True, 'disable_custom_all_reduce': True, 'enable_chunked_prefill': True, 'enable_sleep_mode': True, 'model': 'vllm-qwen3-0.6b'}
+Error occurred: vllm-qwen3-0.6b is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Retrying due to an error......
+[ModelCache] Loading model: vllm-qwen3-0.6b (backend=vllm)
+[ModelCache] Warning: Model vllm-qwen3-0.6b not found in config.yaml, using default context_length=32768
+[ModelCache] Using max_model_len=32768 for vllm-qwen3-0.6b
+[ModelCache] Auto-config: 2 GPU(s) detected, tensor_parallel_size=2
+INFO 12-03 11:52:56 [utils.py:233] non-default args: {'max_model_len': 32768, 'tensor_parallel_size': 2, 'max_num_batched_tokens': 8192, 'disable_log_stats': True, 'disable_custom_all_reduce': True, 'enable_chunked_prefill': True, 'enable_sleep_mode': True, 'model': 'vllm-qwen3-0.6b'}

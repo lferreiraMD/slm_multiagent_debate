@@ -20,6 +20,7 @@ MODELS=(
     "vllm-llama32-3b"
     "vllm-mistral-7b"
     "vllm-qwen3-14b"
+    "vllm-oss-20b"
 )
 
 echo "=========================================="

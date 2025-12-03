@@ -17,7 +17,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from utils import load_config
 from vllm import LLM
-import yaml
 
 
 def verify_model_context_length(model_alias: str, model_path: str) -> dict:
@@ -50,8 +49,9 @@ def verify_model_context_length(model_alias: str, model_path: str) -> dict:
         print("Loading model (auto-detecting context length)...")
         llm = LLM(
             model=model_path,
-            tensor_parallel_size=1,  # Single GPU for simplicity
-            gpu_memory_utilization=0.7,  # Conservative for testing
+            tensor_parallel_size=2,  # Single GPU for simplicity
+            gpu_memory_utilization=0.95,  # Conservative for testing
+            disable_custom_all_reduce=True,
             enforce_eager=True,  # Avoid flash-attn issues
         )
 
