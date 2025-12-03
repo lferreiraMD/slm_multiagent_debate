@@ -5,8 +5,6 @@
 # Tests all uncommented vLLM models from config.yaml
 # Runs all 4 tasks with minimal configuration (3 agents, 2 rounds, 2 problems)
 
-set -e  # Exit on first error
-
 # Test configuration
 AGENTS=3
 ROUNDS=2
