@@ -1,0 +1,9 @@
+==============================================
+Job Array Task: 12
+Job ID: 12
+Model: vllm-llama32-3b
+Agents: 7
+Rounds: 3
+Task: biography
+Num People: 20
+==============================================

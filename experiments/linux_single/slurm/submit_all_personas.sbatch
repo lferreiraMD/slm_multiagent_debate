@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #SBATCH --array=1-60
 #SBATCH --partition=bch-gpu-pe
-#SBATCH --job-name=persona_debate
-#SBATCH --output=logs/slurm_%A_%a.out
-#SBATCH --error=logs/slurm_%A_%a.err
+#SBATCH --job-name=persona
+#SBATCH --output=logs/persona_%A_%a.out
+#SBATCH --error=logs/persona_%A_%a.err
 #SBATCH --gpus=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=16G

@@ -123,7 +123,7 @@ try:
 except Exception as e:
     print(f'echo \"ERROR: CSV parsing failed: {e}\" >&2')
     exit(1)
-\")"
+")"
 
     echo "[Job $job_num/$TOTAL_JOBS] Starting: model=$model_alias agents=$n_agents"
 

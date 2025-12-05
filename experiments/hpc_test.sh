@@ -6,12 +6,21 @@
 # Runs all 4 tasks with minimal configuration (3 agents, 2 rounds, 2 problems)
 
 # Test configuration
-AGENTS=2
-ROUNDS=2
+AGENTS=1
+ROUNDS=1
 NUM_PROBLEMS=1  # Small number for quick testing
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+export HF_HOME=/temp_work/ch269957 # Sets location of HF models
+export CUDA_VISIBLE_DEVICES=0
+export PYTHONPATH="$PROJECT_ROOT:$PYTHONPATH"
+
+# Initialize conda by sourcing system bashrc (defines conda shell function)
+source /etc/bashrc
+
+# Activate conda environment
+conda activate slm
 
 # All uncommented vLLM models from config.yaml (lines 67-80)
 MODELS=(
@@ -20,7 +29,7 @@ MODELS=(
     "vllm-llama32-3b"
     "vllm-mistral-7b"
     "vllm-qwen3-14b"
-    "vllm-oss-20b"
+#    "vllm-oss-20b"
 )
 
 echo "=========================================="
@@ -51,7 +60,7 @@ FAILED_TESTS=()
 for MODEL in "${MODELS[@]}"; do
     echo ""
     echo "╔════════════════════════════════════════╗"
-    echo "║  Testing Model: $MODEL"
+    echo "║  Testing Model: $MODEL"                ║
     echo "╚════════════════════════════════════════╝"
     echo ""
 

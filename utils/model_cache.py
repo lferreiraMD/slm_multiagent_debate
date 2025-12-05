@@ -116,7 +116,7 @@ class ModelCache:
         # Load model
         llm = LLM(
             model=model_path,
-            max_model_len=max_model_len,
+            max_model_len=max_model_len, # =max_model_len
             gpu_memory_utilization=0.90,
             tensor_parallel_size=tensor_parallel_size,
             disable_custom_all_reduce=True,

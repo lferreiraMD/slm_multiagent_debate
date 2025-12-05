@@ -1,0 +1,350 @@
+==============================================
+Job Array Task: 1
+Job ID: 1
+Model: vllm-qwen3-0.6b
+Agents: 1
+Rounds: 3
+Task: biography
+Num People: 20
+==============================================
+============================================================
+Biography Task - Multiagent Debate
+============================================================
+Model: Qwen/Qwen3-0.6B
+Agents: 1
+Rounds: 3
+People: 20
+Dataset: /home/ch269957/projects/slm_multiagent_debate/data/biography/article.json
+Generation params: {'temperature': 1.0, 'max_tokens': None, 'top_p': 1.0, 'n': 1}
+============================================================
+
+--- Problem 1/20, Round 1, Agent 1/1, Person: Jill Zimmerman ---
+[ModelCache] Loading model: Qwen/Qwen3-0.6B (backend=vllm)
+[ModelCache] Using max_model_len=40960 for Qwen/Qwen3-0.6B
+[ModelCache] Detected 1 GPU(s), 44.4GB total VRAM
+[ModelCache] Using tensor_parallel_size=1
+INFO 12-05 14:16:12 [utils.py:253] non-default args: {'max_model_len': 40960, 'disable_log_stats': True, 'disable_custom_all_reduce': True}
+INFO 12-05 14:16:12 [model.py:631] Resolved architecture: Qwen3ForCausalLM
+INFO 12-05 14:16:12 [model.py:1745] Using max model len 40960
+INFO 12-05 14:16:13 [scheduler.py:216] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 12-05 14:16:14 [system_utils.py:103] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:23 [core.py:93] Initializing a V1 LLM engine (v0.11.2) with config: model='Qwen/Qwen3-0.6B', speculative_config=None, tokenizer='Qwen/Qwen3-0.6B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-0.6B, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'use_inductor': None, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {}, 'max_cudagraph_capture_size': 512, 'local_cache_dir': None}
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:25 [parallel_state.py:1208] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.38.4.84:41465 backend=nccl
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:25 [parallel_state.py:1394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:25 [gpu_model_runner.py:3259] Starting to load model Qwen/Qwen3-0.6B...
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:26 [cuda.py:418] Valid backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:26 [cuda.py:427] Using FLASH_ATTN backend.
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:26 [weight_utils.py:481] No model.safetensors.index.json found in remote.
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:27 [default_loader.py:314] Loading weights took 0.27 seconds
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:27 [gpu_model_runner.py:3338] Model loading took 1.1201 GiB memory and 1.095841 seconds
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:35 [backends.py:631] Using cache directory: /home/ch269957/.cache/vllm/torch_compile_cache/09fdf607f4/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:35 [backends.py:647] Dynamo bytecode transform time: 7.78 s
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:39 [backends.py:210] Directly load the compiled graph(s) for dynamic shape from the cache, took 3.404 s
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:40 [monitor.py:34] torch.compile takes 11.19 s in total
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:41 [gpu_worker.py:359] Available KV cache memory: 37.40 GiB
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:41 [kv_cache_utils.py:1229] GPU KV cache size: 350,096 tokens
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:41 [kv_cache_utils.py:1234] Maximum concurrency for 40,960 tokens per request: 8.55x
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:44 [gpu_model_runner.py:4244] Graph capturing finished in 3 secs, took 0.45 GiB
+[1;36m(EngineCore_DP0 pid=243222)[0;0m INFO 12-05 14:16:44 [core.py:250] init engine (profile, create kv cache, warmup model) took 17.30 seconds
+INFO 12-05 14:16:45 [llm.py:352] Supported tasks: ['generate']
+Agent 1 response: - Jill Zimmerman is an accomplished computer scientist with over 30 years of experience in the field...
+
+--- Problem 1/20, Round 2, Agent 1/1, Person: Jill Zimmerman ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Jill Zimmerman is an accomplished computer scientist with over 30 years of work in AI and machine ...
+
+--- Problem 1/20, Round 3, Agent 1/1, Person: Jill Zimmerman ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Jill Zimmerman is an accomplished computer scientist with over 30 years of experience in AI, machi...
+
+--- Problem 2/20, Round 1, Agent 1/1, Person: DJ Patil ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Elected professor of computer science at IIT Madras, known for pioneering algorithms and software ...
+
+--- Problem 2/20, Round 2, Agent 1/1, Person: DJ Patil ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Elected professor of computer science at IIT Madras, known for pioneering algorithms and software ...
+
+--- Problem 2/20, Round 3, Agent 1/1, Person: DJ Patil ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Elected professor of computer science at IIT Madras, recognized for his pioneering work in algorit...
+
+--- Problem 3/20, Round 1, Agent 1/1, Person: Steve Omohundro ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - **Education**: Earned a Master's degree in computer science from UCLA and a Ph.D. in computational...
+
+--- Problem 3/20, Round 2, Agent 1/1, Person: Steve Omohundro ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - **Education**: Earned a Master's degree in computer science from UCLA and a Ph.D. in computational...
+
+--- Problem 3/20, Round 3, Agent 1/1, Person: Steve Omohundro ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - **Education**: Earned a Master's degree in computer science from UCLA and a Ph.D. in computational...
+
+--- Problem 4/20, Round 1, Agent 1/1, Person: Geoffrey Hinton ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Geoffrey Hinton is a pioneering computer scientist known for his groundbreaking work in deep learn...
+
+--- Problem 4/20, Round 2, Agent 1/1, Person: Geoffrey Hinton ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Geoffrey Hinton is a pioneering computer scientist recognized for his foundational work in deep le...
+
+--- Problem 4/20, Round 3, Agent 1/1, Person: Geoffrey Hinton ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Geoffrey Hinton is a pioneering computer scientist renowned for his foundational work in deep lear...
+
+--- Problem 5/20, Round 1, Agent 1/1, Person: Alan Edelman ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Alan Edelman was a pioneer in the development of machine learning algorithms, particularly in the ...
+
+--- Problem 5/20, Round 2, Agent 1/1, Person: Alan Edelman ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Alan Edelman was a pioneer in machine learning, particularly in the development of neural networks...
+
+--- Problem 5/20, Round 3, Agent 1/1, Person: Alan Edelman ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Alan Edelman pioneered the development of machine learning and artificial intelligence, particular...
+
+--- Problem 6/20, Round 1, Agent 1/1, Person: Edward H. Shortliffe ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Edward H. Shortliffe was a pioneering computer scientist known for developing groundbreaking algor...
+
+--- Problem 6/20, Round 2, Agent 1/1, Person: Edward H. Shortliffe ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Edward H. Shortliffe was a pioneer in computer science, renowned for developing groundbreaking alg...
+
+--- Problem 6/20, Round 3, Agent 1/1, Person: Edward H. Shortliffe ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Edward H. Shortliffe was a pioneering computer scientist whose work revolutionized algorithm desig...
+
+--- Problem 7/20, Round 1, Agent 1/1, Person: William Wulf ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - William Wulf was a pioneering computer scientist known for his groundbreaking work on the Watson G...
+
+--- Problem 7/20, Round 2, Agent 1/1, Person: William Wulf ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - William Wulf was a pioneering computer scientist renowned for his work on the Watson GAC system, a...
+
+--- Problem 7/20, Round 3, Agent 1/1, Person: William Wulf ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - William Wulf was a pioneering computer scientist renowned for his groundbreaking work on the Watso...
+
+--- Problem 8/20, Round 1, Agent 1/1, Person: Godfried Toussaint ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Godfried Toussaint is renowned for co-founding the Coq logic system, a programming language known ...
+
+--- Problem 8/20, Round 2, Agent 1/1, Person: Godfried Toussaint ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Godfried Toussaint is a pioneer in the intersection of computer science and mathematics, co-creati...
+
+--- Problem 8/20, Round 3, Agent 1/1, Person: Godfried Toussaint ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Godfried Toussaint is renowned for co-founding the Coq logic system, a programming language celebr...
+
+--- Problem 9/20, Round 1, Agent 1/1, Person: Eugene Luks ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Born in San Luis Obispo County, USA.  
+- Chief architect of the Florida Blue Box Project, a pionee...
+
+--- Problem 9/20, Round 2, Agent 1/1, Person: Eugene Luks ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Born in San Luis Obispo County, USA.  
+- Chief architect of the Florida Blue Box Project, a pionee...
+
+--- Problem 9/20, Round 3, Agent 1/1, Person: Eugene Luks ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Born in San Luis Obispo County, USA.  
+- Chief architect of the Florida Blue Box Project, a pionee...
+
+--- Problem 10/20, Round 1, Agent 1/1, Person: Emil Post ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Born in 1901 in Stillwater, Ohio.  
+- Pioneered automata theory, laying the foundation for modern ...
+
+--- Problem 10/20, Round 2, Agent 1/1, Person: Emil Post ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Born in 1901 in Stillwater, Ohio.  
+- Pioneered formal logic and automata theory, laying groundwor...
+
+--- Problem 10/20, Round 3, Agent 1/1, Person: Emil Post ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Born in 1901 in Stillwater, Ohio.  
+- Pioneered formal logic and automata theory, laying groundwor...
+
+--- Problem 11/20, Round 1, Agent 1/1, Person: William Kahan ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - William Kahan is a computer scientist known for groundbreaking contributions in the field of artif...
+
+--- Problem 11/20, Round 2, Agent 1/1, Person: William Kahan ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - William Kahan is a computer scientist renowned for pioneering advancements in artificial intellige...
+
+--- Problem 11/20, Round 3, Agent 1/1, Person: William Kahan ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - William Kahan is a computer scientist known for pioneering advancements in artificial intelligence...
+
+--- Problem 12/20, Round 1, Agent 1/1, Person: Brian Cantwell Smith ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Pioneer of parallel computing, developed efficient algorithms to enhance system performance in lar...
+
+--- Problem 12/20, Round 2, Agent 1/1, Person: Brian Cantwell Smith ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Pioneer in parallel computing, developed efficient algorithms for large-scale data processing.  
+-...
+
+--- Problem 12/20, Round 3, Agent 1/1, Person: Brian Cantwell Smith ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Pioneer in parallel computing, developed efficient algorithms to enhance system performance in lar...
+
+--- Problem 13/20, Round 1, Agent 1/1, Person: Edmund M. Clarke ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Edmund M. Clarke pioneered sorting algorithms that are still foundational in computer science.  
+-...
+
+--- Problem 13/20, Round 2, Agent 1/1, Person: Edmund M. Clarke ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Edmund M. Clarke revolutionized sorting algorithms with his development of efficient and optimal a...
+
+--- Problem 13/20, Round 3, Agent 1/1, Person: Edmund M. Clarke ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Edmund M. Clarke revolutionized sorting algorithms with the design of efficient and optimal algori...
+
+--- Problem 14/20, Round 1, Agent 1/1, Person: Tom Maibaum ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Tom Maibaum was a renowned computational scientist who pioneered innovations in algorithm design a...
+
+--- Problem 14/20, Round 2, Agent 1/1, Person: Tom Maibaum ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Tom Maibaum pioneered algorithm design and mathematical theory in computing, influencing foundatio...
+
+--- Problem 14/20, Round 3, Agent 1/1, Person: Tom Maibaum ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Tom Maibaum revolutionized algorithm design and mathematical theory in computing, laying foundatio...
+
+--- Problem 15/20, Round 1, Agent 1/1, Person: Eiiti Wada ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - **Developed groundbreaking AI algorithms**: Eiiti Wada is renowned for his innovations in computer...
+
+--- Problem 15/20, Round 2, Agent 1/1, Person: Eiiti Wada ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - **Developed revolutionary AI algorithms**: Eiiti Wada pioneered breakthroughs in deep learning and...
+
+--- Problem 15/20, Round 3, Agent 1/1, Person: Eiiti Wada ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - **Led revolutionary AI research**: Eiiti Wada is a pioneer in deep learning, neural networks, and ...
+
+--- Problem 16/20, Round 1, Agent 1/1, Person: Sjaak Brinkkemper ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Sjaak Brinkkemper was a leading computer science researcher in the Netherlands, known for his grou...
+
+--- Problem 16/20, Round 2, Agent 1/1, Person: Sjaak Brinkkemper ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Sjaak Brinkkemper was a renowned computer science pioneer in the Netherlands, renowned for his gro...
+
+--- Problem 16/20, Round 3, Agent 1/1, Person: Sjaak Brinkkemper ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Sjaak Brinkkemper was a leading computer science researcher in the Netherlands, known for his grou...
+
+--- Problem 17/20, Round 1, Agent 1/1, Person: Frieder Nake ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - President of the National Institute for Radiation Sciences (NIRS) from 1972  
+- Developed foundati...
+
+--- Problem 17/20, Round 2, Agent 1/1, Person: Frieder Nake ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - President of the National Institute for Radiation Sciences (NIRS) from 1972  
+- Developed foundati...
+
+--- Problem 17/20, Round 3, Agent 1/1, Person: Frieder Nake ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - President of the National Institute for Radiation Sciences (NIRS) from 1972  
+- Founded and led re...
+
+--- Problem 18/20, Round 1, Agent 1/1, Person: John Lions ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - John Lions is renowned for his groundbreaking work in computer science, particularly in the develo...
+
+--- Problem 18/20, Round 2, Agent 1/1, Person: John Lions ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - John Lions is a computer scientist celebrated for developing algorithms optimized for image proces...
+
+--- Problem 18/20, Round 3, Agent 1/1, Person: John Lions ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - John Lions is a computer scientist celebrated for developing algorithms optimized for image proces...
+
+--- Problem 19/20, Round 1, Agent 1/1, Person: Barry Boehm ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Barry Boehm is a renowned computer scientist known for his groundbreaking work in machine learning...
+
+--- Problem 19/20, Round 2, Agent 1/1, Person: Barry Boehm ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Barry Boehm is a globally recognized computer scientist renowned for his pioneering contributions ...
+
+--- Problem 19/20, Round 3, Agent 1/1, Person: Barry Boehm ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Barry Boehm is a globally recognized computer scientist known for his pioneering contributions to ...
+
+--- Problem 20/20, Round 1, Agent 1/1, Person: Robert Kowalski ---
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Robert Kowalski was a pioneering computer scientist known for his work in computer science educati...
+
+--- Problem 20/20, Round 2, Agent 1/1, Person: Robert Kowalski ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Robert Kowalski was a leading computer scientist and educator known for advancing AI-driven innova...
+
+--- Problem 20/20, Round 3, Agent 1/1, Person: Robert Kowalski ---
+Agent 1 receiving other agents' biographies...
+[ModelCache] Using cached model: Qwen/Qwen3-0.6B
+Agent 1 response: - Robert Kowalski was a pioneer in computer education, creating open-source platforms that democrati...
+============================================================
+Results saved to: /home/ch269957/projects/slm_multiagent_debate/experiments/linux_single/slurm/results_hpc/biography/biography_Qwen3-0.6B_agents1_rounds3.json
+Total people processed: 20
+============================================================
+[ModelCache] Shut down vLLM model: vllm:Qwen/Qwen3-0.6B
+[ModelCache] All models shut down
+✓ Job 1 completed successfully

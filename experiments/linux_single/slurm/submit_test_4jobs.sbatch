@@ -23,6 +23,8 @@
 
 set -e
 
+export CUDA_VISIBLE_DEVICES=1
+
 # ============================================================
 # ADJUSTABLE SETTINGS
 # ============================================================
@@ -32,8 +34,8 @@ MODEL="vllm-qwen3-14b"
 # Experiment parameters
 NUM_AGENTS=3
 NUM_ROUNDS=3
-NUM_PROBLEMS=20  # math, gsm, mmlu
-NUM_PEOPLE=20    # biography
+NUM_PROBLEMS=2  # math, gsm, mmlu
+NUM_PEOPLE=2    # biography
 
 # Personas for 3-agent experiments
 PERSONA_1='an enigma machine operator whose primary filter is signal-to-noise ratio and encrypted hidden messages'
@@ -48,7 +50,7 @@ export HF_HOME=/temp_work/ch269957 # Sets location of HF models
 TASK_ID=$SLURM_ARRAY_TASK_ID
 
 # vLLM flag
-export VLLM_WORKER_MULTIPROC_METHOD=spawn
+# export VLLM_WORKER_MULTIPROC_METHOD=spawn
 
 # Setup paths using SLURM_SUBMIT_DIR (directory where sbatch was called)
 SLURM_DIR="${SLURM_SUBMIT_DIR}"
@@ -71,6 +73,11 @@ echo "============================================================"
 echo "SLURM Test Array - Task: $TASK_ID"
 echo "Model: $MODEL"
 echo "Agents: $NUM_AGENTS, Rounds: $NUM_ROUNDS"
+echo "SLURM directory: $SLURM_DIR"
+echo "Script directory: $SCRIPT_DIR"
+echo "Project root: $PROJECT_ROOT"
+echo "Results directory: $RESULTS_DIR"
+echo "LOG directory: $LOG_DIR"
 echo "============================================================"
 
 # Run the appropriate task

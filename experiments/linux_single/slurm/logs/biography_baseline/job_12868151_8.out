@@ -1,0 +1,29 @@
+==============================================
+Job Array Task: 8
+Job ID: 8
+Model: vllm-vibethinker
+Agents: 7
+Rounds: 3
+Task: biography
+Num People: 20
+==============================================
+Auto-enabled temperature diversity (no model/persona diversity detected)
+Using 7 different temperatures: ['0.50', '0.58', '0.67', '0.75', '0.83', '0.92', '1.00']
+============================================================
+Biography Task - Multiagent Debate
+============================================================
+Model: WeiboAI/VibeThinker-1.5B
+Temperature diversity mode:
+  Agent 1: temp=0.5
+  Agent 2: temp=0.5833316666666667
+  Agent 3: temp=0.6666633333333334
+  Agent 4: temp=0.749995
+  Agent 5: temp=0.8333266666666668
+  Agent 6: temp=0.9166583333333334
+  Agent 7: temp=0.99999
+Agents: 7
+Rounds: 3
+People: 20
+Dataset: /home/ch269957/projects/slm_multiagent_debate/data/biography/article.json
+Generation params: {'temperature': 1.0, 'max_tokens': None, 'top_p': 1.0, 'n': 1}
+============================================================

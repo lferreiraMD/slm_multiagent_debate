@@ -1,0 +1,1317 @@
+Auto-enabled temperature diversity (no model/persona diversity detected)
+Using 3 different temperatures: ['0.50', '0.75', '1.00']
+============================================================
+MMLU Task - Multiagent Debate
+============================================================
+Model: Qwen/Qwen3-14B
+Temperature diversity mode:
+  Agent 1: temp=0.5
+  Agent 2: temp=0.749995
+  Agent 3: temp=0.99999
+Agents: 3
+Rounds: 3
+Questions: 20
+Dataset: /home/ch269957/projects/slm_multiagent_debate/data/mmlu
+Generation params: {'temperature': 1.0, 'max_tokens': None, 'top_p': 1.0, 'n': 1}
+============================================================
+Found 57 MMLU test files
+
+--- Problem 1/20, Round 1, Agent 1/3 ---
+[ModelCache] Loading model: Qwen/Qwen3-14B (backend=vllm)
+[ModelCache] Using max_model_len=40960 for Qwen/Qwen3-14B
+[ModelCache] Detected 1 GPU(s), 44.4GB total VRAM
+[ModelCache] Using tensor_parallel_size=1
+INFO 12-05 11:52:05 [utils.py:253] non-default args: {'max_model_len': 40960, 'disable_log_stats': True, 'disable_custom_all_reduce': True, 'model': 'Qwen/Qwen3-14B'}
+INFO 12-05 11:52:06 [model.py:631] Resolved architecture: Qwen3ForCausalLM
+INFO 12-05 11:52:06 [model.py:1745] Using max model len 40960
+INFO 12-05 11:52:06 [scheduler.py:216] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 12-05 11:52:07 [system_utils.py:103] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:20 [core.py:93] Initializing a V1 LLM engine (v0.11.2) with config: model='Qwen/Qwen3-14B', speculative_config=None, tokenizer='Qwen/Qwen3-14B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-14B, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'use_inductor': None, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {}, 'max_cudagraph_capture_size': 512, 'local_cache_dir': None}
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:22 [parallel_state.py:1208] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.38.4.84:41383 backend=nccl
+[W1205 11:52:22.264549870 socket.cpp:767] [c10d] The client socket cannot be initialized to connect to [gpu-b07-1.rc.tch.harvard.edu]:41383 (errno: 97 - Address family not supported by protocol).
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:22 [parallel_state.py:1394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:22 [gpu_model_runner.py:3259] Starting to load model Qwen/Qwen3-14B...
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:23 [cuda.py:418] Valid backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:23 [cuda.py:427] Using FLASH_ATTN backend.
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/8 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:  12% Completed | 1/8 [00:00<00:04,  1.51it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:  25% Completed | 2/8 [00:01<00:04,  1.30it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:  38% Completed | 3/8 [00:02<00:04,  1.22it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:  50% Completed | 4/8 [00:03<00:03,  1.18it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:  62% Completed | 5/8 [00:04<00:02,  1.17it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:  75% Completed | 6/8 [00:05<00:01,  1.11it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards:  88% Completed | 7/8 [00:05<00:00,  1.14it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards: 100% Completed | 8/8 [00:06<00:00,  1.36it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Loading safetensors checkpoint shards: 100% Completed | 8/8 [00:06<00:00,  1.25it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m 
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:30 [default_loader.py:314] Loading weights took 6.45 seconds
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:30 [gpu_model_runner.py:3338] Model loading took 27.5185 GiB memory and 7.422791 seconds
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:39 [backends.py:631] Using cache directory: /home/ch269957/.cache/vllm/torch_compile_cache/76690ce19a/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:39 [backends.py:647] Dynamo bytecode transform time: 8.34 s
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:44 [backends.py:210] Directly load the compiled graph(s) for dynamic shape from the cache, took 4.789 s
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:45 [monitor.py:34] torch.compile takes 13.13 s in total
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:48 [gpu_worker.py:359] Available KV cache memory: 10.93 GiB
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:48 [kv_cache_utils.py:1229] GPU KV cache size: 71,616 tokens
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:48 [kv_cache_utils.py:1234] Maximum concurrency for 40,960 tokens per request: 1.75x
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   2%|▏         | 1/51 [00:00<00:06,  7.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:06,  7.66it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 3/51 [00:00<00:06,  7.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:00<00:06,  7.68it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|▉         | 5/51 [00:00<00:05,  7.77it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:05,  7.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▎        | 7/51 [00:00<00:05,  7.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:01<00:05,  7.97it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 9/51 [00:01<00:04,  8.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:01<00:04,  8.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 11/51 [00:01<00:04,  9.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:01<00:04,  9.25it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 13/51 [00:01<00:04,  9.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:01<00:03,  9.45it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 16/51 [00:01<00:03,  9.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:02<00:03, 10.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 20/51 [00:02<00:02, 11.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 22/51 [00:02<00:02, 11.52it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 24/51 [00:02<00:02, 11.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 26/51 [00:02<00:02, 12.39it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 28/51 [00:02<00:01, 12.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 30/51 [00:02<00:01, 12.88it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 32/51 [00:03<00:01, 13.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 34/51 [00:03<00:01, 13.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 36/51 [00:03<00:01, 13.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 38/51 [00:03<00:00, 13.66it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 40/51 [00:03<00:00, 13.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 42/51 [00:03<00:00, 13.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▋ | 44/51 [00:03<00:00, 14.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 46/51 [00:04<00:00, 14.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 48/51 [00:04<00:00, 14.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 50/51 [00:04<00:00, 14.95it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:04<00:00, 11.61it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   6%|▌         | 2/35 [00:00<00:02, 12.04it/s]Capturing CUDA graphs (decode, FULL):  11%|█▏        | 4/35 [00:00<00:02, 12.32it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:00<00:02, 12.48it/s]Capturing CUDA graphs (decode, FULL):  23%|██▎       | 8/35 [00:00<00:02, 12.56it/s]Capturing CUDA graphs (decode, FULL):  29%|██▊       | 10/35 [00:00<00:01, 12.91it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 12/35 [00:00<00:01, 13.16it/s]Capturing CUDA graphs (decode, FULL):  40%|████      | 14/35 [00:01<00:01, 13.42it/s]Capturing CUDA graphs (decode, FULL):  46%|████▌     | 16/35 [00:01<00:01, 13.71it/s]Capturing CUDA graphs (decode, FULL):  51%|█████▏    | 18/35 [00:01<00:01, 14.12it/s]Capturing CUDA graphs (decode, FULL):  57%|█████▋    | 20/35 [00:01<00:01, 14.26it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 22/35 [00:01<00:00, 14.47it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 24/35 [00:01<00:00, 14.80it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▍  | 26/35 [00:01<00:00, 15.22it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 28/35 [00:01<00:00, 15.55it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▌ | 30/35 [00:02<00:00, 15.63it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████▏| 32/35 [00:02<00:00, 15.96it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 34/35 [00:02<00:00, 16.20it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:02<00:00, 14.51it/s]
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:56 [gpu_model_runner.py:4244] Graph capturing finished in 7 secs, took 0.65 GiB
+[1;36m(EngineCore_DP0 pid=210596)[0;0m INFO 12-05 11:52:56 [core.py:250] init engine (profile, create kv cache, warmup model) took 25.33 seconds
+INFO 12-05 11:52:57 [llm.py:352] Supported tasks: ['generate']
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 721.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.76s/it, est. speed input: 4.14 toks/s, output: 25.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.76s/it, est. speed input: 4.14 toks/s, output: 25.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.76s/it, est. speed input: 4.14 toks/s, output: 25.24 toks/s]
+Agent 1 response: Monosomy refers to the presence of only one copy of a chromosome instead of the usual two. In humans...
+
+--- Problem 1/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1409.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.83s/it, est. speed input: 4.13 toks/s, output: 25.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.83s/it, est. speed input: 4.13 toks/s, output: 25.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.83s/it, est. speed input: 4.13 toks/s, output: 25.25 toks/s]
+Agent 2 response: The correct answer is (D) 45,X. Monosomy refers to the presence of a single copy of a chromosome ins...
+
+--- Problem 1/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1657.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.07s/it, est. speed input: 5.35 toks/s, output: 25.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.07s/it, est. speed input: 5.35 toks/s, output: 25.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.07s/it, est. speed input: 5.35 toks/s, output: 25.27 toks/s]
+Agent 3 response: Monosomy refers to the presence of only one copy of a chromosome instead of the usual two. Among the...
+
+--- Problem 1/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 539.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.92s/it, est. speed input: 24.86 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.92s/it, est. speed input: 24.86 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.92s/it, est. speed input: 24.86 toks/s, output: 25.09 toks/s]
+Agent 1 response: The correct answer is (D) 45,X. Monosomy involves the absence of one chromosome from a pair, resulti...
+
+--- Problem 1/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 670.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.49s/it, est. speed input: 27.96 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.49s/it, est. speed input: 27.96 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.49s/it, est. speed input: 27.96 toks/s, output: 25.09 toks/s]
+Agent 2 response: The correct answer is (D) 45,X. Monosomy involves the absence of one chromosome from a pair, resulti...
+
+--- Problem 1/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 667.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.13s/it, est. speed input: 41.51 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.13s/it, est. speed input: 41.51 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.13s/it, est. speed input: 41.51 toks/s, output: 25.06 toks/s]
+Agent 3 response: The reasoning aligns with the definition of monosomy (a missing chromosome, leading to 45 chromosome...
+
+--- Problem 1/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 428.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.88s/it, est. speed input: 51.81 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.88s/it, est. speed input: 51.81 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.88s/it, est. speed input: 51.81 toks/s, output: 25.01 toks/s]
+Agent 1 response: The correct answer is (D) 45,X. Monosomy is defined as the loss of one chromosome from a pair, resul...
+
+--- Problem 1/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 451.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.72s/it, est. speed input: 45.02 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.72s/it, est. speed input: 45.02 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.72s/it, est. speed input: 45.02 toks/s, output: 25.04 toks/s]
+Agent 2 response: The correct answer is (D) 45,X. Monosomy is defined as the loss of one chromosome from a pair, resul...
+
+--- Problem 1/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 446.92it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.55s/it, est. speed input: 52.72 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.55s/it, est. speed input: 52.72 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.55s/it, est. speed input: 52.72 toks/s, output: 25.06 toks/s]
+Agent 3 response: The reasoning from other agents confirms that **D) 45,X** is monosomy (Turner syndrome), as it refle...
+
+Running accuracy: 1.000 ± 0.000
+
+--- Problem 2/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1256.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.18s/it, est. speed input: 6.66 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.18s/it, est. speed input: 6.66 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.18s/it, est. speed input: 6.66 toks/s, output: 25.21 toks/s]
+Agent 1 response: The major concentrations of proprioceptive receptors in the TMJ are found in the capsule and ligamen...
+
+--- Problem 2/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1378.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:34<00:00, 34.69s/it, est. speed input: 4.06 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:34<00:00, 34.69s/it, est. speed input: 4.06 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:34<00:00, 34.69s/it, est. speed input: 4.06 toks/s, output: 25.22 toks/s]
+Agent 2 response: The major concentrations of proprioceptive receptors in the temporomandibular joint (TMJ) are primar...
+
+--- Problem 2/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1380.16it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.04s/it, est. speed input: 7.41 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.04s/it, est. speed input: 7.41 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.04s/it, est. speed input: 7.41 toks/s, output: 25.21 toks/s]
+Agent 3 response: The major proprioceptive receptors in the TMJ are primarily located in the capsule and ligaments, wh...
+
+--- Problem 2/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 530.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.64s/it, est. speed input: 28.30 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.64s/it, est. speed input: 28.30 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.64s/it, est. speed input: 28.30 toks/s, output: 25.05 toks/s]
+Agent 1 response: The major proprioceptive receptors in the TMJ are located in the **capsule and ligaments**, which co...
+
+--- Problem 2/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 604.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.16s/it, est. speed input: 27.59 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.16s/it, est. speed input: 27.59 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.16s/it, est. speed input: 27.59 toks/s, output: 25.04 toks/s]
+Agent 2 response: The reasoning from other agents aligns with established anatomical knowledge: the **capsule and liga...
+
+--- Problem 2/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 590.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.01s/it, est. speed input: 32.43 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.01s/it, est. speed input: 32.43 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.01s/it, est. speed input: 32.43 toks/s, output: 25.05 toks/s]
+Agent 3 response: The updated answer confirms that proprioceptive receptors in the TMJ are concentrated in the **capsu...
+
+--- Problem 2/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 375.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.35s/it, est. speed input: 58.20 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.35s/it, est. speed input: 58.20 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.35s/it, est. speed input: 58.20 toks/s, output: 24.96 toks/s]
+Agent 1 response: The major proprioceptive receptors in the TMJ are located in the **capsule and ligaments**, which ar...
+
+--- Problem 2/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 402.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.33s/it, est. speed input: 58.26 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.33s/it, est. speed input: 58.26 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.33s/it, est. speed input: 58.26 toks/s, output: 24.99 toks/s]
+Agent 2 response: The reasoning from all agents consistently identifies the **capsule and ligaments** of the TMJ (rich...
+
+--- Problem 2/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 383.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.19s/it, est. speed input: 46.06 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.19s/it, est. speed input: 46.06 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.19s/it, est. speed input: 46.06 toks/s, output: 25.02 toks/s]
+Agent 3 response: The updated answer confirms that the **capsule and ligaments** of the TMJ are rich in mechanorecepto...
+
+Running accuracy: 1.000 ± 0.000
+
+--- Problem 3/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1371.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.51s/it, est. speed input: 6.84 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.51s/it, est. speed input: 6.84 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.51s/it, est. speed input: 6.84 toks/s, output: 25.21 toks/s]
+Agent 1 response: Jerry's reading rate is 200 pages / 10 hours = 20 pages per hour. For a 320-page book, time required...
+
+--- Problem 3/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1539.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.41s/it, est. speed input: 7.36 toks/s, output: 25.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.41s/it, est. speed input: 7.36 toks/s, output: 25.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.41s/it, est. speed input: 7.36 toks/s, output: 25.27 toks/s]
+Agent 2 response: Jerry read 200 pages in 10 hours, so his reading rate is 200 ÷ 10 = 20 pages per hour. For a 320-pag...
+
+--- Problem 3/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1518.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.39s/it, est. speed input: 6.89 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.39s/it, est. speed input: 6.89 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.39s/it, est. speed input: 6.89 toks/s, output: 25.21 toks/s]
+Agent 3 response: To determine how long it will take Jerry to read a 320-page book at the same rate, we first calculat...
+
+--- Problem 3/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 756.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.16s/it, est. speed input: 31.30 toks/s, output: 25.07 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.16s/it, est. speed input: 31.30 toks/s, output: 25.07 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.16s/it, est. speed input: 31.30 toks/s, output: 25.07 toks/s]
+Agent 1 response: Jerry's reading rate is calculated by dividing the total pages by the time taken: 200 pages ÷ 10 hou...
+
+--- Problem 3/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 794.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.88s/it, est. speed input: 29.67 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.88s/it, est. speed input: 29.67 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.89s/it, est. speed input: 29.67 toks/s, output: 25.06 toks/s]
+Agent 2 response: Jerry's reading rate is 200 pages / 10 hours = 20 pages per hour. For a 320-page book, time required...
+
+--- Problem 3/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 640.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.70s/it, est. speed input: 26.25 toks/s, output: 25.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.70s/it, est. speed input: 26.25 toks/s, output: 25.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.70s/it, est. speed input: 26.25 toks/s, output: 25.10 toks/s]
+Agent 3 response: The calculation confirms Jerry's reading rate is 20 pages per hour (200 ÷ 10). Applying this rate to...
+
+--- Problem 3/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 531.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.78s/it, est. speed input: 51.89 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.78s/it, est. speed input: 51.89 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.78s/it, est. speed input: 51.89 toks/s, output: 25.04 toks/s]
+Agent 1 response: Jerry's reading rate is 200 pages ÷ 10 hours = **20 pages/hour**. For 320 pages, time required = 320...
+
+--- Problem 3/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 568.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.01s/it, est. speed input: 51.03 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.01s/it, est. speed input: 51.03 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.01s/it, est. speed input: 51.03 toks/s, output: 25.05 toks/s]
+Agent 2 response: Jerry's reading rate is 200 pages ÷ 10 hours = **20 pages/hour**. For 320 pages, time = 320 ÷ 20 = *...
+
+--- Problem 3/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 557.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.21s/it, est. speed input: 46.99 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.21s/it, est. speed input: 46.99 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.21s/it, est. speed input: 46.99 toks/s, output: 25.04 toks/s]
+Agent 3 response: The calculation is consistent across all solutions: Jerry reads **20 pages/hour** (200 ÷ 10). Applyi...
+
+Running accuracy: 1.000 ± 0.000
+
+--- Problem 4/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1681.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.51s/it, est. speed input: 2.32 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.51s/it, est. speed input: 2.32 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.51s/it, est. speed input: 2.32 toks/s, output: 25.14 toks/s]
+Agent 1 response: The complex number $1 + i$ can be expressed in polar form with modulus $\sqrt{2}$ and argument $\fra...
+
+--- Problem 4/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1736.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:35<00:00, 35.69s/it, est. speed input: 2.05 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:35<00:00, 35.69s/it, est. speed input: 2.05 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:35<00:00, 35.69s/it, est. speed input: 2.05 toks/s, output: 25.16 toks/s]
+Agent 2 response: (X) D) 32i. The complex number (1 + i) can be expressed in polar form as √2(cos(π/4) + i sin(π/4)). ...
+
+--- Problem 4/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1691.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:37<00:00, 37.13s/it, est. speed input: 1.97 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:37<00:00, 37.13s/it, est. speed input: 1.97 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:37<00:00, 37.13s/it, est. speed input: 1.97 toks/s, output: 25.16 toks/s]
+Agent 3 response: The complex number $ (1 + i) $ can be expressed in polar form as $ \sqrt{2} \left( \cos\frac{\pi}{4}...
+
+--- Problem 4/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 474.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.96s/it, est. speed input: 39.85 toks/s, output: 24.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.96s/it, est. speed input: 39.85 toks/s, output: 24.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.96s/it, est. speed input: 39.85 toks/s, output: 24.87 toks/s]
+Agent 1 response: (D)...
+
+--- Problem 4/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 513.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:30<00:00, 30.20s/it, est. speed input: 28.94 toks/s, output: 24.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:30<00:00, 30.20s/it, est. speed input: 28.94 toks/s, output: 24.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:30<00:00, 30.20s/it, est. speed input: 28.94 toks/s, output: 24.90 toks/s]
+Agent 2 response: (X) D) 32i. The complex number $1 + i$ has a modulus of $\sqrt{2}$ and an argument of $\frac{\pi}{4}...
+
+--- Problem 4/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 507.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:41<00:00, 41.91s/it, est. speed input: 20.88 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:41<00:00, 41.91s/it, est. speed input: 20.88 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:41<00:00, 41.91s/it, est. speed input: 20.88 toks/s, output: 24.89 toks/s]
+Agent 3 response: (X) D) 32i. The complex number $1 + i$ has modulus $\sqrt{2}$ and argument $\frac{\pi}{4}$. Using De...
+
+--- Problem 4/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 363.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.21s/it, est. speed input: 60.48 toks/s, output: 24.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.21s/it, est. speed input: 60.48 toks/s, output: 24.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.21s/it, est. speed input: 60.48 toks/s, output: 24.77 toks/s]
+Agent 1 response: (D)...
+
+--- Problem 4/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 343.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:33<00:00, 33.50s/it, est. speed input: 41.88 toks/s, output: 24.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:33<00:00, 33.50s/it, est. speed input: 41.88 toks/s, output: 24.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:33<00:00, 33.50s/it, est. speed input: 41.88 toks/s, output: 24.81 toks/s]
+Agent 2 response: (X) D) 32i. The modulus of $1 + i$ is $\sqrt{2}$, and its argument is $\frac{\pi}{4}$. Applying De M...
+
+--- Problem 4/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 204.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:32<00:00, 32.47s/it, est. speed input: 43.24 toks/s, output: 24.82 toks/s]Processed prompts: 100%|██████████| 1/1 [00:32<00:00, 32.47s/it, est. speed input: 43.24 toks/s, output: 24.82 toks/s]Processed prompts: 100%|██████████| 1/1 [00:32<00:00, 32.47s/it, est. speed input: 43.24 toks/s, output: 24.82 toks/s]
+Agent 3 response: (X) D) 32i. The complex number $1 + i$ has modulus $\sqrt{2}$ and argument $\frac{\pi}{4}$. Applying...
+
+Running accuracy: 1.000 ± 0.000
+
+--- Problem 5/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 824.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.68s/it, est. speed input: 1.35 toks/s, output: 24.87 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.68s/it, est. speed input: 1.35 toks/s, output: 24.87 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.68s/it, est. speed input: 1.35 toks/s, output: 24.87 toks/s]
+Agent 1 response: <think>
+Okay, let's tackle this problem. The question is about calculating the relative occupancies ...
+
+--- Problem 5/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1051.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.68s/it, est. speed input: 1.35 toks/s, output: 24.87 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.68s/it, est. speed input: 1.35 toks/s, output: 24.87 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.68s/it, est. speed input: 1.35 toks/s, output: 24.87 toks/s]
+Agent 2 response: <think>
+Okay, let's see. The question is about calculating the relative occupancies of the α and β s...
+
+--- Problem 5/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1060.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.46s/it, est. speed input: 1.36 toks/s, output: 24.91 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.46s/it, est. speed input: 1.36 toks/s, output: 24.91 toks/s]Processed prompts: 100%|██████████| 1/1 [02:44<00:00, 164.46s/it, est. speed input: 1.36 toks/s, output: 24.91 toks/s]
+Agent 3 response: <think>
+Okay, so I need to calculate the relative occupancies of the α and β spin energy levels for ...
+
+--- Problem 5/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 33.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:06<00:00, 66.24s/it, est. speed input: 190.09 toks/s, output: 22.42 toks/s]Processed prompts: 100%|██████████| 1/1 [01:06<00:00, 66.24s/it, est. speed input: 190.09 toks/s, output: 22.42 toks/s]Processed prompts: 100%|██████████| 1/1 [01:06<00:00, 66.24s/it, est. speed input: 190.09 toks/s, output: 22.42 toks/s]
+Agent 1 response: The relative occupancies of the α and β spin energy levels for a radical species in EPR are determin...
+
+--- Problem 5/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 32.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:39<00:00, 99.28s/it, est. speed input: 126.84 toks/s, output: 22.69 toks/s]Processed prompts: 100%|██████████| 1/1 [01:39<00:00, 99.28s/it, est. speed input: 126.84 toks/s, output: 22.69 toks/s]Processed prompts: 100%|██████████| 1/1 [01:39<00:00, 99.28s/it, est. speed input: 126.84 toks/s, output: 22.69 toks/s]
+Agent 2 response: The relative occupancies of the α and β spin energy levels depend on the Boltzmann distribution. The...
+
+--- Problem 5/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 39.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:23<00:00, 83.42s/it, est. speed input: 150.94 toks/s, output: 22.61 toks/s]Processed prompts: 100%|██████████| 1/1 [01:23<00:00, 83.42s/it, est. speed input: 150.94 toks/s, output: 22.61 toks/s]Processed prompts: 100%|██████████| 1/1 [01:23<00:00, 83.42s/it, est. speed input: 150.94 toks/s, output: 22.61 toks/s]
+Agent 3 response: To calculate the relative occupancies of the α and β spin energy levels for a radical species with $...
+
+--- Problem 5/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 34.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:02<00:00, 62.06s/it, est. speed input: 225.78 toks/s, output: 23.01 toks/s]Processed prompts: 100%|██████████| 1/1 [01:02<00:00, 62.06s/it, est. speed input: 225.78 toks/s, output: 23.01 toks/s]Processed prompts: 100%|██████████| 1/1 [01:02<00:00, 62.06s/it, est. speed input: 225.78 toks/s, output: 23.01 toks/s]
+Agent 1 response: The relative occupancies of the α and β spin energy levels are determined by the Boltzmann distribut...
+
+--- Problem 5/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 30.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:57<00:00, 117.62s/it, est. speed input: 119.13 toks/s, output: 23.05 toks/s]Processed prompts: 100%|██████████| 1/1 [01:57<00:00, 117.62s/it, est. speed input: 119.13 toks/s, output: 23.05 toks/s]Processed prompts: 100%|██████████| 1/1 [01:57<00:00, 117.62s/it, est. speed input: 119.13 toks/s, output: 23.05 toks/s]
+Agent 2 response: The calculation of the relative occupancies $ \frac{N_\alpha}{N_\beta} $ relies on the Boltzmann dis...
+
+--- Problem 5/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 36.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [02:32<00:00, 152.21s/it, est. speed input: 92.06 toks/s, output: 23.03 toks/s]Processed prompts: 100%|██████████| 1/1 [02:32<00:00, 152.21s/it, est. speed input: 92.06 toks/s, output: 23.03 toks/s]Processed prompts: 100%|██████████| 1/1 [02:32<00:00, 152.21s/it, est. speed input: 92.06 toks/s, output: 23.03 toks/s]
+Agent 3 response: To calculate the relative occupancies of the α and β spin energy levels for a radical species at **L...
+
+Running accuracy: 1.000 ± 0.000
+
+--- Problem 6/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1259.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.92s/it, est. speed input: 4.10 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.92s/it, est. speed input: 4.10 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.92s/it, est. speed input: 4.10 toks/s, output: 25.13 toks/s]
+Agent 1 response: The statement of cash flows is required in the Government-wide financial statements, which present t...
+
+--- Problem 6/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1376.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.81s/it, est. speed input: 5.50 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.81s/it, est. speed input: 5.50 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.81s/it, est. speed input: 5.50 toks/s, output: 25.16 toks/s]
+Agent 2 response: The statement of cash flows is required in Government-wide financial statements, which provide a com...
+
+--- Problem 6/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1441.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:44<00:00, 44.17s/it, est. speed input: 2.22 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:44<00:00, 44.17s/it, est. speed input: 2.22 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:44<00:00, 44.17s/it, est. speed input: 2.22 toks/s, output: 25.17 toks/s]
+Agent 3 response: The statement of cash flows is required in financial statements that use the full accrual basis of a...
+
+--- Problem 6/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 574.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.49s/it, est. speed input: 24.88 toks/s, output: 25.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.49s/it, est. speed input: 24.88 toks/s, output: 25.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.49s/it, est. speed input: 24.88 toks/s, output: 25.10 toks/s]
+Agent 1 response: The statement of cash flows is required in **Government-wide financial statements (B)** under GASB s...
+
+--- Problem 6/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 573.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.87s/it, est. speed input: 17.12 toks/s, output: 25.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.87s/it, est. speed input: 17.12 toks/s, output: 25.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.87s/it, est. speed input: 17.12 toks/s, output: 25.08 toks/s]
+Agent 2 response: The statement of cash flows is required in **Proprietary fund financial statements (C)** because the...
+
+--- Problem 6/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 614.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.46s/it, est. speed input: 19.61 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.46s/it, est. speed input: 19.61 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.46s/it, est. speed input: 19.61 toks/s, output: 25.06 toks/s]
+Agent 3 response: The statement of cash flows is required in **Government-wide financial statements** (B), which use t...
+
+--- Problem 6/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 361.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.69s/it, est. speed input: 39.38 toks/s, output: 24.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.69s/it, est. speed input: 39.38 toks/s, output: 24.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.69s/it, est. speed input: 39.38 toks/s, output: 24.95 toks/s]
+Agent 1 response: The statement of cash flows is required in **Government-wide financial statements (B)** under GASB s...
+
+--- Problem 6/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 376.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.24s/it, est. speed input: 40.15 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.24s/it, est. speed input: 40.15 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.24s/it, est. speed input: 40.15 toks/s, output: 24.96 toks/s]
+Agent 2 response: The statement of cash flows is required in **Government-wide financial statements (B)** under GASB s...
+
+--- Problem 6/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 364.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.13s/it, est. speed input: 34.39 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.13s/it, est. speed input: 34.39 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.13s/it, est. speed input: 34.39 toks/s, output: 24.96 toks/s]
+Agent 3 response: The statement of cash flows is explicitly required in **Government-wide financial statements (B)** u...
+
+Running accuracy: 0.833 ± 0.152
+
+--- Problem 7/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 922.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:40<00:00, 40.03s/it, est. speed input: 4.47 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:40<00:00, 40.03s/it, est. speed input: 4.47 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:40<00:00, 40.03s/it, est. speed input: 4.47 toks/s, output: 25.13 toks/s]
+Agent 1 response: Marine birds drink seawater, which is hypertonic to their body fluids. To maintain hypoosmotic inter...
+
+--- Problem 7/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1099.42it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.91s/it, est. speed input: 5.61 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.91s/it, est. speed input: 5.61 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.91s/it, est. speed input: 5.61 toks/s, output: 25.17 toks/s]
+Agent 2 response: Marine birds drinking seawater face the challenge of managing excess salt while maintaining hypoosmo...
+
+--- Problem 7/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1103.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.83s/it, est. speed input: 6.67 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.83s/it, est. speed input: 6.67 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.83s/it, est. speed input: 6.67 toks/s, output: 25.16 toks/s]
+Agent 3 response: Marine birds drinking seawater face the challenge of excreting excess salts while maintaining a hypo...
+
+--- Problem 7/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 463.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.35s/it, est. speed input: 20.84 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.35s/it, est. speed input: 20.84 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.35s/it, est. speed input: 20.84 toks/s, output: 25.01 toks/s]
+Agent 1 response: Marine birds drinking seawater must excrete excess salts while conserving water. Specialized salt-ex...
+
+--- Problem 7/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 548.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.83s/it, est. speed input: 33.14 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.83s/it, est. speed input: 33.14 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.83s/it, est. speed input: 33.14 toks/s, output: 25.01 toks/s]
+Agent 2 response: Marine birds drink seawater, which is hypertonic to their body fluids. To avoid osmotic imbalance, t...
+
+--- Problem 7/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 534.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.04s/it, est. speed input: 21.08 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.04s/it, est. speed input: 21.08 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.04s/it, est. speed input: 21.08 toks/s, output: 25.04 toks/s]
+Agent 3 response: Marine birds drink seawater, which is hyperosmotic to their body fluids. To maintain hypoosmotic int...
+
+--- Problem 7/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 311.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.38s/it, est. speed input: 59.94 toks/s, output: 24.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.38s/it, est. speed input: 59.94 toks/s, output: 24.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.38s/it, est. speed input: 59.94 toks/s, output: 24.86 toks/s]
+Agent 1 response: Marine birds drink seawater (hyperosmotic to their body fluids) and must excrete excess salts while ...
+
+--- Problem 7/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 318.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.96s/it, est. speed input: 38.05 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.96s/it, est. speed input: 38.05 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.96s/it, est. speed input: 38.05 toks/s, output: 24.89 toks/s]
+Agent 2 response: Marine birds drinking seawater (hypertonic to their body fluids) must excrete excess salt while cons...
+
+--- Problem 7/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 319.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.55s/it, est. speed input: 53.62 toks/s, output: 24.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.55s/it, est. speed input: 53.62 toks/s, output: 24.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.55s/it, est. speed input: 53.62 toks/s, output: 24.86 toks/s]
+Agent 3 response: Marine birds must excrete excess salts from seawater while minimizing water loss, as seawater is hyp...
+
+Running accuracy: 0.857 ± 0.132
+
+--- Problem 8/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 629.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.51s/it, est. speed input: 6.04 toks/s, output: 25.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.51s/it, est. speed input: 6.04 toks/s, output: 25.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.51s/it, est. speed input: 6.04 toks/s, output: 25.10 toks/s]
+Agent 1 response: The best evidence for the age of lunar rocks compared to Earth's is provided by radioactive dating o...
+
+--- Problem 8/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1258.42it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:29<00:00, 29.56s/it, est. speed input: 4.40 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:29<00:00, 29.56s/it, est. speed input: 4.40 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:29<00:00, 29.56s/it, est. speed input: 4.40 toks/s, output: 25.14 toks/s]
+Agent 2 response: The best evidence for the age of lunar rocks compared to Earth's is through direct scientific measur...
+
+--- Problem 8/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1239.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.72s/it, est. speed input: 5.26 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.72s/it, est. speed input: 5.26 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.72s/it, est. speed input: 5.26 toks/s, output: 25.16 toks/s]
+Agent 3 response: The best evidence for the age of lunar rocks compared to Earth's is through direct dating of samples...
+
+--- Problem 8/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 489.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.68s/it, est. speed input: 29.66 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.68s/it, est. speed input: 29.66 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.68s/it, est. speed input: 29.66 toks/s, output: 25.00 toks/s]
+Agent 1 response: The best evidence for the age of lunar rocks compared to Earth's is through radioactive dating of lu...
+
+--- Problem 8/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 556.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.52s/it, est. speed input: 38.16 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.52s/it, est. speed input: 38.16 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.52s/it, est. speed input: 38.16 toks/s, output: 25.00 toks/s]
+Agent 2 response: The best evidence for the age of lunar rocks compared to Earth's is **radioactive dating of lunar sa...
+
+--- Problem 8/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 547.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.22s/it, est. speed input: 28.83 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.22s/it, est. speed input: 28.83 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.22s/it, est. speed input: 28.83 toks/s, output: 25.03 toks/s]
+Agent 3 response: The best evidence is provided by radioactive dating of lunar samples (B), which directly quantifies ...
+
+--- Problem 8/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 365.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.96s/it, est. speed input: 60.47 toks/s, output: 24.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.96s/it, est. speed input: 60.47 toks/s, output: 24.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.96s/it, est. speed input: 60.47 toks/s, output: 24.94 toks/s]
+Agent 1 response: The best evidence for the age of lunar rocks compared to Earth's is **radioactive dating of lunar sa...
+
+--- Problem 8/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 354.37it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.23s/it, est. speed input: 47.70 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.23s/it, est. speed input: 47.70 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.23s/it, est. speed input: 47.70 toks/s, output: 24.96 toks/s]
+Agent 2 response: The best evidence is **radioactive dating of lunar samples (B)**, as this method directly measures t...
+
+--- Problem 8/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 359.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.47s/it, est. speed input: 58.60 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.47s/it, est. speed input: 58.60 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.47s/it, est. speed input: 58.60 toks/s, output: 24.96 toks/s]
+Agent 3 response: The best evidence for the age of lunar rocks compared to Earth's is **radioactive dating of lunar sa...
+
+Running accuracy: 0.875 ± 0.117
+
+--- Problem 9/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 995.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:36<00:00, 36.79s/it, est. speed input: 5.35 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:36<00:00, 36.79s/it, est. speed input: 5.35 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:36<00:00, 36.79s/it, est. speed input: 5.35 toks/s, output: 25.11 toks/s]
+Agent 1 response: The gray crescent in amphibian zygotes contains cells critical for dorsal development and proper emb...
+
+--- Problem 9/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1128.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.97s/it, est. speed input: 7.30 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.97s/it, est. speed input: 7.30 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.97s/it, est. speed input: 7.30 toks/s, output: 25.21 toks/s]
+Agent 2 response: The gray crescent in amphibian zygotes contains determinants critical for dorsal development and emb...
+
+--- Problem 9/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1037.42it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:25<00:00, 25.95s/it, est. speed input: 7.59 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:25<00:00, 25.95s/it, est. speed input: 7.59 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:25<00:00, 25.95s/it, est. speed input: 7.59 toks/s, output: 25.17 toks/s]
+Agent 3 response: The gray crescent is a critical region in amphibian zygotes that specifies the dorsal and neural cel...
+
+--- Problem 9/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 494.26it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.83s/it, est. speed input: 28.26 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.83s/it, est. speed input: 28.26 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.83s/it, est. speed input: 28.26 toks/s, output: 25.01 toks/s]
+Agent 1 response: The gray crescent in amphibian zygotes contains critical determinants for dorsal development and emb...
+
+--- Problem 9/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 555.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.27s/it, est. speed input: 37.91 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.27s/it, est. speed input: 37.91 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.27s/it, est. speed input: 37.91 toks/s, output: 25.01 toks/s]
+Agent 2 response: The gray crescent in amphibian zygotes is critical for dorsal development and embryonic patterning. ...
+
+--- Problem 9/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 533.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.85s/it, est. speed input: 32.73 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.85s/it, est. speed input: 32.73 toks/s, output: 25.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.85s/it, est. speed input: 32.73 toks/s, output: 25.04 toks/s]
+Agent 3 response: The gray crescent contains determinants essential for dorsal development and embryonic patterning. W...
+
+--- Problem 9/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 334.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.98s/it, est. speed input: 44.81 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.98s/it, est. speed input: 44.81 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.98s/it, est. speed input: 44.81 toks/s, output: 24.97 toks/s]
+Agent 1 response: The gray crescent is a critical region in amphibian zygotes containing determinants for dorsal devel...
+
+--- Problem 9/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 362.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.03s/it, est. speed input: 57.13 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.03s/it, est. speed input: 57.13 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.03s/it, est. speed input: 57.13 toks/s, output: 24.96 toks/s]
+Agent 2 response: The gray crescent in amphibian zygotes contains determinants essential for dorsal development and em...
+
+--- Problem 9/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 358.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.82s/it, est. speed input: 51.97 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.82s/it, est. speed input: 51.97 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.82s/it, est. speed input: 51.97 toks/s, output: 24.93 toks/s]
+Agent 3 response: The gray crescent in amphibian zygotes is a region critical for dorsal development and embryonic pat...
+
+Running accuracy: 0.889 ± 0.105
+
+--- Problem 10/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1283.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:30<00:00, 30.79s/it, est. speed input: 3.86 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:30<00:00, 30.79s/it, est. speed input: 3.86 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:30<00:00, 30.79s/it, est. speed input: 3.86 toks/s, output: 25.11 toks/s]
+Agent 1 response: The voltmeter has a guaranteed accuracy of 2% of the full-scale reading (100 V), which corresponds t...
+
+--- Problem 10/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1375.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.36s/it, est. speed input: 3.79 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.36s/it, est. speed input: 3.79 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:31<00:00, 31.36s/it, est. speed input: 3.79 toks/s, output: 25.16 toks/s]
+Agent 2 response: The limiting error is calculated as the maximum permissible error (2% of full scale) divided by the ...
+
+--- Problem 10/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1326.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.35s/it, est. speed input: 4.20 toks/s, output: 25.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.35s/it, est. speed input: 4.20 toks/s, output: 25.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.35s/it, est. speed input: 4.20 toks/s, output: 25.15 toks/s]
+Agent 3 response: The limiting error is calculated as the percentage of the full-scale error relative to the measured ...
+
+--- Problem 10/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 580.21it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.18s/it, est. speed input: 31.83 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.18s/it, est. speed input: 31.83 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.18s/it, est. speed input: 31.83 toks/s, output: 24.96 toks/s]
+Agent 1 response: The limiting error is determined by the maximum permissible error (2% of full scale = 2 V) divided b...
+
+--- Problem 10/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 484.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.37s/it, est. speed input: 23.41 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.37s/it, est. speed input: 23.41 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.37s/it, est. speed input: 23.41 toks/s, output: 25.03 toks/s]
+Agent 2 response: The voltmeter's accuracy is specified as 2% of the full-scale (100 V), resulting in an absolute erro...
+
+--- Problem 10/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 581.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.56s/it, est. speed input: 27.96 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.56s/it, est. speed input: 27.96 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.56s/it, est. speed input: 27.96 toks/s, output: 25.05 toks/s]
+Agent 3 response: The voltmeter's guaranteed accuracy is 2% of full-scale (100 V), resulting in a maximum absolute err...
+
+--- Problem 10/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 412.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.68s/it, est. speed input: 44.24 toks/s, output: 24.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.68s/it, est. speed input: 44.24 toks/s, output: 24.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.69s/it, est. speed input: 44.24 toks/s, output: 24.95 toks/s]
+Agent 1 response: The limiting error is calculated by dividing the maximum permissible absolute error (2% of full scal...
+
+--- Problem 10/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 415.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.69s/it, est. speed input: 51.73 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.69s/it, est. speed input: 51.73 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.69s/it, est. speed input: 51.73 toks/s, output: 24.99 toks/s]
+Agent 2 response: The voltmeter's accuracy is specified as 2% of full-scale (100 V), resulting in a maximum absolute e...
+
+--- Problem 10/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 423.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.94s/it, est. speed input: 39.89 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.94s/it, est. speed input: 39.89 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.94s/it, est. speed input: 39.89 toks/s, output: 25.03 toks/s]
+Agent 3 response: The voltmeter's accuracy is 2% of the full-scale value (100 V), resulting in an absolute error of ±2...
+
+Running accuracy: 0.900 ± 0.095
+
+--- Problem 11/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1207.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.69s/it, est. speed input: 8.04 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.69s/it, est. speed input: 8.04 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.69s/it, est. speed input: 8.04 toks/s, output: 25.16 toks/s]
+Agent 1 response: The question asks about the type of competitive activity between organizations in Porter's Five Forc...
+
+--- Problem 11/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1427.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.15s/it, est. speed input: 4.44 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.15s/it, est. speed input: 4.44 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.15s/it, est. speed input: 4.44 toks/s, output: 25.20 toks/s]
+Agent 2 response: The question asks about the type of competitive activity between organizations in Porter's Five Forc...
+
+--- Problem 11/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 775.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.38s/it, est. speed input: 5.41 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.38s/it, est. speed input: 5.41 toks/s, output: 25.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.38s/it, est. speed input: 5.41 toks/s, output: 25.21 toks/s]
+Agent 3 response: The question asks about the type of competitive activity between organizations within an industry. I...
+
+--- Problem 11/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 338.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.26s/it, est. speed input: 32.68 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.26s/it, est. speed input: 32.68 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.26s/it, est. speed input: 32.68 toks/s, output: 24.97 toks/s]
+Agent 1 response: The question specifically asks about **competitive activity between organizations** in the same indu...
+
+--- Problem 11/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 556.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.53s/it, est. speed input: 32.06 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.53s/it, est. speed input: 32.06 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.53s/it, est. speed input: 32.06 toks/s, output: 25.11 toks/s]
+Agent 2 response: The question asks for the competitive activity between organizations in Porter's Five Forces model. ...
+
+--- Problem 11/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 555.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.91s/it, est. speed input: 26.02 toks/s, output: 25.07 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.91s/it, est. speed input: 26.02 toks/s, output: 25.07 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.91s/it, est. speed input: 26.02 toks/s, output: 25.07 toks/s]
+Agent 3 response: The question identifies the competitive activity between organizations in Porter's Five Forces model...
+
+--- Problem 11/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 309.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.48s/it, est. speed input: 57.36 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.48s/it, est. speed input: 57.36 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.48s/it, est. speed input: 57.36 toks/s, output: 24.93 toks/s]
+Agent 1 response: The question focuses on **competitive activity between organizations** in Porter's Five Forces model...
+
+--- Problem 11/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 349.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.26s/it, est. speed input: 54.61 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.26s/it, est. speed input: 54.61 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.26s/it, est. speed input: 54.61 toks/s, output: 24.97 toks/s]
+Agent 2 response: The question specifically identifies **competitive activity between organizations** in Porter's Five...
+
+--- Problem 11/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 380.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.41s/it, est. speed input: 50.99 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.41s/it, est. speed input: 50.99 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.41s/it, est. speed input: 50.99 toks/s, output: 24.98 toks/s]
+Agent 3 response: The question explicitly focuses on **competitive activity between organizations** within an industry...
+
+Running accuracy: 0.909 ± 0.087
+
+--- Problem 12/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1030.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.09s/it, est. speed input: 4.85 toks/s, output: 25.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.09s/it, est. speed input: 4.85 toks/s, output: 25.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.09s/it, est. speed input: 4.85 toks/s, output: 25.12 toks/s]
+Agent 1 response: The central thesis of difference feminism emphasizes inherent differences between men and women, par...
+
+--- Problem 12/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1278.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.07s/it, est. speed input: 4.86 toks/s, output: 25.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.07s/it, est. speed input: 4.86 toks/s, output: 25.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.07s/it, est. speed input: 4.86 toks/s, output: 25.15 toks/s]
+Agent 2 response: The central thesis of difference feminism emphasizes the inherent, meaningful differences between me...
+
+--- Problem 12/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1273.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.93s/it, est. speed input: 4.01 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.93s/it, est. speed input: 4.01 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.93s/it, est. speed input: 4.01 toks/s, output: 25.20 toks/s]
+Agent 3 response: The central thesis of difference feminism emphasizes inherent, significant differences between men a...
+
+--- Problem 12/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 375.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.66s/it, est. speed input: 25.10 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.66s/it, est. speed input: 25.10 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.66s/it, est. speed input: 25.10 toks/s, output: 24.98 toks/s]
+Agent 1 response: The central thesis of difference feminism emphasizes inherent, meaningful differences between men an...
+
+--- Problem 12/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 483.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.98s/it, est. speed input: 30.99 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.98s/it, est. speed input: 30.99 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.98s/it, est. speed input: 30.99 toks/s, output: 25.03 toks/s]
+Agent 2 response: The updated answer aligns with the reasoning provided by other agents, which emphasizes that differe...
+
+--- Problem 12/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 478.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.11s/it, est. speed input: 29.32 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.11s/it, est. speed input: 29.32 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.11s/it, est. speed input: 29.32 toks/s, output: 25.06 toks/s]
+Agent 3 response: The central thesis of difference feminism focuses on **inherent, meaningful differences between gend...
+
+--- Problem 12/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 273.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.42s/it, est. speed input: 47.87 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.42s/it, est. speed input: 47.87 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.42s/it, est. speed input: 47.87 toks/s, output: 24.98 toks/s]
+Agent 1 response: The central thesis of difference feminism focuses on **inherent, meaningful differences between gend...
+
+--- Problem 12/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 293.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.44s/it, est. speed input: 52.27 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.44s/it, est. speed input: 52.27 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.44s/it, est. speed input: 52.27 toks/s, output: 25.09 toks/s]
+Agent 2 response: The reasoning from other agents confirms that **option C** is the most accurate choice. Difference f...
+
+--- Problem 12/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 305.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.41s/it, est. speed input: 57.75 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.41s/it, est. speed input: 57.75 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.41s/it, est. speed input: 57.75 toks/s, output: 24.98 toks/s]
+Agent 3 response: The central thesis of difference feminism hinges on **inherent, meaningful differences in moral reas...
+
+Running accuracy: 0.917 ± 0.080
+
+--- Problem 13/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1305.42it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.51s/it, est. speed input: 4.60 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.51s/it, est. speed input: 4.60 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.51s/it, est. speed input: 4.60 toks/s, output: 25.20 toks/s]
+Agent 1 response: John Locke argued in *Two Treatises of Government* that individuals form a commonwealth (government)...
+
+--- Problem 13/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1454.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:25<00:00, 25.16s/it, est. speed input: 3.93 toks/s, output: 25.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:25<00:00, 25.16s/it, est. speed input: 3.93 toks/s, output: 25.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:25<00:00, 25.16s/it, est. speed input: 3.93 toks/s, output: 25.24 toks/s]
+Agent 2 response: The chief end of men's uniting into a commonwealth, according to John Locke, is to preserve their pr...
+
+--- Problem 13/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1471.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.76s/it, est. speed input: 4.00 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.76s/it, est. speed input: 4.00 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.76s/it, est. speed input: 4.00 toks/s, output: 25.20 toks/s]
+Agent 3 response: The chief end of men's uniting into a commonwealth, according to John Locke, is the preservation of ...
+
+--- Problem 13/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 398.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.07s/it, est. speed input: 33.14 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.07s/it, est. speed input: 33.14 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.07s/it, est. speed input: 33.14 toks/s, output: 24.96 toks/s]
+Agent 1 response: The reasoning from other agents aligns with Locke's argument in *Two Treatises of Government*, empha...
+
+--- Problem 13/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 468.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.96s/it, est. speed input: 44.47 toks/s, output: 24.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.96s/it, est. speed input: 44.47 toks/s, output: 24.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.96s/it, est. speed input: 44.47 toks/s, output: 24.94 toks/s]
+Agent 2 response: The updated answer aligns with the reasoning from other agents and Locke’s philosophy. Locke’s prima...
+
+--- Problem 13/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 436.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.25s/it, est. speed input: 32.85 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.25s/it, est. speed input: 32.85 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.25s/it, est. speed input: 32.85 toks/s, output: 24.99 toks/s]
+Agent 3 response: The updated analysis aligns with the reasoning from other agents and Locke’s *Two Treatises of Gover...
+
+--- Problem 13/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 291.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.51s/it, est. speed input: 59.82 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.51s/it, est. speed input: 59.82 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.51s/it, est. speed input: 59.82 toks/s, output: 24.96 toks/s]
+Agent 1 response: The reasoning from other agents consistently reinforces that Locke’s primary justification for formi...
+
+--- Problem 13/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 313.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.84s/it, est. speed input: 55.79 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.84s/it, est. speed input: 55.79 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.84s/it, est. speed input: 55.79 toks/s, output: 25.00 toks/s]
+Agent 2 response: The reasoning from other agents consistently aligns with Locke’s argument in *Two Treatises of Gover...
+
+--- Problem 13/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 313.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.16s/it, est. speed input: 52.32 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.16s/it, est. speed input: 52.32 toks/s, output: 25.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.16s/it, est. speed input: 52.32 toks/s, output: 25.00 toks/s]
+Agent 3 response: The reasoning from other agents confirms that Locke’s primary justification for forming a commonweal...
+
+Running accuracy: 0.923 ± 0.074
+
+--- Problem 14/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1481.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.54s/it, est. speed input: 5.07 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.54s/it, est. speed input: 5.07 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.54s/it, est. speed input: 5.07 toks/s, output: 25.14 toks/s]
+Agent 1 response: A positive externality occurs when the social benefit of a good or service exceeds the private benef...
+
+--- Problem 14/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1494.23it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.12s/it, est. speed input: 5.52 toks/s, output: 25.19 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.12s/it, est. speed input: 5.52 toks/s, output: 25.19 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.12s/it, est. speed input: 5.52 toks/s, output: 25.19 toks/s]
+Agent 2 response: A positive externality occurs when the social benefit of a good or service exceeds the private benef...
+
+--- Problem 14/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1491.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.54s/it, est. speed input: 4.33 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.54s/it, est. speed input: 4.33 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.54s/it, est. speed input: 4.33 toks/s, output: 25.22 toks/s]
+Agent 3 response: A positive externality occurs when the production or consumption of a good generates benefits for th...
+
+--- Problem 14/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 522.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.10s/it, est. speed input: 33.77 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.10s/it, est. speed input: 33.77 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.10s/it, est. speed input: 33.77 toks/s, output: 24.96 toks/s]
+Agent 1 response: A positive externality arises when third parties benefit from a good or service without paying for i...
+
+--- Problem 14/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 569.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.68s/it, est. speed input: 24.66 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.68s/it, est. speed input: 24.66 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.68s/it, est. speed input: 24.66 toks/s, output: 25.05 toks/s]
+Agent 2 response: The presence of a positive externality leads to underproduction because the market fails to account ...
+
+--- Problem 14/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 582.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.58s/it, est. speed input: 48.22 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.58s/it, est. speed input: 48.22 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.58s/it, est. speed input: 48.22 toks/s, output: 24.96 toks/s]
+Agent 3 response: The reasoning from other agents confirms that a **government subsidy** (A) corrects a positive exter...
+
+--- Problem 14/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 352.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.47s/it, est. speed input: 46.17 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.47s/it, est. speed input: 46.17 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.47s/it, est. speed input: 46.17 toks/s, output: 24.96 toks/s]
+Agent 1 response: The presence of a positive externality results in underproduction because the market does not accoun...
+
+--- Problem 14/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 363.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.60s/it, est. speed input: 61.57 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.60s/it, est. speed input: 61.57 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.60s/it, est. speed input: 61.57 toks/s, output: 24.93 toks/s]
+Agent 2 response: The presence of a positive externality results in underproduction because the market does not accoun...
+
+--- Problem 14/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 378.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.49s/it, est. speed input: 58.03 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.49s/it, est. speed input: 58.03 toks/s, output: 24.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.49s/it, est. speed input: 58.03 toks/s, output: 24.98 toks/s]
+Agent 3 response: The reasoning from other agents aligns with standard economic principles: **a government subsidy (A)...
+
+Running accuracy: 0.929 ± 0.069
+
+--- Problem 15/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1434.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.85s/it, est. speed input: 5.11 toks/s, output: 25.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.85s/it, est. speed input: 5.11 toks/s, output: 25.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.85s/it, est. speed input: 5.11 toks/s, output: 25.18 toks/s]
+Agent 1 response: The method of loci involves creating mental images of items placed in specific locations within a fa...
+
+--- Problem 15/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1567.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.62s/it, est. speed input: 4.35 toks/s, output: 25.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.62s/it, est. speed input: 4.35 toks/s, output: 25.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.62s/it, est. speed input: 4.35 toks/s, output: 25.24 toks/s]
+Agent 2 response: The method of loci relies on creating vivid mental images of items placed in familiar spatial locati...
+
+--- Problem 15/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1618.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.58s/it, est. speed input: 5.20 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.58s/it, est. speed input: 5.20 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.58s/it, est. speed input: 5.20 toks/s, output: 25.22 toks/s]
+Agent 3 response: The method of loci is a mnemonic technique that involves associating items to be remembered with spe...
+
+--- Problem 15/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 535.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.07s/it, est. speed input: 33.97 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.07s/it, est. speed input: 33.97 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.07s/it, est. speed input: 33.97 toks/s, output: 25.02 toks/s]
+Agent 1 response: The method of loci is a mnemonic technique that relies on **visual imagery (B)** by associating item...
+
+--- Problem 15/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 628.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.15s/it, est. speed input: 43.74 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.15s/it, est. speed input: 43.74 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.15s/it, est. speed input: 43.74 toks/s, output: 25.02 toks/s]
+Agent 2 response: The method of loci relies on visual imagery (B) as its core mechanism, as it involves mentally placi...
+
+--- Problem 15/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 593.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.61s/it, est. speed input: 28.44 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.61s/it, est. speed input: 28.44 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.61s/it, est. speed input: 28.44 toks/s, output: 25.11 toks/s]
+Agent 3 response: The method of loci is a mnemonic strategy that explicitly requires forming **vivid mental images** o...
+
+--- Problem 15/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 370.23it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.43s/it, est. speed input: 53.32 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.43s/it, est. speed input: 53.32 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.43s/it, est. speed input: 53.32 toks/s, output: 25.01 toks/s]
+Agent 1 response: The method of loci is a mnemonic technique that explicitly depends on **visual imagery (B)**, as it ...
+
+--- Problem 15/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 403.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.21s/it, est. speed input: 57.91 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.21s/it, est. speed input: 57.91 toks/s, output: 25.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.21s/it, est. speed input: 57.91 toks/s, output: 25.05 toks/s]
+Agent 2 response: The method of loci is a mnemonic technique that explicitly relies on **visual imagery (B)** by assoc...
+
+--- Problem 15/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 398.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.29s/it, est. speed input: 57.61 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.29s/it, est. speed input: 57.61 toks/s, output: 25.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.29s/it, est. speed input: 57.61 toks/s, output: 25.06 toks/s]
+Agent 3 response: The method of loci is fundamentally based on **visual imagery (B)**, as it requires mentally placing...
+
+Running accuracy: 0.933 ± 0.064
+
+--- Problem 16/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1451.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.10s/it, est. speed input: 5.67 toks/s, output: 25.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.10s/it, est. speed input: 5.67 toks/s, output: 25.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.10s/it, est. speed input: 5.67 toks/s, output: 25.25 toks/s]
+Agent 1 response: The correct answer is B) Media tour. A media tour involves organizing visits for journalists to spec...
+
+--- Problem 16/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1615.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.63s/it, est. speed input: 5.47 toks/s, output: 25.29 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.63s/it, est. speed input: 5.47 toks/s, output: 25.29 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.63s/it, est. speed input: 5.47 toks/s, output: 25.29 toks/s]
+Agent 2 response: The correct answer is B) Media tour. A media tour involves organizing visits for journalists to spec...
+
+--- Problem 16/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1564.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.84s/it, est. speed input: 8.13 toks/s, output: 25.30 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.84s/it, est. speed input: 8.13 toks/s, output: 25.30 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.84s/it, est. speed input: 8.13 toks/s, output: 25.30 toks/s]
+Agent 3 response: The correct answer is B) Media tour. A media tour involves organizing visits for journalists to spec...
+
+--- Problem 16/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 556.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.43s/it, est. speed input: 29.65 toks/s, output: 25.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.43s/it, est. speed input: 29.65 toks/s, output: 25.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.43s/it, est. speed input: 29.65 toks/s, output: 25.15 toks/s]
+Agent 1 response: The correct answer is B) Media tour. A media tour specifically involves organizing visits for journa...
+
+--- Problem 16/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 618.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.71s/it, est. speed input: 31.22 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.71s/it, est. speed input: 31.22 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.71s/it, est. speed input: 31.22 toks/s, output: 25.17 toks/s]
+Agent 2 response: The updated answer remains **B) Media tour**. This is confirmed by the reasoning from other agents, ...
+
+--- Problem 16/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 616.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.39s/it, est. speed input: 34.53 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.39s/it, est. speed input: 34.53 toks/s, output: 25.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.39s/it, est. speed input: 34.53 toks/s, output: 25.09 toks/s]
+Agent 3 response: The correct answer is B) Media tour. A media tour directly involves organizing visits for journalist...
+
+--- Problem 16/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 387.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.55s/it, est. speed input: 49.90 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.55s/it, est. speed input: 49.90 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.55s/it, est. speed input: 49.90 toks/s, output: 25.01 toks/s]
+Agent 1 response: The correct answer is **B) Media tour**. This is consistently supported by the reasoning from other ...
+
+--- Problem 16/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 416.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.87s/it, est. speed input: 60.32 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.87s/it, est. speed input: 60.32 toks/s, output: 25.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.87s/it, est. speed input: 60.32 toks/s, output: 25.03 toks/s]
+Agent 2 response: The updated answer remains **B) Media tour**. The reasoning from other agents consistently confirms ...
+
+--- Problem 16/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 413.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.87s/it, est. speed input: 52.19 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.87s/it, est. speed input: 52.19 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.87s/it, est. speed input: 52.19 toks/s, output: 25.02 toks/s]
+Agent 3 response: The correct answer is **B) Media tour**. This tactic specifically involves organizing journalists to...
+
+Running accuracy: 0.938 ± 0.061
+
+--- Problem 17/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 466.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:45<00:00, 105.61s/it, est. speed input: 5.41 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [01:45<00:00, 105.61s/it, est. speed input: 5.41 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [01:45<00:00, 105.61s/it, est. speed input: 5.41 toks/s, output: 24.99 toks/s]
+Agent 1 response: The covenant against encumbrances in a general warranty deed guarantees that the property is free fr...
+
+--- Problem 17/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 547.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [02:18<00:00, 138.83s/it, est. speed input: 4.11 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [02:18<00:00, 138.83s/it, est. speed input: 4.11 toks/s, output: 24.97 toks/s]Processed prompts: 100%|██████████| 1/1 [02:18<00:00, 138.83s/it, est. speed input: 4.11 toks/s, output: 24.97 toks/s]
+Agent 2 response: The covenant against encumbrances in a general warranty deed guarantees that the grantor (in this ca...
+
+--- Problem 17/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 528.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:48<00:00, 108.79s/it, est. speed input: 5.25 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [01:48<00:00, 108.79s/it, est. speed input: 5.25 toks/s, output: 25.02 toks/s]Processed prompts: 100%|██████████| 1/1 [01:48<00:00, 108.79s/it, est. speed input: 5.25 toks/s, output: 25.02 toks/s]
+Agent 3 response: The key issue revolves around the **covenant against encumbrances** in a **general warranty deed** a...
+
+--- Problem 17/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 254.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:58<00:00, 58.74s/it, est. speed input: 26.92 toks/s, output: 24.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:58<00:00, 58.74s/it, est. speed input: 26.92 toks/s, output: 24.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:58<00:00, 58.74s/it, est. speed input: 26.92 toks/s, output: 24.84 toks/s]
+Agent 1 response: The covenant against encumbrances in a general warranty deed guarantees that the grantor (farmer) wi...
+
+--- Problem 17/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 268.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:08<00:00, 68.01s/it, est. speed input: 23.25 toks/s, output: 24.80 toks/s]Processed prompts: 100%|██████████| 1/1 [01:08<00:00, 68.01s/it, est. speed input: 23.25 toks/s, output: 24.80 toks/s]Processed prompts: 100%|██████████| 1/1 [01:08<00:00, 68.01s/it, est. speed input: 23.25 toks/s, output: 24.80 toks/s]
+Agent 2 response: The analysis hinges on the **covenant against encumbrances** in a general warranty deed, which guara...
+
+--- Problem 17/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 270.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:37<00:00, 37.48s/it, est. speed input: 42.18 toks/s, output: 24.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:37<00:00, 37.48s/it, est. speed input: 42.18 toks/s, output: 24.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:37<00:00, 37.48s/it, est. speed input: 42.18 toks/s, output: 24.81 toks/s]
+Agent 3 response: The updated analysis hinges on **when the breach of the covenant against encumbrances occurs** and *...
+
+--- Problem 17/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 143.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:36<00:00, 36.95s/it, est. speed input: 81.03 toks/s, output: 24.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:36<00:00, 36.95s/it, est. speed input: 81.03 toks/s, output: 24.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:36<00:00, 36.95s/it, est. speed input: 81.03 toks/s, output: 24.49 toks/s]
+Agent 1 response: The covenant against encumbrances in a general warranty deed guarantees that the property is free fr...
+
+--- Problem 17/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 146.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:39<00:00, 39.55s/it, est. speed input: 75.71 toks/s, output: 24.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:39<00:00, 39.55s/it, est. speed input: 75.71 toks/s, output: 24.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:39<00:00, 39.55s/it, est. speed input: 75.71 toks/s, output: 24.58 toks/s]
+Agent 2 response: The analysis hinges on the **timing of the breach** of the **covenant against encumbrances** and the...
+
+--- Problem 17/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 152.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:41<00:00, 41.59s/it, est. speed input: 71.99 toks/s, output: 24.55 toks/s]Processed prompts: 100%|██████████| 1/1 [00:41<00:00, 41.59s/it, est. speed input: 71.99 toks/s, output: 24.55 toks/s]Processed prompts: 100%|██████████| 1/1 [00:41<00:00, 41.59s/it, est. speed input: 71.99 toks/s, output: 24.55 toks/s]
+Agent 3 response: The updated analysis aligns with the clear jurisdictional framework of **notice-type recording statu...
+
+Running accuracy: 0.941 ± 0.057
+
+--- Problem 18/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1310.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.98s/it, est. speed input: 7.38 toks/s, output: 25.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.98s/it, est. speed input: 7.38 toks/s, output: 25.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.98s/it, est. speed input: 7.38 toks/s, output: 25.18 toks/s]
+Agent 1 response: Natural polyunsaturated fatty acids in vegetable oils, such as linoleic acid (omega-6) and alpha-lin...
+
+--- Problem 18/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1407.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.58s/it, est. speed input: 6.80 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.58s/it, est. speed input: 6.80 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.58s/it, est. speed input: 6.80 toks/s, output: 25.22 toks/s]
+Agent 2 response: The correct answer is (D). Natural polyunsaturated fatty acids in vegetable oils, such as linoleic a...
+
+--- Problem 18/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1420.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.95s/it, est. speed input: 5.85 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.95s/it, est. speed input: 5.85 toks/s, output: 25.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.95s/it, est. speed input: 5.85 toks/s, output: 25.22 toks/s]
+Agent 3 response: The correct answer is (D). Natural polyunsaturated fatty acids (PUFAs) in vegetable oils typically h...
+
+--- Problem 18/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 503.16it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.55s/it, est. speed input: 30.02 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.55s/it, est. speed input: 30.02 toks/s, output: 24.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.55s/it, est. speed input: 30.02 toks/s, output: 24.96 toks/s]
+Agent 1 response: The correct answer is (D). Natural polyunsaturated fatty acids in vegetable oils, such as linoleic a...
+
+--- Problem 18/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 553.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.71s/it, est. speed input: 41.18 toks/s, output: 24.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.71s/it, est. speed input: 41.18 toks/s, output: 24.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.71s/it, est. speed input: 41.18 toks/s, output: 24.95 toks/s]
+Agent 2 response: The answer remains (D). Natural polyunsaturated fatty acids in vegetable oils (e.g., linoleic acid, ...
+
+--- Problem 18/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 555.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.21s/it, est. speed input: 33.68 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.21s/it, est. speed input: 33.68 toks/s, output: 24.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.21s/it, est. speed input: 33.68 toks/s, output: 24.99 toks/s]
+Agent 3 response: The correct answer is (D). Natural polyunsaturated fatty acids (PUFAs) in vegetable oils, such as li...
+
+--- Problem 18/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 333.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.04s/it, est. speed input: 44.23 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.04s/it, est. speed input: 44.23 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:27<00:00, 27.04s/it, est. speed input: 44.23 toks/s, output: 24.89 toks/s]
+Agent 1 response: The correct answer is (D). Natural polyunsaturated fatty acids in vegetable oils (e.g., linoleic aci...
+
+--- Problem 18/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 324.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.51s/it, est. speed input: 61.32 toks/s, output: 24.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.51s/it, est. speed input: 61.32 toks/s, output: 24.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.51s/it, est. speed input: 61.32 toks/s, output: 24.86 toks/s]
+Agent 2 response: The answer remains (D). Natural polyunsaturated fatty acids in vegetable oils (e.g., linoleic acid, ...
+
+--- Problem 18/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 334.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.88s/it, est. speed input: 41.41 toks/s, output: 24.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.88s/it, est. speed input: 41.41 toks/s, output: 24.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:28<00:00, 28.88s/it, est. speed input: 41.41 toks/s, output: 24.90 toks/s]
+Agent 3 response: The correct answer is **(D)**. Natural polyunsaturated fatty acids (PUFAs) in vegetable oils, such a...
+
+Running accuracy: 0.944 ± 0.054
+
+--- Problem 19/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 795.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.39s/it, est. speed input: 13.21 toks/s, output: 25.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.39s/it, est. speed input: 13.21 toks/s, output: 25.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.39s/it, est. speed input: 13.21 toks/s, output: 25.12 toks/s]
+Agent 1 response: The concessions outlined in the Treaty of Nanjing (1842, not 1839 as stated in the question) granted...
+
+--- Problem 19/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 999.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.75s/it, est. speed input: 12.96 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.75s/it, est. speed input: 12.96 toks/s, output: 25.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.75s/it, est. speed input: 12.96 toks/s, output: 25.17 toks/s]
+Agent 2 response: The concessions in the Treaty of Nanjing (correctly dated 1842, not 1839) granted British subjects t...
+
+--- Problem 19/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 990.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.08s/it, est. speed input: 10.53 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.08s/it, est. speed input: 10.53 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.08s/it, est. speed input: 10.53 toks/s, output: 25.13 toks/s]
+Agent 3 response: The concessions in the Treaty of Nanjing (1842, mistakenly cited as 1839) granted British merchants ...
+
+--- Problem 19/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 442.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.70s/it, est. speed input: 35.84 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.70s/it, est. speed input: 35.84 toks/s, output: 24.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:19<00:00, 19.70s/it, est. speed input: 35.84 toks/s, output: 24.93 toks/s]
+Agent 1 response: The Treaty of Nanjing (1842) granted Britain the right to reside and trade in specific Chinese ports...
+
+--- Problem 19/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 487.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.10s/it, est. speed input: 39.00 toks/s, output: 24.91 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.10s/it, est. speed input: 39.00 toks/s, output: 24.91 toks/s]Processed prompts: 100%|██████████| 1/1 [00:18<00:00, 18.10s/it, est. speed input: 39.00 toks/s, output: 24.91 toks/s]
+Agent 2 response: The Treaty of Nanjing (1842) granted British merchants the right to reside and trade in specified Ch...
+
+--- Problem 19/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 487.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.39s/it, est. speed input: 49.06 toks/s, output: 24.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.39s/it, est. speed input: 49.06 toks/s, output: 24.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.39s/it, est. speed input: 49.06 toks/s, output: 24.88 toks/s]
+Agent 3 response: The Treaty of Nanjing (1842) granted British merchants residence and trading rights in specific Chin...
+
+--- Problem 19/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 317.92it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.50s/it, est. speed input: 43.20 toks/s, output: 24.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.50s/it, est. speed input: 43.20 toks/s, output: 24.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:26<00:00, 26.50s/it, est. speed input: 43.20 toks/s, output: 24.90 toks/s]
+Agent 1 response: The Treaty of Nanjing (1842) granted British merchants the right to reside and trade in specified Ch...
+
+--- Problem 19/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 324.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.55s/it, est. speed input: 73.65 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.55s/it, est. speed input: 73.65 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.55s/it, est. speed input: 73.65 toks/s, output: 24.89 toks/s]
+Agent 2 response: The Treaty of Nanjing (1842) granted Britain the right to reside and trade in specific Chinese ports...
+
+--- Problem 19/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 331.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.97s/it, est. speed input: 49.84 toks/s, output: 24.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.97s/it, est. speed input: 49.84 toks/s, output: 24.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:22<00:00, 22.97s/it, est. speed input: 49.84 toks/s, output: 24.94 toks/s]
+Agent 3 response: The Treaty of Nanjing (1842) granted British merchants residence and trade rights in specific Chines...
+
+Running accuracy: 0.947 ± 0.051
+
+--- Problem 20/20, Round 1, Agent 1/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1622.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.10s/it, est. speed input: 3.70 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.10s/it, est. speed input: 3.70 toks/s, output: 25.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:21<00:00, 21.10s/it, est. speed input: 3.70 toks/s, output: 25.16 toks/s]
+Agent 1 response: Insulin (B) promotes glucose and amino acid uptake by muscle. Insulin facilitates the transport of g...
+
+--- Problem 20/20, Round 1, Agent 2/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1814.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.36s/it, est. speed input: 3.83 toks/s, output: 25.19 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.36s/it, est. speed input: 3.83 toks/s, output: 25.19 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.36s/it, est. speed input: 3.83 toks/s, output: 25.19 toks/s]
+Agent 2 response: Insulin promotes glucose and amino acid uptake by muscle cells by activating glucose transporters (e...
+
+--- Problem 20/20, Round 1, Agent 3/3 ---
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1787.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.48s/it, est. speed input: 3.81 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.48s/it, est. speed input: 3.81 toks/s, output: 25.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 20.48s/it, est. speed input: 3.81 toks/s, output: 25.20 toks/s]
+Agent 3 response: Insulin is the hormone that facilitates the uptake of glucose and amino acids into muscle cells by p...
+
+--- Problem 20/20, Round 2, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 671.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.03s/it, est. speed input: 33.07 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.03s/it, est. speed input: 33.07 toks/s, output: 25.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.03s/it, est. speed input: 33.07 toks/s, output: 25.01 toks/s]
+Agent 1 response: Insulin (B) is the correct answer. Insulin promotes glucose and amino acid uptake by muscle cells by...
+
+--- Problem 20/20, Round 2, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 750.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.66s/it, est. speed input: 27.16 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.66s/it, est. speed input: 27.16 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.66s/it, est. speed input: 27.16 toks/s, output: 25.11 toks/s]
+Agent 2 response: Insulin (B) promotes glucose and amino acid uptake by muscle through mechanisms like activating GLUT...
+
+--- Problem 20/20, Round 2, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 757.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.25s/it, est. speed input: 26.09 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.25s/it, est. speed input: 26.09 toks/s, output: 25.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.25s/it, est. speed input: 26.09 toks/s, output: 25.11 toks/s]
+Agent 3 response: Insulin (B) is the correct answer because it directly stimulates glucose and amino acid uptake in mu...
+
+--- Problem 20/20, Round 3, Agent 1/3 ---
+Agent 1 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 495.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 21.00s/it, est. speed input: 35.81 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 21.00s/it, est. speed input: 35.81 toks/s, output: 25.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:20<00:00, 21.00s/it, est. speed input: 35.81 toks/s, output: 25.14 toks/s]
+Agent 1 response: Insulin (B) promotes glucose and amino acid uptake by muscle via mechanisms such as activating GLUT4...
+
+--- Problem 20/20, Round 3, Agent 2/3 ---
+Agent 2 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 504.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.13s/it, est. speed input: 46.64 toks/s, output: 25.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.13s/it, est. speed input: 46.64 toks/s, output: 25.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:16<00:00, 16.13s/it, est. speed input: 46.64 toks/s, output: 25.12 toks/s]
+Agent 2 response: Insulin (B) is the correct answer. It directly stimulates glucose and amino acid uptake in muscle ce...
+
+--- Problem 20/20, Round 3, Agent 3/3 ---
+Agent 3 receiving other agents' responses...
+[ModelCache] Using cached model: Qwen/Qwen3-14B
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 520.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.16s/it, est. speed input: 53.09 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.16s/it, est. speed input: 53.09 toks/s, output: 25.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.16s/it, est. speed input: 53.09 toks/s, output: 25.13 toks/s]
+[rank0]:[W1205 13:16:53.040881573 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+Agent 3 response: Insulin (B) is the correct answer because it directly enhances glucose and amino acid uptake in musc...
+
+Running accuracy: 0.950 ± 0.049
+
+============================================================
+GENERATION & EVALUATION COMPLETE
+============================================================
+Results saved to: /home/ch269957/projects/slm_multiagent_debate/experiments/linux_single/results/mmlu/mmlu_Qwen3-14B_temp0.5+0.7+1.0_agents3_rounds3.json
+Questions processed: 20
+Final accuracy: 0.950 ± 0.049
+============================================================
+[ModelCache] Shut down vLLM model: vllm:Qwen/Qwen3-14B
+[ModelCache] All models shut down

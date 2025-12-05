@@ -1,0 +1,9 @@
+==============================================
+Job Array Task: 4
+Job ID: 4
+Model: vllm-qwen3-0.6b
+Agents: 7
+Rounds: 3
+Task: biography
+Num People: 20
+==============================================

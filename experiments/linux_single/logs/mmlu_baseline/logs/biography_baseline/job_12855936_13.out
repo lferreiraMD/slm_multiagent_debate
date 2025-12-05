@@ -1,0 +1,9 @@
+==============================================
+Job Array Task: 13
+Job ID: 13
+Model: vllm-mistral-7b
+Agents: 1
+Rounds: 3
+Task: biography
+Num People: 20
+==============================================
